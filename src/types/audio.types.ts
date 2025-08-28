@@ -92,7 +92,7 @@ export interface AudioEnhancementOptions {
   stereoWidth?: number;
 }
 
-export interface CompressionSettings {
+export interface CompressionSettings extends Record<string, unknown> {
   /** Compression algorithm */
   algorithm?: CompressionAlgorithm;
   

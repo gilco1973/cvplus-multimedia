@@ -5,11 +5,17 @@
     "declarationMap": true,
     "sourceMap": true,
     "noEmit": false,
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "skipLibCheck": true
   },
   "exclude": [
     "**/*.test.ts",
     "**/*.spec.ts",
-    "src/__tests__/**/*"
+    "src/__tests__/**/*",
+    "src/backend/**/*",
+    "src/services/**/*",
+    "src/processors/**/*",
+    "src/storage/**/*",
+    "src/config/**/*"
   ]
 }

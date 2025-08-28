@@ -2,7 +2,14 @@
  * Core media type definitions for CVPlus multimedia processing
  */
 
-import { ErrorDetails } from '@cvplus/core';
+// Temporarily remove core dependency for minimal build
+
+// Minimal ErrorDetails interface for local use
+interface ErrorDetails {
+  message: string;
+  code?: string;
+  context?: Record<string, unknown>;
+}
 
 // ============================================================================
 // BASE MEDIA TYPES

@@ -3,7 +3,14 @@
  */
 
 import { MediaFile, ProcessingStatus, QualityLevel } from './media.types';
-import { ErrorDetails } from '@cvplus/core';
+// Removed core dependency for minimal build
+
+// Minimal ErrorDetails interface for local use
+interface ErrorDetails {
+  message: string;
+  code?: string;
+  context?: Record<string, unknown>;
+}
 
 // ============================================================================
 // PROCESSING JOB TYPES

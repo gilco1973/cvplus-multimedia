@@ -50,10 +50,10 @@ export class AudioService extends MediaService {
   constructor(config: ServiceConfig) {
     super(config);
     
-    this.processor = new AudioProcessor(config.processing || {});
-    this.transcoder = new AudioTranscoder(config.transcoding || {});
-    this.analyzer = new AudioAnalyzer(config.analysis || {});
-    this.waveformGenerator = new WaveformGenerator(config.waveform || {});
+    this.processor = new AudioProcessor();
+    this.transcoder = new AudioTranscoder();
+    this.analyzer = new AudioAnalyzer();
+    this.waveformGenerator = new WaveformGenerator();
   }
 
   /**
@@ -72,7 +72,7 @@ export class AudioService extends MediaService {
 
       // Load and analyze audio
       const audioBuffer = await this.loadAudioBuffer(processedInput);
-      const analysis = await this.analyzer.analyzeAudio(audioBuffer);
+      const analysis = await this.analyzer.analyze(audioBuffer);
 
       // Validate audio constraints
       await this.validateAudioConstraints(analysis);
@@ -149,7 +149,7 @@ export class AudioService extends MediaService {
       }
 
       // Analyze audio properties
-      const analysis = await this.analyzer.analyzeAudio(buffer);
+      const analysis = await this.analyzer.analyze(buffer);
       
       // Check duration
       if (analysis.duration > AudioService.MAX_DURATION) {
@@ -368,7 +368,7 @@ export class AudioService extends MediaService {
     input: File | Buffer | string
   ): Promise<AudioAnalysisResult> {
     const buffer = await this.loadAudioBuffer(input);
-    return this.analyzer.analyzeAudio(buffer);
+    return this.analyzer.analyze(buffer);
   }
 
   /**

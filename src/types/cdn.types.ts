@@ -5,6 +5,117 @@
 import { MediaFile } from './media.types';
 
 // ============================================================================
+// SUPPORTING TYPES
+// ============================================================================
+
+export interface CompressionSettings {
+  /** Compression enabled */
+  enabled: boolean;
+  
+  /** Compression algorithm */
+  algorithm: CompressionAlgorithm;
+  
+  /** Compression level (1-9) */
+  level: number;
+  
+  /** File type patterns to compress */
+  fileTypes: string[];
+  
+  /** Minimum file size to compress */
+  minSize: number;
+  
+  /** Maximum file size to compress */
+  maxSize: number;
+}
+
+export interface CDNSecuritySettings {
+  /** HTTPS enforcement */
+  httpsOnly: boolean;
+  
+  /** Security headers */
+  securityHeaders: Record<string, string>;
+  
+  /** Access restrictions */
+  accessRestrictions: string[];
+  
+  /** Rate limiting */
+  rateLimiting: boolean;
+  
+  /** DDoS protection */
+  ddosProtection: boolean;
+}
+
+export interface PerformanceSettings {
+  /** Cache TTL settings */
+  cacheTtl: Record<string, number>;
+  
+  /** Preloading rules */
+  preloadRules: string[];
+  
+  /** Optimization level */
+  optimizationLevel: 'basic' | 'standard' | 'aggressive';
+  
+  /** Bandwidth throttling */
+  bandwidthThrottling: boolean;
+}
+
+export interface GeographicSettings {
+  /** Geographic restrictions */
+  restrictions: string[];
+  
+  /** Preferred regions */
+  preferredRegions: string[];
+  
+  /** Regional caching rules */
+  regionalCaching: Record<string, number>;
+}
+
+export interface AnalyticsConfiguration {
+  /** Analytics enabled */
+  enabled: boolean;
+  
+  /** Analytics provider */
+  provider: string;
+  
+  /** Tracking configuration */
+  tracking: Record<string, unknown>;
+  
+  /** Reporting frequency */
+  reportingFrequency: string;
+}
+
+export interface ErrorHandlingConfig {
+  /** Error page configuration */
+  errorPages: Record<number, string>;
+  
+  /** Retry configuration */
+  retryConfig: {
+    maxRetries: number;
+    backoffStrategy: string;
+  };
+  
+  /** Fallback configuration */
+  fallback: {
+    enabled: boolean;
+    fallbackUrl?: string;
+  };
+}
+
+export interface CacheRule {
+  /** Rule pattern */
+  pattern: string;
+  
+  /** Cache TTL */
+  ttl: number;
+  
+  /** Cache headers */
+  headers: Record<string, string>;
+  
+  /** Cache key configuration */
+  cacheKey: string[];
+}
+
+// ============================================================================
 // CDN PROVIDER TYPES
 // ============================================================================
 

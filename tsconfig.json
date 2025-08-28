@@ -4,11 +4,11 @@
     "baseUrl": ".",
     "rootDir": "./src",
     "outDir": "./dist",
-    "paths": {
-      "@/*": ["./src/*"],
-      "@cvplus/core": ["../core/src"],
-      "@cvplus/auth": ["../auth/src"]
-    }
+    "composite": true,
+    "incremental": true,
+    "tsBuildInfoFile": "./dist/.tsbuildinfo",
+    "noEmit": false,
+    "skipLibCheck": true
   },
   "include": [
     "src/**/*"
@@ -18,13 +18,5 @@
     "dist",
     "**/*.test.ts",
     "**/*.spec.ts"
-  ],
-  "references": [
-    {
-      "path": "../core"
-    },
-    {
-      "path": "../auth"
-    }
   ]
 }

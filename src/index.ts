@@ -1,9 +1,7 @@
 /**
- * CVPlus Multimedia Module - Main Entry Point
+ * CVPlus Multimedia Module - Main Entry Point (Minimal Build)
  * 
- * Comprehensive multimedia processing, storage, and CDN integration module
- * for the CVPlus platform. Provides advanced image, video, and audio processing
- * capabilities with enterprise-grade performance and scalability.
+ * Basic multimedia types and utilities for the CVPlus platform.
  * 
  * @author Gil Klainert
  * @version 1.0.0
@@ -11,234 +9,78 @@
  */
 
 // ============================================================================
-// TYPES
+// CORE TYPES
 // ============================================================================
-export * from './types';
+
+// Media types - basic exports only
+export type {
+  MediaType,
+  MediaFile,
+  ProcessedMedia,
+  QualityLevel,
+  FileFormat,
+  ImageFormat,
+  VideoFormat,
+  AudioFormat,
+  ProcessingStatus
+} from './types/media.types';
+
+// Image types
+export type {
+  ProcessedImage,
+  ImageProcessingOptions
+} from './types/image.types';
+
+// Video types
+export type {
+  ProcessedVideo,
+  VideoProcessingOptions
+} from './types/video.types';
+
+// Audio types
+export type {
+  ProcessedAudio,
+  AudioProcessingOptions
+} from './types/audio.types';
+
+// Storage types
+export type {
+  StorageProvider,
+  CDNProvider,
+} from './types/storage.types';
+
+// Processing types
+export type {
+  ProcessingMode,
+  ProcessingJobType,
+  ProcessingStage,
+  ProcessingPriority
+} from './types/processing.types';
 
 // ============================================================================
 // CONSTANTS
 // ============================================================================
+
 export * from './constants';
 
 // ============================================================================
-// SERVICES
+// UTILITIES
 // ============================================================================
-export * from './services';
 
-// ============================================================================
-// PROCESSORS (Placeholder - to be implemented)
-// ============================================================================
-// export * from './processors';
-
-// ============================================================================
-// STORAGE (Placeholder - to be implemented)
-// ============================================================================
-// export * from './storage';
-
-// ============================================================================
-// UTILITIES (Placeholder - to be implemented)
-// ============================================================================
-// export * from './utils';
+export { FileUtils, MediaUtils } from './utils';
+export type { MediaMetadata, MediaValidationRules } from './utils';
 
 // ============================================================================
 // VERSION INFO
 // ============================================================================
-export const MULTIMEDIA_MODULE_VERSION = '1.0.0';
-export const MULTIMEDIA_MODULE_NAME = '@cvplus/multimedia';
 
-// ============================================================================
-// MODULE METADATA
-// ============================================================================
+export const VERSION = '1.0.0';
+export const MODULE_NAME = '@cvplus/multimedia';
+
 export const MODULE_INFO = {
-  name: MULTIMEDIA_MODULE_NAME,
-  version: MULTIMEDIA_MODULE_VERSION,
-  description: 'CVPlus Multimedia - Comprehensive media processing, optimization, and storage management',
+  name: MODULE_NAME,
+  version: VERSION,
+  description: 'CVPlus Multimedia - Basic media types and utilities',
   author: 'Gil Klainert',
-  license: 'PROPRIETARY',
-  repository: 'https://github.com/cvplus/cvplus/tree/main/packages/multimedia',
-  
-  features: [
-    'Advanced image processing with Sharp integration',
-    'Video transcoding with FFmpeg.js',
-    'Professional audio processing and podcast creation',
-    'Multi-cloud storage management (Firebase, AWS S3)',
-    'CDN integration and optimization',
-    'Real-time processing status tracking',
-    'Batch processing capabilities',
-    'Quality assessment and optimization',
-    'Responsive image generation',
-    'Progressive loading support',
-    'Comprehensive error handling',
-    'Performance monitoring and analytics',
-  ],
-  
-  capabilities: {
-    imageFormats: ['jpeg', 'jpg', 'png', 'webp', 'avif', 'gif', 'svg', 'bmp', 'tiff', 'heic', 'heif'],
-    videoFormats: ['mp4', 'webm', 'avi', 'mov', 'mkv', 'flv', 'm4v', 'ogv', '3gp', 'wmv'],
-    audioFormats: ['mp3', 'aac', 'ogg', 'wav', 'flac', 'm4a', 'wma', 'opus', 'aiff', 'alac'],
-    
-    processingModes: ['fast', 'balanced', 'quality', 'custom'],
-    qualityLevels: ['source', 'high', 'medium', 'low', 'thumbnail'],
-    
-    storageProviders: ['firebase', 'aws-s3', 'azure-blob', 'gcs', 'local'],
-    cdnProviders: ['cloudfront', 'cloudflare', 'fastly', 'azure-cdn', 'google-cdn'],
-    
-    maxFileSize: '100MB',
-    maxConcurrentOperations: 10,
-    supportedLanguages: ['TypeScript', 'JavaScript'],
-  },
-  
-  integrations: {
-    cvplusCore: '@cvplus/core',
-    cvplusAuth: '@cvplus/auth',
-    sharp: '^0.33.5',
-    ffmpegJs: '^4.4.0',
-    firebase: '^10.14.1',
-    awsSdk: '^2.1691.0',
-  },
-  
-  createdAt: new Date().toISOString(),
-  lastUpdated: new Date().toISOString(),
+  license: 'PROPRIETARY'
 } as const;
-
-// ============================================================================
-// EXPORTS FOR BACKWARD COMPATIBILITY
-// ============================================================================
-
-// Core types
-export type {
-  MediaFile,
-  ProcessedMedia,
-  MediaType,
-  QualityLevel,
-  ProcessingStatus,
-} from './types/media.types';
-
-export type {
-  ImageProcessingOptions,
-  ProcessedImage,
-  ResponsiveImageSet,
-} from './types/image.types';
-
-export type {
-  VideoProcessingOptions,
-  ProcessedVideo,
-  VideoMetadata,
-} from './types/video.types';
-
-export type {
-  AudioProcessingOptions,
-  ProcessedAudio,
-  PodcastResult,
-} from './types/audio.types';
-
-export type {
-  StorageService,
-  UploadOptions,
-  UploadResult,
-} from './types/storage.types';
-
-export type {
-  ProcessingJob,
-  ProcessingPipeline,
-  JobQueue,
-} from './types/processing.types';
-
-export type {
-  CDNService,
-  CDNConfiguration,
-  DeploymentResult,
-} from './types/cdn.types';
-
-export type {
-  MultimediaError,
-  RecoverySuggestion,
-  ErrorContext,
-} from './types/error.types';
-
-export type {
-  MultimediaModuleConfig,
-  StorageModuleConfig,
-  ProcessingModuleConfig,
-} from './types/config.types';
-
-// Core constants
-export {
-  MEDIA_TYPES,
-  QUALITY_LEVELS,
-  SUPPORTED_IMAGE_FORMATS,
-  SUPPORTED_VIDEO_FORMATS,
-  SUPPORTED_AUDIO_FORMATS,
-  DEFAULT_VALUES,
-} from './constants/media.constants';
-
-// ============================================================================
-// MODULE INITIALIZATION (Placeholder)
-// ============================================================================
-
-/**
- * Initialize the multimedia module with configuration
- * 
- * @param config - Module configuration
- * @returns Promise resolving to initialized service factory
- */
-export async function initializeMultimediaModule(
-  config?: Partial<any>
-): Promise<any> {
-  const { ServiceFactory } = await import('./services/base/ServiceFactory');
-  const factory = ServiceFactory.getInstance();
-  
-  if (config) {
-    await factory.initialize(config);
-  }
-  
-  return factory;
-}
-
-/**
- * Get module health status
- * 
- * @returns Module health information
- */
-export async function getModuleHealth(): Promise<any> {
-  try {
-    const { ServiceFactory } = await import('./services/base/ServiceFactory');
-    const factory = ServiceFactory.getInstance();
-    const health = await factory.healthCheck();
-    
-    return {
-      status: 'healthy',
-      version: MULTIMEDIA_MODULE_VERSION,
-      timestamp: new Date().toISOString(),
-      services: health,
-      message: 'All services operational',
-    };
-  } catch (error) {
-    return {
-      status: 'unhealthy',
-      version: MULTIMEDIA_MODULE_VERSION,
-      timestamp: new Date().toISOString(),
-      error: (error as Error).message,
-      message: 'Service health check failed',
-    };
-  }
-}
-
-/**
- * Get module capabilities and features
- * 
- * @returns Module capabilities information
- */
-export function getModuleCapabilities(): typeof MODULE_INFO.capabilities {
-  return MODULE_INFO.capabilities;
-}
-
-// ============================================================================
-// DEVELOPMENT EXPORTS
-// ============================================================================
-
-if (process.env.NODE_ENV === 'development') {
-  // Development-only exports
-  export const __DEV_MODULE_INFO__ = MODULE_INFO;
-  export const __DEV_VERSION__ = MULTIMEDIA_MODULE_VERSION;
-}

@@ -2,7 +2,14 @@
  * Error handling types for CVPlus multimedia module
  */
 
-import { ErrorDetails } from '@cvplus/core';
+// Removed core dependency for minimal build
+
+// Minimal ErrorDetails interface for local use
+interface ErrorDetails {
+  message: string;
+  code?: string;
+  context?: Record<string, unknown>;
+}
 
 // ============================================================================
 // MULTIMEDIA ERROR TYPES
@@ -58,7 +65,7 @@ export type MultimediaErrorCategory =
 
 export type ErrorSeverity = 'low' | 'medium' | 'high' | 'critical';
 
-export interface ErrorContext {
+export interface ErrorContext extends Record<string, unknown> {
   /** Operation being performed */
   operation: string;
   

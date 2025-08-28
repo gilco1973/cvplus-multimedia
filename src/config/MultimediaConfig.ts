@@ -298,7 +298,7 @@ export class MultimediaConfig {
     }
 
     // Validate quality settings
-    if (this.config.defaultQuality && (this.config.defaultQuality < 1 || this.config.defaultQuality > 100)) {
+    if (this.config.defaultQuality && typeof this.config.defaultQuality === 'number' && (this.config.defaultQuality < 1 || this.config.defaultQuality > 100)) {
       errors.push('Default quality must be between 1 and 100');
     }
 

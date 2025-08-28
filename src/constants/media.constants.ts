@@ -2,7 +2,7 @@
  * Media processing constants for CVPlus multimedia module
  */
 
-import { QualityLevel, MediaType } from '../types';
+import { MediaType } from '../types';
 
 // ============================================================================
 // MEDIA TYPE CONSTANTS
@@ -30,12 +30,12 @@ export const SUPPORTED_AUDIO_FORMATS = [
 // QUALITY LEVEL CONSTANTS
 // ============================================================================
 
-export const QUALITY_LEVELS: Record<string, QualityLevel> = {
-  SOURCE: 'source',
-  HIGH: 'high',
-  MEDIUM: 'medium',
-  LOW: 'low',
-  THUMBNAIL: 'thumbnail',
+export const QUALITY_LEVELS = {
+  SOURCE: 'source' as const,
+  HIGH: 'high' as const,
+  MEDIUM: 'medium' as const,
+  LOW: 'low' as const,
+  THUMBNAIL: 'thumbnail' as const,
 } as const;
 
 export const QUALITY_SCORES = {
@@ -522,7 +522,7 @@ export const DEFAULT_VALUES = {
   DEFAULT_RETRY_DELAY: RETRY_DELAYS.SHORT,
   
   // File sizes
-  MAX_FILE_SIZE: 100 * FILE_SIZE_MULTIPLIERS.MB, // 100MB
+  MAX_FILE_SIZE: 100 * FILE_SIZE_MULTIPLIERS[FILE_SIZE_UNITS.MB], // 100MB
   MAX_IMAGE_DIMENSION: 8192,        // 8K resolution
   MAX_VIDEO_DURATION: 3600,         // 1 hour
   MAX_AUDIO_DURATION: 7200,         // 2 hours

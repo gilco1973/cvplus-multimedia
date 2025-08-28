@@ -2,18 +2,34 @@
  * Configuration types for CVPlus multimedia module
  */
 
-import { 
-  StorageProvider, 
-  CDNProvider, 
-  ProcessingMode, 
-  QualityLevel,
-  CompressionAlgorithm 
-} from './media.types';
+import { QualityLevel } from './media.types';
+import { StorageProvider, CDNProvider } from './storage.types';
+import { ProcessingMode } from './processing.types';
+import { CompressionAlgorithm } from './audio.types';
 import { 
   ImageProcessingOptions,
   VideoProcessingOptions,
   AudioProcessingOptions 
 } from './index';
+
+// ============================================================================
+// ENVIRONMENT AND SERVICE TYPES
+// ============================================================================
+
+export type MultimediaEnvironment = 'development' | 'staging' | 'production';
+
+export interface ServiceConfig {
+  timeout: number;
+  retries: number;
+  circuitBreaker: {
+    threshold: number;
+    timeout: number;
+  };
+  rateLimit?: {
+    requests: number;
+    window: number;
+  };
+}
 
 // ============================================================================
 // MAIN CONFIGURATION INTERFACE

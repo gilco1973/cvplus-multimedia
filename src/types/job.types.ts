@@ -2,15 +2,7 @@
  * Job management and queue system types for CVPlus multimedia module
  */
 
-import { 
-  ProcessingJob, 
-  ProcessingStatus, 
-  ProcessingJobType,
-  ProcessingError,
-  ResourceUsage 
-} from './processing.types';
-import { MediaFile } from './media.types';
-import { ErrorDetails } from '@cvplus/core';
+import { ProcessingJobType } from './processing.types';
 
 // ============================================================================
 // JOB QUEUE TYPES

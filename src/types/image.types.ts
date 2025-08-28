@@ -6,8 +6,7 @@ import {
   MediaFile, 
   ProcessedMedia, 
   QualityLevel,
-  ImageFormat,
-  ResponsiveMediaSet 
+  ImageFormat
 } from './media.types';
 
 // ============================================================================
