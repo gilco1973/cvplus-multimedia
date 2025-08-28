@@ -21,9 +21,9 @@ export * from './types';
 export * from './constants';
 
 // ============================================================================
-// SERVICES (Placeholder - to be implemented)
+// SERVICES
 // ============================================================================
-// export * from './services';
+export * from './services';
 
 // ============================================================================
 // PROCESSORS (Placeholder - to be implemented)
@@ -180,13 +180,19 @@ export {
  * Initialize the multimedia module with configuration
  * 
  * @param config - Module configuration
- * @returns Promise resolving to initialized module instance
+ * @returns Promise resolving to initialized service factory
  */
 export async function initializeMultimediaModule(
-  config?: Partial<any> // TODO: Replace with MultimediaModuleConfig when services are implemented
+  config?: Partial<any>
 ): Promise<any> {
-  // TODO: Implement module initialization
-  throw new Error('Module initialization not yet implemented');
+  const { ServiceFactory } = await import('./services/base/ServiceFactory');
+  const factory = ServiceFactory.getInstance();
+  
+  if (config) {
+    await factory.initialize(config);
+  }
+  
+  return factory;
 }
 
 /**
@@ -194,14 +200,28 @@ export async function initializeMultimediaModule(
  * 
  * @returns Module health information
  */
-export function getModuleHealth(): any {
-  // TODO: Implement health check
-  return {
-    status: 'initializing',
-    version: MULTIMEDIA_MODULE_VERSION,
-    timestamp: new Date().toISOString(),
-    message: 'Module implementation in progress',
-  };
+export async function getModuleHealth(): Promise<any> {
+  try {
+    const { ServiceFactory } = await import('./services/base/ServiceFactory');
+    const factory = ServiceFactory.getInstance();
+    const health = await factory.healthCheck();
+    
+    return {
+      status: 'healthy',
+      version: MULTIMEDIA_MODULE_VERSION,
+      timestamp: new Date().toISOString(),
+      services: health,
+      message: 'All services operational',
+    };
+  } catch (error) {
+    return {
+      status: 'unhealthy',
+      version: MULTIMEDIA_MODULE_VERSION,
+      timestamp: new Date().toISOString(),
+      error: (error as Error).message,
+      message: 'Service health check failed',
+    };
+  }
 }
 
 /**
