@@ -1,7 +1,7 @@
 import { onCall, HttpsError } from 'firebase-functions/v2/https';
 import { logger } from 'firebase-functions';
 import { corsOptions } from '../../config/cors';
-import { cachedSubscriptionService, UserSubscriptionData } from '../../services/cached-subscription.service';
+import { simpleSubscriptionService, UserSubscriptionData } from '../../services/simple-subscription.service';
 
 interface GetUserSubscriptionData {
   userId: string;
@@ -27,8 +27,8 @@ export const getUserSubscription = onCall<GetUserSubscriptionData>(
     const { userId } = data;
 
     try {
-      // Get user subscription with caching
-      const subscriptionData = await cachedSubscriptionService.getUserSubscription(userId);
+      // Get user subscription with simple service
+      const subscriptionData = await simpleSubscriptionService.getUserSubscription(userId);
 
       logger.info('User subscription retrieved', {
         userId,
@@ -72,8 +72,8 @@ export const getUserSubscription = onCall<GetUserSubscriptionData>(
 // Now uses caching for improved performance
 export async function getUserSubscriptionInternal(userId: string): Promise<UserSubscriptionData> {
   try {
-    logger.debug('Getting user subscription internally with cache', { userId });
-    return await cachedSubscriptionService.getUserSubscription(userId);
+    logger.debug('Getting user subscription internally (simple)', { userId });
+    return await simpleSubscriptionService.getUserSubscription(userId);
   } catch (error) {
     logger.error('Error getting user subscription internally', { error, userId });
     throw error;
@@ -82,5 +82,6 @@ export async function getUserSubscriptionInternal(userId: string): Promise<UserS
 
 // Helper function to invalidate cache when subscription changes
 export function invalidateUserSubscriptionCache(userId: string): void {
-  cachedSubscriptionService.invalidateUserSubscription(userId);
+  // Simple service doesn't have cache to invalidate
+  logger.debug('Cache invalidation requested (simple service)', { userId });
 }

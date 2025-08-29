@@ -106,7 +106,7 @@ export declare function createValidationConfig(mediaType: 'image' | 'video' | 'a
  * Get recommended settings for media optimization
  */
 export declare function getOptimizationSettings(mediaType: 'image' | 'video' | 'audio', quality?: 'low' | 'medium' | 'high' | 'lossless'): {
-    targetBitRate: 8000000 | 2000000 | 500000 | 25000000;
+    targetBitRate: 500000 | 8000000 | 2000000 | 25000000;
     format: string;
     codec: string;
     maxFrameRate: number;
@@ -114,7 +114,7 @@ export declare function getOptimizationSettings(mediaType: 'image' | 'video' | '
     stripMetadata: boolean;
     progressive: boolean;
 } | {
-    targetBitRate: 128000 | 320000 | 64000 | 1411200;
+    targetBitRate: 320000 | 128000 | 64000 | 1411200;
     format: string;
     sampleRate: number;
     channels: number;
@@ -123,8 +123,8 @@ export declare function getOptimizationSettings(mediaType: 'image' | 'video' | '
     progressive: boolean;
 } | {
     format: string;
-    maxWidth: number | undefined;
-    maxHeight: number | undefined;
+    maxWidth: number;
+    maxHeight: number;
     generateResponsive: boolean;
     quality: 100 | 80 | 60 | 95;
     stripMetadata: boolean;
@@ -142,7 +142,7 @@ export declare function validateForUseCase(file: {
  * Generate processing options based on target platform
  */
 export declare function getProcessingOptionsForPlatform(platform: 'web' | 'mobile' | 'email' | 'social' | 'print', mediaType: 'image' | 'video' | 'audio'): {
-    targetBitRate: 8000000 | 2000000 | 500000 | 25000000;
+    targetBitRate: 500000 | 8000000 | 2000000 | 25000000;
     format: string;
     codec: string;
     maxFrameRate: number;
@@ -150,7 +150,7 @@ export declare function getProcessingOptionsForPlatform(platform: 'web' | 'mobil
     stripMetadata: boolean;
     progressive: boolean;
 } | {
-    targetBitRate: 128000 | 320000 | 64000 | 1411200;
+    targetBitRate: 320000 | 128000 | 64000 | 1411200;
     format: string;
     sampleRate: number;
     channels: number;
@@ -159,17 +159,17 @@ export declare function getProcessingOptionsForPlatform(platform: 'web' | 'mobil
     progressive: boolean;
 } | {
     format: string;
-    maxWidth: number | undefined;
-    maxHeight: number | undefined;
+    maxWidth: number;
+    maxHeight: number;
     generateResponsive: boolean;
     quality: 100 | 80 | 60 | 95;
     stripMetadata: boolean;
     progressive: boolean;
 } | {
     quality: 80;
-    maxWidth: number | undefined;
-    maxHeight: number | undefined;
-    targetBitRate: 2000000 | undefined;
+    maxWidth: number;
+    maxHeight: number;
+    targetBitRate: 2000000;
     format: string;
     codec: string;
     maxFrameRate: number;
@@ -177,9 +177,9 @@ export declare function getProcessingOptionsForPlatform(platform: 'web' | 'mobil
     progressive: boolean;
 } | {
     quality: 80;
-    maxWidth: number | undefined;
-    maxHeight: number | undefined;
-    targetBitRate: 2000000 | undefined;
+    maxWidth: number;
+    maxHeight: number;
+    targetBitRate: 2000000;
     format: string;
     sampleRate: number;
     channels: number;
@@ -187,29 +187,29 @@ export declare function getProcessingOptionsForPlatform(platform: 'web' | 'mobil
     progressive: boolean;
 } | {
     quality: 80;
-    maxWidth: number | undefined;
-    maxHeight: number | undefined;
-    targetBitRate: 2000000 | undefined;
+    maxWidth: number;
+    maxHeight: number;
+    targetBitRate: 2000000;
     format: string;
     generateResponsive: boolean;
     stripMetadata: boolean;
     progressive: boolean;
 } | {
     quality: 60;
-    maxWidth: number | undefined;
-    maxHeight: number | undefined;
+    maxWidth: number;
+    maxHeight: number;
     format: string;
-    targetBitRate: 8000000 | 2000000 | 500000 | 25000000;
+    targetBitRate: 500000 | 8000000 | 2000000 | 25000000;
     codec: string;
     maxFrameRate: number;
     stripMetadata: boolean;
     progressive: boolean;
 } | {
     quality: 60;
-    maxWidth: number | undefined;
-    maxHeight: number | undefined;
+    maxWidth: number;
+    maxHeight: number;
     format: string;
-    targetBitRate: 128000 | 320000 | 64000 | 1411200;
+    targetBitRate: 320000 | 128000 | 64000 | 1411200;
     sampleRate: number;
     channels: number;
     stripMetadata: boolean;

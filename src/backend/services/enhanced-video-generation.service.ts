@@ -112,10 +112,7 @@ export class EnhancedVideoGenerationService {
     this.providerSelector = new ProviderSelectionEngine();
     this.circuitBreaker = new CircuitBreakerService();
     this.performanceTracker = new ProviderPerformanceTracker();
-    this.errorRecoveryEngine = new ErrorRecoveryEngine(
-      this.providerSelector,
-      this.circuitBreaker
-    );
+    this.errorRecoveryEngine = new ErrorRecoveryEngine();
     
     // Initialize providers
     this.heygenProvider = new HeyGenProvider();
@@ -133,6 +130,17 @@ export class EnhancedVideoGenerationService {
     };
     
     this.initializeProviders();
+  }
+  
+  private resolveProvider(providerId: string): any {
+    switch (providerId) {
+      case 'heygen':
+        return this.heygenProvider;
+      case 'runwayml':
+        return this.runwaymlProvider;
+      default:
+        return null;
+    }
   }
   
   private async initializeProviders(): Promise<void> {
@@ -582,7 +590,7 @@ export class EnhancedVideoGenerationService {
     };
     
     // Select optimal provider
-    const providerSelection = await this.providerSelector.selectOptimalProvider(
+    const selectedProviderId = await this.providerSelector.selectOptimalProvider(
       selectionCriteria,
       {
         costOptimization: this.fallbackConfig.costOptimization,
@@ -594,14 +602,23 @@ export class EnhancedVideoGenerationService {
       }
     );
     
+    // Resolve provider instance
+    const selectedProvider = this.resolveProvider(selectedProviderId);
+    if (!selectedProvider) {
+      throw new VideoProviderError(
+        VideoProviderErrorType.PROVIDER_UNAVAILABLE,
+        `Provider not available: ${selectedProviderId}`,
+        selectedProviderId
+      );
+    }
     
     // Check circuit breaker
     if (this.fallbackConfig.circuitBreakerEnabled && 
-        this.circuitBreaker.isOpen(providerSelection.selectedProvider.name)) {
+        this.circuitBreaker.isOpen()) {
       throw new VideoProviderError(
         VideoProviderErrorType.PROVIDER_UNAVAILABLE,
-        `Circuit breaker open for ${providerSelection.selectedProvider.name}`,
-        providerSelection.selectedProvider.name
+        `Circuit breaker open for ${selectedProviderId}`,
+        selectedProviderId
       );
     }
     
@@ -613,13 +630,13 @@ export class EnhancedVideoGenerationService {
     };
     
     const generationStartTime = Date.now();
-    const videoResult = await providerSelection.selectedProvider.generateVideo(script, videoOptions);
+    const videoResult = await selectedProvider.generateVideo(script, videoOptions);
     const generationTime = Date.now() - generationStartTime;
     
     // Track performance
     if (this.fallbackConfig.performanceTrackingEnabled) {
       await this.performanceTracker.trackVideoGeneration(
-        providerSelection.selectedProvider.name,
+        selectedProviderId,
         videoOptions,
         videoResult,
         generationTime,
@@ -630,13 +647,9 @@ export class EnhancedVideoGenerationService {
       // Record circuit breaker result
       if (this.fallbackConfig.circuitBreakerEnabled) {
         if (videoResult.status !== 'failed') {
-          this.circuitBreaker.recordSuccess(providerSelection.selectedProvider.name, generationTime);
+          this.circuitBreaker.recordSuccess(selectedProviderId);
         } else {
-          this.circuitBreaker.recordFailure(
-            providerSelection.selectedProvider.name,
-            generationTime,
-            videoResult.error?.message
-          );
+          this.circuitBreaker.recordFailure(selectedProviderId);
         }
       }
     }

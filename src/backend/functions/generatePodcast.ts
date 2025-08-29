@@ -2,7 +2,7 @@ import { onCall } from 'firebase-functions/v2/https';
 import * as admin from 'firebase-admin';
 import { FieldValue } from 'firebase-admin/firestore';
 import { corsOptions } from '../config/cors';
-import { withPremiumAccess } from '../middleware/premiumGuard';
+import { withPremiumAccess } from '../middleware/simplePremiumGuard';
 import { podcastGenerationService } from '../services/podcast-generation.service';
 // htmlFragmentGenerator import removed - using React SPA architecture
 import { sanitizeForFirestore, sanitizeErrorContext } from '../utils/firestore-sanitizer';

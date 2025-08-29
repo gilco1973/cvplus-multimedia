@@ -99,13 +99,13 @@ export declare const AUDIO_FORMATS: {
         readonly extension: ".wav";
         readonly mimeType: "audio/wav";
         readonly lossy: false;
-        readonly maxBitrate: null;
+        readonly maxBitrate: any;
     };
     readonly FLAC: {
         readonly extension: ".flac";
         readonly mimeType: "audio/flac";
         readonly lossy: false;
-        readonly maxBitrate: null;
+        readonly maxBitrate: any;
     };
     readonly OGG: {
         readonly extension: ".ogg";
@@ -123,9 +123,9 @@ export declare const AUDIO_FORMATS: {
 export declare const SUPPORTED_IMAGE_EXTENSIONS: (".jpg" | ".png" | ".webp" | ".gif" | ".svg" | ".bmp" | ".tiff")[];
 export declare const SUPPORTED_VIDEO_EXTENSIONS: (".mp4" | ".webm" | ".avi" | ".mov" | ".mkv")[];
 export declare const SUPPORTED_AUDIO_EXTENSIONS: (".mp3" | ".aac" | ".wav" | ".flac" | ".ogg" | ".m4a")[];
-export declare const SUPPORTED_IMAGE_MIME_TYPES: ("image/jpeg" | "image/png" | "image/webp" | "image/gif" | "image/svg+xml" | "image/bmp" | "image/tiff")[];
+export declare const SUPPORTED_IMAGE_MIME_TYPES: ("image/jpeg" | "image/png" | "image/gif" | "image/webp" | "image/svg+xml" | "image/bmp" | "image/tiff")[];
 export declare const SUPPORTED_VIDEO_MIME_TYPES: ("video/mp4" | "video/webm" | "video/x-msvideo" | "video/quicktime" | "video/x-matroska")[];
-export declare const SUPPORTED_AUDIO_MIME_TYPES: ("audio/mpeg" | "audio/aac" | "audio/ogg" | "audio/wav" | "audio/flac" | "audio/mp4")[];
+export declare const SUPPORTED_AUDIO_MIME_TYPES: ("audio/mpeg" | "audio/aac" | "audio/wav" | "audio/flac" | "audio/ogg" | "audio/mp4")[];
 export declare const FORMAT_VALIDATION: {
     readonly IMAGE_PATTERN: RegExp;
     readonly VIDEO_PATTERN: RegExp;

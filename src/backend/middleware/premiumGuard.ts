@@ -1,10 +1,39 @@
 import { HttpsError } from 'firebase-functions/v2/https';
 import { logger } from 'firebase-functions';
-import { getUserSubscriptionInternal } from '../../../../payments/src/backend/functions';
-import { subscriptionManagementService } from '../services/subscription-management.service';
+import * as admin from 'firebase-admin';
 import { requireAuth, AuthenticatedRequest } from './authGuard';
+import { UserSubscription, PremiumFeature } from '../../types/subscription.types';
 
-type PremiumFeature = 'webPortal' | 'aiChat' | 'podcast' | 'advancedAnalytics' | 'videoIntroduction' | 'roleDetection' | 'externalData';
+/**
+ * Local subscription retrieval function - follows dependency injection pattern
+ * Higher layers should provide actual subscription logic
+ */
+const getUserSubscriptionLocal = async (uid: string): Promise<UserSubscription | null> => {
+  try {
+    const subscriptionDoc = await admin.firestore()
+      .collection('subscriptions')
+      .doc(uid)
+      .get();
+
+    if (!subscriptionDoc.exists) {
+      return {
+        subscriptionStatus: 'free',
+        lifetimeAccess: false,
+        features: {}
+      };
+    }
+
+    const data = subscriptionDoc.data();
+    return {
+      subscriptionStatus: data?.subscriptionStatus || 'free',
+      lifetimeAccess: data?.lifetimeAccess || false,
+      features: data?.features || {}
+    };
+  } catch (error) {
+    logger.error('Failed to retrieve user subscription', { uid, error });
+    return null;
+  }
+};
 
 export const premiumGuard = (feature: PremiumFeature) => {
   return async (request: any): Promise<AuthenticatedRequest> => {
@@ -15,8 +44,8 @@ export const premiumGuard = (feature: PremiumFeature) => {
     try {
       logger.debug('Premium access check initiated', { uid, feature });
 
-      // Get user subscription with caching for improved performance
-      const subscription = await getUserSubscriptionInternal(uid);
+      // Get user subscription with local implementation
+      const subscription = await getUserSubscriptionLocal(uid);
       
       logger.debug('Subscription data retrieved from cache', {
         uid,
@@ -179,8 +208,8 @@ export const requireAnyPremiumFeature = (features: PremiumFeature[]) => {
     try {
       logger.debug('Multiple premium features check initiated', { uid, features });
       
-      // Use cached subscription service for better performance
-      const subscription = await getUserSubscriptionInternal(uid);
+      // Use local subscription service implementation
+      const subscription = await getUserSubscriptionLocal(uid);
 
       if (!subscription?.lifetimeAccess) {
         throw new HttpsError(

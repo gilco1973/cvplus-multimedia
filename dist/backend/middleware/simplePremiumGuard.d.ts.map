@@ -1,0 +1,1 @@
+{"version":3,"file":"simplePremiumGuard.d.ts","sourceRoot":"","sources":["../../../src/backend/middleware/simplePremiumGuard.ts"],"names":[],"mappings":"AAKA,KAAK,cAAc,GAAG,WAAW,GAAG,QAAQ,GAAG,SAAS,GAAG,mBAAmB,GAAG,mBAAmB,GAAG,eAAe,GAAG,cAAc,CAAC;AA4BxI,eAAO,MAAM,iBAAiB,GAAI,SAAS,cAAc,EAAE,SAAS,QAAQ,MAC5D,SAAS,GAAG,EAAE,UAAU,GAAG,iBAuF1C,CAAC"}

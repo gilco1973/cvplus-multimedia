@@ -4,7 +4,7 @@ import { FieldValue } from 'firebase-admin/firestore';
 import { corsOptions } from '../config/cors';
 import { videoGenerationService } from '../services/video-generation.service';
 import { enhancedVideoGenerationService, EnhancedVideoGenerationOptions } from '../services/enhanced-video-generation.service';
-import { withPremiumAccess } from '../middleware/premiumGuard';
+import { withPremiumAccess } from '../middleware/simplePremiumGuard';
 // htmlFragmentGenerator import removed - using React SPA architecture
 
 export const generateVideoIntroduction = onCall(

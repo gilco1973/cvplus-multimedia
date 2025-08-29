@@ -1,7 +1,8 @@
 /**
- * CVPlus Multimedia Module - Main Entry Point (Minimal Build)
+ * CVPlus Multimedia Module - Minimal Export for Functions Integration
  * 
- * Basic multimedia types and utilities for the CVPlus platform.
+ * This file provides minimal exports required for Firebase Functions integration
+ * while avoiding complex dependencies that cause build issues.
  * 
  * @author Gil Klainert
  * @version 1.0.0
@@ -9,7 +10,7 @@
  */
 
 // ============================================================================
-// CORE TYPES
+// CORE TYPES (Essential for Firebase Functions)
 // ============================================================================
 
 // Media types - basic exports only
@@ -57,6 +58,20 @@ export type {
   ProcessingPriority
 } from './types/processing.types';
 
+// Portal and QR types
+export type {
+  PortalUrls,
+  PortalConfig,
+  QRCodeType,
+  QRCodeConfig,
+  QRCodeTemplate,
+  QRCodeStyling,
+  QRCodeAnalytics,
+  VideoScene,
+  PortfolioGallery,
+  PortfolioItem
+} from './backend/types/portal';
+
 // ============================================================================
 // CONSTANTS
 // ============================================================================
@@ -80,7 +95,61 @@ export const MODULE_NAME = '@cvplus/multimedia';
 export const MODULE_INFO = {
   name: MODULE_NAME,
   version: VERSION,
-  description: 'CVPlus Multimedia - Basic media types and utilities',
+  description: 'CVPlus Multimedia - Essential types and utilities for Firebase Functions',
   author: 'Gil Klainert',
   license: 'PROPRIETARY'
 } as const;
+
+// ============================================================================
+// BACKEND FUNCTIONS (Production Ready)
+// ============================================================================
+
+// Direct function imports to avoid build dependency issues
+export { generatePodcast } from './backend/functions/generatePodcast';
+export { generateVideoIntroduction } from './backend/functions/generateVideoIntroduction';
+export { podcastStatus } from './backend/functions/podcastStatus';
+export { podcastStatusPublic } from './backend/functions/podcastStatusPublic';
+
+// Media functions  
+export {
+  generateVideoIntro,
+  generateAudioFromText,
+  regenerateMedia,
+  getMediaStatus,
+  downloadMediaContent
+} from './backend/functions/mediaGeneration';
+
+// Portfolio functions
+export {
+  generatePortfolioGallery,
+  updatePortfolioItem,
+  addPortfolioItem,
+  deletePortfolioItem,
+  uploadPortfolioMedia,
+  generateShareablePortfolio
+} from './backend/functions/portfolioGallery';
+
+// QR Code functions
+export {
+  generateQRCode,
+  trackQRCodeScan,
+  getQRCodes,
+  updateQRCode,
+  deleteQRCode,
+  getQRAnalytics,
+  getQRTemplates
+} from './backend/functions/enhancedQR';
+
+// Enhanced QR functions
+export {
+  enhanceQRCodes,
+  getEnhancedQRCodes,
+  trackQRCodeScanEnhanced,
+  getQRCodeAnalytics as getQRAnalyticsEnhanced,
+  autoEnhanceQRCodes,
+  generateQRCodePreview
+} from './backend/functions/qrCodeEnhancement';
+
+// Webhook functions
+export { heygenWebhook } from './backend/functions/heygen-webhook';
+export { runwaymlStatusCheck } from './backend/functions/runwayml-status-check';

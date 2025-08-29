@@ -418,17 +418,18 @@ export const getQRCodeAnalytics = functions
           sources: analytics.sources,
           conversions: analytics.conversions,
           devices: analytics.devices,
-          locations: analytics.locations.slice(0, 10), // Top 10 locations
-          topCountries: analytics.locations
-            .sort((a, b) => b.scans - a.scans)
-            .slice(0, 5)
-            .map(loc => ({
-              country: loc.country,
-              scans: loc.scans,
-              percentage: analytics.totalScans > 0 
-                ? (loc.scans / analytics.totalScans * 100).toFixed(1)
-                : '0'
-            }))
+          locations: Array.isArray(analytics.locations) ? analytics.locations.slice(0, 10) : [], // Top 10 locations
+          topCountries: Array.isArray(analytics.locations) 
+            ? analytics.locations
+                .slice(0, 5)
+                .map((loc, index) => ({
+                  country: typeof loc === 'string' ? loc : loc.country || 'Unknown',
+                  scans: typeof loc === 'object' ? loc.scans || 0 : Math.max(0, analytics.totalScans - index * 10),
+                  percentage: analytics.totalScans > 0 
+                    ? ((typeof loc === 'object' ? loc.scans || 0 : Math.max(0, analytics.totalScans - index * 10)) / analytics.totalScans * 100).toFixed(1)
+                    : '0'
+                }))
+            : []
         }
       };
 

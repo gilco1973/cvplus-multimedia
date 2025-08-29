@@ -1,8 +1,10 @@
 import { HttpsError, CallableRequest } from 'firebase-functions/v2/https';
 import { logger } from 'firebase-functions';
 import * as admin from 'firebase-admin';
-// Import admin types from admin submodule
-import { AdminRole, AdminLevel, AdminPermissions } from '@cvplus/admin';
+// Import from core module following dependency hierarchy
+import { AuthenticatedUser, requireGoogleAuth } from '@cvplus/core/utils/auth';
+// Import local admin types to avoid dependency violations
+import { AdminRole, AdminLevel, AdminPermissions } from '../../types/admin.types';
 
 
 export interface AuthenticatedRequest extends CallableRequest {
@@ -13,103 +15,34 @@ export interface AuthenticatedRequest extends CallableRequest {
 }
 
 export const requireAuth = async (request: CallableRequest): Promise<AuthenticatedRequest> => {
-  // Check if auth context exists
-  if (!request.auth) {
-    logger.error('Authentication failed: No auth context', {
-      hasRawRequest: !!request.rawRequest,
-      origin: request.rawRequest?.headers?.origin,
-      userAgent: request.rawRequest?.headers?.['user-agent']
-    });
-    throw new HttpsError('unauthenticated', 'User must be authenticated');
-  }
-
-  const { uid, token } = request.auth;
-  
-  // Verify the token is valid and not expired
-  if (!uid || !token) {
-    logger.error('Authentication failed: Invalid token', { 
-      uid: !!uid, 
-      token: !!token,
-      hasEmail: !!token?.email 
-    });
-    throw new HttpsError('unauthenticated', 'Invalid authentication token');
-  }
-
-  // Additional token validation
   try {
-    // Verify token is not expired (Firebase should handle this, but double-check)
-    const currentTime = Math.floor(Date.now() / 1000);
-    if (token.exp <= currentTime) {
-      logger.error('Authentication failed: Token expired', {
-        uid,
-        exp: token.exp,
-        currentTime,
-        expired: currentTime - token.exp
-      });
-      throw new HttpsError('unauthenticated', 'Authentication token has expired');
-    }
-
-    // Verify token was issued recently (within 24 hours)
-    const tokenAge = currentTime - token.iat;
-    if (tokenAge > 86400) {
-      logger.warn('Authentication warning: Old token', {
-        uid,
-        iat: token.iat,
-        age: tokenAge,
-        ageHours: Math.floor(tokenAge / 3600)
-      });
-    }
-
-    // SECURITY REQUIREMENT: Email verification enforcement for production
-    const isProduction = process.env.NODE_ENV === 'production' || process.env.FUNCTIONS_EMULATOR !== 'true';
+    // Use core authentication utility for proper validation
+    const user = await requireGoogleAuth(request);
     
-    if (!token.email_verified && token.email && isProduction) {
-      logger.error('Authentication failed: Email verification required in production', {
-        uid,
-        email: token.email,
-        emailVerified: token.email_verified,
-        environment: process.env.NODE_ENV,
-        isProduction
-      });
-      throw new HttpsError(
-        'permission-denied', 
-        'Email verification is required. Please verify your email address before accessing this service.'
-      );
-    }
-    
-    // Log warning in development only
-    if (!token.email_verified && token.email && !isProduction) {
-      logger.warn('Authentication warning: Unverified email (development mode)', {
-        uid,
-        email: token.email,
-        emailVerified: token.email_verified
-      });
-    }
-
     logger.info('Authentication successful', {
-      uid,
-      email: token.email,
-      emailVerified: token.email_verified,
-      tokenAge: tokenAge,
-      provider: token.firebase?.sign_in_provider
+      uid: user.uid,
+      email: user.email,
+      emailVerified: user.emailVerified,
+      hasCalendarPermissions: user.hasCalendarPermissions
     });
 
     return {
       ...request,
-      auth: { uid, token }
+      auth: { 
+        uid: user.uid, 
+        token: request.auth!.token
+      }
     } as AuthenticatedRequest;
 
   } catch (error) {
-    if (error instanceof HttpsError) {
-      throw error;
-    }
-    
-    logger.error('Authentication validation failed', { 
-      error: error instanceof Error ? error.message : error, 
-      uid,
-      errorStack: error instanceof Error ? error.stack : undefined
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    logger.error('Authentication failed', { 
+      error: errorMessage,
+      hasAuth: !!request.auth,
+      uid: request.auth?.uid
     });
-    throw new HttpsError('unauthenticated', 'Authentication validation failed');
+    
+    throw new HttpsError('unauthenticated', errorMessage);
   }
 };
 
@@ -165,15 +98,9 @@ export const requireAuthWithJobOwnership = async (
 /**
  * Utility to extract user information from authenticated request
  */
-export const getUserInfo = (request: AuthenticatedRequest) => {
-  return {
-    uid: request.auth.uid,
-    email: request.auth.token.email,
-    emailVerified: request.auth.token.email_verified,
-    provider: request.auth.token.firebase?.sign_in_provider,
-    name: request.auth.token.name,
-    picture: request.auth.token.picture
-  };
+export const getUserInfo = async (request: AuthenticatedRequest): Promise<AuthenticatedUser> => {
+  // Re-use core authentication for consistent user info
+  return await requireGoogleAuth(request);
 };
 
 /**

@@ -13,3 +13,7 @@ export { qrEnhancementService } from './qr-enhancement.service';
 
 // Video provider services
 export * from './video-providers';
+
+// Video monitoring services
+export { videoMonitoringHooksService } from './video/monitoring/video-monitoring-hooks.service';
+export { videoMonitoringIntegrationService } from './video/monitoring/video-monitoring-integration.service';
