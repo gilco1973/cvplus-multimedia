@@ -1,7 +1,9 @@
 /**
  * Display player components
  */
+export { MultimediaPlayer, PlaylistManager, KeyboardShortcuts } from './players';
+export type { MultimediaPlayerProps, MediaTrack, PlayerControls } from './players';
 
 export const MediaPlayer = () => {
-  return null; // To be implemented in Phase 2B
+  return null; // Legacy - use MultimediaPlayer instead
 };

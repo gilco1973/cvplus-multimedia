@@ -64,7 +64,8 @@ export {
   useFeatureFlag,
   useComponentLoader,
   useIntegrationState,
-  usePerformanceTracking
+  usePerformanceTracking,
+  useMultimediaPlayer
 } from './hooks/useMultimediaFeatures';
 
 // Enhanced convenience components
@@ -84,6 +85,24 @@ export {
 // COMPONENTS (Direct Access)
 // ============================================================================
 export * from './components';
+
+// ============================================================================
+// MULTIMEDIA PLAYER COMPONENTS (T068)
+// ============================================================================
+export {
+  MultimediaPlayer,
+  PlaylistManager,
+  KeyboardShortcuts,
+  MultimediaPlayerIntegration
+} from './components/display/players';
+
+export type {
+  MultimediaPlayerProps,
+  MediaTrack,
+  PlayerControls,
+  QueueItem,
+  PlaylistManagement
+} from './components/display/players';
 
 // ============================================================================
 // UPLOAD & FILE MANAGEMENT COMPONENTS (Phase 2D)
@@ -134,6 +153,46 @@ export { TestimonialsCarousel } from '../components/media/TestimonialsCarousel';
 // FRONTEND SERVICES & UTILITIES
 // ============================================================================
 export { MediaService } from '../services/frontend/MediaService';
+
+// ============================================================================
+// MULTIMEDIA SERVICE
+// ============================================================================
+
+export { MultimediaService, multimediaService } from './services/MultimediaService';
+
+// Export MultimediaService initializer
+export {
+  MultimediaServiceInitializer,
+  initializeMultimediaService,
+  forDevelopment,
+  forProduction,
+  forTesting
+} from './utils/MultimediaServiceInitializer';
+
+// Export MultimediaService types
+export type {
+  CVData,
+  PodcastOptions,
+  VideoOptions,
+  GenerationJob,
+  GenerationStatus,
+  Playlist,
+  PlaylistItem,
+  PlaylistUpdate,
+  PlaybackSession,
+  UploadProgress,
+  SharingOptions,
+  MediaItem
+} from './services/MultimediaService';
+
+// Export initializer types
+export type {
+  MultimediaServiceInitOptions,
+  EmulatorConfig
+} from './utils/MultimediaServiceInitializer';
+
+// Export usage examples (development aid)
+export * as MultimediaServiceExamples from './examples/MultimediaServiceUsage';
 
 // ============================================================================
 // INTEGRATION CONFIGURATION

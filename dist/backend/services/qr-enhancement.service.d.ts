@@ -102,5 +102,5 @@ export declare class QRCodeEnhancementService {
      */
     getQRCodeAnalytics(jobId: string): Promise<QRCodeAnalytics | null>;
 }
-export { QRCodeEnhancementOptions, EnhancedQRCode, QRCodeUpdateResult };
+export type { QRCodeEnhancementOptions, EnhancedQRCode, QRCodeUpdateResult };
 //# sourceMappingURL=qr-enhancement.service.d.ts.map

@@ -414,4 +414,188 @@ export interface EncryptionOptions {
     drm?: DRMSystem;
 }
 export type DRMSystem = 'widevine' | 'playready' | 'fairplay' | 'custom';
+export interface VideoTranscodingOptions extends VideoProcessingOptions {
+    /** Transcoding mode */
+    mode?: 'fast' | 'balanced' | 'quality';
+    /** Multi-pass encoding */
+    multiPass?: boolean;
+    /** Hardware acceleration */
+    hardwareAcceleration?: boolean;
+    /** Transcoding preset */
+    transcodingPreset?: TranscodingPreset;
+    /** Output container */
+    container?: VideoContainer;
+}
+export type TranscodingPreset = 'web' | 'mobile' | 'broadcast' | 'archive' | 'streaming';
+export type VideoContainer = 'mp4' | 'webm' | 'avi' | 'mov' | 'mkv' | 'flv';
+export interface VideoAnalysisResult {
+    /** Analysis success */
+    success: boolean;
+    /** Video metadata */
+    metadata: VideoMetadata;
+    /** Quality assessment */
+    quality: VideoQualityAssessment;
+    /** Technical analysis */
+    technical: TechnicalAnalysis;
+    /** Content analysis */
+    content?: ContentAnalysis;
+    /** Recommendations */
+    recommendations: ProcessingRecommendation[];
+}
+export interface TechnicalAnalysis {
+    /** Has video stream */
+    hasVideo: boolean;
+    /** Has audio stream */
+    hasAudio: boolean;
+    /** Is valid format */
+    isValidFormat: boolean;
+    /** Codec compatibility */
+    codecCompatibility: CodecCompatibility;
+    /** File integrity */
+    integrity: FileIntegrity;
+}
+export interface CodecCompatibility {
+    /** Web compatibility score (0-100) */
+    webCompatibility: number;
+    /** Mobile compatibility score (0-100) */
+    mobileCompatibility: number;
+    /** Supported browsers */
+    supportedBrowsers: string[];
+    /** Recommended formats */
+    recommendedFormats: VideoFormat[];
+}
+export interface FileIntegrity {
+    /** File is complete */
+    isComplete: boolean;
+    /** File is corrupted */
+    isCorrupted: boolean;
+    /** Missing data ranges */
+    missingRanges: TimeRange[];
+    /** Integrity score (0-100) */
+    score: number;
+}
+export interface TimeRange {
+    /** Start time in seconds */
+    start: number;
+    /** End time in seconds */
+    end: number;
+}
+export interface ContentAnalysis {
+    /** Scene detection results */
+    scenes: SceneInfo[];
+    /** Motion analysis */
+    motion: MotionAnalysis;
+    /** Color analysis */
+    color: ColorAnalysis;
+    /** Audio analysis */
+    audio?: AudioAnalysisInfo;
+}
+export interface SceneInfo {
+    /** Scene start time */
+    startTime: number;
+    /** Scene end time */
+    endTime: number;
+    /** Scene confidence score */
+    confidence: number;
+    /** Scene thumbnail */
+    thumbnail?: VideoThumbnail;
+}
+export interface MotionAnalysis {
+    /** Average motion level (0-100) */
+    averageMotion: number;
+    /** Motion intensity over time */
+    motionTimeline: MotionPoint[];
+    /** Static regions */
+    staticRegions: TimeRange[];
+    /** High motion regions */
+    highMotionRegions: TimeRange[];
+}
+export interface MotionPoint {
+    /** Timestamp */
+    timestamp: number;
+    /** Motion intensity (0-100) */
+    intensity: number;
+}
+export interface ColorAnalysis {
+    /** Dominant colors */
+    dominantColors: string[];
+    /** Color histogram */
+    histogram: ColorHistogram;
+    /** Brightness distribution */
+    brightness: BrightnessDistribution;
+    /** Contrast level (0-100) */
+    contrast: number;
+}
+export interface ColorHistogram {
+    /** Red channel histogram */
+    red: number[];
+    /** Green channel histogram */
+    green: number[];
+    /** Blue channel histogram */
+    blue: number[];
+}
+export interface BrightnessDistribution {
+    /** Average brightness (0-100) */
+    average: number;
+    /** Brightness histogram */
+    histogram: number[];
+    /** Dark regions percentage */
+    darkRegions: number;
+    /** Bright regions percentage */
+    brightRegions: number;
+}
+export interface AudioAnalysisInfo {
+    /** Average volume level */
+    averageVolume: number;
+    /** Peak volume level */
+    peakVolume: number;
+    /** Silent regions */
+    silentRegions: TimeRange[];
+    /** Audio clipping detected */
+    hasClipping: boolean;
+}
+export interface ProcessingRecommendation {
+    /** Recommendation type */
+    type: 'quality' | 'performance' | 'compatibility' | 'optimization';
+    /** Recommendation message */
+    message: string;
+    /** Recommendation priority */
+    priority: 'low' | 'medium' | 'high' | 'critical';
+    /** Suggested action */
+    action?: string;
+    /** Estimated impact */
+    impact?: string;
+}
+export interface VideoThumbnailOptions extends ThumbnailGenerationOptions {
+    /** Intelligent thumbnail selection */
+    intelligentSelection?: boolean;
+    /** Avoid black frames */
+    avoidBlackFrames?: boolean;
+    /** Scene-based selection */
+    sceneBasedSelection?: boolean;
+    /** Motion-based selection */
+    motionBasedSelection?: boolean;
+    /** Custom selection algorithm */
+    customAlgorithm?: ThumbnailSelectionAlgorithm;
+}
+export interface ThumbnailSelectionAlgorithm {
+    /** Algorithm name */
+    name: string;
+    /** Algorithm parameters */
+    parameters: Record<string, unknown>;
+    /** Scoring weights */
+    weights: ThumbnailScoreWeights;
+}
+export interface ThumbnailScoreWeights {
+    /** Motion weight */
+    motion: number;
+    /** Brightness weight */
+    brightness: number;
+    /** Contrast weight */
+    contrast: number;
+    /** Face detection weight */
+    faces: number;
+    /** Object detection weight */
+    objects: number;
+}
 //# sourceMappingURL=video.types.d.ts.map

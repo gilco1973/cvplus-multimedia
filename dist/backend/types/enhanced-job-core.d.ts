@@ -42,6 +42,13 @@ export interface JobEvent {
     data?: any;
     message?: string;
 }
+export interface FeatureState {
+    enabled: boolean;
+    status: 'pending' | 'processing' | 'completed' | 'failed';
+    data?: any;
+    error?: string;
+    processedAt?: Date;
+}
 export interface EnhancedJob extends JobProcessingCore {
     type: 'cv-parsing' | 'video-generation' | 'audio-processing' | 'qr-generation' | 'portfolio-creation';
     userId: string;
@@ -52,8 +59,9 @@ export interface EnhancedJob extends JobProcessingCore {
     parsedData?: any;
     enhancedFeatures?: {
         aiRecommendations?: boolean;
-        videoIntroduction?: boolean;
-        audioPodcast?: boolean;
+        videoIntroduction?: FeatureState;
+        audioPodcast?: FeatureState;
+        careerPodcast?: FeatureState;
         portfolioGallery?: boolean;
         qrCodeEnhancement?: boolean;
         socialIntegration?: boolean;

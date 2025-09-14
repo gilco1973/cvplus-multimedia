@@ -224,3 +224,8 @@ export function usePerformanceTracking(componentName: string): {
     metrics
   };
 }
+
+// ============================================================================
+// RE-EXPORT MULTIMEDIA PLAYER HOOK
+// ============================================================================
+export { useMultimediaPlayer } from './useMultimediaPlayer';

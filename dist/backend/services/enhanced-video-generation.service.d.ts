@@ -14,7 +14,7 @@ import { VideoGenerationOptions as BaseVideoGenerationOptions, VideoGenerationSt
 export interface EnhancedVideoGenerationOptions extends BaseVideoGenerationOptions {
     useAdvancedPrompts?: boolean;
     targetIndustry?: string;
-    optimizationLevel?: 'basic' | 'enhanced' | 'premium';
+    optimizationLevel?: 'basic' | 'advanced' | 'premium';
     preferredProvider?: string;
     allowFallback?: boolean;
     urgency?: 'low' | 'normal' | 'high';
@@ -44,7 +44,7 @@ export interface EnhancedVideoResult {
     enhancedScript?: EnhancedScriptResult;
     scriptQualityScore?: number;
     industryAlignment?: number;
-    generationMethod: 'basic' | 'enhanced';
+    generationMethod: 'basic' | 'advanced';
     selectionReasoning?: string[];
     estimatedCost?: number;
     error?: {

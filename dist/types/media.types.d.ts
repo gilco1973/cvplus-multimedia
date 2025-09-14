@@ -25,6 +25,10 @@ export interface MediaFile {
     type: MediaType;
     /** File buffer or blob */
     data: Buffer | Blob | File;
+    /** File buffer (compatibility) */
+    buffer?: Buffer;
+    /** File stream (compatibility) */
+    stream?: NodeJS.ReadableStream;
     /** File metadata */
     metadata?: MediaMetadata;
     /** Upload timestamp */
@@ -47,6 +51,8 @@ export interface MediaMetadata {
     tags?: string[];
     /** Custom properties */
     custom?: Record<string, unknown>;
+    /** Storage provider */
+    provider?: string;
 }
 export interface ProcessedMedia<T = unknown> {
     /** Original media file reference */
@@ -161,6 +167,8 @@ export interface UploadResult {
     url: string;
     /** CDN URL if available */
     cdnUrl?: string;
+    /** File size in bytes */
+    size?: number;
     /** Upload completion timestamp */
     completedAt: Date;
     /** Upload duration in milliseconds */

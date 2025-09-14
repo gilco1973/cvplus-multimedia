@@ -1,14 +1,14 @@
 /**
  * Storage and CDN type definitions for CVPlus multimedia module
  */
-import { MediaFile, UploadProgress, UploadResult } from './media.types';
+import { MediaFile } from './media.types';
 interface ErrorDetails {
     message: string;
     code?: string;
     context?: Record<string, unknown>;
 }
-export type StorageProvider = 'firebase' | 'aws-s3' | 'azure-blob' | 'gcs' | 'local';
-export type StorageClass = 'standard' | 'reduced-redundancy' | 'cold' | 'archive' | 'deep-archive';
+export type StorageProvider = 'firebase' | 'aws-s3' | 's3' | 'azure-blob' | 'gcs' | 'local';
+export type StorageClass = 'standard' | 'reduced-redundancy' | 'cold' | 'archive' | 'deep-archive' | 'STANDARD' | 'REDUCED_REDUNDANCY' | 'COLD' | 'ARCHIVE' | 'DEEP_ARCHIVE';
 export type AccessLevel = 'public' | 'private' | 'authenticated' | 'premium';
 export interface StorageConfig {
     /** Primary storage provider */
@@ -585,6 +585,66 @@ export interface BatchOperationResult {
     error?: ErrorDetails;
     /** Operation processing time */
     processingTime: number;
+}
+/**
+ * Upload result interface
+ */
+export interface UploadResult {
+    /** File URL */
+    url: string;
+    /** File key/path */
+    key: string;
+    /** File size in bytes */
+    size: number;
+    /** Content type */
+    contentType: string;
+    /** ETag */
+    etag?: string;
+    /** Upload completion timestamp */
+    completedAt: Date;
+}
+/**
+ * Upload progress interface
+ */
+export interface UploadProgress {
+    /** Session ID */
+    sessionId: string;
+    /** File being uploaded */
+    file: File;
+    /** Upload status */
+    status: 'pending' | 'uploading' | 'complete' | 'failed';
+    /** Bytes uploaded */
+    bytesUploaded: number;
+    /** Total bytes */
+    totalBytes: number;
+    /** Progress percentage */
+    percentage: number;
+    /** Upload speed in bytes/sec */
+    uploadSpeed?: number;
+    /** Estimated time remaining in seconds */
+    estimatedTimeRemaining?: number;
+}
+/**
+ * Media metadata interface
+ */
+export interface MediaMetadata {
+    /** File name */
+    fileName: string;
+    /** File size */
+    size: number;
+    /** MIME type */
+    mimeType: string;
+    /** Upload timestamp */
+    uploadedAt: Date;
+    /** Download timestamp */
+    downloadedAt?: Date;
+    /** File dimensions (for images/videos) */
+    width?: number;
+    height?: number;
+    /** Duration (for audio/video) */
+    duration?: number;
+    /** Additional metadata */
+    [key: string]: unknown;
 }
 export {};
 //# sourceMappingURL=storage.types.d.ts.map
