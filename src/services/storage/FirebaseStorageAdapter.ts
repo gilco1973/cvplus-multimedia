@@ -5,7 +5,7 @@
  * with upload, download, delete, and metadata operations.
  */
 
-import { StorageOptions, StorageResult } from '../../types';
+import { UploadOptions, UploadResult } from '../../types/storage.types';
 import { Logger } from '../utils/Logger';
 
 export class FirebaseStorageAdapter {
@@ -22,8 +22,8 @@ export class FirebaseStorageAdapter {
    */
   public async upload(
     input: File | Buffer | string,
-    options: StorageOptions
-  ): Promise<StorageResult> {
+    options: UploadOptions
+  ): Promise<UploadResult> {
     try {
       this.logger.info('Uploading to Firebase Storage', { path: options.path });
 
@@ -31,7 +31,7 @@ export class FirebaseStorageAdapter {
       const buffer = await this.inputToBuffer(input);
       
       // Mock implementation - would use actual Firebase SDK
-      const uploadResult: StorageResult = {
+      const uploadResult: UploadResult = {
         url: `https://firebasestorage.googleapis.com/v0/b/${this.config.bucket}/o/${encodeURIComponent(options.path || 'file')}?alt=media`,
         path: options.path || 'file',
         size: buffer.length,
@@ -59,7 +59,7 @@ export class FirebaseStorageAdapter {
   /**
    * Download file from Firebase Storage
    */
-  public async download(url: string, options: StorageOptions): Promise<Buffer> {
+  public async download(url: string, options: UploadOptions): Promise<Buffer> {
     try {
       this.logger.info('Downloading from Firebase Storage', { url });
 
@@ -83,7 +83,7 @@ export class FirebaseStorageAdapter {
   /**
    * Delete file from Firebase Storage
    */
-  public async delete(url: string, options: StorageOptions): Promise<boolean> {
+  public async delete(url: string, options: UploadOptions): Promise<boolean> {
     try {
       this.logger.info('Deleting from Firebase Storage', { url });
 
@@ -102,12 +102,12 @@ export class FirebaseStorageAdapter {
   /**
    * List files in Firebase Storage
    */
-  public async list(prefix: string, options: StorageOptions): Promise<StorageResult[]> {
+  public async list(prefix: string, options: UploadOptions): Promise<UploadResult[]> {
     try {
       this.logger.info('Listing Firebase Storage files', { prefix });
 
       // Mock implementation - would use actual Firebase SDK
-      const results: StorageResult[] = [];
+      const results: UploadResult[] = [];
 
       return results;
 
@@ -120,7 +120,7 @@ export class FirebaseStorageAdapter {
   /**
    * Get file metadata from Firebase Storage
    */
-  public async getMetadata(url: string, options: StorageOptions): Promise<Record<string, any>> {
+  public async getMetadata(url: string, options: UploadOptions): Promise<Record<string, any>> {
     try {
       this.logger.info('Getting Firebase Storage metadata', { url });
 
@@ -145,7 +145,7 @@ export class FirebaseStorageAdapter {
    */
   public async getSignedUrl(
     url: string, 
-    options: StorageOptions & { expiresIn?: number }
+    options: UploadOptions & { expiresIn?: number }
   ): Promise<string> {
     try {
       this.logger.info('Generating Firebase signed URL', { url, expiresIn: options.expiresIn });
@@ -167,13 +167,13 @@ export class FirebaseStorageAdapter {
   public async copy(
     sourceUrl: string, 
     destinationPath: string, 
-    options: StorageOptions
-  ): Promise<StorageResult> {
+    options: UploadOptions
+  ): Promise<UploadResult> {
     try {
       this.logger.info('Copying in Firebase Storage', { sourceUrl, destinationPath });
 
       // Mock implementation - would use actual Firebase SDK
-      const result: StorageResult = {
+      const result: UploadResult = {
         url: `https://firebasestorage.googleapis.com/v0/b/${this.config.bucket}/o/${encodeURIComponent(destinationPath)}?alt=media`,
         path: destinationPath,
         size: 0,

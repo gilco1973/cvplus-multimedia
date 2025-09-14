@@ -8,8 +8,8 @@
  * @version 1.0.0 - CVPlus Multimedia Module
  */
 
-import { StorageService, UploadOptions, FileInfo, ListOptions, SignedUrlOptions, DownloadOptions } from '../types/storage.types';
-import { MediaFile, UploadResult } from '../types/media.types';
+import { StorageService, UploadOptions, FileInfo, ListOptions, SignedUrlOptions, DownloadOptions, UploadResult, UploadProgress } from '../types/storage.types';
+import { MediaFile, MediaType } from '../types/media.types';
 
 export interface S3Config {
   accessKeyId: string;
@@ -42,27 +42,21 @@ export class S3StorageAdapter implements StorageService {
       // For now, providing a structured placeholder
       const uploadResult: UploadResult = {
         url: `https://${this.config.bucket}.s3.${this.config.region}.amazonaws.com/${key}`,
-        path: key,
+        key: key,
         size: buffer.length,
         contentType: file.type || 'application/octet-stream',
-        metadata: {
-          provider: 's3',
-          bucket: this.config.bucket,
-          region: this.config.region,
-          uploadedAt: new Date().toISOString(),
-          storageClass: options?.storageClass || 'STANDARD',
-          ...options?.metadata
-        }
+        completedAt: new Date()
       };
 
       // Simulate progress if callback provided
       if (options?.onProgress) {
         options.onProgress({
+          sessionId: `s3-${Date.now()}`,
+          file: file.data as File, // Convert MediaFile.data to File
+          status: 'complete' as const,
           bytesUploaded: buffer.length,
           totalBytes: buffer.length,
-          percentage: 100,
-          uploadSpeed: buffer.length, // bytes per second
-          estimatedTimeRemaining: 0
+          percentage: 100
         });
       }
 
@@ -85,14 +79,15 @@ export class S3StorageAdapter implements StorageService {
       const buffer = Buffer.alloc(0); // Empty buffer as placeholder
       
       const mediaFile: MediaFile = {
+        id: `s3-${key}`,
         name: this.getFileNameFromKey(key),
+        extension: this.getFileExtension(this.getFileNameFromKey(key)),
+        mimeType: 'application/octet-stream',
         size: buffer.length,
-        type: 'application/octet-stream',
-        lastModified: Date.now(),
-        buffer,
+        type: 'image' as MediaType, // Default to image, should be determined from file extension
+        data: buffer,
         metadata: {
-          provider: 's3',
-          downloadedAt: new Date().toISOString()
+          description: 'Downloaded from S3'
         }
       };
 
@@ -315,7 +310,7 @@ export class S3StorageAdapter implements StorageService {
     if (file.stream) {
       const chunks: Buffer[] = [];
       for await (const chunk of file.stream) {
-        chunks.push(chunk);
+        chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
       }
       return Buffer.concat(chunks);
     }

@@ -66,7 +66,7 @@ export const generateVideoIntroduction = onCall(
         jobId,
         // Enhanced options
         useAdvancedPrompts: true,
-        optimizationLevel: 'enhanced',
+        optimizationLevel: 'advanced',
         allowFallback: true,
         urgency: 'normal',
         qualityLevel: 'standard'
@@ -251,7 +251,7 @@ export const regenerateVideoIntroduction = onCall(
           includeNameCard: true,
           jobId,
           useAdvancedPrompts: true,
-          optimizationLevel: 'enhanced',
+          optimizationLevel: 'advanced',
           allowFallback: true,
           urgency: 'normal',
           qualityLevel: 'standard'

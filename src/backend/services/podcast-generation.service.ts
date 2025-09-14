@@ -8,7 +8,7 @@ import * as admin from 'firebase-admin';
 import axios from 'axios';
 import OpenAI from 'openai';
 import { config } from '../config/environment';
-import ffmpeg = require('fluent-ffmpeg');
+import ffmpeg from 'fluent-ffmpeg';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as os from 'os';

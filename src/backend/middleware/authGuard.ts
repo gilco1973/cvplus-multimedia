@@ -1,8 +1,8 @@
 import { HttpsError, CallableRequest } from 'firebase-functions/v2/https';
 import { logger } from 'firebase-functions';
 import * as admin from 'firebase-admin';
-// Import from core module following dependency hierarchy
-import { AuthenticatedUser, requireGoogleAuth } from '@cvplus/core/utils/auth';
+// Import from local types for multimedia module autonomy
+import { AuthenticatedUser, requireGoogleAuth } from '../../types';
 // Import local admin types to avoid dependency violations
 import { AdminRole, AdminLevel, AdminPermissions } from '../../types/admin.types';
 
@@ -12,6 +12,7 @@ export interface AuthenticatedRequest extends CallableRequest {
     uid: string;
     token: admin.auth.DecodedIdToken;
   };
+  acceptsStreaming?: boolean;
 }
 
 export const requireAuth = async (request: CallableRequest): Promise<AuthenticatedRequest> => {

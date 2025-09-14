@@ -101,7 +101,7 @@ export const validateImageDimensions = (file: File, options: ValidationOptions =
     }
     
     const { minDimensions, maxDimensions, requireAspectRatio } = options;
-    const img = new Image();
+    const img = document.createElement('img') as HTMLImageElement;
     const warnings: string[] = [];
     const suggestions: string[] = [];
     

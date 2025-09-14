@@ -9,19 +9,20 @@ import {
   ProcessingOptions,
   ProcessingResult,
   MediaType,
-  ServiceConfig,
-  StorageOptions,
-  StorageResult,
-  StorageProvider,
-  CDNConfig,
-  CacheConfig 
+  ServiceConfig
 } from '../../types';
+import { 
+  UploadOptions,
+  UploadResult,
+  StorageProvider,
+  CDNConfig
+} from '../../types/storage.types';
 
 import { MediaService } from '../base/MediaService';
 import { FirebaseStorageAdapter } from './FirebaseStorageAdapter';
-import { S3StorageAdapter } from './S3StorageAdapter';
-import { CDNManager } from './CDNManager';
-import { StorageOptimizer } from './StorageOptimizer';
+import { S3StorageAdapter } from '../../storage/S3StorageAdapter';
+import { CDNManager } from '../../storage/CDNManager';
+import { StorageOptimizer } from '../../storage/StorageOptimizer';
 
 /**
  * Main storage service implementation
@@ -61,7 +62,7 @@ export class StorageService extends MediaService {
     try {
       // Preprocess input and options
       const { input: processedInput, processedOptions } = await this.preprocess(input, options);
-      const storageOptions = processedOptions as StorageOptions;
+      const storageOptions = processedOptions as UploadOptions;
 
       // Upload to storage
       const uploadResult = await this.upload(processedInput, storageOptions);
@@ -97,7 +98,7 @@ export class StorageService extends MediaService {
    */
   public async upload(
     input: File | Buffer | string,
-    options: StorageOptions = {}
+    options: UploadOptions = {}
   ): Promise<StorageResult> {
     const provider = options.provider || this.primaryProvider;
     const adapter = this.getAdapter(provider);
@@ -147,7 +148,7 @@ export class StorageService extends MediaService {
    */
   public async download(
     url: string,
-    options: StorageOptions = {}
+    options: UploadOptions = {}
   ): Promise<Buffer> {
     // Check cache first
     if (options.enableCache !== false) {
@@ -186,7 +187,7 @@ export class StorageService extends MediaService {
    */
   public async delete(
     url: string,
-    options: StorageOptions = {}
+    options: UploadOptions = {}
   ): Promise<boolean> {
     const provider = this.detectProvider(url) || options.provider || this.primaryProvider;
     const adapter = this.getAdapter(provider);
@@ -221,7 +222,7 @@ export class StorageService extends MediaService {
    */
   public async list(
     prefix: string,
-    options: StorageOptions = {}
+    options: UploadOptions = {}
   ): Promise<StorageResult[]> {
     const provider = options.provider || this.primaryProvider;
     const adapter = this.getAdapter(provider);
@@ -238,7 +239,7 @@ export class StorageService extends MediaService {
    */
   public async getMetadata(
     url: string,
-    options: StorageOptions = {}
+    options: UploadOptions = {}
   ): Promise<Record<string, any>> {
     const provider = this.detectProvider(url) || options.provider || this.primaryProvider;
     const adapter = this.getAdapter(provider);
@@ -255,7 +256,7 @@ export class StorageService extends MediaService {
    */
   public async getSignedUrl(
     url: string,
-    options: StorageOptions & { expiresIn?: number } = {}
+    options: UploadOptions & { expiresIn?: number } = {}
   ): Promise<string> {
     const provider = this.detectProvider(url) || options.provider || this.primaryProvider;
     const adapter = this.getAdapter(provider);
@@ -273,7 +274,7 @@ export class StorageService extends MediaService {
   public async copy(
     sourceUrl: string,
     destinationPath: string,
-    options: StorageOptions = {}
+    options: UploadOptions = {}
   ): Promise<StorageResult> {
     const sourceProvider = this.detectProvider(sourceUrl) || options.provider || this.primaryProvider;
     const destProvider = options.destinationProvider || sourceProvider;
@@ -299,7 +300,7 @@ export class StorageService extends MediaService {
   public async move(
     sourceUrl: string,
     destinationPath: string,
-    options: StorageOptions = {}
+    options: UploadOptions = {}
   ): Promise<StorageResult> {
     // Copy to new location
     const result = await this.copy(sourceUrl, destinationPath, options);
@@ -318,7 +319,7 @@ export class StorageService extends MediaService {
     options: ProcessingOptions
   ): Promise<boolean> {
     try {
-      const storageOptions = options as StorageOptions;
+      const storageOptions = options as UploadOptions;
       
       // Check provider availability
       const provider = storageOptions.provider || this.primaryProvider;
@@ -428,7 +429,7 @@ export class StorageService extends MediaService {
    */
   private generateStoragePath(
     input: File | Buffer | string,
-    options: StorageOptions
+    options: UploadOptions
   ): string {
     if (options.path) {
       return options.path;

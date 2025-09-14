@@ -402,10 +402,11 @@ export class QRCodeEnhancementService {
       primaryColor: '#2563eb',
       backgroundColor: '#ffffff',
       logo: undefined, // Could be CVPlus logo
-      errorCorrectionLevel: 'M',
-      size: 256,
-      borderWidth: 4,
-      margin: 10
+      // Note: QRCodeStyling doesn't directly expose errorCorrectionLevel
+      // qrOptions: { errorCorrectionLevel: 'M' },
+      width: 256,
+      height: 256,
+      type: 'svg'
     };
   }
 
@@ -533,9 +534,9 @@ export class QRCodeEnhancementService {
         }
 
         // Update location stats
-        if (scanData.location?.country) {
+        if (scanData.location && typeof scanData.location === 'object' && scanData.location.country) {
           const existingLocation = analytics.locations.find(
-            loc => loc.country === scanData.location!.country
+            (loc: any) => loc.country === scanData.location.country
           );
           
           if (existingLocation) {
@@ -543,7 +544,7 @@ export class QRCodeEnhancementService {
           } else {
             analytics.locations.push({
               country: scanData.location.country,
-              city: scanData.location.city,
+              city: scanData.location.city || '',
               scans: 1
             });
           }
@@ -589,4 +590,4 @@ export class QRCodeEnhancementService {
 // EXPORTS
 // ============================================================================
 
-export { QRCodeEnhancementOptions, EnhancedQRCode, QRCodeUpdateResult };
+export type { QRCodeEnhancementOptions, EnhancedQRCode, QRCodeUpdateResult };

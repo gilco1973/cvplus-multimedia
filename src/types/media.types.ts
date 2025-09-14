@@ -46,6 +46,12 @@ export interface MediaFile {
   /** File buffer or blob */
   data: Buffer | Blob | File;
   
+  /** File buffer (compatibility) */
+  buffer?: Buffer;
+  
+  /** File stream (compatibility) */
+  stream?: NodeJS.ReadableStream;
+  
   /** File metadata */
   metadata?: MediaMetadata;
   
@@ -81,6 +87,9 @@ export interface MediaMetadata {
   
   /** Custom properties */
   custom?: Record<string, unknown>;
+  
+  /** Storage provider */
+  provider?: string;
 }
 
 // ============================================================================
@@ -256,6 +265,9 @@ export interface UploadResult {
   
   /** CDN URL if available */
   cdnUrl?: string;
+  
+  /** File size in bytes */
+  size?: number;
   
   /** Upload completion timestamp */
   completedAt: Date;

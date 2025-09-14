@@ -873,3 +873,78 @@ export interface SystemRequirements {
 }
 
 export type PipelineStatus = 'draft' | 'active' | 'deprecated' | 'maintenance';
+
+// ============================================================================
+// ADDITIONAL REQUIRED EXPORTS
+// ============================================================================
+
+// Basic processing interfaces for compatibility
+export interface ProcessingOptions {
+  /** Processing quality level */
+  quality?: QualityLevel;
+  
+  /** Processing mode */
+  mode?: ProcessingMode;
+  
+  /** Processing priority */
+  priority?: ProcessingPriority;
+  
+  /** Custom options */
+  custom?: Record<string, unknown>;
+}
+
+export interface ProcessingResult {
+  /** Processing success */
+  success: boolean;
+  
+  /** Result data */
+  data?: unknown;
+  
+  /** Error information */
+  error?: ProcessingError;
+  
+  /** Processing metadata */
+  metadata?: Record<string, unknown>;
+}
+
+export interface CircuitBreakerConfig {
+  /** Failure threshold */
+  failureThreshold: number;
+  
+  /** Recovery timeout (ms) */
+  recoveryTimeoutMs: number;
+  
+  /** Monitor window (ms) */
+  monitorWindowMs: number;
+  
+  /** Expected errors */
+  expectedErrors?: string[];
+}
+
+export interface RetryConfig {
+  /** Maximum retry attempts */
+  maxAttempts: number;
+  
+  /** Initial delay (ms) */
+  initialDelayMs: number;
+  
+  /** Delay multiplier */
+  delayMultiplier: number;
+  
+  /** Maximum delay (ms) */
+  maxDelayMs: number;
+}
+
+export interface ServiceConfig {
+  /** Service name */
+  name: string;
+  
+  /** Service version */
+  version: string;
+  
+  /** Service endpoint */
+  endpoint?: string;
+  
+  /** Service configuration */
+  config?: Record<string, unknown>;
+}

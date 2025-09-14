@@ -28,14 +28,12 @@
     "outDir": "./dist",
     "composite": false,
     "incremental": false,
-    "paths": {
-      "@cvplus/core": ["../core/src"],
-      "@cvplus/core/*": ["../core/src/*"],
-      "@cvplus/auth": ["../auth/src"],
-      "@cvplus/auth/*": ["../auth/src/*"],
-      "@cvplus/i18n": ["../i18n/src"],
-      "@cvplus/i18n/*": ["../i18n/src/*"]
-    }
+    "paths": {}
+    // Note: Temporarily removed cross-module paths to resolve compilation errors
+    // TODO: Restore when dependent modules are fixed:
+    // "@cvplus/core": ["../core/dist"], 
+    // "@cvplus/auth": ["../auth/dist"],
+    // "@cvplus/i18n": ["../i18n/dist"]
   },
   "include": [
     "src/**/*"

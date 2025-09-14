@@ -47,7 +47,7 @@ export class CircuitBreakerService {
     } catch (error) {
       this.onFailure();
       
-      if (fallback && (this.state === CircuitState.OPEN || this.state === CircuitState.HALF_OPEN)) {
+      if (fallback && this.state === CircuitState.HALF_OPEN) {
         logger.warn('Operation failed, using fallback', { error });
         return await fallback();
       }

@@ -422,13 +422,17 @@ export const getQRCodeAnalytics = functions
           topCountries: Array.isArray(analytics.locations) 
             ? analytics.locations
                 .slice(0, 5)
-                .map((loc, index) => ({
-                  country: typeof loc === 'string' ? loc : loc.country || 'Unknown',
-                  scans: typeof loc === 'object' ? loc.scans || 0 : Math.max(0, analytics.totalScans - index * 10),
-                  percentage: analytics.totalScans > 0 
-                    ? ((typeof loc === 'object' ? loc.scans || 0 : Math.max(0, analytics.totalScans - index * 10)) / analytics.totalScans * 100).toFixed(1)
-                    : '0'
-                }))
+                .map((loc: any, index: number) => {
+                  const locationObj = typeof loc === 'object' && loc !== null ? loc : {};
+                  const scans = locationObj.scans || Math.max(0, analytics.totalScans - index * 10);
+                  return {
+                    country: typeof loc === 'string' ? loc : (locationObj.country || 'Unknown'),
+                    scans: scans,
+                    percentage: analytics.totalScans > 0 
+                      ? (scans / analytics.totalScans * 100).toFixed(1)
+                      : '0'
+                  };
+                })
             : []
         }
       };
