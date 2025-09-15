@@ -152,5 +152,19 @@ export {
 
 // Webhook functions
 export { heygenWebhook } from './backend/functions/heygen-webhook';
-export { runwaymlStatusCheck } from './backend/functions/runwayml-status-check';export * from './services/enhanced-qr.service';
+export { runwaymlStatusCheck } from './backend/functions/runwayml-status-check';
+
+// ============================================================================
+// ADMIN TESTING SERVICES
+// ============================================================================
+
+// Admin testing services for multimedia functionality validation
+export { PodcastGenerationService } from './admin/testing/podcast-generation.service';
+export { VideoGenerationService } from './admin/testing/video-generation.service';
+
+// ============================================================================
+// SERVICE EXPORTS
+// ============================================================================
+
+export * from './services/enhanced-qr.service';
 export * from './providers/video-providers/base-provider.interface';
