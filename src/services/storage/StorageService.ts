@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Storage Service
  * 
  * Unified storage service supporting multiple providers (Firebase, AWS S3, etc.)
  * with features like CDN integration, caching, and intelligent storage optimization.
- */
+  */
 
 import { 
   ProcessingOptions,
@@ -27,7 +28,7 @@ import { StorageOptimizer } from '../../storage/StorageOptimizer';
 /**
  * Main storage service implementation
  * Provides unified interface for multiple storage providers
- */
+  */
 export class StorageService extends MediaService {
   private readonly adapters: Map<StorageProvider, any>;
   private readonly cdnManager: CDNManager;
@@ -52,7 +53,7 @@ export class StorageService extends MediaService {
 
   /**
    * Main storage processing entry point
-   */
+    */
   public async processMedia(
     input: File | Buffer | string,
     options: ProcessingOptions
@@ -95,7 +96,7 @@ export class StorageService extends MediaService {
 
   /**
    * Upload file to storage
-   */
+    */
   public async upload(
     input: File | Buffer | string,
     options: UploadOptions = {}
@@ -145,7 +146,7 @@ export class StorageService extends MediaService {
 
   /**
    * Download file from storage
-   */
+    */
   public async download(
     url: string,
     options: UploadOptions = {}
@@ -184,7 +185,7 @@ export class StorageService extends MediaService {
 
   /**
    * Delete file from storage
-   */
+    */
   public async delete(
     url: string,
     options: UploadOptions = {}
@@ -219,7 +220,7 @@ export class StorageService extends MediaService {
 
   /**
    * List files in storage
-   */
+    */
   public async list(
     prefix: string,
     options: UploadOptions = {}
@@ -236,7 +237,7 @@ export class StorageService extends MediaService {
 
   /**
    * Get file metadata without downloading
-   */
+    */
   public async getMetadata(
     url: string,
     options: UploadOptions = {}
@@ -253,7 +254,7 @@ export class StorageService extends MediaService {
 
   /**
    * Generate signed URL for private files
-   */
+    */
   public async getSignedUrl(
     url: string,
     options: UploadOptions & { expiresIn?: number } = {}
@@ -270,7 +271,7 @@ export class StorageService extends MediaService {
 
   /**
    * Copy file between storage locations
-   */
+    */
   public async copy(
     sourceUrl: string,
     destinationPath: string,
@@ -296,7 +297,7 @@ export class StorageService extends MediaService {
 
   /**
    * Move file to different location
-   */
+    */
   public async move(
     sourceUrl: string,
     destinationPath: string,
@@ -313,7 +314,7 @@ export class StorageService extends MediaService {
 
   /**
    * Validate storage input
-   */
+    */
   public async validateInput(
     input: File | Buffer | string,
     options: ProcessingOptions
@@ -352,14 +353,14 @@ export class StorageService extends MediaService {
 
   /**
    * Get supported media types
-   */
+    */
   public getSupportedTypes(): MediaType[] {
     return ['image', 'video', 'audio']; // Storage supports all media types
   }
 
   /**
    * Get service capabilities
-   */
+    */
   public getCapabilities(): Record<string, any> {
     const capabilities: Record<string, any> = {
       providers: Array.from(this.adapters.keys()),
@@ -386,7 +387,7 @@ export class StorageService extends MediaService {
 
   /**
    * Initialize storage adapters
-   */
+    */
   private initializeAdapters(config: ServiceConfig): void {
     // Initialize Firebase adapter
     if (config.storage?.providers?.firebase) {
@@ -406,14 +407,14 @@ export class StorageService extends MediaService {
 
   /**
    * Get storage adapter for provider
-   */
+    */
   private getAdapter(provider: StorageProvider): any {
     return this.adapters.get(provider);
   }
 
   /**
    * Detect provider from URL
-   */
+    */
   private detectProvider(url: string): StorageProvider | null {
     if (url.includes('firebasestorage.googleapis.com')) {
       return 'firebase';
@@ -426,7 +427,7 @@ export class StorageService extends MediaService {
 
   /**
    * Generate storage path for file
-   */
+    */
   private generateStoragePath(
     input: File | Buffer | string,
     options: UploadOptions
@@ -446,7 +447,7 @@ export class StorageService extends MediaService {
 
   /**
    * Detect media type from input
-   */
+    */
   private detectMediaType(input: File | Buffer | string): string {
     if (input instanceof File) {
       const type = input.type;
@@ -459,7 +460,7 @@ export class StorageService extends MediaService {
 
   /**
    * Get file extension from input
-   */
+    */
   private getFileExtension(input: File | Buffer | string): string {
     if (input instanceof File) {
       const name = input.name;
@@ -471,7 +472,7 @@ export class StorageService extends MediaService {
 
   /**
    * Validate storage path
-   */
+    */
   private isValidStoragePath(path: string): boolean {
     // Basic path validation
     return !path.includes('..') && !path.startsWith('/') && path.length > 0;
@@ -479,7 +480,7 @@ export class StorageService extends MediaService {
 
   /**
    * Get input size in bytes
-   */
+    */
   private getInputSize(input: File | Buffer | string): number {
     if (Buffer.isBuffer(input)) {
       return input.length;
@@ -492,7 +493,7 @@ export class StorageService extends MediaService {
 
   /**
    * Update cache with file
-   */
+    */
   private async updateCache(
     url: string,
     data: File | Buffer | string,
@@ -504,7 +505,7 @@ export class StorageService extends MediaService {
 
   /**
    * Get file from cache
-   */
+    */
   private async getFromCache(
     url: string,
     cacheConfig?: CacheConfig
@@ -516,7 +517,7 @@ export class StorageService extends MediaService {
 
   /**
    * Remove file from cache
-   */
+    */
   private async removeFromCache(
     url: string,
     cacheConfig?: CacheConfig

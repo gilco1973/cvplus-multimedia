@@ -1,7 +1,7 @@
 /**
  * Enhanced Video Generation Service
  * Advanced video creation with AI avatars and monitoring
- */
+  */
 
 export interface VideoGenerationOptions {
   avatarId?: string;

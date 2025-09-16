@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Media Generation Service for Video Intros and Podcasts
- */
+  */
 
 import OpenAI from 'openai';
 import * as admin from 'firebase-admin';
@@ -37,7 +38,7 @@ export class MediaGenerationService {
   
   /**
    * Generate video intro script
-   */
+    */
   async generateVideoIntroScript(
     parsedCV: ParsedCV,
     duration: number = 60, // seconds
@@ -70,7 +71,7 @@ export class MediaGenerationService {
   
   /**
    * Generate podcast script from CV
-   */
+    */
   async generatePodcastScript(
     parsedCV: ParsedCV,
     format: 'interview' | 'narrative' | 'highlights' = 'interview',
@@ -119,7 +120,7 @@ export class MediaGenerationService {
   
   /**
    * Generate intro script using AI
-   */
+    */
   private async generateIntroScript(
     cv: ParsedCV,
     targetWords: number,
@@ -170,7 +171,7 @@ Keep it exactly ${targetWords} words.`;
   
   /**
    * Create video scenes from script
-   */
+    */
   private createVideoScenes(
     script: string,
     cv: ParsedCV,
@@ -204,7 +205,7 @@ Keep it exactly ${targetWords} words.`;
   
   /**
    * Get visual suggestions for a scene
-   */
+    */
   private getVisualSuggestions(
     text: string,
     cv: ParsedCV,
@@ -252,14 +253,14 @@ Keep it exactly ${targetWords} words.`;
   
   /**
    * Extract voiceover text from scenes
-   */
+    */
   private extractVoiceoverText(scenes: VideoScene[]): string {
     return scenes.map(scene => scene.text).join(' ');
   }
   
   /**
    * Generate interview format podcast
-   */
+    */
   private async generateInterviewFormat(
     cv: ParsedCV,
     targetWords: number
@@ -345,7 +346,7 @@ Keep it to ${Math.floor(targetWords / questions.length)} words, first person.`;
   
   /**
    * Generate narrative format podcast
-   */
+    */
   private async generateNarrativeFormat(
     cv: ParsedCV,
     targetWords: number
@@ -382,7 +383,7 @@ Use third person, storytelling style. Data: ${this.summarizeForPrompt(cv)}`;
   
   /**
    * Generate highlights format podcast
-   */
+    */
   private async generateHighlightsFormat(
     cv: ParsedCV,
     targetWords: number
@@ -452,7 +453,7 @@ Style: Concise, impactful, third-person narrative.`;
   
   /**
    * Generate a segment using AI
-   */
+    */
   private async generateSegment(prompt: string, targetWords: number): Promise<string> {
     try {
       const response = await this.getOpenAI().chat.completions.create({
@@ -475,7 +476,7 @@ Style: Concise, impactful, third-person narrative.`;
   
   /**
    * Summarize CV for prompts
-   */
+    */
   private summarizeForPrompt(cv: ParsedCV): string {
     const parts = [];
     
@@ -496,7 +497,7 @@ Style: Concise, impactful, third-person narrative.`;
   
   /**
    * Get technical skills from skills union type
-   */
+    */
   private getTechnicalSkills(skills: string[] | { [key: string]: string[]; technical?: string[]; soft?: string[]; languages?: string[]; tools?: string[]; frontend?: string[]; backend?: string[]; databases?: string[]; cloud?: string[]; competencies?: string[]; frameworks?: string[]; expertise?: string[]; } | undefined): string[] {
     if (!skills) return [];
     if (Array.isArray(skills)) return skills;
@@ -509,7 +510,7 @@ Style: Concise, impactful, third-person narrative.`;
 
   /**
    * Get soft skills from skills union type
-   */
+    */
   private getSoftSkills(skills: string[] | { [key: string]: string[]; technical?: string[]; soft?: string[]; languages?: string[]; tools?: string[]; frontend?: string[]; backend?: string[]; databases?: string[]; cloud?: string[]; competencies?: string[]; frameworks?: string[]; expertise?: string[]; } | undefined): string[] {
     if (!skills || Array.isArray(skills)) return [];
     // For object format, try soft skills or competencies
@@ -521,7 +522,7 @@ Style: Concise, impactful, third-person narrative.`;
 
   /**
    * Generate default intro script
-   */
+    */
   private generateDefaultIntroScript(cv: ParsedCV, targetWords: number): string {
     const name = cv.personalInfo?.name || 'I';
     const role = cv.experience?.[0]?.position || 'professional';
@@ -533,7 +534,7 @@ Style: Concise, impactful, third-person narrative.`;
   
   /**
    * Generate podcast metadata
-   */
+    */
   private generatePodcastMetadata(cv: ParsedCV, format: string): PodcastMetadata {
     return {
       title: `${cv.personalInfo?.name || 'Professional'} - Career ${format === 'interview' ? 'Interview' : format === 'narrative' ? 'Story' : 'Highlights'}`,
@@ -552,7 +553,7 @@ Style: Concise, impactful, third-person narrative.`;
   
   /**
    * Generate audio file from text (placeholder)
-   */
+    */
   async generateAudio(
     text: string,
     voice: 'male' | 'female' = 'male',
@@ -571,7 +572,7 @@ Style: Concise, impactful, third-person narrative.`;
   
   /**
    * Merge audio segments for podcast
-   */
+    */
   async mergeAudioSegments(
     segments: Array<{ audioUrl: string; duration: number }>,
     transitions: boolean = true
@@ -661,7 +662,7 @@ Style: Concise, impactful, third-person narrative.`;
   
   /**
    * Generate silence file using FFmpeg
-   */
+    */
   private async generateSilenceFile(durationMs: number, outputPath: string): Promise<void> {
     const durationSeconds = durationMs / 1000;
     
@@ -681,7 +682,7 @@ Style: Concise, impactful, third-person narrative.`;
   
   /**
    * Clean up temporary files
-   */
+    */
   private cleanupTempFiles(filePaths: string[]): void {
     filePaths.forEach(filePath => {
       try {
@@ -699,7 +700,7 @@ Style: Concise, impactful, third-person narrative.`;
   
   /**
    * Generate video from script and images
-   */
+    */
   async generateVideo(
     scenes: VideoScene[],
     backgroundMusic?: string,

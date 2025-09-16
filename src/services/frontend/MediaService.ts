@@ -1,7 +1,8 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Media Service
  * Handles video, audio, and podcast generation
- */
+  */
 
 import { httpsCallable } from 'firebase/functions';
 import { functions } from '../../lib/firebase';
@@ -9,7 +10,7 @@ import { functions } from '../../lib/firebase';
 export class MediaService {
   /**
    * Generate video introduction
-   */
+    */
   static async generateVideoIntroduction(
     jobId: string, 
     duration?: 'short' | 'medium' | 'long', 
@@ -30,7 +31,7 @@ export class MediaService {
 
   /**
    * Regenerate video introduction with custom options
-   */
+    */
   static async regenerateVideoIntroduction(jobId: string, customScript?: string, options?: unknown) {
     const regenerateVideoFunction = httpsCallable(functions, 'regenerateVideoIntroduction');
     // Safe spreading with type guard for options
@@ -45,7 +46,7 @@ export class MediaService {
 
   /**
    * Generate enhanced podcast
-   */
+    */
   static async generateEnhancedPodcast(
     jobId: string, 
     style?: 'professional' | 'conversational' | 'storytelling'
@@ -62,7 +63,7 @@ export class MediaService {
 
   /**
    * Regenerate podcast with new style
-   */
+    */
   static async regeneratePodcast(
     jobId: string, 
     style?: 'professional' | 'conversational' | 'storytelling'
@@ -80,7 +81,7 @@ export class MediaService {
 
   /**
    * Get podcast processing status
-   */
+    */
   static async getPodcastStatus(jobId: string) {
     const statusFunction = httpsCallable(functions, 'podcastStatus');
     const result = await statusFunction({ jobId });
@@ -89,7 +90,7 @@ export class MediaService {
 
   /**
    * Generate audio from text
-   */
+    */
   static async generateAudioFromText(
     jobId: string, 
     text: string, 
@@ -110,7 +111,7 @@ export class MediaService {
 
   /**
    * Get media processing status
-   */
+    */
   static async getMediaStatus(jobId: string) {
     const statusFunction = httpsCallable(functions, 'getMediaStatus');
     const result = await statusFunction({ jobId });
@@ -119,7 +120,7 @@ export class MediaService {
 
   /**
    * Download media content
-   */
+    */
   static async downloadMediaContent(jobId: string, mediaType: string, contentType: string) {
     const downloadFunction = httpsCallable(functions, 'downloadMediaContent');
     const result = await downloadFunction({

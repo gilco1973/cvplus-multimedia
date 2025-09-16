@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Type definitions for interactive multimedia components
- */
+  */
 
 export interface QRCodeProps {
   value: string;

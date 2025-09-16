@@ -1,11 +1,12 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * CVPlus Multimedia - Quality Constants
  * 
  * Quality and compression settings for multimedia processing.
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 // ============================================================================
 // IMAGE QUALITY SETTINGS

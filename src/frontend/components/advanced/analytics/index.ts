@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Advanced Analytics Components Index
  * 
  * Exports all advanced analytics and tracking components
@@ -6,7 +7,7 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 // Main Analytics Dashboard
 export { MultimediaAnalyticsDashboard } from './MultimediaAnalyticsDashboard';
@@ -36,7 +37,7 @@ export {
  * Comprehensive suite of analytics and tracking components
  * for multimedia content performance monitoring, user engagement
  * tracking, and business intelligence insights.
- */
+  */
 export const AdvancedAnalyticsComponents = {
   MultimediaAnalyticsDashboard,
   EngagementTracker,

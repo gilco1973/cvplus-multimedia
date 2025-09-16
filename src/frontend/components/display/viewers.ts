@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Media viewer components
- */
+  */
 
 export const MediaViewer = () => {
   return null; // To be implemented in Phase 2A

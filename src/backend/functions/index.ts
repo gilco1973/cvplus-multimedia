@@ -1,7 +1,8 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Multimedia Backend Functions Index
  * Exports all multimedia Firebase Functions
- */
+  */
 
 // Podcast functions
 export { generatePodcast } from './generatePodcast';

@@ -2,7 +2,7 @@
 
 /**
  * Generate QR code options from template and customization
- */
+  */
 export const generateQROptions = (
   template: QRCodeTemplate,
   customization?: {
@@ -24,7 +24,7 @@ export const generateQROptions = (
 
 /**
  * Validate URL for QR code generation
- */
+  */
 export const isValidUrl = (url: string): boolean => {
   try {
     new URL(url);
@@ -36,7 +36,7 @@ export const isValidUrl = (url: string): boolean => {
 
 /**
  * Generate vCard data for contact QR codes
- */
+  */
 export const generateVCard = (contactData: {
   name?: string;
   email?: string;
@@ -60,7 +60,7 @@ export const generateVCard = (contactData: {
 
 /**
  * Apply style modifications to QR code canvas
- */
+  */
 export const applyStyleModifications = (
   canvas: HTMLCanvasElement,
   style: 'square' | 'rounded' | 'circular'
@@ -116,7 +116,7 @@ export const applyStyleModifications = (
 
 /**
  * Add logo to QR code canvas
- */
+  */
 export const addLogoToCanvas = async (
   canvas: HTMLCanvasElement,
   logoUrl: string,
@@ -149,7 +149,7 @@ export const addLogoToCanvas = async (
 
 /**
  * Copy canvas content to clipboard
- */
+  */
 export const copyCanvasToClipboard = async (canvas: HTMLCanvasElement): Promise<void> => {
   const dataUrl = canvas.toDataURL('image/png');
   
@@ -169,7 +169,7 @@ export const copyCanvasToClipboard = async (canvas: HTMLCanvasElement): Promise<
 
 /**
  * Download canvas as image
- */
+  */
 export const downloadCanvas = (canvas: HTMLCanvasElement, filename: string): void => {
   const link = document.createElement('a');
   link.download = filename;
@@ -181,7 +181,7 @@ export const downloadCanvas = (canvas: HTMLCanvasElement, filename: string): voi
 
 /**
  * Share canvas content using Web Share API
- */
+  */
 export const shareCanvas = async (canvas: HTMLCanvasElement, title: string, text: string): Promise<void> => {
   if (!navigator.share) {
     throw new Error('Web Share API not supported');
@@ -201,7 +201,7 @@ export const shareCanvas = async (canvas: HTMLCanvasElement, title: string, text
 
 /**
  * Parse device information from user agent
- */
+  */
 export const parseDeviceInfo = (userAgent: string) => {
   const isMobile = /Mobile|Android|iPhone|iPad/.test(userAgent);
   const isTablet = /iPad|Android(?!.*Mobile)/.test(userAgent);

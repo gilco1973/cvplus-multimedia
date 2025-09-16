@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Video Monitoring Integration Service
  * 
  * Integration layer between video generation services and monitoring/analytics system.
@@ -6,7 +7,7 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 import { PerformanceMonitorService } from './performance-monitor.service';
 import { AnalyticsEngineService } from './analytics-engine.service';
@@ -27,7 +28,7 @@ export interface MonitoringContext {
 
 /**
  * Video Monitoring Integration Service
- */
+  */
 export class VideoMonitoringIntegrationService {
   private performanceMonitor: PerformanceMonitorService;
   private analyticsEngine: AnalyticsEngineService;
@@ -48,7 +49,7 @@ export class VideoMonitoringIntegrationService {
 
   /**
    * Initialize video generation monitoring
-   */
+    */
   async startMonitoring(
     generationId: string,
     userId: string,
@@ -88,7 +89,7 @@ export class VideoMonitoringIntegrationService {
 
   /**
    * Complete video generation monitoring
-   */
+    */
   async completeMonitoring(
     generationId: string,
     result: VideoGenerationResult,
@@ -119,7 +120,7 @@ export class VideoMonitoringIntegrationService {
 
   /**
    * Record provider switch event
-   */
+    */
   async recordProviderSwitch(
     generationId: string,
     fromProvider: string,
@@ -159,7 +160,7 @@ export class VideoMonitoringIntegrationService {
 
   /**
    * Record error event
-   */
+    */
   async recordError(
     generationId: string,
     error: any,
@@ -200,7 +201,7 @@ export class VideoMonitoringIntegrationService {
 
   /**
    * Record quality score
-   */
+    */
   async recordQualityScore(
     generationId: string,
     qualityScore: number,
@@ -239,7 +240,7 @@ export class VideoMonitoringIntegrationService {
 
   /**
    * Record user feedback
-   */
+    */
   async recordUserFeedback(
     generationId: string,
     userId: string,
@@ -275,7 +276,7 @@ export class VideoMonitoringIntegrationService {
 
   /**
    * Get real-time monitoring status
-   */
+    */
   async getMonitoringStatus(): Promise<{
     activeGenerations: number;
     systemHealth: any;
@@ -310,7 +311,7 @@ export class VideoMonitoringIntegrationService {
 
   /**
    * Initialize background monitoring tasks
-   */
+    */
   private initializeBackgroundMonitoring(): void {
     // Check for alerts every 5 minutes
     setInterval(async () => {
@@ -373,14 +374,14 @@ export class VideoMonitoringIntegrationService {
 
   /**
    * Enable or disable monitoring
-   */
+    */
   setMonitoringEnabled(enabled: boolean): void {
     this.monitoringEnabled = enabled;
   }
 
   /**
    * Get monitoring configuration
-   */
+    */
   getConfiguration(): any {
     return {
       monitoringEnabled: this.monitoringEnabled,
@@ -391,7 +392,7 @@ export class VideoMonitoringIntegrationService {
 
   /**
    * Manual trigger for metrics calculation (for testing)
-   */
+    */
   async triggerMetricsCalculation(): Promise<void> {
     try {
       const metrics = await this.performanceMonitor.calculateSystemMetrics('1h');
@@ -406,7 +407,7 @@ export class VideoMonitoringIntegrationService {
 
   /**
    * Manual trigger for alert checking (for testing)
-   */
+    */
   async triggerAlertCheck(): Promise<void> {
     try {
       const performanceMetrics = await this.performanceMonitor.calculateSystemMetrics('1h');

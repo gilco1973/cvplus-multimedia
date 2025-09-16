@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Interactive Components for Multimedia Module
  * 
  * This module exports interactive multimedia components including QR codes,
  * dynamic elements, and user interaction features.
- */
+  */
 
 // QR Code Components
 export * from './qr';

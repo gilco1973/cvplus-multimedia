@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Multimedia Service Factory
  * 
  * Provides centralized creation and management of multimedia services
  * with dependency injection, configuration management, and lifecycle control.
- */
+  */
 
 import { 
   MediaService,
@@ -26,7 +27,7 @@ import { ConfigManager } from '../config/ConfigManager';
 /**
  * Factory class for creating and managing multimedia services
  * Implements singleton pattern and service lifecycle management
- */
+  */
 export class ServiceFactory {
   private static instance: ServiceFactory;
   private readonly logger: Logger;
@@ -44,7 +45,7 @@ export class ServiceFactory {
 
   /**
    * Get singleton instance of ServiceFactory
-   */
+    */
   public static getInstance(): ServiceFactory {
     if (!ServiceFactory.instance) {
       ServiceFactory.instance = new ServiceFactory();
@@ -54,7 +55,7 @@ export class ServiceFactory {
 
   /**
    * Initialize the service factory with configuration
-   */
+    */
   public async initialize(config?: Partial<ServiceConfig>): Promise<void> {
     if (this.initialized) {
       this.logger.warn('ServiceFactory already initialized');
@@ -82,7 +83,7 @@ export class ServiceFactory {
 
   /**
    * Create a media service by type
-   */
+    */
   public async createService<T extends MediaService>(
     serviceType: ServiceType,
     config?: Partial<ServiceConfig>
@@ -120,7 +121,7 @@ export class ServiceFactory {
 
   /**
    * Get service by type (creates if not exists)
-   */
+    */
   public async getService<T extends MediaService>(
     serviceType: ServiceType,
     config?: Partial<ServiceConfig>
@@ -130,42 +131,42 @@ export class ServiceFactory {
 
   /**
    * Get image processing service
-   */
+    */
   public async getImageService(config?: Partial<ServiceConfig>): Promise<ImageService> {
     return this.getService<ImageService>('image', config);
   }
 
   /**
    * Get video processing service
-   */
+    */
   public async getVideoService(config?: Partial<ServiceConfig>): Promise<VideoService> {
     return this.getService<VideoService>('video', config);
   }
 
   /**
    * Get audio processing service
-   */
+    */
   public async getAudioService(config?: Partial<ServiceConfig>): Promise<AudioService> {
     return this.getService<AudioService>('audio', config);
   }
 
   /**
    * Get storage service
-   */
+    */
   public async getStorageService(config?: Partial<ServiceConfig>): Promise<StorageService> {
     return this.getService<StorageService>('storage', config);
   }
 
   /**
    * Get job manager service
-   */
+    */
   public async getJobManager(config?: Partial<ServiceConfig>): Promise<JobManager> {
     return this.getService<JobManager>('jobs', config);
   }
 
   /**
    * Create service for specific media type
-   */
+    */
   public async getServiceForMediaType(
     mediaType: MediaType,
     config?: Partial<ServiceConfig>
@@ -184,14 +185,14 @@ export class ServiceFactory {
 
   /**
    * Get all available services
-   */
+    */
   public getAvailableServices(): ServiceType[] {
     return this.serviceRegistry.getRegisteredServices();
   }
 
   /**
    * Get service capabilities
-   */
+    */
   public async getServiceCapabilities(serviceType: ServiceType): Promise<ProcessingCapabilities> {
     const service = await this.getService(serviceType);
     return service.getCapabilities();
@@ -199,7 +200,7 @@ export class ServiceFactory {
 
   /**
    * Health check for all services
-   */
+    */
   public async healthCheck(): Promise<Record<ServiceType, any>> {
     const healthStatus: Record<string, any> = {};
 
@@ -220,7 +221,7 @@ export class ServiceFactory {
 
   /**
    * Shutdown all services
-   */
+    */
   public async shutdown(): Promise<void> {
     this.logger.info('Shutting down all services...');
 
@@ -244,7 +245,7 @@ export class ServiceFactory {
 
   /**
    * Instantiate service based on type
-   */
+    */
   private async instantiateService<T extends MediaService>(
     serviceType: ServiceType,
     config: ServiceConfig
@@ -272,7 +273,7 @@ export class ServiceFactory {
 
   /**
    * Register default service configurations
-   */
+    */
   private async registerDefaultServices(): Promise<void> {
     const defaultServices: ServiceType[] = ['image', 'video', 'audio', 'storage', 'jobs'];
     
@@ -288,7 +289,7 @@ export class ServiceFactory {
 
   /**
    * Clear service cache (for testing/development)
-   */
+    */
   public clearCache(): void {
     this.serviceInstances.clear();
     this.logger.info('Service cache cleared');
@@ -296,14 +297,14 @@ export class ServiceFactory {
 
   /**
    * Get service instance count
-   */
+    */
   public getServiceCount(): number {
     return this.serviceInstances.size;
   }
 
   /**
    * Get service statistics
-   */
+    */
   public getServiceStats(): Record<string, any> {
     const stats: Record<string, any> = {};
 

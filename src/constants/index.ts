@@ -1,11 +1,12 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * CVPlus Multimedia Module - Constants Export
  * 
  * Main export file for multimedia processing constants.
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 // Export constants but not types to avoid conflicts with types/index.ts
 export {

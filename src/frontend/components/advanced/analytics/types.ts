@@ -1,7 +1,8 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Video Analytics Types
  * Types for video analytics components
- */
+  */
 
 import { CVFeatureProps } from '../../display/galleries/types';
 

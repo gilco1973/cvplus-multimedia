@@ -1,11 +1,12 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * CVPlus Multimedia Module - Type Definitions (Minimal Build)
  * 
  * Basic type exports without external dependencies.
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 // Base media types - export first to avoid conflicts
 export type MediaType = 'image' | 'video' | 'audio' | 'application/octet-stream' | 'unknown';

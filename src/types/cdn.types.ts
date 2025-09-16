@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * CDN and content delivery types for CVPlus multimedia module
- */
+  */
 
 import { MediaFile } from './media.types';
 
@@ -9,92 +10,92 @@ import { MediaFile } from './media.types';
 // ============================================================================
 
 export interface CompressionSettings {
-  /** Compression enabled */
+  /** Compression enabled  */
   enabled: boolean;
   
-  /** Compression algorithm */
+  /** Compression algorithm  */
   algorithm: CompressionAlgorithm;
   
-  /** Compression level (1-9) */
+  /** Compression level (1-9)  */
   level: number;
   
-  /** File type patterns to compress */
+  /** File type patterns to compress  */
   fileTypes: string[];
   
-  /** Minimum file size to compress */
+  /** Minimum file size to compress  */
   minSize: number;
   
-  /** Maximum file size to compress */
+  /** Maximum file size to compress  */
   maxSize: number;
 }
 
 export interface CDNSecuritySettings {
-  /** HTTPS enforcement */
+  /** HTTPS enforcement  */
   httpsOnly: boolean;
   
-  /** Security headers */
+  /** Security headers  */
   securityHeaders: Record<string, string>;
   
-  /** Access restrictions */
+  /** Access restrictions  */
   accessRestrictions: string[];
   
-  /** Rate limiting */
+  /** Rate limiting  */
   rateLimiting: boolean;
   
-  /** DDoS protection */
+  /** DDoS protection  */
   ddosProtection: boolean;
 }
 
 export interface PerformanceSettings {
-  /** Cache TTL settings */
+  /** Cache TTL settings  */
   cacheTtl: Record<string, number>;
   
-  /** Preloading rules */
+  /** Preloading rules  */
   preloadRules: string[];
   
-  /** Optimization level */
+  /** Optimization level  */
   optimizationLevel: 'basic' | 'standard' | 'aggressive';
   
-  /** Bandwidth throttling */
+  /** Bandwidth throttling  */
   bandwidthThrottling: boolean;
 }
 
 export interface GeographicSettings {
-  /** Geographic restrictions */
+  /** Geographic restrictions  */
   restrictions: string[];
   
-  /** Preferred regions */
+  /** Preferred regions  */
   preferredRegions: string[];
   
-  /** Regional caching rules */
+  /** Regional caching rules  */
   regionalCaching: Record<string, number>;
 }
 
 export interface AnalyticsConfiguration {
-  /** Analytics enabled */
+  /** Analytics enabled  */
   enabled: boolean;
   
-  /** Analytics provider */
+  /** Analytics provider  */
   provider: string;
   
-  /** Tracking configuration */
+  /** Tracking configuration  */
   tracking: Record<string, unknown>;
   
-  /** Reporting frequency */
+  /** Reporting frequency  */
   reportingFrequency: string;
 }
 
 export interface ErrorHandlingConfig {
-  /** Error page configuration */
+  /** Error page configuration  */
   errorPages: Record<number, string>;
   
-  /** Retry configuration */
+  /** Retry configuration  */
   retryConfig: {
     maxRetries: number;
     backoffStrategy: string;
   };
   
-  /** Fallback configuration */
+  /** Fallback configuration  */
   fallback: {
     enabled: boolean;
     fallbackUrl?: string;
@@ -102,16 +103,16 @@ export interface ErrorHandlingConfig {
 }
 
 export interface CacheRule {
-  /** Rule pattern */
+  /** Rule pattern  */
   pattern: string;
   
-  /** Cache TTL */
+  /** Cache TTL  */
   ttl: number;
   
-  /** Cache headers */
+  /** Cache headers  */
   headers: Record<string, string>;
   
-  /** Cache key configuration */
+  /** Cache key configuration  */
   cacheKey: string[];
 }
 
@@ -128,66 +129,66 @@ export type EdgeLocation = 'us-east-1' | 'us-west-1' | 'eu-west-1' | 'ap-southea
 // ============================================================================
 
 export interface CDNConfiguration {
-  /** CDN provider */
+  /** CDN provider  */
   provider: CDNProvider;
   
-  /** Distribution settings */
+  /** Distribution settings  */
   distribution: DistributionSettings;
   
-  /** Origin configuration */
+  /** Origin configuration  */
   origins: OriginConfiguration[];
   
-  /** Cache behavior */
+  /** Cache behavior  */
   cacheBehaviors: CacheBehavior[];
   
-  /** Compression settings */
+  /** Compression settings  */
   compression: CompressionSettings;
   
-  /** Security settings */
+  /** Security settings  */
   security: CDNSecuritySettings;
   
-  /** Performance optimization */
+  /** Performance optimization  */
   performance: PerformanceSettings;
   
-  /** Geographic settings */
+  /** Geographic settings  */
   geographic: GeographicSettings;
   
-  /** Analytics configuration */
+  /** Analytics configuration  */
   analytics: AnalyticsConfiguration;
   
-  /** Error handling */
+  /** Error handling  */
   errorHandling: ErrorHandlingConfig;
 }
 
 export interface DistributionSettings {
-  /** Distribution domain */
+  /** Distribution domain  */
   domain: string;
   
-  /** Alternative domains (CNAMEs) */
+  /** Alternative domains (CNAMEs)  */
   alternativeDomains?: string[];
   
-  /** Distribution enabled */
+  /** Distribution enabled  */
   enabled: boolean;
   
-  /** Distribution status */
+  /** Distribution status  */
   status: DistributionStatus;
   
-  /** Price class */
+  /** Price class  */
   priceClass: PriceClass;
   
-  /** HTTP version */
+  /** HTTP version  */
   httpVersion: HTTPVersion;
   
-  /** IPv6 enabled */
+  /** IPv6 enabled  */
   ipv6Enabled: boolean;
   
-  /** Default root object */
+  /** Default root object  */
   defaultRootObject?: string;
   
-  /** Logging configuration */
+  /** Logging configuration  */
   logging?: LoggingConfig;
   
-  /** Comment */
+  /** Comment  */
   comment?: string;
 }
 
@@ -196,19 +197,19 @@ export type PriceClass = 'all' | 'us-eu' | 'us-eu-asia' | 'custom';
 export type HTTPVersion = '1.1' | '2.0' | '3.0';
 
 export interface LoggingConfig {
-  /** Logging enabled */
+  /** Logging enabled  */
   enabled: boolean;
   
-  /** Log bucket */
+  /** Log bucket  */
   bucket: string;
   
-  /** Log prefix */
+  /** Log prefix  */
   prefix: string;
   
-  /** Include cookies */
+  /** Include cookies  */
   includeCookies: boolean;
   
-  /** Log format */
+  /** Log format  */
   format: LogFormat;
 }
 
@@ -219,91 +220,91 @@ export type LogFormat = 'w3c' | 'json' | 'csv' | 'custom';
 // ============================================================================
 
 export interface OriginConfiguration {
-  /** Origin ID */
+  /** Origin ID  */
   id: string;
   
-  /** Origin type */
+  /** Origin type  */
   type: OriginType;
   
-  /** Origin settings */
+  /** Origin settings  */
   settings: OriginSettings;
   
-  /** Health checks */
+  /** Health checks  */
   healthCheck?: OriginHealthCheck;
   
-  /** Failover configuration */
+  /** Failover configuration  */
   failover?: OriginFailover;
   
-  /** Load balancing */
+  /** Load balancing  */
   loadBalancing?: LoadBalancingConfig;
 }
 
 export type OriginType = 'http' | 'https' | 's3' | 'mediastore' | 'custom';
 
 export interface OriginSettings {
-  /** Domain name */
+  /** Domain name  */
   domainName: string;
   
-  /** Origin path */
+  /** Origin path  */
   originPath?: string;
   
-  /** Custom headers */
+  /** Custom headers  */
   customHeaders?: CustomHeader[];
   
-  /** Connection settings */
+  /** Connection settings  */
   connection: ConnectionSettings;
   
-  /** SSL/TLS settings */
+  /** SSL/TLS settings  */
   ssl?: SSLSettings;
 }
 
 export interface CustomHeader {
-  /** Header name */
+  /** Header name  */
   name: string;
   
-  /** Header value */
+  /** Header value  */
   value: string;
   
-  /** Header description */
+  /** Header description  */
   description?: string;
 }
 
 export interface ConnectionSettings {
-  /** HTTP port */
+  /** HTTP port  */
   httpPort: number;
   
-  /** HTTPS port */
+  /** HTTPS port  */
   httpsPort: number;
   
-  /** Protocol policy */
+  /** Protocol policy  */
   protocolPolicy: ProtocolPolicy;
   
-  /** Connection timeout (seconds) */
+  /** Connection timeout (seconds)  */
   connectionTimeout: number;
   
-  /** Response timeout (seconds) */
+  /** Response timeout (seconds)  */
   responseTimeout: number;
   
-  /** Keep-alive timeout (seconds) */
+  /** Keep-alive timeout (seconds)  */
   keepAliveTimeout?: number;
   
-  /** Max connections */
+  /** Max connections  */
   maxConnections?: number;
 }
 
 export type ProtocolPolicy = 'http-only' | 'https-only' | 'match-viewer' | 'redirect-to-https';
 
 export interface SSLSettings {
-  /** SSL protocols */
+  /** SSL protocols  */
   protocols: SSLProtocol[];
   
-  /** Cipher suite */
+  /** Cipher suite  */
   cipherSuite: CipherSuite;
   
-  /** Certificate configuration */
+  /** Certificate configuration  */
   certificate?: CertificateConfig;
   
-  /** HSTS configuration */
+  /** HSTS configuration  */
   hsts?: HSTSConfiguration;
 }
 
@@ -311,179 +312,179 @@ export type SSLProtocol = 'TLSv1' | 'TLSv1.1' | 'TLSv1.2' | 'TLSv1.3';
 export type CipherSuite = 'default' | 'high' | 'medium' | 'custom';
 
 export interface CertificateConfig {
-  /** Certificate type */
+  /** Certificate type  */
   type: CertificateType;
   
-  /** Certificate ARN */
+  /** Certificate ARN  */
   arn?: string;
   
-  /** Custom certificate */
+  /** Custom certificate  */
   customCertificate?: CustomCertificateConfig;
 }
 
 export type CertificateType = 'cloudfront-default' | 'acm' | 'iam' | 'custom';
 
 export interface CustomCertificateConfig {
-  /** Certificate body */
+  /** Certificate body  */
   certificateBody: string;
   
-  /** Private key */
+  /** Private key  */
   privateKey: string;
   
-  /** Certificate chain */
+  /** Certificate chain  */
   certificateChain?: string;
   
-  /** Certificate source */
+  /** Certificate source  */
   source: string;
 }
 
 export interface HSTSConfiguration {
-  /** HSTS enabled */
+  /** HSTS enabled  */
   enabled: boolean;
   
-  /** Max age (seconds) */
+  /** Max age (seconds)  */
   maxAge: number;
   
-  /** Include subdomains */
+  /** Include subdomains  */
   includeSubdomains: boolean;
   
-  /** Preload */
+  /** Preload  */
   preload: boolean;
 }
 
 export interface OriginHealthCheck {
-  /** Health check enabled */
+  /** Health check enabled  */
   enabled: boolean;
   
-  /** Check interval (seconds) */
+  /** Check interval (seconds)  */
   interval: number;
   
-  /** Timeout (seconds) */
+  /** Timeout (seconds)  */
   timeout: number;
   
-  /** Healthy threshold */
+  /** Healthy threshold  */
   healthyThreshold: number;
   
-  /** Unhealthy threshold */
+  /** Unhealthy threshold  */
   unhealthyThreshold: number;
   
-  /** Health check path */
+  /** Health check path  */
   path: string;
   
-  /** Expected response codes */
+  /** Expected response codes  */
   expectedResponseCodes: number[];
   
-  /** Health check protocol */
+  /** Health check protocol  */
   protocol: 'http' | 'https';
   
-  /** Custom headers */
+  /** Custom headers  */
   headers?: CustomHeader[];
 }
 
 export interface OriginFailover {
-  /** Failover enabled */
+  /** Failover enabled  */
   enabled: boolean;
   
-  /** Primary origin */
+  /** Primary origin  */
   primaryOrigin: string;
   
-  /** Secondary origins */
+  /** Secondary origins  */
   secondaryOrigins: string[];
   
-  /** Failover criteria */
+  /** Failover criteria  */
   criteria: FailoverCriteria[];
   
-  /** Failback settings */
+  /** Failback settings  */
   failback?: FailbackSettings;
 }
 
 export interface FailoverCriteria {
-  /** Criteria type */
+  /** Criteria type  */
   type: FailoverCriteriaType;
   
-  /** Threshold value */
+  /** Threshold value  */
   threshold: number;
   
-  /** Time window (seconds) */
+  /** Time window (seconds)  */
   timeWindow: number;
   
-  /** Criteria enabled */
+  /** Criteria enabled  */
   enabled: boolean;
 }
 
 export type FailoverCriteriaType = 'response-time' | 'error-rate' | 'status-code' | 'health-check' | 'custom';
 
 export interface FailbackSettings {
-  /** Failback enabled */
+  /** Failback enabled  */
   enabled: boolean;
   
-  /** Failback delay (seconds) */
+  /** Failback delay (seconds)  */
   delay: number;
   
-  /** Success threshold for failback */
+  /** Success threshold for failback  */
   successThreshold: number;
   
-  /** Monitoring period (seconds) */
+  /** Monitoring period (seconds)  */
   monitoringPeriod: number;
 }
 
 export interface LoadBalancingConfig {
-  /** Load balancing method */
+  /** Load balancing method  */
   method: LoadBalancingMethod;
   
-  /** Weight configuration */
+  /** Weight configuration  */
   weights?: OriginWeight[];
   
-  /** Session persistence */
+  /** Session persistence  */
   sessionPersistence?: SessionPersistence;
   
-  /** Health-based routing */
+  /** Health-based routing  */
   healthBasedRouting: boolean;
 }
 
 export type LoadBalancingMethod = 'round-robin' | 'weighted' | 'least-connections' | 'ip-hash' | 'geographic';
 
 export interface OriginWeight {
-  /** Origin ID */
+  /** Origin ID  */
   originId: string;
   
-  /** Weight value */
+  /** Weight value  */
   weight: number;
 }
 
 export interface SessionPersistence {
-  /** Persistence enabled */
+  /** Persistence enabled  */
   enabled: boolean;
   
-  /** Persistence method */
+  /** Persistence method  */
   method: PersistenceMethod;
   
-  /** Session timeout (seconds) */
+  /** Session timeout (seconds)  */
   timeout: number;
   
-  /** Cookie configuration */
+  /** Cookie configuration  */
   cookie?: CookieConfig;
 }
 
 export type PersistenceMethod = 'cookie' | 'ip-hash' | 'header' | 'custom';
 
 export interface CookieConfig {
-  /** Cookie name */
+  /** Cookie name  */
   name: string;
   
-  /** Cookie domain */
+  /** Cookie domain  */
   domain?: string;
   
-  /** Cookie path */
+  /** Cookie path  */
   path?: string;
   
-  /** Cookie secure flag */
+  /** Cookie secure flag  */
   secure: boolean;
   
-  /** Cookie HTTP-only flag */
+  /** Cookie HTTP-only flag  */
   httpOnly: boolean;
   
-  /** Cookie SameSite attribute */
+  /** Cookie SameSite attribute  */
   sameSite?: SameSiteAttribute;
 }
 
@@ -494,213 +495,213 @@ export type SameSiteAttribute = 'strict' | 'lax' | 'none';
 // ============================================================================
 
 export interface CacheBehavior {
-  /** Path pattern */
+  /** Path pattern  */
   pathPattern: string;
   
-  /** Target origin */
+  /** Target origin  */
   targetOrigin: string;
   
-  /** Viewer protocol policy */
+  /** Viewer protocol policy  */
   viewerProtocolPolicy: ViewerProtocolPolicy;
   
-  /** Cache policy */
+  /** Cache policy  */
   cachePolicy: CachePolicy;
   
-  /** Request policy */
+  /** Request policy  */
   requestPolicy?: RequestPolicy;
   
-  /** Response headers policy */
+  /** Response headers policy  */
   responseHeadersPolicy?: ResponseHeadersPolicy;
   
-  /** Trusted signers */
+  /** Trusted signers  */
   trustedSigners?: string[];
   
-  /** Lambda function associations */
+  /** Lambda function associations  */
   lambdaFunctions?: LambdaFunctionAssociation[];
   
-  /** CloudFront functions */
+  /** CloudFront functions  */
   cloudfrontFunctions?: CloudFrontFunctionAssociation[];
   
-  /** Realtime logs */
+  /** Realtime logs  */
   realtimeLogs?: RealtimeLogsConfig;
 }
 
 export type ViewerProtocolPolicy = 'allow-all' | 'https-only' | 'redirect-to-https';
 
 export interface CachePolicy {
-  /** Cache policy ID */
+  /** Cache policy ID  */
   id: string;
   
-  /** Cache policy name */
+  /** Cache policy name  */
   name: string;
   
-  /** Default TTL (seconds) */
+  /** Default TTL (seconds)  */
   defaultTTL: number;
   
-  /** Maximum TTL (seconds) */
+  /** Maximum TTL (seconds)  */
   maxTTL: number;
   
-  /** Minimum TTL (seconds) */
+  /** Minimum TTL (seconds)  */
   minTTL: number;
   
-  /** Cache key parameters */
+  /** Cache key parameters  */
   cacheKeyParameters: CacheKeyParameters;
   
-  /** Compression enabled */
+  /** Compression enabled  */
   compressionEnabled: boolean;
 }
 
 export interface CacheKeyParameters {
-  /** Include headers */
+  /** Include headers  */
   headers: CacheKeyHeaders;
   
-  /** Include query strings */
+  /** Include query strings  */
   queryStrings: CacheKeyQueryStrings;
   
-  /** Include cookies */
+  /** Include cookies  */
   cookies: CacheKeyCookies;
   
-  /** Enable accepted-encoding header */
+  /** Enable accepted-encoding header  */
   enableAcceptEncodingGzip: boolean;
   
-  /** Enable accept-encoding brotli */
+  /** Enable accept-encoding brotli  */
   enableAcceptEncodingBrotli: boolean;
 }
 
 export interface CacheKeyHeaders {
-  /** Header behavior */
+  /** Header behavior  */
   behavior: HeaderBehavior;
   
-  /** Header names (if allowlist/denylist) */
+  /** Header names (if allowlist/denylist)  */
   headers?: string[];
 }
 
 export type HeaderBehavior = 'none' | 'whitelist' | 'blacklist' | 'all';
 
 export interface CacheKeyQueryStrings {
-  /** Query string behavior */
+  /** Query string behavior  */
   behavior: QueryStringBehavior;
   
-  /** Query string names (if allowlist/denylist) */
+  /** Query string names (if allowlist/denylist)  */
   queryStrings?: string[];
 }
 
 export type QueryStringBehavior = 'none' | 'whitelist' | 'blacklist' | 'all';
 
 export interface CacheKeyCookies {
-  /** Cookie behavior */
+  /** Cookie behavior  */
   behavior: CookieBehavior;
   
-  /** Cookie names (if allowlist/denylist) */
+  /** Cookie names (if allowlist/denylist)  */
   cookies?: string[];
 }
 
 export type CookieBehavior = 'none' | 'whitelist' | 'blacklist' | 'all';
 
 export interface RequestPolicy {
-  /** Request policy ID */
+  /** Request policy ID  */
   id: string;
   
-  /** Request policy name */
+  /** Request policy name  */
   name: string;
   
-  /** Headers to include */
+  /** Headers to include  */
   headers: RequestHeaders;
   
-  /** Query strings to include */
+  /** Query strings to include  */
   queryStrings: RequestQueryStrings;
   
-  /** Cookies to include */
+  /** Cookies to include  */
   cookies: RequestCookies;
 }
 
 export interface RequestHeaders {
-  /** Header behavior */
+  /** Header behavior  */
   behavior: HeaderBehavior;
   
-  /** Header names */
+  /** Header names  */
   headers?: string[];
 }
 
 export interface RequestQueryStrings {
-  /** Query string behavior */
+  /** Query string behavior  */
   behavior: QueryStringBehavior;
   
-  /** Query string names */
+  /** Query string names  */
   queryStrings?: string[];
 }
 
 export interface RequestCookies {
-  /** Cookie behavior */
+  /** Cookie behavior  */
   behavior: CookieBehavior;
   
-  /** Cookie names */
+  /** Cookie names  */
   cookies?: string[];
 }
 
 export interface ResponseHeadersPolicy {
-  /** Policy ID */
+  /** Policy ID  */
   id: string;
   
-  /** Policy name */
+  /** Policy name  */
   name: string;
   
-  /** Custom headers */
+  /** Custom headers  */
   customHeaders: ResponseCustomHeader[];
   
-  /** Security headers */
+  /** Security headers  */
   securityHeaders?: SecurityHeaders;
   
-  /** CORS headers */
+  /** CORS headers  */
   corsHeaders?: CORSHeaders;
   
-  /** Server timing header */
+  /** Server timing header  */
   serverTimingHeader?: boolean;
 }
 
 export interface ResponseCustomHeader {
-  /** Header name */
+  /** Header name  */
   name: string;
   
-  /** Header value */
+  /** Header value  */
   value: string;
   
-  /** Override existing header */
+  /** Override existing header  */
   override: boolean;
 }
 
 export interface SecurityHeaders {
-  /** Content type options */
+  /** Content type options  */
   contentTypeOptions?: boolean;
   
-  /** Frame options */
+  /** Frame options  */
   frameOptions?: FrameOptionsConfig;
   
-  /** Referrer policy */
+  /** Referrer policy  */
   referrerPolicy?: ReferrerPolicyConfig;
   
-  /** Content security policy */
+  /** Content security policy  */
   contentSecurityPolicy?: CSPConfig;
   
-  /** Strict transport security */
+  /** Strict transport security  */
   strictTransportSecurity?: STSConfig;
 }
 
 export interface FrameOptionsConfig {
-  /** Frame options enabled */
+  /** Frame options enabled  */
   enabled: boolean;
   
-  /** Frame options value */
+  /** Frame options value  */
   value: FrameOptionsValue;
 }
 
 export type FrameOptionsValue = 'DENY' | 'SAMEORIGIN' | 'ALLOW-FROM';
 
 export interface ReferrerPolicyConfig {
-  /** Referrer policy enabled */
+  /** Referrer policy enabled  */
   enabled: boolean;
   
-  /** Referrer policy value */
+  /** Referrer policy value  */
   value: ReferrerPolicyValue;
 }
 
@@ -715,110 +716,110 @@ export type ReferrerPolicyValue =
   | 'unsafe-url';
 
 export interface CSPConfig {
-  /** CSP enabled */
+  /** CSP enabled  */
   enabled: boolean;
   
-  /** CSP policy */
+  /** CSP policy  */
   policy: string;
   
-  /** Report-only mode */
+  /** Report-only mode  */
   reportOnly?: boolean;
 }
 
 export interface STSConfig {
-  /** STS enabled */
+  /** STS enabled  */
   enabled: boolean;
   
-  /** Max age (seconds) */
+  /** Max age (seconds)  */
   maxAge: number;
   
-  /** Include subdomains */
+  /** Include subdomains  */
   includeSubdomains: boolean;
   
-  /** Preload */
+  /** Preload  */
   preload: boolean;
 }
 
 export interface CORSHeaders {
-  /** Access-Control-Allow-Origin */
+  /** Access-Control-Allow-Origin  */
   allowOrigin: CORSOriginConfig;
   
-  /** Access-Control-Allow-Methods */
+  /** Access-Control-Allow-Methods  */
   allowMethods?: CORSMethodsConfig;
   
-  /** Access-Control-Allow-Headers */
+  /** Access-Control-Allow-Headers  */
   allowHeaders?: CORSHeadersConfig;
   
-  /** Access-Control-Expose-Headers */
+  /** Access-Control-Expose-Headers  */
   exposeHeaders?: string[];
   
-  /** Access-Control-Max-Age */
+  /** Access-Control-Max-Age  */
   maxAge?: number;
   
-  /** Access-Control-Allow-Credentials */
+  /** Access-Control-Allow-Credentials  */
   allowCredentials?: boolean;
 }
 
 export interface CORSOriginConfig {
-  /** Origin behavior */
+  /** Origin behavior  */
   behavior: 'all' | 'whitelist' | 'none';
   
-  /** Allowed origins */
+  /** Allowed origins  */
   origins?: string[];
 }
 
 export interface CORSMethodsConfig {
-  /** Methods behavior */
+  /** Methods behavior  */
   behavior: 'all' | 'whitelist';
   
-  /** Allowed methods */
+  /** Allowed methods  */
   methods?: HTTPMethod[];
 }
 
 export type HTTPMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'HEAD' | 'OPTIONS' | 'PATCH';
 
 export interface CORSHeadersConfig {
-  /** Headers behavior */
+  /** Headers behavior  */
   behavior: 'all' | 'whitelist' | 'none';
   
-  /** Allowed headers */
+  /** Allowed headers  */
   headers?: string[];
 }
 
 export interface LambdaFunctionAssociation {
-  /** Lambda function ARN */
+  /** Lambda function ARN  */
   lambdaFunctionARN: string;
   
-  /** Event type */
+  /** Event type  */
   eventType: LambdaEventType;
   
-  /** Include body */
+  /** Include body  */
   includeBody?: boolean;
 }
 
 export type LambdaEventType = 'viewer-request' | 'origin-request' | 'viewer-response' | 'origin-response';
 
 export interface CloudFrontFunctionAssociation {
-  /** Function ARN */
+  /** Function ARN  */
   functionARN: string;
   
-  /** Event type */
+  /** Event type  */
   eventType: CloudFrontEventType;
 }
 
 export type CloudFrontEventType = 'viewer-request' | 'viewer-response';
 
 export interface RealtimeLogsConfig {
-  /** Realtime logs enabled */
+  /** Realtime logs enabled  */
   enabled: boolean;
   
-  /** Kinesis stream ARN */
+  /** Kinesis stream ARN  */
   streamARN: string;
   
-  /** Sample rate (0-100) */
+  /** Sample rate (0-100)  */
   sampleRate: number;
   
-  /** Log fields */
+  /** Log fields  */
   fields: string[];
 }
 
@@ -827,141 +828,141 @@ export interface RealtimeLogsConfig {
 // ============================================================================
 
 export interface CDNService {
-  /** Deploy content to CDN */
+  /** Deploy content to CDN  */
   deploy(content: MediaFile, options: DeploymentOptions): Promise<DeploymentResult>;
   
-  /** Invalidate CDN cache */
+  /** Invalidate CDN cache  */
   invalidate(paths: string[], options?: InvalidationOptions): Promise<InvalidationResult>;
   
-  /** Purge CDN cache */
+  /** Purge CDN cache  */
   purge(paths: string[], options?: PurgeOptions): Promise<PurgeResult>;
   
-  /** Get CDN statistics */
+  /** Get CDN statistics  */
   getStatistics(options?: StatisticsOptions): Promise<CDNStatistics>;
   
-  /** Configure cache rules */
+  /** Configure cache rules  */
   configureCacheRules(rules: CacheRule[]): Promise<void>;
   
-  /** Get cache status */
+  /** Get cache status  */
   getCacheStatus(url: string): Promise<CacheStatusInfo>;
   
-  /** Generate signed URLs */
+  /** Generate signed URLs  */
   generateSignedURL(path: string, options: SignedURLOptions): Promise<string>;
   
-  /** Update security policies */
+  /** Update security policies  */
   updateSecurityPolicies(policies: SecurityPolicyUpdate[]): Promise<void>;
 }
 
 export interface DeploymentOptions {
-  /** Target regions */
+  /** Target regions  */
   regions?: EdgeLocation[];
   
-  /** Cache settings */
+  /** Cache settings  */
   cacheSettings?: CacheSettings;
   
-  /** Compression settings */
+  /** Compression settings  */
   compression?: CompressionConfig;
   
-  /** Security settings */
+  /** Security settings  */
   security?: SecurityConfig;
   
-  /** Metadata */
+  /** Metadata  */
   metadata?: Record<string, string>;
   
-  /** Tags */
+  /** Tags  */
   tags?: Record<string, string>;
 }
 
 export interface CacheSettings {
-  /** Cache TTL (seconds) */
+  /** Cache TTL (seconds)  */
   ttl: number;
   
-  /** Cache key strategy */
+  /** Cache key strategy  */
   keyStrategy: CacheKeyStrategy;
   
-  /** Vary headers */
+  /** Vary headers  */
   varyHeaders?: string[];
   
-  /** Browser cache settings */
+  /** Browser cache settings  */
   browserCache?: BrowserCacheSettings;
 }
 
 export type CacheKeyStrategy = 'url-only' | 'url-query' | 'url-headers' | 'custom';
 
 export interface BrowserCacheSettings {
-  /** Max age (seconds) */
+  /** Max age (seconds)  */
   maxAge: number;
   
-  /** No-cache directive */
+  /** No-cache directive  */
   noCache?: boolean;
   
-  /** Must-revalidate directive */
+  /** Must-revalidate directive  */
   mustRevalidate?: boolean;
   
-  /** Public/private directive */
+  /** Public/private directive  */
   visibility: 'public' | 'private';
 }
 
 export interface CompressionConfig {
-  /** Compression enabled */
+  /** Compression enabled  */
   enabled: boolean;
   
-  /** Compression algorithms */
+  /** Compression algorithms  */
   algorithms: CompressionAlgorithm[];
   
-  /** Minimum file size */
+  /** Minimum file size  */
   minSize: number;
   
-  /** File types to compress */
+  /** File types to compress  */
   fileTypes: string[];
 }
 
 export type CompressionAlgorithm = 'gzip' | 'brotli' | 'deflate';
 
 export interface SecurityConfig {
-  /** DDoS protection */
+  /** DDoS protection  */
   ddosProtection?: boolean;
   
-  /** Web Application Firewall */
+  /** Web Application Firewall  */
   waf?: WAFConfig;
   
-  /** Access control */
+  /** Access control  */
   accessControl?: AccessControlConfig;
   
-  /** Rate limiting */
+  /** Rate limiting  */
   rateLimiting?: RateLimitConfig;
 }
 
 export interface WAFConfig {
-  /** WAF enabled */
+  /** WAF enabled  */
   enabled: boolean;
   
-  /** WAF rules */
+  /** WAF rules  */
   rules: WAFRule[];
   
-  /** Default action */
+  /** Default action  */
   defaultAction: WAFAction;
 }
 
 export interface WAFRule {
-  /** Rule name */
+  /** Rule name  */
   name: string;
   
-  /** Rule condition */
+  /** Rule condition  */
   condition: WAFCondition;
   
-  /** Rule action */
+  /** Rule action  */
   action: WAFAction;
   
-  /** Rule priority */
+  /** Rule priority  */
   priority: number;
 }
 
 export interface WAFCondition {
-  /** Condition type */
+  /** Condition type  */
   type: WAFConditionType;
   
-  /** Condition parameters */
+  /** Condition parameters  */
   parameters: Record<string, unknown>;
 }
 
@@ -969,92 +970,92 @@ export type WAFConditionType = 'ip-match' | 'geo-match' | 'size-match' | 'sql-in
 export type WAFAction = 'allow' | 'block' | 'count' | 'challenge';
 
 export interface AccessControlConfig {
-  /** Allowed IPs */
+  /** Allowed IPs  */
   allowedIPs?: string[];
   
-  /** Blocked IPs */
+  /** Blocked IPs  */
   blockedIPs?: string[];
   
-  /** Allowed countries */
+  /** Allowed countries  */
   allowedCountries?: string[];
   
-  /** Blocked countries */
+  /** Blocked countries  */
   blockedCountries?: string[];
   
-  /** Referrer restrictions */
+  /** Referrer restrictions  */
   referrerRestrictions?: ReferrerRestriction[];
 }
 
 export interface ReferrerRestriction {
-  /** Referrer pattern */
+  /** Referrer pattern  */
   pattern: string;
   
-  /** Action */
+  /** Action  */
   action: 'allow' | 'block';
   
-  /** Case sensitive */
+  /** Case sensitive  */
   caseSensitive: boolean;
 }
 
 export interface RateLimitConfig {
-  /** Requests per second */
+  /** Requests per second  */
   requestsPerSecond: number;
   
-  /** Burst size */
+  /** Burst size  */
   burstSize: number;
   
-  /** Rate limit by IP */
+  /** Rate limit by IP  */
   byIP: boolean;
   
-  /** Rate limit by user */
+  /** Rate limit by user  */
   byUser?: boolean;
   
-  /** Rate limit by path */
+  /** Rate limit by path  */
   byPath?: PathRateLimit[];
 }
 
 export interface PathRateLimit {
-  /** Path pattern */
+  /** Path pattern  */
   pattern: string;
   
-  /** Requests per second */
+  /** Requests per second  */
   requestsPerSecond: number;
   
-  /** Burst size */
+  /** Burst size  */
   burstSize: number;
 }
 
 export interface DeploymentResult {
-  /** Deployment ID */
+  /** Deployment ID  */
   deploymentId: string;
   
-  /** CDN URLs */
+  /** CDN URLs  */
   urls: CDNURLInfo[];
   
-  /** Deployment status */
+  /** Deployment status  */
   status: DeploymentStatus;
   
-  /** Deployment time */
+  /** Deployment time  */
   deploymentTime: Date;
   
-  /** Propagation time estimate */
+  /** Propagation time estimate  */
   estimatedPropagationTime: number;
   
-  /** Cache invalidation info */
+  /** Cache invalidation info  */
   cacheInvalidation?: InvalidationInfo;
 }
 
 export interface CDNURLInfo {
-  /** URL */
+  /** URL  */
   url: string;
   
-  /** URL type */
+  /** URL type  */
   type: CDNURLType;
   
-  /** Region */
+  /** Region  */
   region: EdgeLocation;
   
-  /** Cache status */
+  /** Cache status  */
   cacheStatus?: CacheStatus;
 }
 
@@ -1062,29 +1063,29 @@ export type CDNURLType = 'primary' | 'alternative' | 'regional' | 'mobile' | 'de
 export type DeploymentStatus = 'pending' | 'deploying' | 'deployed' | 'failed' | 'rollback';
 
 export interface InvalidationInfo {
-  /** Invalidation ID */
+  /** Invalidation ID  */
   invalidationId: string;
   
-  /** Invalidated paths */
+  /** Invalidated paths  */
   paths: string[];
   
-  /** Invalidation status */
+  /** Invalidation status  */
   status: InvalidationStatus;
 }
 
 export type InvalidationStatus = 'pending' | 'in-progress' | 'completed' | 'failed';
 
 export interface InvalidationOptions {
-  /** Invalidation type */
+  /** Invalidation type  */
   type: InvalidationType;
   
-  /** Batch invalidation */
+  /** Batch invalidation  */
   batch?: boolean;
   
-  /** Priority */
+  /** Priority  */
   priority?: InvalidationPriority;
   
-  /** Callback URL */
+  /** Callback URL  */
   callbackURL?: string;
 }
 
@@ -1092,70 +1093,70 @@ export type InvalidationType = 'exact' | 'wildcard' | 'recursive' | 'tag-based';
 export type InvalidationPriority = 'normal' | 'high' | 'urgent';
 
 export interface InvalidationResult {
-  /** Invalidation ID */
+  /** Invalidation ID  */
   invalidationId: string;
   
-  /** Status */
+  /** Status  */
   status: InvalidationStatus;
   
-  /** Affected paths */
+  /** Affected paths  */
   affectedPaths: string[];
   
-  /** Estimated completion time */
+  /** Estimated completion time  */
   estimatedCompletionTime: Date;
   
-  /** Cost estimate */
+  /** Cost estimate  */
   costEstimate?: number;
 }
 
 export interface PurgeOptions {
-  /** Purge type */
+  /** Purge type  */
   type: PurgeType;
   
-  /** Purge tags */
+  /** Purge tags  */
   tags?: string[];
   
-  /** Recursive purge */
+  /** Recursive purge  */
   recursive?: boolean;
 }
 
 export type PurgeType = 'url' | 'tag' | 'hostname' | 'everything';
 
 export interface PurgeResult {
-  /** Purge ID */
+  /** Purge ID  */
   purgeId: string;
   
-  /** Status */
+  /** Status  */
   status: PurgeStatus;
   
-  /** Purged items count */
+  /** Purged items count  */
   purgedItems: number;
   
-  /** Completion time */
+  /** Completion time  */
   completionTime: Date;
 }
 
 export type PurgeStatus = 'pending' | 'completed' | 'failed' | 'partial';
 
 export interface StatisticsOptions {
-  /** Time range */
+  /** Time range  */
   timeRange: TimeRange;
   
-  /** Metrics to include */
+  /** Metrics to include  */
   metrics?: CDNMetric[];
   
-  /** Granularity */
+  /** Granularity  */
   granularity?: TimeGranularity;
   
-  /** Group by dimensions */
+  /** Group by dimensions  */
   groupBy?: string[];
 }
 
 export interface TimeRange {
-  /** Start time */
+  /** Start time  */
   start: Date;
   
-  /** End time */
+  /** End time  */
   end: Date;
 }
 
@@ -1172,234 +1173,234 @@ export type CDNMetric =
 export type TimeGranularity = 'minute' | 'hour' | 'day' | 'week' | 'month';
 
 export interface CDNStatistics {
-  /** Time period */
+  /** Time period  */
   period: TimeRange;
   
-  /** Request statistics */
+  /** Request statistics  */
   requests: RequestStatistics;
   
-  /** Bandwidth statistics */
+  /** Bandwidth statistics  */
   bandwidth: BandwidthStatistics;
   
-  /** Cache statistics */
+  /** Cache statistics  */
   cache: CacheStatistics;
   
-  /** Performance statistics */
+  /** Performance statistics  */
   performance: PerformanceStatistics;
   
-  /** Error statistics */
+  /** Error statistics  */
   errors: ErrorStatistics;
   
-  /** Geographic statistics */
+  /** Geographic statistics  */
   geographic: GeographicStatistics;
   
-  /** Top content */
+  /** Top content  */
   topContent: ContentStatistics[];
 }
 
 export interface RequestStatistics {
-  /** Total requests */
+  /** Total requests  */
   total: number;
   
-  /** Requests by time period */
+  /** Requests by time period  */
   timeline: TimelineDataPoint[];
   
-  /** Requests by HTTP method */
+  /** Requests by HTTP method  */
   byMethod: Record<HTTPMethod, number>;
   
-  /** Requests by status code */
+  /** Requests by status code  */
   byStatusCode: Record<number, number>;
   
-  /** Peak requests per second */
+  /** Peak requests per second  */
   peakRequestsPerSecond: number;
 }
 
 export interface TimelineDataPoint {
-  /** Timestamp */
+  /** Timestamp  */
   timestamp: Date;
   
-  /** Value */
+  /** Value  */
   value: number;
 }
 
 export interface BandwidthStatistics {
-  /** Total bandwidth (bytes) */
+  /** Total bandwidth (bytes)  */
   total: number;
   
-  /** Bandwidth timeline */
+  /** Bandwidth timeline  */
   timeline: TimelineDataPoint[];
   
-  /** Bandwidth by content type */
+  /** Bandwidth by content type  */
   byContentType: Record<string, number>;
   
-  /** Peak bandwidth */
+  /** Peak bandwidth  */
   peakBandwidth: number;
   
-  /** Average bandwidth */
+  /** Average bandwidth  */
   averageBandwidth: number;
 }
 
 export interface CacheStatistics {
-  /** Cache hit rate */
+  /** Cache hit rate  */
   hitRate: number;
   
-  /** Cache miss rate */
+  /** Cache miss rate  */
   missRate: number;
   
-  /** Cache hit timeline */
+  /** Cache hit timeline  */
   hitRateTimeline: TimelineDataPoint[];
   
-  /** Cache hits by content type */
+  /** Cache hits by content type  */
   hitsByContentType: Record<string, number>;
   
-  /** Most cached content */
+  /** Most cached content  */
   topCachedContent: string[];
 }
 
 export interface PerformanceStatistics {
-  /** Average response time (ms) */
+  /** Average response time (ms)  */
   averageResponseTime: number;
   
-  /** Response time percentiles */
+  /** Response time percentiles  */
   responseTimePercentiles: Record<string, number>;
   
-  /** Response time timeline */
+  /** Response time timeline  */
   responseTimeTimeline: TimelineDataPoint[];
   
-  /** Time to first byte */
+  /** Time to first byte  */
   timeToFirstByte: number;
   
-  /** Performance by region */
+  /** Performance by region  */
   byRegion: Record<string, PerformanceMetrics>;
 }
 
 export interface PerformanceMetrics {
-  /** Average response time */
+  /** Average response time  */
   avgResponseTime: number;
   
-  /** 95th percentile response time */
+  /** 95th percentile response time  */
   p95ResponseTime: number;
   
-  /** 99th percentile response time */
+  /** 99th percentile response time  */
   p99ResponseTime: number;
   
-  /** Throughput */
+  /** Throughput  */
   throughput: number;
 }
 
 export interface ErrorStatistics {
-  /** Total errors */
+  /** Total errors  */
   total: number;
   
-  /** Error rate */
+  /** Error rate  */
   rate: number;
   
-  /** Errors by status code */
+  /** Errors by status code  */
   byStatusCode: Record<number, number>;
   
-  /** Error timeline */
+  /** Error timeline  */
   timeline: TimelineDataPoint[];
   
-  /** Top error URLs */
+  /** Top error URLs  */
   topErrorURLs: string[];
 }
 
 export interface GeographicStatistics {
-  /** Requests by country */
+  /** Requests by country  */
   byCountry: Record<string, number>;
   
-  /** Bandwidth by country */
+  /** Bandwidth by country  */
   bandwidthByCountry: Record<string, number>;
   
-  /** Performance by region */
+  /** Performance by region  */
   performanceByRegion: Record<string, PerformanceMetrics>;
   
-  /** Top countries */
+  /** Top countries  */
   topCountries: CountryStatistics[];
 }
 
 export interface CountryStatistics {
-  /** Country code */
+  /** Country code  */
   countryCode: string;
   
-  /** Country name */
+  /** Country name  */
   countryName: string;
   
-  /** Requests */
+  /** Requests  */
   requests: number;
   
-  /** Bandwidth */
+  /** Bandwidth  */
   bandwidth: number;
   
-  /** Performance metrics */
+  /** Performance metrics  */
   performance: PerformanceMetrics;
 }
 
 export interface ContentStatistics {
-  /** Content URL */
+  /** Content URL  */
   url: string;
   
-  /** Requests */
+  /** Requests  */
   requests: number;
   
-  /** Bandwidth */
+  /** Bandwidth  */
   bandwidth: number;
   
-  /** Cache hit rate */
+  /** Cache hit rate  */
   cacheHitRate: number;
   
-  /** Average response time */
+  /** Average response time  */
   avgResponseTime: number;
 }
 
 export interface CacheStatusInfo {
-  /** URL */
+  /** URL  */
   url: string;
   
-  /** Cache status */
+  /** Cache status  */
   status: CacheStatus;
   
-  /** TTL remaining (seconds) */
+  /** TTL remaining (seconds)  */
   ttlRemaining?: number;
   
-  /** Last cached */
+  /** Last cached  */
   lastCached?: Date;
   
-  /** Cache region */
+  /** Cache region  */
   cacheRegion: EdgeLocation;
   
-  /** Cache size */
+  /** Cache size  */
   cacheSize?: number;
   
-  /** Cache tags */
+  /** Cache tags  */
   cacheTags?: string[];
 }
 
 export interface SignedURLOptions {
-  /** Expiration time */
+  /** Expiration time  */
   expiresAt: Date;
   
-  /** IP restrictions */
+  /** IP restrictions  */
   ipRestrictions?: string[];
   
-  /** Custom policy */
+  /** Custom policy  */
   customPolicy?: string;
   
-  /** Key pair ID */
+  /** Key pair ID  */
   keyPairId?: string;
   
-  /** Private key */
+  /** Private key  */
   privateKey?: string;
 }
 
 export interface SecurityPolicyUpdate {
-  /** Policy type */
+  /** Policy type  */
   type: SecurityPolicyType;
   
-  /** Policy configuration */
+  /** Policy configuration  */
   configuration: Record<string, unknown>;
   
-  /** Update action */
+  /** Update action  */
   action: 'create' | 'update' | 'delete';
 }
 

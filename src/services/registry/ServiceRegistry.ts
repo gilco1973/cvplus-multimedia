@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Service Registry
  * 
  * Manages service registration, discovery, and lifecycle
  * for all multimedia services in the system.
- */
+  */
 
 import { ServiceType, ServiceConfig, MediaService } from '../../types';
 import { Logger } from '../utils/Logger';
@@ -28,7 +29,7 @@ export interface ServiceTypeInfo {
 
 /**
  * Central service registry for multimedia services
- */
+  */
 export class ServiceRegistry {
   private static instance: ServiceRegistry;
   private readonly logger: Logger;
@@ -44,7 +45,7 @@ export class ServiceRegistry {
 
   /**
    * Get singleton instance
-   */
+    */
   public static getInstance(): ServiceRegistry {
     if (!ServiceRegistry.instance) {
       ServiceRegistry.instance = new ServiceRegistry();
@@ -54,7 +55,7 @@ export class ServiceRegistry {
 
   /**
    * Initialize the service registry
-   */
+    */
   public async initialize(): Promise<void> {
     try {
       this.logger.info('Initializing service registry');
@@ -72,7 +73,7 @@ export class ServiceRegistry {
 
   /**
    * Register a service instance
-   */
+    */
   public async registerService(
     serviceType: ServiceType,
     instance: MediaService,
@@ -112,7 +113,7 @@ export class ServiceRegistry {
 
   /**
    * Register a service type with its capabilities
-   */
+    */
   public async registerServiceType(
     serviceType: ServiceType,
     defaultConfig: Partial<ServiceConfig>,
@@ -143,7 +144,7 @@ export class ServiceRegistry {
 
   /**
    * Unregister a service
-   */
+    */
   public async unregisterService(serviceId: string): Promise<boolean> {
     try {
       const registration = this.services.get(serviceId);
@@ -174,14 +175,14 @@ export class ServiceRegistry {
 
   /**
    * Get service by ID
-   */
+    */
   public getService(serviceId: string): ServiceRegistration | undefined {
     return this.services.get(serviceId);
   }
 
   /**
    * Get all services of a specific type
-   */
+    */
   public getServicesByType(serviceType: ServiceType): ServiceRegistration[] {
     const services: ServiceRegistration[] = [];
     
@@ -196,28 +197,28 @@ export class ServiceRegistry {
 
   /**
    * Get all registered services
-   */
+    */
   public getAllServices(): ServiceRegistration[] {
     return Array.from(this.services.values());
   }
 
   /**
    * Get all registered service types
-   */
+    */
   public getRegisteredServices(): ServiceType[] {
     return Array.from(this.serviceTypes.keys());
   }
 
   /**
    * Get service type information
-   */
+    */
   public getServiceTypeInfo(serviceType: ServiceType): ServiceTypeInfo | undefined {
     return this.serviceTypes.get(serviceType);
   }
 
   /**
    * Find healthy services of a specific type
-   */
+    */
   public getHealthyServices(serviceType: ServiceType): ServiceRegistration[] {
     return this.getServicesByType(serviceType).filter(
       registration => registration.healthy
@@ -226,7 +227,7 @@ export class ServiceRegistry {
 
   /**
    * Get service statistics
-   */
+    */
   public getStats(): Record<string, any> {
     const stats = {
       totalServices: this.services.size,
@@ -253,7 +254,7 @@ export class ServiceRegistry {
 
   /**
    * Perform health check on specific service
-   */
+    */
   public async performHealthCheck(serviceId: string): Promise<boolean> {
     try {
       const registration = this.services.get(serviceId);
@@ -288,7 +289,7 @@ export class ServiceRegistry {
 
   /**
    * Perform health checks on all services
-   */
+    */
   public async performAllHealthChecks(): Promise<Record<string, boolean>> {
     const results: Record<string, boolean> = {};
 
@@ -311,7 +312,7 @@ export class ServiceRegistry {
 
   /**
    * Get unhealthy services
-   */
+    */
   public getUnhealthyServices(): ServiceRegistration[] {
     return Array.from(this.services.values()).filter(
       registration => !registration.healthy
@@ -320,7 +321,7 @@ export class ServiceRegistry {
 
   /**
    * Restart unhealthy services
-   */
+    */
   public async restartUnhealthyServices(): Promise<number> {
     const unhealthyServices = this.getUnhealthyServices();
     let restartedCount = 0;
@@ -352,7 +353,7 @@ export class ServiceRegistry {
 
   /**
    * Shutdown all services
-   */
+    */
   public async shutdown(): Promise<void> {
     this.logger.info('Shutting down service registry');
 
@@ -383,7 +384,7 @@ export class ServiceRegistry {
 
   /**
    * Export registry state for debugging
-   */
+    */
   public exportState(): Record<string, any> {
     return {
       timestamp: new Date().toISOString(),
@@ -402,7 +403,7 @@ export class ServiceRegistry {
 
   /**
    * Start health check monitoring
-   */
+    */
   private startHealthCheckMonitoring(): void {
     const interval = 60000; // 1 minute
     
@@ -419,14 +420,14 @@ export class ServiceRegistry {
 
   /**
    * Generate unique service ID
-   */
+    */
   private generateServiceId(serviceType: ServiceType): string {
     return `${serviceType}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
   }
 
   /**
    * Get service ID from registration
-   */
+    */
   private getServiceId(registration: ServiceRegistration): string {
     for (const [id, reg] of this.services) {
       if (reg === registration) {

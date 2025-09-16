@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Base Media Service Class
  * 
  * Provides common functionality and interface for all multimedia services
  * including logging, error handling, performance monitoring, and validation.
- */
+  */
 
 import { 
   MediaService as IMediaService,
@@ -23,7 +24,7 @@ import { ValidationService } from '../security/ValidationService';
 /**
  * Abstract base class for all multimedia services
  * Implements common patterns for processing, validation, and monitoring
- */
+  */
 export abstract class MediaService implements IMediaService {
   protected readonly logger: Logger;
   protected readonly errorHandler: ErrorHandler;
@@ -42,7 +43,7 @@ export abstract class MediaService implements IMediaService {
   /**
    * Abstract method for processing media files
    * Must be implemented by concrete service classes
-   */
+    */
   abstract processMedia(
     input: File | Buffer | string,
     options: ProcessingOptions
@@ -50,7 +51,7 @@ export abstract class MediaService implements IMediaService {
 
   /**
    * Abstract method for validating input before processing
-   */
+    */
   abstract validateInput(
     input: File | Buffer | string,
     options: ProcessingOptions
@@ -58,17 +59,17 @@ export abstract class MediaService implements IMediaService {
 
   /**
    * Get supported media types for this service
-   */
+    */
   abstract getSupportedTypes(): MediaType[];
 
   /**
    * Get service capabilities and limitations
-   */
+    */
   abstract getCapabilities(): Record<string, any>;
 
   /**
    * Common preprocessing pipeline
-   */
+    */
   protected async preprocess(
     input: File | Buffer | string,
     options: ProcessingOptions
@@ -105,7 +106,7 @@ export abstract class MediaService implements IMediaService {
 
   /**
    * Common postprocessing pipeline
-   */
+    */
   protected async postprocess(
     result: ProcessingResult,
     options: ProcessingOptions
@@ -144,7 +145,7 @@ export abstract class MediaService implements IMediaService {
 
   /**
    * Security scanning for input files
-   */
+    */
   protected async scanForSecurity(input: File | Buffer | string): Promise<void> {
     if (this.config.security?.enableScanning === false) {
       return;
@@ -173,7 +174,7 @@ export abstract class MediaService implements IMediaService {
 
   /**
    * Preprocess and validate options
-   */
+    */
   protected async preprocessOptions(options: ProcessingOptions): Promise<ProcessingOptions> {
     const processedOptions = { ...options };
 
@@ -192,7 +193,7 @@ export abstract class MediaService implements IMediaService {
 
   /**
    * Service-specific option preprocessing (override in subclasses)
-   */
+    */
   protected async serviceSpecificOptionPreprocessing(
     options: ProcessingOptions
   ): Promise<ProcessingOptions> {
@@ -201,7 +202,7 @@ export abstract class MediaService implements IMediaService {
 
   /**
    * Validate processing result
-   */
+    */
   protected async validateResult(result: ProcessingResult): Promise<void> {
     if (!result.output) {
       throw new MultimediaError('Processing result is empty', 'PROCESSING_ERROR');
@@ -218,7 +219,7 @@ export abstract class MediaService implements IMediaService {
 
   /**
    * Enhance result metadata with additional information
-   */
+    */
   protected async enhanceResultMetadata(
     result: ProcessingResult,
     options: ProcessingOptions
@@ -238,7 +239,7 @@ export abstract class MediaService implements IMediaService {
 
   /**
    * Calculate result size for logging
-   */
+    */
   protected getResultSize(result: ProcessingResult): number {
     if (result.output instanceof Buffer) {
       return result.output.length;
@@ -254,7 +255,7 @@ export abstract class MediaService implements IMediaService {
 
   /**
    * Health check for service availability
-   */
+    */
   public async healthCheck(): Promise<{ status: 'healthy' | 'unhealthy'; details: Record<string, any> }> {
     try {
       const capabilities = this.getCapabilities();
@@ -283,14 +284,14 @@ export abstract class MediaService implements IMediaService {
 
   /**
    * Get performance metrics for this service
-   */
+    */
   public getPerformanceMetrics(): Record<string, any> {
     return this.performanceTracker.getMetrics();
   }
 
   /**
    * Cleanup resources (override in subclasses if needed)
-   */
+    */
   public async cleanup(): Promise<void> {
     this.logger.info('Cleaning up service resources');
     // Base cleanup logic - can be extended by subclasses

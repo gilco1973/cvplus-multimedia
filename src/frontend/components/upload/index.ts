@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Upload Components
  * 
  * Comprehensive file upload and management components for the multimedia module.
  * Provides drag-and-drop upload, progress tracking, image cropping, and file validation.
- */
+  */
 
 // Main Upload Components
 export { default as FileUpload } from '../utilities/FileUpload';

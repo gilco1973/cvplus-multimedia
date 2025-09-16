@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Type definitions for display multimedia components
- */
+  */
 
 export interface GalleryProps {
   items: GalleryItem[];

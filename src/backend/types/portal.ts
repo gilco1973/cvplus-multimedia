@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Portal Types for Multimedia QR Code Integration
- */
+  */
 
 export interface PortalUrls {
   portal: string;

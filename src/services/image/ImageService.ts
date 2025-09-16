@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Image Processing Service
  * 
  * Comprehensive image processing service supporting format conversion,
  * optimization, manipulation, and advanced features like AI enhancement.
- */
+  */
 
 import { 
   ProcessingOptions,
@@ -25,7 +26,7 @@ import { ImageTransformer } from './ImageTransformer';
 /**
  * Main image processing service implementation
  * Provides high-level interface for all image operations
- */
+  */
 export class ImageService extends MediaService {
   private readonly processor: ImageProcessor;
   private readonly optimizer: ImageOptimizer;
@@ -57,7 +58,7 @@ export class ImageService extends MediaService {
 
   /**
    * Main image processing entry point
-   */
+    */
   public async processMedia(
     input: File | Buffer | string,
     options: ProcessingOptions
@@ -119,7 +120,7 @@ export class ImageService extends MediaService {
 
   /**
    * Validate image input
-   */
+    */
   public async validateInput(
     input: File | Buffer | string,
     options: ProcessingOptions
@@ -159,14 +160,14 @@ export class ImageService extends MediaService {
 
   /**
    * Get supported media types
-   */
+    */
   public getSupportedTypes(): MediaType[] {
     return ['image'];
   }
 
   /**
    * Get service capabilities
-   */
+    */
   public getCapabilities(): Record<string, any> {
     return {
       formats: ImageService.SUPPORTED_FORMATS,
@@ -188,7 +189,7 @@ export class ImageService extends MediaService {
 
   /**
    * Optimize image with specific options
-   */
+    */
   public async optimizeImage(
     input: File | Buffer | string,
     options: ImageOptimizationOptions = {}
@@ -209,7 +210,7 @@ export class ImageService extends MediaService {
 
   /**
    * Transform image with specific options
-   */
+    */
   public async transformImage(
     input: File | Buffer | string,
     options: ImageTransformOptions
@@ -229,7 +230,7 @@ export class ImageService extends MediaService {
 
   /**
    * Analyze image content and metadata
-   */
+    */
   public async analyzeImage(
     input: File | Buffer | string
   ): Promise<ImageAnalysisResult> {
@@ -239,7 +240,7 @@ export class ImageService extends MediaService {
 
   /**
    * Generate multiple sizes/formats for responsive design
-   */
+    */
   public async generateResponsiveVersions(
     input: File | Buffer | string,
     sizes: Array<{ width: number; height?: number; format?: string; quality?: number }>
@@ -285,7 +286,7 @@ export class ImageService extends MediaService {
 
   /**
    * Batch process multiple images
-   */
+    */
   public async batchProcess(
     inputs: Array<File | Buffer | string>,
     options: ImageProcessingOptions,
@@ -317,7 +318,7 @@ export class ImageService extends MediaService {
 
   /**
    * Service-specific option preprocessing
-   */
+    */
   protected async serviceSpecificOptionPreprocessing(
     options: ProcessingOptions
   ): Promise<ProcessingOptions> {
@@ -343,7 +344,7 @@ export class ImageService extends MediaService {
 
   /**
    * Load image buffer from various input types
-   */
+    */
   private async loadImageBuffer(input: File | Buffer | string): Promise<Buffer> {
     if (Buffer.isBuffer(input)) {
       return input;
@@ -368,7 +369,7 @@ export class ImageService extends MediaService {
 
   /**
    * Get input size in bytes
-   */
+    */
   private getInputSize(input: File | Buffer | string): number {
     if (Buffer.isBuffer(input)) {
       return input.length;
@@ -388,7 +389,7 @@ export class ImageService extends MediaService {
 
   /**
    * Detect image format from buffer
-   */
+    */
   private async detectFormat(buffer: Buffer): Promise<string> {
     // Simple format detection based on magic numbers
     const signature = buffer.slice(0, 12);
@@ -414,7 +415,7 @@ export class ImageService extends MediaService {
 
   /**
    * Get image dimensions
-   */
+    */
   private async getDimensions(buffer: Buffer): Promise<{ width: number; height: number }> {
     // This would typically use a proper image library like sharp or jimp
     // For now, returning placeholder values

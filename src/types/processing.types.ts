@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Processing pipeline and job management types for CVPlus multimedia module
- */
+  */
 
 import { MediaFile, ProcessingStatus, QualityLevel } from './media.types';
 // Removed core dependency for minimal build
@@ -17,64 +18,64 @@ interface ErrorDetails {
 // ============================================================================
 
 export interface ProcessingJob<T = unknown> {
-  /** Unique job identifier */
+  /** Unique job identifier  */
   id: string;
   
-  /** Job type */
+  /** Job type  */
   type: ProcessingJobType;
   
-  /** Processing status */
+  /** Processing status  */
   status: ProcessingStatus;
   
-  /** Input files */
+  /** Input files  */
   inputs: MediaFile[];
   
-  /** Processing options */
+  /** Processing options  */
   options: T;
   
-  /** Job priority (1-10, 10 being highest) */
+  /** Job priority (1-10, 10 being highest)  */
   priority: number;
   
-  /** Job creation timestamp */
+  /** Job creation timestamp  */
   createdAt: Date;
   
-  /** Job started timestamp */
+  /** Job started timestamp  */
   startedAt?: Date;
   
-  /** Job completion timestamp */
+  /** Job completion timestamp  */
   completedAt?: Date;
   
-  /** Processing progress (0-100) */
+  /** Processing progress (0-100)  */
   progress: number;
   
-  /** Current processing stage */
+  /** Current processing stage  */
   currentStage?: ProcessingStage;
   
-  /** Processing results */
+  /** Processing results  */
   results: ProcessingJobResult[];
   
-  /** Error information */
+  /** Error information  */
   error?: ProcessingError;
   
-  /** Job metadata */
+  /** Job metadata  */
   metadata: JobMetadata;
   
-  /** Resource usage */
+  /** Resource usage  */
   resourceUsage?: ResourceUsage;
   
-  /** Dependencies on other jobs */
+  /** Dependencies on other jobs  */
   dependencies?: string[];
   
-  /** Retry configuration */
+  /** Retry configuration  */
   retryConfig?: RetryConfiguration;
   
-  /** User ID who created the job */
+  /** User ID who created the job  */
   userId: string;
   
-  /** Callback URL for status updates */
+  /** Callback URL for status updates  */
   callbackUrl?: string;
   
-  /** Job expiration timestamp */
+  /** Job expiration timestamp  */
   expiresAt?: Date;
 }
 
@@ -90,196 +91,196 @@ export type ProcessingJobType =
   | 'metadata-extraction';
 
 export interface ProcessingStage {
-  /** Stage name */
+  /** Stage name  */
   name: string;
   
-  /** Stage description */
+  /** Stage description  */
   description: string;
   
-  /** Stage progress (0-100) */
+  /** Stage progress (0-100)  */
   progress: number;
   
-  /** Stage start time */
+  /** Stage start time  */
   startedAt: Date;
   
-  /** Estimated completion time */
+  /** Estimated completion time  */
   estimatedCompletionAt?: Date;
   
-  /** Stage-specific metadata */
+  /** Stage-specific metadata  */
   metadata?: Record<string, unknown>;
 }
 
 export interface ProcessingJobResult {
-  /** Result type */
+  /** Result type  */
   type: 'processed-file' | 'thumbnail' | 'metadata' | 'analysis' | 'error';
   
-  /** Result data */
+  /** Result data  */
   data: unknown;
   
-  /** Result file (if applicable) */
+  /** Result file (if applicable)  */
   file?: MediaFile;
   
-  /** Result URL (if applicable) */
+  /** Result URL (if applicable)  */
   url?: string;
   
-  /** Result creation timestamp */
+  /** Result creation timestamp  */
   createdAt: Date;
   
-  /** Result metadata */
+  /** Result metadata  */
   metadata?: Record<string, unknown>;
 }
 
 export interface ProcessingError extends ErrorDetails {
-  /** Error stage */
+  /** Error stage  */
   stage?: string;
   
-  /** Recovery suggestions */
+  /** Recovery suggestions  */
   recoverySuggestions?: string[];
   
-  /** Is recoverable */
+  /** Is recoverable  */
   recoverable: boolean;
   
-  /** Retry count */
+  /** Retry count  */
   retryCount?: number;
   
-  /** Technical details */
+  /** Technical details  */
   technicalDetails?: Record<string, unknown>;
 }
 
 export interface JobMetadata {
-  /** Job name/title */
+  /** Job name/title  */
   name?: string;
   
-  /** Job description */
+  /** Job description  */
   description?: string;
   
-  /** Job tags */
+  /** Job tags  */
   tags?: string[];
   
-  /** Source application */
+  /** Source application  */
   source?: string;
   
-  /** Processing version */
+  /** Processing version  */
   version?: string;
   
-  /** Custom metadata */
+  /** Custom metadata  */
   custom?: Record<string, unknown>;
   
-  /** Processing environment */
+  /** Processing environment  */
   environment?: ProcessingEnvironment;
 }
 
 export interface ProcessingEnvironment {
-  /** Processing node ID */
+  /** Processing node ID  */
   nodeId: string;
   
-  /** Processing region */
+  /** Processing region  */
   region: string;
   
-  /** Available resources */
+  /** Available resources  */
   availableResources: AvailableResources;
   
-  /** Processing engine version */
+  /** Processing engine version  */
   engineVersion: string;
   
-  /** System information */
+  /** System information  */
   systemInfo?: SystemInfo;
 }
 
 export interface AvailableResources {
-  /** CPU cores */
+  /** CPU cores  */
   cpuCores: number;
   
-  /** Memory (MB) */
+  /** Memory (MB)  */
   memoryMB: number;
   
-  /** Disk space (MB) */
+  /** Disk space (MB)  */
   diskSpaceMB: number;
   
-  /** GPU available */
+  /** GPU available  */
   gpuAvailable: boolean;
   
-  /** GPU memory (MB) */
+  /** GPU memory (MB)  */
   gpuMemoryMB?: number;
   
-  /** Network bandwidth (Mbps) */
+  /** Network bandwidth (Mbps)  */
   networkBandwidthMbps: number;
 }
 
 export interface SystemInfo {
-  /** Operating system */
+  /** Operating system  */
   os: string;
   
-  /** Architecture */
+  /** Architecture  */
   architecture: string;
   
-  /** Node.js version */
+  /** Node.js version  */
   nodeVersion: string;
   
-  /** Processing libraries versions */
+  /** Processing libraries versions  */
   libraryVersions: Record<string, string>;
 }
 
 export interface ResourceUsage {
-  /** CPU usage percentage */
+  /** CPU usage percentage  */
   cpuUsage: number;
   
-  /** Memory usage (MB) */
+  /** Memory usage (MB)  */
   memoryUsageMB: number;
   
-  /** Peak memory usage (MB) */
+  /** Peak memory usage (MB)  */
   peakMemoryUsageMB: number;
   
-  /** Disk I/O (MB/s) */
+  /** Disk I/O (MB/s)  */
   diskIORate: number;
   
-  /** Network I/O (MB/s) */
+  /** Network I/O (MB/s)  */
   networkIORate: number;
   
-  /** GPU usage percentage */
+  /** GPU usage percentage  */
   gpuUsage?: number;
   
-  /** Processing efficiency score (0-100) */
+  /** Processing efficiency score (0-100)  */
   efficiencyScore: number;
   
-  /** Resource usage timeline */
+  /** Resource usage timeline  */
   timeline: ResourceUsagePoint[];
 }
 
 export interface ResourceUsagePoint {
-  /** Timestamp */
+  /** Timestamp  */
   timestamp: Date;
   
-  /** CPU usage at this point */
+  /** CPU usage at this point  */
   cpuUsage: number;
   
-  /** Memory usage at this point */
+  /** Memory usage at this point  */
   memoryUsage: number;
   
-  /** Processing stage at this point */
+  /** Processing stage at this point  */
   stage?: string;
 }
 
 export interface RetryConfiguration {
-  /** Maximum retry attempts */
+  /** Maximum retry attempts  */
   maxAttempts: number;
   
-  /** Initial delay (ms) */
+  /** Initial delay (ms)  */
   initialDelayMs: number;
   
-  /** Delay multiplier for exponential backoff */
+  /** Delay multiplier for exponential backoff  */
   delayMultiplier: number;
   
-  /** Maximum delay (ms) */
+  /** Maximum delay (ms)  */
   maxDelayMs: number;
   
-  /** Retry on specific error types */
+  /** Retry on specific error types  */
   retryOnErrorTypes: string[];
   
-  /** Stop retry on specific error types */
+  /** Stop retry on specific error types  */
   stopOnErrorTypes: string[];
   
-  /** Jitter for retry timing */
+  /** Jitter for retry timing  */
   jitter: boolean;
 }
 
@@ -288,72 +289,72 @@ export interface RetryConfiguration {
 // ============================================================================
 
 export interface ProcessingPipeline {
-  /** Pipeline ID */
+  /** Pipeline ID  */
   id: string;
   
-  /** Pipeline name */
+  /** Pipeline name  */
   name: string;
   
-  /** Pipeline description */
+  /** Pipeline description  */
   description?: string;
   
-  /** Pipeline stages */
+  /** Pipeline stages  */
   stages: PipelineStage[];
   
-  /** Input requirements */
+  /** Input requirements  */
   inputRequirements: InputRequirements;
   
-  /** Output specifications */
+  /** Output specifications  */
   outputSpecifications: OutputSpecifications;
   
-  /** Pipeline configuration */
+  /** Pipeline configuration  */
   configuration: PipelineConfiguration;
   
-  /** Pipeline metadata */
+  /** Pipeline metadata  */
   metadata: PipelineMetadata;
   
-  /** Version information */
+  /** Version information  */
   version: string;
   
-  /** Pipeline status */
+  /** Pipeline status  */
   status: PipelineStatus;
   
-  /** Creation timestamp */
+  /** Creation timestamp  */
   createdAt: Date;
   
-  /** Last modified timestamp */
+  /** Last modified timestamp  */
   lastModifiedAt: Date;
 }
 
 export interface PipelineStage {
-  /** Stage ID */
+  /** Stage ID  */
   id: string;
   
-  /** Stage name */
+  /** Stage name  */
   name: string;
   
-  /** Stage type */
+  /** Stage type  */
   type: PipelineStageType;
   
-  /** Stage configuration */
+  /** Stage configuration  */
   configuration: StageConfiguration;
   
-  /** Stage dependencies */
+  /** Stage dependencies  */
   dependencies: string[];
   
-  /** Parallel execution */
+  /** Parallel execution  */
   parallel: boolean;
   
-  /** Stage timeout (ms) */
+  /** Stage timeout (ms)  */
   timeoutMs?: number;
   
-  /** Retry configuration for this stage */
+  /** Retry configuration for this stage  */
   retryConfig?: RetryConfiguration;
   
-  /** Stage validation */
+  /** Stage validation  */
   validation?: StageValidation;
   
-  /** Resource requirements */
+  /** Resource requirements  */
   resourceRequirements?: ResourceRequirements;
 }
 
@@ -368,201 +369,201 @@ export type PipelineStageType =
   | 'cleanup';
 
 export interface StageConfiguration {
-  /** Stage processor */
+  /** Stage processor  */
   processor: string;
   
-  /** Processor version */
+  /** Processor version  */
   version?: string;
   
-  /** Processor options */
+  /** Processor options  */
   options: Record<string, unknown>;
   
-  /** Input mapping */
+  /** Input mapping  */
   inputMapping?: Record<string, string>;
   
-  /** Output mapping */
+  /** Output mapping  */
   outputMapping?: Record<string, string>;
   
-  /** Conditional execution */
+  /** Conditional execution  */
   condition?: StageCondition;
 }
 
 export interface StageCondition {
-  /** Condition expression */
+  /** Condition expression  */
   expression: string;
   
-  /** Condition variables */
+  /** Condition variables  */
   variables: Record<string, unknown>;
   
-  /** Skip stage if condition false */
+  /** Skip stage if condition false  */
   skipIfFalse: boolean;
 }
 
 export interface StageValidation {
-  /** Input validation */
+  /** Input validation  */
   input?: ValidationRule[];
   
-  /** Output validation */
+  /** Output validation  */
   output?: ValidationRule[];
   
-  /** Performance validation */
+  /** Performance validation  */
   performance?: PerformanceValidation;
 }
 
 export interface ValidationRule {
-  /** Rule type */
+  /** Rule type  */
   type: 'required' | 'format' | 'size' | 'quality' | 'custom';
   
-  /** Rule parameters */
+  /** Rule parameters  */
   parameters: Record<string, unknown>;
   
-  /** Error message */
+  /** Error message  */
   errorMessage?: string;
   
-  /** Rule severity */
+  /** Rule severity  */
   severity: 'error' | 'warning' | 'info';
 }
 
 export interface PerformanceValidation {
-  /** Maximum processing time (ms) */
+  /** Maximum processing time (ms)  */
   maxProcessingTimeMs?: number;
   
-  /** Maximum memory usage (MB) */
+  /** Maximum memory usage (MB)  */
   maxMemoryUsageMB?: number;
   
-  /** Maximum output size (bytes) */
+  /** Maximum output size (bytes)  */
   maxOutputSizeBytes?: number;
   
-  /** Minimum quality score */
+  /** Minimum quality score  */
   minQualityScore?: number;
 }
 
 export interface ResourceRequirements {
-  /** CPU cores required */
+  /** CPU cores required  */
   cpuCores?: number;
   
-  /** Memory required (MB) */
+  /** Memory required (MB)  */
   memoryMB?: number;
   
-  /** Disk space required (MB) */
+  /** Disk space required (MB)  */
   diskSpaceMB?: number;
   
-  /** GPU required */
+  /** GPU required  */
   gpuRequired?: boolean;
   
-  /** GPU memory required (MB) */
+  /** GPU memory required (MB)  */
   gpuMemoryMB?: number;
   
-  /** Network bandwidth required (Mbps) */
+  /** Network bandwidth required (Mbps)  */
   networkBandwidthMbps?: number;
 }
 
 export interface InputRequirements {
-  /** Supported media types */
+  /** Supported media types  */
   supportedTypes: string[];
   
-  /** Maximum file size */
+  /** Maximum file size  */
   maxFileSizeBytes: number;
   
-  /** Minimum file size */
+  /** Minimum file size  */
   minFileSizeBytes?: number;
   
-  /** Supported formats */
+  /** Supported formats  */
   supportedFormats: string[];
   
-  /** Required metadata fields */
+  /** Required metadata fields  */
   requiredMetadata?: string[];
   
-  /** Input validation rules */
+  /** Input validation rules  */
   validationRules: ValidationRule[];
 }
 
 export interface OutputSpecifications {
-  /** Output types generated */
+  /** Output types generated  */
   outputTypes: string[];
   
-  /** Output formats */
+  /** Output formats  */
   outputFormats: string[];
   
-  /** Quality levels available */
+  /** Quality levels available  */
   qualityLevels: QualityLevel[];
   
-  /** Output metadata */
+  /** Output metadata  */
   outputMetadata: string[];
   
-  /** Output validation */
+  /** Output validation  */
   outputValidation: ValidationRule[];
 }
 
 export interface PipelineConfiguration {
-  /** Processing mode */
+  /** Processing mode  */
   processingMode: ProcessingMode;
   
-  /** Quality settings */
+  /** Quality settings  */
   qualitySettings: QualitySettings;
   
-  /** Performance settings */
+  /** Performance settings  */
   performanceSettings: PerformanceSettings;
   
-  /** Error handling */
+  /** Error handling  */
   errorHandling: ErrorHandlingSettings;
   
-  /** Logging configuration */
+  /** Logging configuration  */
   logging: LoggingConfiguration;
   
-  /** Notification settings */
+  /** Notification settings  */
   notifications: NotificationSettings;
 }
 
 export type ProcessingMode = 'fast' | 'balanced' | 'quality' | 'custom';
 
 export interface QualitySettings {
-  /** Target quality level */
+  /** Target quality level  */
   targetQuality: QualityLevel;
   
-  /** Quality validation enabled */
+  /** Quality validation enabled  */
   qualityValidation: boolean;
   
-  /** Minimum acceptable quality */
+  /** Minimum acceptable quality  */
   minAcceptableQuality?: number;
   
-  /** Quality assessment method */
+  /** Quality assessment method  */
   assessmentMethod: QualityAssessmentMethod;
   
-  /** Custom quality metrics */
+  /** Custom quality metrics  */
   customMetrics?: QualityMetric[];
 }
 
 export type QualityAssessmentMethod = 'ssim' | 'psnr' | 'vmaf' | 'perceptual' | 'combined';
 
 export interface QualityMetric {
-  /** Metric name */
+  /** Metric name  */
   name: string;
   
-  /** Metric weight in overall score */
+  /** Metric weight in overall score  */
   weight: number;
   
-  /** Metric threshold */
+  /** Metric threshold  */
   threshold?: number;
   
-  /** Metric calculation method */
+  /** Metric calculation method  */
   method: string;
 }
 
 export interface PerformanceSettings {
-  /** Processing priority */
+  /** Processing priority  */
   priority: ProcessingPriority;
   
-  /** Resource allocation */
+  /** Resource allocation  */
   resourceAllocation: ResourceAllocationSettings;
   
-  /** Optimization level */
+  /** Optimization level  */
   optimizationLevel: OptimizationLevel;
   
-  /** Parallel processing */
+  /** Parallel processing  */
   parallelProcessing: ParallelProcessingSettings;
   
-  /** Caching settings */
+  /** Caching settings  */
   caching: ProcessingCacheSettings;
 }
 
@@ -570,63 +571,63 @@ export type ProcessingPriority = 'low' | 'normal' | 'high' | 'urgent';
 export type OptimizationLevel = 'none' | 'basic' | 'standard' | 'aggressive';
 
 export interface ResourceAllocationSettings {
-  /** CPU allocation mode */
+  /** CPU allocation mode  */
   cpuAllocation: 'shared' | 'dedicated' | 'adaptive';
   
-  /** Memory allocation (MB) */
+  /** Memory allocation (MB)  */
   memoryAllocationMB?: number;
   
-  /** GPU allocation */
+  /** GPU allocation  */
   gpuAllocation?: 'shared' | 'dedicated';
   
-  /** Resource limits */
+  /** Resource limits  */
   resourceLimits: ResourceLimits;
 }
 
 export interface ResourceLimits {
-  /** Maximum CPU usage percentage */
+  /** Maximum CPU usage percentage  */
   maxCpuUsage: number;
   
-  /** Maximum memory usage (MB) */
+  /** Maximum memory usage (MB)  */
   maxMemoryUsageMB: number;
   
-  /** Maximum processing time (ms) */
+  /** Maximum processing time (ms)  */
   maxProcessingTimeMs: number;
   
-  /** Maximum disk usage (MB) */
+  /** Maximum disk usage (MB)  */
   maxDiskUsageMB: number;
 }
 
 export interface ParallelProcessingSettings {
-  /** Enable parallel processing */
+  /** Enable parallel processing  */
   enabled: boolean;
   
-  /** Maximum concurrent operations */
+  /** Maximum concurrent operations  */
   maxConcurrentOperations: number;
   
-  /** Chunk size for parallel processing */
+  /** Chunk size for parallel processing  */
   chunkSize?: number;
   
-  /** Load balancing strategy */
+  /** Load balancing strategy  */
   loadBalancingStrategy: LoadBalancingStrategy;
 }
 
 export type LoadBalancingStrategy = 'round-robin' | 'least-loaded' | 'resource-aware' | 'adaptive';
 
 export interface ProcessingCacheSettings {
-  /** Enable result caching */
+  /** Enable result caching  */
   enableResultCache: boolean;
   
-  /** Cache TTL (seconds) */
+  /** Cache TTL (seconds)  */
   cacheTTLSeconds: number;
   
-  /** Cache key strategy */
+  /** Cache key strategy  */
   cacheKeyStrategy: CacheKeyStrategy;
   
-  /** Maximum cache size (MB) */
+  /** Maximum cache size (MB)  */
   maxCacheSizeMB: number;
   
-  /** Cache cleanup strategy */
+  /** Cache cleanup strategy  */
   cleanupStrategy: CacheCleanupStrategy;
 }
 
@@ -634,72 +635,72 @@ export type CacheKeyStrategy = 'content-hash' | 'options-hash' | 'combined-hash'
 export type CacheCleanupStrategy = 'lru' | 'ttl' | 'size-based' | 'manual';
 
 export interface ErrorHandlingSettings {
-  /** Error handling strategy */
+  /** Error handling strategy  */
   strategy: ErrorHandlingStrategy;
   
-  /** Retry configuration */
+  /** Retry configuration  */
   retryConfig: RetryConfiguration;
   
-  /** Fallback options */
+  /** Fallback options  */
   fallbackOptions?: FallbackOptions;
   
-  /** Error reporting */
+  /** Error reporting  */
   errorReporting: ErrorReportingSettings;
   
-  /** Graceful degradation */
+  /** Graceful degradation  */
   gracefulDegradation: boolean;
 }
 
 export type ErrorHandlingStrategy = 'fail-fast' | 'retry' | 'fallback' | 'graceful-degradation';
 
 export interface FallbackOptions {
-  /** Use lower quality settings */
+  /** Use lower quality settings  */
   lowerQuality: boolean;
   
-  /** Use alternative processing method */
+  /** Use alternative processing method  */
   alternativeMethod?: string;
   
-  /** Skip optional stages */
+  /** Skip optional stages  */
   skipOptionalStages: boolean;
   
-  /** Return partial results */
+  /** Return partial results  */
   returnPartialResults: boolean;
 }
 
 export interface ErrorReportingSettings {
-  /** Enable error reporting */
+  /** Enable error reporting  */
   enabled: boolean;
   
-  /** Error reporting endpoint */
+  /** Error reporting endpoint  */
   endpoint?: string;
   
-  /** Include technical details */
+  /** Include technical details  */
   includeTechnicalDetails: boolean;
   
-  /** Report performance metrics */
+  /** Report performance metrics  */
   reportMetrics: boolean;
   
-  /** Error severity levels to report */
+  /** Error severity levels to report  */
   severityLevels: string[];
 }
 
 export interface LoggingConfiguration {
-  /** Log level */
+  /** Log level  */
   level: LogLevel;
   
-  /** Log destinations */
+  /** Log destinations  */
   destinations: LogDestination[];
   
-  /** Include performance metrics */
+  /** Include performance metrics  */
   includeMetrics: boolean;
   
-  /** Include resource usage */
+  /** Include resource usage  */
   includeResourceUsage: boolean;
   
-  /** Log retention period (days) */
+  /** Log retention period (days)  */
   retentionDays: number;
   
-  /** Structured logging */
+  /** Structured logging  */
   structured: boolean;
 }
 
@@ -707,52 +708,52 @@ export type LogLevel = 'debug' | 'info' | 'warn' | 'error' | 'fatal';
 export type LogDestination = 'console' | 'file' | 'database' | 'external';
 
 export interface NotificationSettings {
-  /** Enable notifications */
+  /** Enable notifications  */
   enabled: boolean;
   
-  /** Notification channels */
+  /** Notification channels  */
   channels: NotificationChannel[];
   
-  /** Notification triggers */
+  /** Notification triggers  */
   triggers: NotificationTrigger[];
   
-  /** Notification templates */
+  /** Notification templates  */
   templates: Record<string, NotificationTemplate>;
   
-  /** Rate limiting */
+  /** Rate limiting  */
   rateLimiting?: NotificationRateLimiting;
 }
 
 export interface NotificationChannel {
-  /** Channel type */
+  /** Channel type  */
   type: NotificationChannelType;
   
-  /** Channel configuration */
+  /** Channel configuration  */
   configuration: Record<string, unknown>;
   
-  /** Channel priority */
+  /** Channel priority  */
   priority: number;
   
-  /** Fallback channel */
+  /** Fallback channel  */
   fallback?: string;
 }
 
 export type NotificationChannelType = 'email' | 'sms' | 'webhook' | 'push' | 'slack';
 
 export interface NotificationTrigger {
-  /** Trigger event */
+  /** Trigger event  */
   event: NotificationEvent;
   
-  /** Trigger condition */
+  /** Trigger condition  */
   condition?: string;
   
-  /** Channels to use */
+  /** Channels to use  */
   channels: string[];
   
-  /** Template to use */
+  /** Template to use  */
   template: string;
   
-  /** Trigger enabled */
+  /** Trigger enabled  */
   enabled: boolean;
 }
 
@@ -766,109 +767,109 @@ export type NotificationEvent =
   | 'error-threshold-exceeded';
 
 export interface NotificationTemplate {
-  /** Template subject */
+  /** Template subject  */
   subject: string;
   
-  /** Template body */
+  /** Template body  */
   body: string;
   
-  /** Template variables */
+  /** Template variables  */
   variables: string[];
   
-  /** Template format */
+  /** Template format  */
   format: 'text' | 'html' | 'json';
 }
 
 export interface NotificationRateLimiting {
-  /** Maximum notifications per hour */
+  /** Maximum notifications per hour  */
   maxPerHour: number;
   
-  /** Burst limit */
+  /** Burst limit  */
   burstLimit: number;
   
-  /** Rate limiting by event type */
+  /** Rate limiting by event type  */
   byEventType: Record<NotificationEvent, number>;
 }
 
 export interface PipelineMetadata {
-  /** Pipeline category */
+  /** Pipeline category  */
   category: string;
   
-  /** Pipeline tags */
+  /** Pipeline tags  */
   tags: string[];
   
-  /** Created by */
+  /** Created by  */
   createdBy: string;
   
-  /** Pipeline documentation URL */
+  /** Pipeline documentation URL  */
   documentationUrl?: string;
   
-  /** Performance benchmarks */
+  /** Performance benchmarks  */
   benchmarks?: PerformanceBenchmark[];
   
-  /** Compatibility information */
+  /** Compatibility information  */
   compatibility: CompatibilityInfo;
 }
 
 export interface PerformanceBenchmark {
-  /** Benchmark name */
+  /** Benchmark name  */
   name: string;
   
-  /** Test conditions */
+  /** Test conditions  */
   conditions: Record<string, unknown>;
   
-  /** Performance metrics */
+  /** Performance metrics  */
   metrics: PerformanceMetrics;
   
-  /** Benchmark date */
+  /** Benchmark date  */
   benchmarkDate: Date;
 }
 
 export interface PerformanceMetrics {
-  /** Average processing time (ms) */
+  /** Average processing time (ms)  */
   avgProcessingTimeMs: number;
   
-  /** Throughput (files per hour) */
+  /** Throughput (files per hour)  */
   throughputFph: number;
   
-  /** Quality score */
+  /** Quality score  */
   qualityScore: number;
   
-  /** Resource efficiency */
+  /** Resource efficiency  */
   resourceEfficiency: number;
   
-  /** Success rate */
+  /** Success rate  */
   successRate: number;
 }
 
 export interface CompatibilityInfo {
-  /** Supported input formats */
+  /** Supported input formats  */
   supportedInputFormats: string[];
   
-  /** Supported output formats */
+  /** Supported output formats  */
   supportedOutputFormats: string[];
   
-  /** Minimum system requirements */
+  /** Minimum system requirements  */
   minSystemRequirements: SystemRequirements;
   
-  /** Platform compatibility */
+  /** Platform compatibility  */
   platformCompatibility: string[];
 }
 
 export interface SystemRequirements {
-  /** Minimum CPU cores */
+  /** Minimum CPU cores  */
   minCpuCores: number;
   
-  /** Minimum memory (MB) */
+  /** Minimum memory (MB)  */
   minMemoryMB: number;
   
-  /** Minimum disk space (MB) */
+  /** Minimum disk space (MB)  */
   minDiskSpaceMB: number;
   
-  /** Required libraries */
+  /** Required libraries  */
   requiredLibraries: string[];
   
-  /** Operating system requirements */
+  /** Operating system requirements  */
   osRequirements: string[];
 }
 
@@ -880,71 +881,71 @@ export type PipelineStatus = 'draft' | 'active' | 'deprecated' | 'maintenance';
 
 // Basic processing interfaces for compatibility
 export interface ProcessingOptions {
-  /** Processing quality level */
+  /** Processing quality level  */
   quality?: QualityLevel;
   
-  /** Processing mode */
+  /** Processing mode  */
   mode?: ProcessingMode;
   
-  /** Processing priority */
+  /** Processing priority  */
   priority?: ProcessingPriority;
   
-  /** Custom options */
+  /** Custom options  */
   custom?: Record<string, unknown>;
 }
 
 export interface ProcessingResult {
-  /** Processing success */
+  /** Processing success  */
   success: boolean;
   
-  /** Result data */
+  /** Result data  */
   data?: unknown;
   
-  /** Error information */
+  /** Error information  */
   error?: ProcessingError;
   
-  /** Processing metadata */
+  /** Processing metadata  */
   metadata?: Record<string, unknown>;
 }
 
 export interface CircuitBreakerConfig {
-  /** Failure threshold */
+  /** Failure threshold  */
   failureThreshold: number;
   
-  /** Recovery timeout (ms) */
+  /** Recovery timeout (ms)  */
   recoveryTimeoutMs: number;
   
-  /** Monitor window (ms) */
+  /** Monitor window (ms)  */
   monitorWindowMs: number;
   
-  /** Expected errors */
+  /** Expected errors  */
   expectedErrors?: string[];
 }
 
 export interface RetryConfig {
-  /** Maximum retry attempts */
+  /** Maximum retry attempts  */
   maxAttempts: number;
   
-  /** Initial delay (ms) */
+  /** Initial delay (ms)  */
   initialDelayMs: number;
   
-  /** Delay multiplier */
+  /** Delay multiplier  */
   delayMultiplier: number;
   
-  /** Maximum delay (ms) */
+  /** Maximum delay (ms)  */
   maxDelayMs: number;
 }
 
 export interface ServiceConfig {
-  /** Service name */
+  /** Service name  */
   name: string;
   
-  /** Service version */
+  /** Service version  */
   version: string;
   
-  /** Service endpoint */
+  /** Service endpoint  */
   endpoint?: string;
   
-  /** Service configuration */
+  /** Service configuration  */
   config?: Record<string, unknown>;
 }

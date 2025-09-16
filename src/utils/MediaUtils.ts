@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Media Utilities
  * 
  * Utilities for working with multimedia files including metadata extraction,
@@ -6,7 +7,7 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0 - CVPlus Multimedia Module
- */
+  */
 
 import { MediaFile } from '../types/media.types';
 import { FileUtils } from './FileUtils';
@@ -45,7 +46,7 @@ export interface MediaValidationRules {
 export class MediaUtils {
   /**
    * Extract metadata from media file
-   */
+    */
   static async extractMetadata(file: MediaFile): Promise<MediaMetadata> {
     const mediaType = FileUtils.detectMediaType(file.type);
     
@@ -68,7 +69,7 @@ export class MediaUtils {
 
   /**
    * Extract image metadata
-   */
+    */
   private static async extractImageMetadata(file: MediaFile): Promise<MediaMetadata> {
     return new Promise((resolve) => {
       // In a real implementation, this would use libraries like sharp or browser APIs
@@ -109,7 +110,7 @@ export class MediaUtils {
 
   /**
    * Extract video metadata
-   */
+    */
   private static async extractVideoMetadata(file: MediaFile): Promise<MediaMetadata> {
     return new Promise((resolve) => {
       // In a real implementation, this would use FFmpeg.js or similar
@@ -153,7 +154,7 @@ export class MediaUtils {
 
   /**
    * Extract audio metadata
-   */
+    */
   private static async extractAudioMetadata(file: MediaFile): Promise<MediaMetadata> {
     return new Promise((resolve) => {
       // In a real implementation, this would use Web Audio API or audio libraries
@@ -197,7 +198,7 @@ export class MediaUtils {
 
   /**
    * Validate media against rules
-   */
+    */
   static validateMedia(
     file: MediaFile,
     metadata: MediaMetadata,
@@ -278,14 +279,14 @@ export class MediaUtils {
 
   /**
    * Calculate aspect ratio
-   */
+    */
   static calculateAspectRatio(width: number, height: number): number {
     return width / height;
   }
 
   /**
    * Get common aspect ratio name
-   */
+    */
   static getAspectRatioName(aspectRatio: number): string {
     const ratios = {
       '1.00': '1:1',
@@ -308,7 +309,7 @@ export class MediaUtils {
 
   /**
    * Format duration in human readable format
-   */
+    */
   static formatDuration(seconds: number): string {
     if (seconds < 60) {
       return `${Math.round(seconds)}s`;
@@ -329,7 +330,7 @@ export class MediaUtils {
 
   /**
    * Parse duration string to seconds
-   */
+    */
   static parseDuration(durationStr: string): number {
     const parts = durationStr.split(':').map(Number).filter(n => !isNaN(n));
     
@@ -349,7 +350,7 @@ export class MediaUtils {
 
   /**
    * Calculate file bit rate
-   */
+    */
   static calculateBitRate(fileSize: number, duration: number): number {
     if (duration <= 0) return 0;
     return Math.round((fileSize * 8) / duration); // bits per second
@@ -357,7 +358,7 @@ export class MediaUtils {
 
   /**
    * Format bit rate in human readable format
-   */
+    */
   static formatBitRate(bitRate: number): string {
     if (bitRate < 1000) {
       return `${bitRate} bps`;
@@ -370,7 +371,7 @@ export class MediaUtils {
 
   /**
    * Generate thumbnail from media file
-   */
+    */
   static async generateThumbnail(
     file: MediaFile,
     options: {
@@ -400,7 +401,7 @@ export class MediaUtils {
 
   /**
    * Generate image thumbnail
-   */
+    */
   private static async generateImageThumbnail(
     file: MediaFile,
     options: {
@@ -458,7 +459,7 @@ export class MediaUtils {
 
   /**
    * Generate video thumbnail
-   */
+    */
   private static async generateVideoThumbnail(
     file: MediaFile,
     options: {
@@ -523,7 +524,7 @@ export class MediaUtils {
 
   /**
    * Check if media file has transparency
-   */
+    */
   static async hasTransparency(file: MediaFile): Promise<boolean> {
     if (!file.type.includes('png') && !file.type.includes('webp')) {
       return false; // Only PNG and WebP commonly support transparency
@@ -536,7 +537,7 @@ export class MediaUtils {
 
   /**
    * Get media quality score (0-100)
-   */
+    */
   static calculateQualityScore(metadata: MediaMetadata, fileSize: number): number {
     let score = 50; // Base score
 
@@ -570,7 +571,7 @@ export class MediaUtils {
 
   /**
    * Calculate size appropriateness score
-   */
+    */
   private static calculateSizeScore(fileSize: number, metadata: MediaMetadata): number {
     if (!metadata.width || !metadata.height) return 0;
 

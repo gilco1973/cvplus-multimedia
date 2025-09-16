@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Video Processor
  * 
  * High-level video processing orchestrator that manages
@@ -7,7 +8,7 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0 - CVPlus Multimedia Module
- */
+  */
 
 import { MediaProcessor } from './MediaProcessor';
 import { ProcessingStage } from './types';
@@ -16,7 +17,7 @@ export class VideoProcessor extends MediaProcessor {
   
   /**
    * Process a single video processing stage
-   */
+    */
   protected async processStage(stage: ProcessingStage, input: any): Promise<any> {
     switch (stage.processor) {
       case 'transcode':
@@ -47,7 +48,7 @@ export class VideoProcessor extends MediaProcessor {
 
   /**
    * Validate video input
-   */
+    */
   protected validateInput(input: any): boolean {
     if (!input) return false;
     
@@ -62,7 +63,7 @@ export class VideoProcessor extends MediaProcessor {
 
   /**
    * Get video processor capabilities
-   */
+    */
   getCapabilities(): Record<string, any> {
     return {
       supportedFormats: ['mp4', 'webm', 'avi', 'mov', 'mkv', 'flv', 'm4v', 'ogv'],

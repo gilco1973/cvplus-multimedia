@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Job management and queue system types for CVPlus multimedia module
- */
+  */
 
 import { ProcessingJobType } from './processing.types';
 
@@ -9,34 +10,34 @@ import { ProcessingJobType } from './processing.types';
 // ============================================================================
 
 export interface JobQueue {
-  /** Queue name */
+  /** Queue name  */
   name: string;
   
-  /** Queue type */
+  /** Queue type  */
   type: QueueType;
   
-  /** Queue configuration */
+  /** Queue configuration  */
   configuration: QueueConfiguration;
   
-  /** Queue statistics */
+  /** Queue statistics  */
   statistics: QueueStatistics;
   
-  /** Queue status */
+  /** Queue status  */
   status: QueueStatus;
   
-  /** Worker configuration */
+  /** Worker configuration  */
   workers: WorkerConfiguration;
   
-  /** Priority handling */
+  /** Priority handling  */
   priorityHandling: PriorityHandling;
   
-  /** Retry policies */
+  /** Retry policies  */
   retryPolicies: RetryPolicy[];
   
-  /** Dead letter queue */
+  /** Dead letter queue  */
   deadLetterQueue?: DeadLetterQueueConfig;
   
-  /** Monitoring configuration */
+  /** Monitoring configuration  */
   monitoring: QueueMonitoring;
 }
 
@@ -44,725 +45,725 @@ export type QueueType = 'fifo' | 'priority' | 'delayed' | 'rate-limited' | 'topi
 export type QueueStatus = 'active' | 'paused' | 'draining' | 'maintenance' | 'error';
 
 export interface QueueConfiguration {
-  /** Maximum queue size */
+  /** Maximum queue size  */
   maxSize: number;
   
-  /** Visibility timeout (seconds) */
+  /** Visibility timeout (seconds)  */
   visibilityTimeoutSeconds: number;
   
-  /** Message retention period (days) */
+  /** Message retention period (days)  */
   retentionDays: number;
   
-  /** Batch processing settings */
+  /** Batch processing settings  */
   batchProcessing: BatchProcessingConfig;
   
-  /** Rate limiting */
+  /** Rate limiting  */
   rateLimiting?: RateLimitingConfig;
   
-  /** Auto-scaling */
+  /** Auto-scaling  */
   autoScaling?: AutoScalingConfig;
   
-  /** Encryption settings */
+  /** Encryption settings  */
   encryption?: QueueEncryption;
   
-  /** Persistence settings */
+  /** Persistence settings  */
   persistence: PersistenceConfig;
 }
 
 export interface BatchProcessingConfig {
-  /** Enable batch processing */
+  /** Enable batch processing  */
   enabled: boolean;
   
-  /** Maximum batch size */
+  /** Maximum batch size  */
   maxBatchSize: number;
   
-  /** Batch timeout (seconds) */
+  /** Batch timeout (seconds)  */
   batchTimeoutSeconds: number;
   
-  /** Batch processing strategy */
+  /** Batch processing strategy  */
   strategy: BatchStrategy;
 }
 
 export type BatchStrategy = 'size-based' | 'time-based' | 'adaptive' | 'priority-based';
 
 export interface RateLimitingConfig {
-  /** Maximum jobs per second */
+  /** Maximum jobs per second  */
   maxJobsPerSecond: number;
   
-  /** Burst capacity */
+  /** Burst capacity  */
   burstCapacity: number;
   
-  /** Rate limiting strategy */
+  /** Rate limiting strategy  */
   strategy: RateLimitingStrategy;
   
-  /** Rate limiting by user */
+  /** Rate limiting by user  */
   byUser?: boolean;
   
-  /** Rate limiting by job type */
+  /** Rate limiting by job type  */
   byJobType?: Record<ProcessingJobType, number>;
 }
 
 export type RateLimitingStrategy = 'token-bucket' | 'leaky-bucket' | 'fixed-window' | 'sliding-window';
 
 export interface AutoScalingConfig {
-  /** Enable auto-scaling */
+  /** Enable auto-scaling  */
   enabled: boolean;
   
-  /** Minimum workers */
+  /** Minimum workers  */
   minWorkers: number;
   
-  /** Maximum workers */
+  /** Maximum workers  */
   maxWorkers: number;
   
-  /** Scaling triggers */
+  /** Scaling triggers  */
   triggers: ScalingTrigger[];
   
-  /** Scale-up cooldown (seconds) */
+  /** Scale-up cooldown (seconds)  */
   scaleUpCooldownSeconds: number;
   
-  /** Scale-down cooldown (seconds) */
+  /** Scale-down cooldown (seconds)  */
   scaleDownCooldownSeconds: number;
   
-  /** Scaling metrics */
+  /** Scaling metrics  */
   metrics: ScalingMetric[];
 }
 
 export interface ScalingTrigger {
-  /** Metric name */
+  /** Metric name  */
   metric: string;
   
-  /** Threshold value */
+  /** Threshold value  */
   threshold: number;
   
-  /** Comparison operator */
+  /** Comparison operator  */
   operator: 'gt' | 'lt' | 'gte' | 'lte' | 'eq';
   
-  /** Scaling action */
+  /** Scaling action  */
   action: 'scale-up' | 'scale-down';
   
-  /** Scaling amount */
+  /** Scaling amount  */
   scalingAmount: number;
   
-  /** Trigger enabled */
+  /** Trigger enabled  */
   enabled: boolean;
 }
 
 export interface ScalingMetric {
-  /** Metric name */
+  /** Metric name  */
   name: string;
   
-  /** Metric source */
+  /** Metric source  */
   source: 'queue' | 'worker' | 'system' | 'custom';
   
-  /** Collection interval (seconds) */
+  /** Collection interval (seconds)  */
   intervalSeconds: number;
   
-  /** Aggregation method */
+  /** Aggregation method  */
   aggregation: 'avg' | 'sum' | 'min' | 'max' | 'count';
   
-  /** Metric weight in scaling decisions */
+  /** Metric weight in scaling decisions  */
   weight: number;
 }
 
 export interface QueueEncryption {
-  /** Encryption enabled */
+  /** Encryption enabled  */
   enabled: boolean;
   
-  /** Encryption algorithm */
+  /** Encryption algorithm  */
   algorithm: string;
   
-  /** Key management */
+  /** Key management  */
   keyManagement: string;
   
-  /** Encryption key ID */
+  /** Encryption key ID  */
   keyId?: string;
 }
 
 export interface PersistenceConfig {
-  /** Persistence enabled */
+  /** Persistence enabled  */
   enabled: boolean;
   
-  /** Storage backend */
+  /** Storage backend  */
   backend: PersistenceBackend;
   
-  /** Backup configuration */
+  /** Backup configuration  */
   backup?: BackupConfig;
   
-  /** Data retention */
+  /** Data retention  */
   retention: DataRetentionConfig;
 }
 
 export type PersistenceBackend = 'memory' | 'disk' | 'database' | 'distributed';
 
 export interface BackupConfig {
-  /** Backup enabled */
+  /** Backup enabled  */
   enabled: boolean;
   
-  /** Backup interval (hours) */
+  /** Backup interval (hours)  */
   intervalHours: number;
   
-  /** Backup retention (days) */
+  /** Backup retention (days)  */
   retentionDays: number;
   
-  /** Backup storage */
+  /** Backup storage  */
   storage: string;
   
-  /** Backup encryption */
+  /** Backup encryption  */
   encryption?: boolean;
 }
 
 export interface DataRetentionConfig {
-  /** Completed job retention (days) */
+  /** Completed job retention (days)  */
   completedJobRetentionDays: number;
   
-  /** Failed job retention (days) */
+  /** Failed job retention (days)  */
   failedJobRetentionDays: number;
   
-  /** Log retention (days) */
+  /** Log retention (days)  */
   logRetentionDays: number;
   
-  /** Metric retention (days) */
+  /** Metric retention (days)  */
   metricRetentionDays: number;
   
-  /** Auto-cleanup enabled */
+  /** Auto-cleanup enabled  */
   autoCleanup: boolean;
 }
 
 export interface QueueStatistics {
-  /** Total jobs in queue */
+  /** Total jobs in queue  */
   totalJobs: number;
   
-  /** Pending jobs */
+  /** Pending jobs  */
   pendingJobs: number;
   
-  /** Running jobs */
+  /** Running jobs  */
   runningJobs: number;
   
-  /** Completed jobs */
+  /** Completed jobs  */
   completedJobs: number;
   
-  /** Failed jobs */
+  /** Failed jobs  */
   failedJobs: number;
   
-  /** Jobs by priority */
+  /** Jobs by priority  */
   jobsByPriority: Record<number, number>;
   
-  /** Jobs by type */
+  /** Jobs by type  */
   jobsByType: Record<ProcessingJobType, number>;
   
-  /** Average wait time (seconds) */
+  /** Average wait time (seconds)  */
   avgWaitTimeSeconds: number;
   
-  /** Average processing time (seconds) */
+  /** Average processing time (seconds)  */
   avgProcessingTimeSeconds: number;
   
-  /** Throughput (jobs per hour) */
+  /** Throughput (jobs per hour)  */
   throughputPerHour: number;
   
-  /** Success rate */
+  /** Success rate  */
   successRate: number;
   
-  /** Queue health score */
+  /** Queue health score  */
   healthScore: number;
   
-  /** Last updated */
+  /** Last updated  */
   lastUpdated: Date;
 }
 
 export interface WorkerConfiguration {
-  /** Number of workers */
+  /** Number of workers  */
   workerCount: number;
   
-  /** Worker type */
+  /** Worker type  */
   workerType: WorkerType;
   
-  /** Worker resources */
+  /** Worker resources  */
   resources: WorkerResources;
   
-  /** Worker health monitoring */
+  /** Worker health monitoring  */
   healthMonitoring: WorkerHealthMonitoring;
   
-  /** Worker scaling */
+  /** Worker scaling  */
   scaling: WorkerScaling;
   
-  /** Worker specialization */
+  /** Worker specialization  */
   specialization?: WorkerSpecialization;
 }
 
 export type WorkerType = 'generic' | 'specialized' | 'gpu-accelerated' | 'high-memory' | 'high-cpu';
 
 export interface WorkerResources {
-  /** CPU allocation */
+  /** CPU allocation  */
   cpu: ResourceAllocation;
   
-  /** Memory allocation */
+  /** Memory allocation  */
   memory: ResourceAllocation;
   
-  /** GPU allocation */
+  /** GPU allocation  */
   gpu?: ResourceAllocation;
   
-  /** Disk allocation */
+  /** Disk allocation  */
   disk: ResourceAllocation;
   
-  /** Network allocation */
+  /** Network allocation  */
   network?: ResourceAllocation;
 }
 
 export interface ResourceAllocation {
-  /** Resource amount */
+  /** Resource amount  */
   amount: number;
   
-  /** Resource unit */
+  /** Resource unit  */
   unit: string;
   
-  /** Resource guarantees */
+  /** Resource guarantees  */
   guaranteed?: boolean;
   
-  /** Resource limits */
+  /** Resource limits  */
   limits?: ResourceLimits;
   
-  /** Resource sharing policy */
+  /** Resource sharing policy  */
   sharing?: ResourceSharingPolicy;
 }
 
 export interface ResourceLimits {
-  /** Minimum resource */
+  /** Minimum resource  */
   min: number;
   
-  /** Maximum resource */
+  /** Maximum resource  */
   max: number;
   
-  /** Burst capacity */
+  /** Burst capacity  */
   burstCapacity?: number;
 }
 
 export type ResourceSharingPolicy = 'shared' | 'dedicated' | 'burstable';
 
 export interface WorkerHealthMonitoring {
-  /** Health check enabled */
+  /** Health check enabled  */
   enabled: boolean;
   
-  /** Health check interval (seconds) */
+  /** Health check interval (seconds)  */
   intervalSeconds: number;
   
-  /** Health check timeout (seconds) */
+  /** Health check timeout (seconds)  */
   timeoutSeconds: number;
   
-  /** Health check retries */
+  /** Health check retries  */
   retries: number;
   
-  /** Health metrics */
+  /** Health metrics  */
   metrics: HealthMetric[];
   
-  /** Unhealthy threshold */
+  /** Unhealthy threshold  */
   unhealthyThreshold: number;
   
-  /** Recovery actions */
+  /** Recovery actions  */
   recoveryActions: RecoveryAction[];
 }
 
 export interface HealthMetric {
-  /** Metric name */
+  /** Metric name  */
   name: string;
   
-  /** Metric type */
+  /** Metric type  */
   type: HealthMetricType;
   
-  /** Threshold value */
+  /** Threshold value  */
   threshold: number;
   
-  /** Comparison operator */
+  /** Comparison operator  */
   operator: 'gt' | 'lt' | 'gte' | 'lte' | 'eq';
   
-  /** Metric weight */
+  /** Metric weight  */
   weight: number;
 }
 
 export type HealthMetricType = 'cpu-usage' | 'memory-usage' | 'disk-usage' | 'network-latency' | 'job-success-rate' | 'response-time';
 
 export interface RecoveryAction {
-  /** Action type */
+  /** Action type  */
   type: RecoveryActionType;
   
-  /** Action parameters */
+  /** Action parameters  */
   parameters: Record<string, unknown>;
   
-  /** Action timeout (seconds) */
+  /** Action timeout (seconds)  */
   timeoutSeconds: number;
   
-  /** Action retries */
+  /** Action retries  */
   retries: number;
 }
 
 export type RecoveryActionType = 'restart-worker' | 'scale-worker' | 'redirect-jobs' | 'alert' | 'custom';
 
 export interface WorkerScaling {
-  /** Scaling enabled */
+  /** Scaling enabled  */
   enabled: boolean;
   
-  /** Scaling strategy */
+  /** Scaling strategy  */
   strategy: WorkerScalingStrategy;
   
-  /** Scaling triggers */
+  /** Scaling triggers  */
   triggers: WorkerScalingTrigger[];
   
-  /** Cooldown period (seconds) */
+  /** Cooldown period (seconds)  */
   cooldownSeconds: number;
   
-  /** Scaling limits */
+  /** Scaling limits  */
   limits: WorkerScalingLimits;
 }
 
 export type WorkerScalingStrategy = 'reactive' | 'predictive' | 'scheduled' | 'manual';
 
 export interface WorkerScalingTrigger {
-  /** Trigger condition */
+  /** Trigger condition  */
   condition: string;
   
-  /** Scaling action */
+  /** Scaling action  */
   action: 'scale-up' | 'scale-down';
   
-  /** Scaling amount */
+  /** Scaling amount  */
   amount: number;
   
-  /** Trigger priority */
+  /** Trigger priority  */
   priority: number;
 }
 
 export interface WorkerScalingLimits {
-  /** Minimum workers */
+  /** Minimum workers  */
   minWorkers: number;
   
-  /** Maximum workers */
+  /** Maximum workers  */
   maxWorkers: number;
   
-  /** Maximum scale-up per event */
+  /** Maximum scale-up per event  */
   maxScaleUpPerEvent: number;
   
-  /** Maximum scale-down per event */
+  /** Maximum scale-down per event  */
   maxScaleDownPerEvent: number;
 }
 
 export interface WorkerSpecialization {
-  /** Job types handled */
+  /** Job types handled  */
   jobTypes: ProcessingJobType[];
   
-  /** Resource specialization */
+  /** Resource specialization  */
   resourceSpecialization: ResourceSpecializationType[];
   
-  /** Performance characteristics */
+  /** Performance characteristics  */
   performanceProfile: PerformanceProfile;
   
-  /** Compatibility requirements */
+  /** Compatibility requirements  */
   requirements: CompatibilityRequirement[];
 }
 
 export type ResourceSpecializationType = 'cpu-intensive' | 'memory-intensive' | 'gpu-accelerated' | 'io-intensive' | 'network-intensive';
 
 export interface PerformanceProfile {
-  /** Typical processing speed */
+  /** Typical processing speed  */
   typicalSpeedJobsPerHour: number;
   
-  /** Quality level specialty */
+  /** Quality level specialty  */
   qualitySpecialty: string[];
   
-  /** Optimization level */
+  /** Optimization level  */
   optimizationLevel: string;
   
-  /** Reliability score */
+  /** Reliability score  */
   reliabilityScore: number;
 }
 
 export interface CompatibilityRequirement {
-  /** Requirement type */
+  /** Requirement type  */
   type: 'library' | 'hardware' | 'software' | 'os';
   
-  /** Requirement specification */
+  /** Requirement specification  */
   specification: string;
   
-  /** Version requirement */
+  /** Version requirement  */
   version?: string;
   
-  /** Optional requirement */
+  /** Optional requirement  */
   optional: boolean;
 }
 
 export interface PriorityHandling {
-  /** Priority levels */
+  /** Priority levels  */
   levels: PriorityLevel[];
   
-  /** Priority calculation */
+  /** Priority calculation  */
   calculation: PriorityCalculation;
   
-  /** Priority aging */
+  /** Priority aging  */
   aging?: PriorityAging;
   
-  /** Priority overrides */
+  /** Priority overrides  */
   overrides: PriorityOverride[];
 }
 
 export interface PriorityLevel {
-  /** Priority level */
+  /** Priority level  */
   level: number;
   
-  /** Priority name */
+  /** Priority name  */
   name: string;
   
-  /** Resource allocation percentage */
+  /** Resource allocation percentage  */
   resourceAllocation: number;
   
-  /** Queue position weighting */
+  /** Queue position weighting  */
   queueWeighting: number;
   
-  /** SLA targets */
+  /** SLA targets  */
   slaTargets?: SLATargets;
 }
 
 export interface SLATargets {
-  /** Maximum wait time (seconds) */
+  /** Maximum wait time (seconds)  */
   maxWaitTimeSeconds: number;
   
-  /** Maximum processing time (seconds) */
+  /** Maximum processing time (seconds)  */
   maxProcessingTimeSeconds: number;
   
-  /** Minimum success rate */
+  /** Minimum success rate  */
   minSuccessRate: number;
 }
 
 export interface PriorityCalculation {
-  /** Calculation method */
+  /** Calculation method  */
   method: PriorityMethod;
   
-  /** Factors considered */
+  /** Factors considered  */
   factors: PriorityFactor[];
   
-  /** Base priority */
+  /** Base priority  */
   basePriority: number;
   
-  /** Dynamic adjustment */
+  /** Dynamic adjustment  */
   dynamicAdjustment: boolean;
 }
 
 export type PriorityMethod = 'static' | 'dynamic' | 'hybrid' | 'ml-based';
 
 export interface PriorityFactor {
-  /** Factor name */
+  /** Factor name  */
   name: string;
   
-  /** Factor weight */
+  /** Factor weight  */
   weight: number;
   
-  /** Factor calculation */
+  /** Factor calculation  */
   calculation: string;
   
-  /** Factor limits */
+  /** Factor limits  */
   limits?: [number, number];
 }
 
 export interface PriorityAging {
-  /** Aging enabled */
+  /** Aging enabled  */
   enabled: boolean;
   
-  /** Aging rate */
+  /** Aging rate  */
   rate: number;
   
-  /** Aging interval (seconds) */
+  /** Aging interval (seconds)  */
   intervalSeconds: number;
   
-  /** Maximum priority increase */
+  /** Maximum priority increase  */
   maxIncrease: number;
   
-  /** Aging curve */
+  /** Aging curve  */
   curve: AgingCurve;
 }
 
 export type AgingCurve = 'linear' | 'exponential' | 'logarithmic' | 'custom';
 
 export interface PriorityOverride {
-  /** Override condition */
+  /** Override condition  */
   condition: string;
   
-  /** New priority */
+  /** New priority  */
   newPriority: number;
   
-  /** Override duration (seconds) */
+  /** Override duration (seconds)  */
   durationSeconds?: number;
   
-  /** Override reason */
+  /** Override reason  */
   reason: string;
 }
 
 export interface RetryPolicy {
-  /** Policy name */
+  /** Policy name  */
   name: string;
   
-  /** Job types covered */
+  /** Job types covered  */
   jobTypes: ProcessingJobType[];
   
-  /** Error types covered */
+  /** Error types covered  */
   errorTypes: string[];
   
-  /** Maximum retry attempts */
+  /** Maximum retry attempts  */
   maxAttempts: number;
   
-  /** Retry strategy */
+  /** Retry strategy  */
   strategy: RetryStrategy;
   
-  /** Backoff configuration */
+  /** Backoff configuration  */
   backoff: BackoffConfig;
   
-  /** Retry conditions */
+  /** Retry conditions  */
   conditions: RetryCondition[];
 }
 
 export interface RetryStrategy {
-  /** Strategy type */
+  /** Strategy type  */
   type: RetryStrategyType;
   
-  /** Strategy parameters */
+  /** Strategy parameters  */
   parameters: Record<string, unknown>;
   
-  /** Jitter enabled */
+  /** Jitter enabled  */
   jitter: boolean;
   
-  /** Circuit breaker */
+  /** Circuit breaker  */
   circuitBreaker?: CircuitBreakerConfig;
 }
 
 export type RetryStrategyType = 'immediate' | 'fixed-delay' | 'exponential-backoff' | 'linear-backoff' | 'custom';
 
 export interface BackoffConfig {
-  /** Initial delay (milliseconds) */
+  /** Initial delay (milliseconds)  */
   initialDelayMs: number;
   
-  /** Maximum delay (milliseconds) */
+  /** Maximum delay (milliseconds)  */
   maxDelayMs: number;
   
-  /** Multiplier */
+  /** Multiplier  */
   multiplier: number;
   
-  /** Randomization factor */
+  /** Randomization factor  */
   randomizationFactor: number;
 }
 
 export interface RetryCondition {
-  /** Condition expression */
+  /** Condition expression  */
   expression: string;
   
-  /** Condition priority */
+  /** Condition priority  */
   priority: number;
   
-  /** Action if condition met */
+  /** Action if condition met  */
   action: 'retry' | 'stop' | 'escalate';
 }
 
 export interface CircuitBreakerConfig {
-  /** Failure threshold */
+  /** Failure threshold  */
   failureThreshold: number;
   
-  /** Success threshold */
+  /** Success threshold  */
   successThreshold: number;
   
-  /** Timeout (seconds) */
+  /** Timeout (seconds)  */
   timeoutSeconds: number;
   
-  /** Half-open state duration (seconds) */
+  /** Half-open state duration (seconds)  */
   halfOpenDurationSeconds: number;
 }
 
 export interface DeadLetterQueueConfig {
-  /** Dead letter queue enabled */
+  /** Dead letter queue enabled  */
   enabled: boolean;
   
-  /** Dead letter queue name */
+  /** Dead letter queue name  */
   queueName: string;
   
-  /** Maximum delivery attempts */
+  /** Maximum delivery attempts  */
   maxDeliveryAttempts: number;
   
-  /** Retention period (days) */
+  /** Retention period (days)  */
   retentionDays: number;
   
-  /** Notification on dead letter */
+  /** Notification on dead letter  */
   notification?: DeadLetterNotification;
   
-  /** Analysis configuration */
+  /** Analysis configuration  */
   analysis?: DeadLetterAnalysis;
 }
 
 export interface DeadLetterNotification {
-  /** Notification enabled */
+  /** Notification enabled  */
   enabled: boolean;
   
-  /** Notification channels */
+  /** Notification channels  */
   channels: string[];
   
-  /** Notification threshold */
+  /** Notification threshold  */
   threshold: number;
   
-  /** Notification template */
+  /** Notification template  */
   template: string;
 }
 
 export interface DeadLetterAnalysis {
-  /** Analysis enabled */
+  /** Analysis enabled  */
   enabled: boolean;
   
-  /** Analysis frequency */
+  /** Analysis frequency  */
   frequency: string;
   
-  /** Pattern detection */
+  /** Pattern detection  */
   patternDetection: boolean;
   
-  /** Root cause analysis */
+  /** Root cause analysis  */
   rootCauseAnalysis: boolean;
   
-  /** Recommendations */
+  /** Recommendations  */
   recommendations: boolean;
 }
 
 export interface QueueMonitoring {
-  /** Monitoring enabled */
+  /** Monitoring enabled  */
   enabled: boolean;
   
-  /** Metrics collection */
+  /** Metrics collection  */
   metrics: MetricsCollection;
   
-  /** Alerting configuration */
+  /** Alerting configuration  */
   alerting: AlertingConfig;
   
-  /** Dashboard configuration */
+  /** Dashboard configuration  */
   dashboard?: DashboardConfig;
   
-  /** Health checks */
+  /** Health checks  */
   healthChecks: QueueHealthCheck[];
 }
 
 export interface MetricsCollection {
-  /** Collection interval (seconds) */
+  /** Collection interval (seconds)  */
   intervalSeconds: number;
   
-  /** Metrics to collect */
+  /** Metrics to collect  */
   metrics: QueueMetric[];
   
-  /** Retention period (days) */
+  /** Retention period (days)  */
   retentionDays: number;
   
-  /** Export configuration */
+  /** Export configuration  */
   export?: MetricsExport;
 }
 
 export interface QueueMetric {
-  /** Metric name */
+  /** Metric name  */
   name: string;
   
-  /** Metric type */
+  /** Metric type  */
   type: QueueMetricType;
   
-  /** Aggregation method */
+  /** Aggregation method  */
   aggregation: string;
   
-  /** Collection frequency */
+  /** Collection frequency  */
   frequency: string;
 }
 
@@ -777,170 +778,170 @@ export type QueueMetricType =
   | 'worker-efficiency';
 
 export interface MetricsExport {
-  /** Export enabled */
+  /** Export enabled  */
   enabled: boolean;
   
-  /** Export format */
+  /** Export format  */
   format: MetricsExportFormat;
   
-  /** Export destination */
+  /** Export destination  */
   destination: string;
   
-  /** Export frequency */
+  /** Export frequency  */
   frequency: string;
 }
 
 export type MetricsExportFormat = 'prometheus' | 'json' | 'csv' | 'custom';
 
 export interface AlertingConfig {
-  /** Alerting enabled */
+  /** Alerting enabled  */
   enabled: boolean;
   
-  /** Alert rules */
+  /** Alert rules  */
   rules: AlertRule[];
   
-  /** Notification channels */
+  /** Notification channels  */
   channels: AlertChannel[];
   
-  /** Alert escalation */
+  /** Alert escalation  */
   escalation?: AlertEscalation;
 }
 
 export interface AlertRule {
-  /** Rule name */
+  /** Rule name  */
   name: string;
   
-  /** Rule condition */
+  /** Rule condition  */
   condition: string;
   
-  /** Alert severity */
+  /** Alert severity  */
   severity: AlertSeverity;
   
-  /** Evaluation interval */
+  /** Evaluation interval  */
   evaluationInterval: string;
   
-  /** Rule enabled */
+  /** Rule enabled  */
   enabled: boolean;
   
-  /** Channels to notify */
+  /** Channels to notify  */
   channels: string[];
 }
 
 export type AlertSeverity = 'info' | 'warning' | 'error' | 'critical';
 
 export interface AlertChannel {
-  /** Channel name */
+  /** Channel name  */
   name: string;
   
-  /** Channel type */
+  /** Channel type  */
   type: string;
   
-  /** Channel configuration */
+  /** Channel configuration  */
   configuration: Record<string, unknown>;
   
-  /** Channel priority */
+  /** Channel priority  */
   priority: number;
 }
 
 export interface AlertEscalation {
-  /** Escalation enabled */
+  /** Escalation enabled  */
   enabled: boolean;
   
-  /** Escalation levels */
+  /** Escalation levels  */
   levels: EscalationLevel[];
   
-  /** Escalation timeout (seconds) */
+  /** Escalation timeout (seconds)  */
   timeoutSeconds: number;
 }
 
 export interface EscalationLevel {
-  /** Level number */
+  /** Level number  */
   level: number;
   
-  /** Channels for this level */
+  /** Channels for this level  */
   channels: string[];
   
-  /** Escalation delay (seconds) */
+  /** Escalation delay (seconds)  */
   delaySeconds: number;
 }
 
 export interface DashboardConfig {
-  /** Dashboard enabled */
+  /** Dashboard enabled  */
   enabled: boolean;
   
-  /** Dashboard widgets */
+  /** Dashboard widgets  */
   widgets: DashboardWidget[];
   
-  /** Refresh interval (seconds) */
+  /** Refresh interval (seconds)  */
   refreshIntervalSeconds: number;
   
-  /** Dashboard access control */
+  /** Dashboard access control  */
   accessControl?: DashboardAccessControl;
 }
 
 export interface DashboardWidget {
-  /** Widget type */
+  /** Widget type  */
   type: DashboardWidgetType;
   
-  /** Widget configuration */
+  /** Widget configuration  */
   configuration: Record<string, unknown>;
   
-  /** Widget position */
+  /** Widget position  */
   position: WidgetPosition;
   
-  /** Widget size */
+  /** Widget size  */
   size: WidgetSize;
 }
 
 export type DashboardWidgetType = 'chart' | 'gauge' | 'table' | 'counter' | 'status' | 'log';
 
 export interface WidgetPosition {
-  /** X coordinate */
+  /** X coordinate  */
   x: number;
   
-  /** Y coordinate */
+  /** Y coordinate  */
   y: number;
 }
 
 export interface WidgetSize {
-  /** Width */
+  /** Width  */
   width: number;
   
-  /** Height */
+  /** Height  */
   height: number;
 }
 
 export interface DashboardAccessControl {
-  /** Authentication required */
+  /** Authentication required  */
   requireAuth: boolean;
   
-  /** Authorized users */
+  /** Authorized users  */
   authorizedUsers?: string[];
   
-  /** Authorized roles */
+  /** Authorized roles  */
   authorizedRoles?: string[];
   
-  /** Public access */
+  /** Public access  */
   publicAccess: boolean;
 }
 
 export interface QueueHealthCheck {
-  /** Health check name */
+  /** Health check name  */
   name: string;
   
-  /** Health check type */
+  /** Health check type  */
   type: QueueHealthCheckType;
   
-  /** Check interval (seconds) */
+  /** Check interval (seconds)  */
   intervalSeconds: number;
   
-  /** Check timeout (seconds) */
+  /** Check timeout (seconds)  */
   timeoutSeconds: number;
   
-  /** Health check enabled */
+  /** Health check enabled  */
   enabled: boolean;
   
-  /** Failure threshold */
+  /** Failure threshold  */
   failureThreshold: number;
 }
 

@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * CVPlus Multimedia Features Hook
  * 
  * React hook for managing multimedia features and integration state
@@ -6,7 +7,7 @@
  * @author Gil Klainert
  * @version 1.0.0
  * @license PROPRIETARY
- */
+  */
 
 import React from 'react';
 import { featureRegistry, FeatureConfig } from '../integration/FeatureRegistry';

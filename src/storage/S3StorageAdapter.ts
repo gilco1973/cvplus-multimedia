@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * AWS S3 Storage Adapter
  * 
  * AWS S3 implementation for the multimedia storage service
@@ -6,7 +7,7 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0 - CVPlus Multimedia Module
- */
+  */
 
 import { StorageService, UploadOptions, FileInfo, ListOptions, SignedUrlOptions, DownloadOptions, UploadResult, UploadProgress } from '../types/storage.types';
 import { MediaFile, MediaType } from '../types/media.types';
@@ -29,7 +30,7 @@ export class S3StorageAdapter implements StorageService {
 
   /**
    * Upload file to S3
-   */
+    */
   async upload(file: MediaFile, options?: UploadOptions): Promise<UploadResult> {
     try {
       const path = options?.path || this.generatePath(file);
@@ -69,7 +70,7 @@ export class S3StorageAdapter implements StorageService {
 
   /**
    * Download file from S3
-   */
+    */
   async download(path: string, options?: DownloadOptions): Promise<MediaFile> {
     try {
       const key = this.buildKey(path);
@@ -111,7 +112,7 @@ export class S3StorageAdapter implements StorageService {
 
   /**
    * Get file information
-   */
+    */
   async getFileInfo(path: string): Promise<FileInfo> {
     try {
       const key = this.buildKey(path);
@@ -142,7 +143,7 @@ export class S3StorageAdapter implements StorageService {
 
   /**
    * Delete file from S3
-   */
+    */
   async delete(path: string): Promise<void> {
     try {
       const key = this.buildKey(path);
@@ -157,7 +158,7 @@ export class S3StorageAdapter implements StorageService {
 
   /**
    * List files in S3
-   */
+    */
   async list(prefix?: string, options?: ListOptions): Promise<FileInfo[]> {
     try {
       const listPrefix = prefix ? this.buildKey(prefix) : '';
@@ -175,7 +176,7 @@ export class S3StorageAdapter implements StorageService {
 
   /**
    * Copy file within S3
-   */
+    */
   async copy(sourcePath: string, destinationPath: string): Promise<void> {
     try {
       const sourceKey = this.buildKey(sourcePath);
@@ -191,7 +192,7 @@ export class S3StorageAdapter implements StorageService {
 
   /**
    * Move file within S3
-   */
+    */
   async move(sourcePath: string, destinationPath: string): Promise<void> {
     try {
       await this.copy(sourcePath, destinationPath);
@@ -203,7 +204,7 @@ export class S3StorageAdapter implements StorageService {
 
   /**
    * Generate signed URL for S3 object
-   */
+    */
   async generateSignedUrl(path: string, options?: SignedUrlOptions): Promise<string> {
     try {
       const key = this.buildKey(path);
@@ -222,7 +223,7 @@ export class S3StorageAdapter implements StorageService {
 
   /**
    * Check if file exists
-   */
+    */
   async exists(path: string): Promise<boolean> {
     try {
       await this.getFileInfo(path);
@@ -234,7 +235,7 @@ export class S3StorageAdapter implements StorageService {
 
   /**
    * Get storage usage statistics
-   */
+    */
   async getUsage() {
     try {
       // In a real implementation, this would use AWS SDK and CloudWatch
@@ -258,7 +259,7 @@ export class S3StorageAdapter implements StorageService {
 
   /**
    * Get S3 adapter capabilities
-   */
+    */
   getCapabilities(): Record<string, any> {
     return {
       provider: 's3',
@@ -301,7 +302,7 @@ export class S3StorageAdapter implements StorageService {
 
   /**
    * Convert MediaFile to Buffer
-   */
+    */
   private async mediaFileToBuffer(file: MediaFile): Promise<Buffer> {
     if (file.buffer) {
       return file.buffer;
@@ -320,7 +321,7 @@ export class S3StorageAdapter implements StorageService {
 
   /**
    * Generate storage path for file
-   */
+    */
   private generatePath(file: MediaFile): string {
     const timestamp = new Date().toISOString().split('T')[0];
     const extension = this.getFileExtension(file.name);
@@ -332,21 +333,21 @@ export class S3StorageAdapter implements StorageService {
 
   /**
    * Build S3 key from path
-   */
+    */
   private buildKey(path: string): string {
     return path.startsWith('/') ? path.substring(1) : path;
   }
 
   /**
    * Get file name from S3 key
-   */
+    */
   private getFileNameFromKey(key: string): string {
     return key.split('/').pop() || 'unknown';
   }
 
   /**
    * Get file extension
-   */
+    */
   private getFileExtension(filename: string): string {
     const lastDot = filename.lastIndexOf('.');
     return lastDot > -1 ? filename.substring(lastDot) : '';
@@ -354,7 +355,7 @@ export class S3StorageAdapter implements StorageService {
 
   /**
    * Detect media type from MIME type
-   */
+    */
   private detectMediaType(mimeType: string): string {
     if (mimeType.startsWith('image/')) return 'images';
     if (mimeType.startsWith('video/')) return 'videos';

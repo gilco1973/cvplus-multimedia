@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Validation Service
  * 
  * Comprehensive input validation and security scanning for multimedia content
  * including file signature verification, malware scanning, and content analysis.
- */
+  */
 
 import { ValidationConfig, SecurityThreat, ValidationResult } from '../../types';
 import { Logger } from '../utils/Logger';
@@ -80,7 +81,7 @@ export class ValidationService {
 
   /**
    * Validate file signature against expected format
-   */
+    */
   public async validateFileSignature(
     input: File | Buffer | string
   ): Promise<ValidationResult> {
@@ -117,7 +118,7 @@ export class ValidationService {
 
   /**
    * Scan for malware and malicious content
-   */
+    */
   public async scanForMalware(
     input: File | Buffer | string
   ): Promise<ValidationResult> {
@@ -152,7 +153,7 @@ export class ValidationService {
 
   /**
    * Validate content structure and metadata
-   */
+    */
   public async validateContent(
     input: File | Buffer | string
   ): Promise<ValidationResult> {
@@ -182,7 +183,7 @@ export class ValidationService {
 
   /**
    * Comprehensive validation combining all checks
-   */
+    */
   public async validateFile(
     input: File | Buffer | string,
     options: {
@@ -255,7 +256,7 @@ export class ValidationService {
 
   /**
    * Detect file format from buffer content
-   */
+    */
   private detectFileFormat(buffer: Buffer): string {
     for (const [format, signatures] of Object.entries(this.FILE_SIGNATURES)) {
       for (const signature of signatures) {
@@ -270,7 +271,7 @@ export class ValidationService {
 
   /**
    * Check if buffer matches file signature
-   */
+    */
   private matchesSignature(buffer: Buffer, signature: Buffer, format: string): boolean {
     // Special handling for formats with offset signatures
     if (format === 'video/mp4' && signature.equals(Buffer.from('ftyp'))) {
@@ -298,7 +299,7 @@ export class ValidationService {
 
   /**
    * Detect security threats in buffer
-   */
+    */
   private async detectThreats(buffer: Buffer): Promise<SecurityThreat[]> {
     const threats: SecurityThreat[] = [];
 
@@ -322,7 +323,7 @@ export class ValidationService {
 
   /**
    * Perform heuristic analysis for suspicious patterns
-   */
+    */
   private async performHeuristicAnalysis(buffer: Buffer): Promise<SecurityThreat[]> {
     const threats: SecurityThreat[] = [];
 
@@ -352,7 +353,7 @@ export class ValidationService {
 
   /**
    * Validate JPEG file structure
-   */
+    */
   private validateJpegStructure(buffer: Buffer): ValidationResult {
     // JPEG should start with 0xFFD8 and end with 0xFFD9
     if (!buffer.subarray(0, 2).equals(Buffer.from([0xFF, 0xD8]))) {
@@ -374,7 +375,7 @@ export class ValidationService {
 
   /**
    * Validate PNG file structure
-   */
+    */
   private validatePngStructure(buffer: Buffer): ValidationResult {
     // PNG signature: 89 50 4E 47 0D 0A 1A 0A
     const pngSignature = Buffer.from([0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A]);
@@ -399,7 +400,7 @@ export class ValidationService {
 
   /**
    * Validate GIF file structure
-   */
+    */
   private validateGifStructure(buffer: Buffer): ValidationResult {
     const gif87a = Buffer.from('GIF87a');
     const gif89a = Buffer.from('GIF89a');
@@ -416,7 +417,7 @@ export class ValidationService {
 
   /**
    * Generic structure validation
-   */
+    */
   private validateGenericStructure(buffer: Buffer): ValidationResult {
     // Basic checks for file integrity
     if (buffer.length === 0) {
@@ -438,7 +439,7 @@ export class ValidationService {
 
   /**
    * Calculate entropy of buffer (measure of randomness)
-   */
+    */
   private calculateEntropy(buffer: Buffer): number {
     const frequencies: number[] = new Array(256).fill(0);
     
@@ -461,7 +462,7 @@ export class ValidationService {
 
   /**
    * Check for unusual metadata patterns
-   */
+    */
   private hasUnusualMetadata(buffer: Buffer): boolean {
     // Look for EXIF data that's unusually large
     const exifMarker = buffer.indexOf(Buffer.from('Exif'));
@@ -474,7 +475,7 @@ export class ValidationService {
 
   /**
    * Get threat severity level
-   */
+    */
   private getThreatSeverity(threat: SecurityThreat['type']): number {
     switch (threat) {
       case 'eicar_test':
@@ -495,7 +496,7 @@ export class ValidationService {
 
   /**
    * Get threat description
-   */
+    */
   private getThreatDescription(threat: SecurityThreat['type']): string {
     switch (threat) {
       case 'eicar_test':
@@ -519,7 +520,7 @@ export class ValidationService {
 
   /**
    * Get file buffer from various input types
-   */
+    */
   private async getFileBuffer(input: File | Buffer | string): Promise<Buffer> {
     if (Buffer.isBuffer(input)) {
       return input;
@@ -539,7 +540,7 @@ export class ValidationService {
 
   /**
    * Get file size from various input types
-   */
+    */
   private async getFileSize(input: File | Buffer | string): Promise<number> {
     if (Buffer.isBuffer(input)) {
       return input.length;

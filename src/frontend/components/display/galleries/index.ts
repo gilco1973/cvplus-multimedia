@@ -1,7 +1,8 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Gallery Components Index
  * Export all gallery components
- */
+  */
 
 export { PortfolioGallery } from './PortfolioGallery';
 export { ProjectCard } from './ProjectCard';

@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * CDN Manager
  * 
  * Manages Content Delivery Network integration for multimedia assets
@@ -6,7 +7,7 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0 - CVPlus Multimedia Module
- */
+  */
 
 import { CDNConfig, CDNProvider } from '../types/storage.types';
 
@@ -36,14 +37,14 @@ export class CDNManager {
 
   /**
    * Check if CDN is enabled and configured
-   */
+    */
   isEnabled(): boolean {
     return this.enabled;
   }
 
   /**
    * Deploy asset to CDN
-   */
+    */
   async setupCDN(
     originUrl: string,
     cdnConfig?: Partial<CDNConfig>
@@ -66,7 +67,7 @@ export class CDNManager {
 
   /**
    * Deploy asset to specific CDN provider
-   */
+    */
   async deployToCDN(
     originUrl: string,
     config: CDNConfig
@@ -94,7 +95,7 @@ export class CDNManager {
 
   /**
    * Invalidate CDN cache for specific paths
-   */
+    */
   async invalidate(
     paths: string | string[],
     provider?: CDNProvider
@@ -134,7 +135,7 @@ export class CDNManager {
 
   /**
    * Get CDN performance metrics
-   */
+    */
   async getPerformanceMetrics(timeRange?: { start: Date; end: Date }): Promise<any> {
     if (!this.enabled) {
       return null;
@@ -185,7 +186,7 @@ export class CDNManager {
 
   /**
    * Configure cache rules for specific content types
-   */
+    */
   async configureCacheRules(rules: any[]): Promise<void> {
     if (!this.enabled) {
       throw new Error('CDN not configured');
@@ -205,7 +206,7 @@ export class CDNManager {
 
   /**
    * Deploy to AWS CloudFront
-   */
+    */
   private async deployToCloudFront(
     originUrl: string,
     config: CDNConfig
@@ -219,7 +220,7 @@ export class CDNManager {
 
   /**
    * Deploy to Cloudflare
-   */
+    */
   private async deployToCloudflare(
     originUrl: string,
     config: CDNConfig
@@ -233,7 +234,7 @@ export class CDNManager {
 
   /**
    * Deploy to Fastly
-   */
+    */
   private async deployToFastly(
     originUrl: string,
     config: CDNConfig
@@ -247,7 +248,7 @@ export class CDNManager {
 
   /**
    * Deploy to Azure CDN
-   */
+    */
   private async deployToAzureCDN(
     originUrl: string,
     config: CDNConfig
@@ -261,7 +262,7 @@ export class CDNManager {
 
   /**
    * Deploy to Google Cloud Storage CDN
-   */
+    */
   private async deployToGCSCDN(
     originUrl: string,
     config: CDNConfig
@@ -275,7 +276,7 @@ export class CDNManager {
 
   /**
    * Invalidate CloudFront cache
-   */
+    */
   private async invalidateCloudFront(paths: string[]): Promise<InvalidationResult> {
     // In a real implementation, this would use AWS SDK
     return {
@@ -288,7 +289,7 @@ export class CDNManager {
 
   /**
    * Invalidate Cloudflare cache
-   */
+    */
   private async invalidateCloudflare(paths: string[]): Promise<InvalidationResult> {
     // In a real implementation, this would use Cloudflare API
     return {
@@ -301,7 +302,7 @@ export class CDNManager {
 
   /**
    * Invalidate Fastly cache
-   */
+    */
   private async invalidateFastly(paths: string[]): Promise<InvalidationResult> {
     // In a real implementation, this would use Fastly API
     return {
@@ -313,7 +314,7 @@ export class CDNManager {
 
   /**
    * Invalidate Azure CDN cache
-   */
+    */
   private async invalidateAzureCDN(paths: string[]): Promise<InvalidationResult> {
     // In a real implementation, this would use Azure SDK
     return {
@@ -326,7 +327,7 @@ export class CDNManager {
 
   /**
    * Invalidate Google Cloud Storage CDN cache
-   */
+    */
   private async invalidateGCSCDN(paths: string[]): Promise<InvalidationResult> {
     // In a real implementation, this would use Google Cloud SDK
     return {
@@ -339,7 +340,7 @@ export class CDNManager {
 
   /**
    * Extract path from full URL
-   */
+    */
   private extractPathFromUrl(url: string): string {
     try {
       const urlObj = new URL(url);
@@ -352,7 +353,7 @@ export class CDNManager {
 
   /**
    * Get CDN manager capabilities
-   */
+    */
   getCapabilities(): Record<string, any> {
     return {
       enabled: this.enabled,
@@ -381,7 +382,7 @@ export class CDNManager {
 
   /**
    * Get provider-specific invalidation limits
-   */
+    */
   private getProviderInvalidationLimit(): number {
     switch (this.config.provider) {
       case 'cloudfront': return 1000;
@@ -395,7 +396,7 @@ export class CDNManager {
 
   /**
    * Get provider-specific domain limits
-   */
+    */
   private getProviderDomainLimit(): number {
     switch (this.config.provider) {
       case 'cloudfront': return 100;
@@ -409,7 +410,7 @@ export class CDNManager {
 
   /**
    * Get provider-specific origin limits
-   */
+    */
   private getProviderOriginLimit(): number {
     switch (this.config.provider) {
       case 'cloudfront': return 25;

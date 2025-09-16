@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * MultimediaPlayer Types
  *
  * Type definitions for the professional multimedia player component
  * supporting audio, video, and playlist functionality.
- */
+  */
 
 export interface MediaTrack {
   id: string;

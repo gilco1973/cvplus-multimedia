@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Media Processor
  * 
  * Base class for all media processors providing common functionality
@@ -6,7 +7,7 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0 - CVPlus Multimedia Module
- */
+  */
 
 import { ProcessorConfig, ProcessingPipeline, ProcessingResult, ProcessingStage, StageResult } from './types';
 
@@ -25,7 +26,7 @@ export abstract class MediaProcessor {
 
   /**
    * Process media through a pipeline of stages
-   */
+    */
   async processPipeline(pipeline: ProcessingPipeline, input: any): Promise<ProcessingResult> {
     const startTime = Date.now();
     const results: StageResult[] = [];
@@ -88,22 +89,22 @@ export abstract class MediaProcessor {
 
   /**
    * Process a single stage
-   */
+    */
   protected abstract processStage(stage: ProcessingStage, input: any): Promise<any>;
 
   /**
    * Validate input data
-   */
+    */
   protected abstract validateInput(input: any): boolean;
 
   /**
    * Get processor capabilities
-   */
+    */
   abstract getCapabilities(): Record<string, any>;
 
   /**
    * Get processor status
-   */
+    */
   getStatus(): Record<string, any> {
     return {
       type: this.constructor.name,

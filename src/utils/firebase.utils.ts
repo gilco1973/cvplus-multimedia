@@ -1,7 +1,8 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Firebase Utilities for Multimedia Submodule
  * Provides functions for calling Firebase Functions from the multimedia components
- */
+  */
 
 // Firebase function call utility (simplified implementation)
 export const callFirebaseFunction = async (functionName: string, data: any): Promise<any> => {

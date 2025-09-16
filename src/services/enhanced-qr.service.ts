@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Enhanced QR Service - Minimal Implementation
  * 
  * This is a minimal implementation to satisfy TypeScript imports.
@@ -6,7 +7,7 @@
  * 
  * @author Gil Klainert  
  * @created 2025-08-30
- */
+  */
 
 import { PortalUrls } from '../types/portal';
 
@@ -29,12 +30,12 @@ export interface QRGenerationResult {
 
 /**
  * Enhanced QR Service for generating QR codes with portal integration
- */
+  */
 export class EnhancedQRService {
   
   /**
    * Generate QR code for portal URLs
-   */
+    */
   async generatePortalQR(
     portalUrls: PortalUrls, 
     options: QRCodeOptions = {}
@@ -50,7 +51,7 @@ export class EnhancedQRService {
 
   /**
    * Generate QR code with custom data
-   */
+    */
   async generateCustomQR(
     data: string, 
     options: QRCodeOptions = {}
@@ -66,7 +67,7 @@ export class EnhancedQRService {
 
   /**
    * Generate complete portal QR code set
-   */
+    */
   async generatePortalQRCodes(jobId: string, portalUrls: PortalUrls): Promise<any[]> {
     return [
       await this.generatePortalQR(portalUrls),
@@ -76,7 +77,7 @@ export class EnhancedQRService {
 
   /**
    * Update existing QR codes to portal URLs
-   */
+    */
   async updateExistingQRCodesToPortal(jobId: string, portalUrls: PortalUrls): Promise<void> {
     // Implementation would update existing QR codes
     console.log(`Updating QR codes for job ${jobId} with portal URLs`);
@@ -84,7 +85,7 @@ export class EnhancedQRService {
 
   /**
    * Get QR codes for a job
-   */
+    */
   async getQRCodes(jobId: string): Promise<any[]> {
     // Implementation would fetch QR codes from database
     return [
@@ -95,7 +96,7 @@ export class EnhancedQRService {
 
   /**
    * Create portal QR code set without saving to database
-   */
+    */
   async createPortalQRCodeSet(portalUrls: PortalUrls): Promise<any[]> {
     return [
       { config: 'portal-web', url: portalUrls.webPortal },
@@ -105,7 +106,7 @@ export class EnhancedQRService {
 
   /**
    * Generate portal QR codes with analytics tracking
-   */
+    */
   async generatePortalQRWithAnalytics(
     jobId: string,
     portalUrls: PortalUrls,
@@ -119,7 +120,7 @@ export class EnhancedQRService {
 
   /**
    * Batch update QR codes for portal
-   */
+    */
   async batchUpdateQRCodesForPortal(
     jobId: string,
     portalUrls: PortalUrls,
@@ -130,7 +131,7 @@ export class EnhancedQRService {
 
   /**
    * Get portal templates
-   */
+    */
   getPortalTemplates(): any[] {
     return [
       { id: 'portal-web', name: 'Web Portal Template' },
@@ -140,7 +141,7 @@ export class EnhancedQRService {
 
   /**
    * Get default templates
-   */
+    */
   getDefaultTemplates(): any[] {
     return [
       { id: 'default-1', name: 'Default Template 1' },
@@ -150,7 +151,7 @@ export class EnhancedQRService {
 
   /**
    * Get QR analytics for a job
-   */
+    */
   async getQRAnalytics(jobId: string): Promise<any> {
     return {
       jobId,
@@ -162,7 +163,7 @@ export class EnhancedQRService {
 
   /**
    * Validate QR code data
-   */
+    */
   validateQRData(data: string): boolean {
     return data && data.length > 0;
   }

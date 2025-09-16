@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Media processing constants for CVPlus multimedia module
- */
+  */
 
 import { MediaType } from '../types';
 

@@ -1,11 +1,12 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Enhanced Job Core Types
  * 
  * Core job processing types for enhanced CV features.
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 export interface JobProcessingCore {
   id: string;

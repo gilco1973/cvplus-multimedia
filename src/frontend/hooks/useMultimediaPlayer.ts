@@ -51,7 +51,7 @@ interface MultimediaPlayerHookReturn {
  *
  * Comprehensive hook for managing multimedia player state and controls.
  * Provides playlist management, queue functionality, and analytics integration.
- */
+  */
 export const useMultimediaPlayer = (
   initialPlaylist: MediaTrack[] = [],
   options: UseMultimediaPlayerOptions = {}

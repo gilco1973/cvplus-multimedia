@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Utility Components for Multimedia Module
  * 
  * This module exports utility components that provide essential functionality
  * for multimedia operations including file uploads, validation, and helpers.
- */
+  */
 
 // File Upload Components
 export { default as FileUpload } from './FileUpload';

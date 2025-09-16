@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * CVPlus Multimedia Module - Minimal Export for Functions Migration
  * 
  * This file provides minimal exports required for Firebase Functions integration
@@ -7,7 +8,7 @@
  * @author Gil Klainert
  * @version 1.0.0
  * @license PROPRIETARY
- */
+  */
 
 // ============================================================================
 // ESSENTIAL TYPES FOR FUNCTIONS

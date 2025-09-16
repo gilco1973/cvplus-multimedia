@@ -1,18 +1,19 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * File Utilities
  * 
  * Common file manipulation and validation utilities for the multimedia module.
  * 
  * @author Gil Klainert
  * @version 1.0.0 - CVPlus Multimedia Module
- */
+  */
 
 import { MediaType } from '../types/media.types';
 
 export class FileUtils {
   /**
    * MIME type mappings for media files
-   */
+    */
   private static readonly MIME_TYPES = {
     // Images
     'image/jpeg': ['jpg', 'jpeg'],
@@ -47,7 +48,7 @@ export class FileUtils {
 
   /**
    * Get file extension from filename
-   */
+    */
   static getFileExtension(filename: string): string {
     const lastDot = filename.lastIndexOf('.');
     return lastDot > -1 ? filename.substring(lastDot + 1).toLowerCase() : '';
@@ -55,7 +56,7 @@ export class FileUtils {
 
   /**
    * Get filename without extension
-   */
+    */
   static getBaseName(filename: string): string {
     const lastDot = filename.lastIndexOf('.');
     return lastDot > -1 ? filename.substring(0, lastDot) : filename;
@@ -63,7 +64,7 @@ export class FileUtils {
 
   /**
    * Get MIME type from file extension
-   */
+    */
   static getMimeTypeFromExtension(extension: string): string {
     const ext = extension.toLowerCase().replace('.', '');
     
@@ -78,7 +79,7 @@ export class FileUtils {
 
   /**
    * Get file extension from MIME type
-   */
+    */
   static getExtensionFromMimeType(mimeType: string): string {
     const extensions = this.MIME_TYPES[mimeType as keyof typeof this.MIME_TYPES];
     return extensions ? `.${extensions[0]}` : '';
@@ -86,7 +87,7 @@ export class FileUtils {
 
   /**
    * Detect media type from MIME type or filename
-   */
+    */
   static detectMediaType(input: string): MediaType {
     let mimeType = input;
     
@@ -105,7 +106,7 @@ export class FileUtils {
 
   /**
    * Validate file name
-   */
+    */
   static isValidFileName(filename: string): boolean {
     // Check for basic validity
     if (!filename || filename.length === 0) return false;
@@ -124,7 +125,7 @@ export class FileUtils {
 
   /**
    * Sanitize filename for safe storage
-   */
+    */
   static sanitizeFileName(filename: string): string {
     // Replace invalid characters with underscores
     let sanitized = filename.replace(/[<>:"/\\|?*\x00-\x1f]/g, '_');
@@ -148,7 +149,7 @@ export class FileUtils {
 
   /**
    * Generate unique filename
-   */
+    */
   static generateUniqueFileName(originalName: string, suffix?: string): string {
     const timestamp = Date.now();
     const random = Math.random().toString(36).substring(2, 8);
@@ -163,7 +164,7 @@ export class FileUtils {
 
   /**
    * Format file size in human readable format
-   */
+    */
   static formatFileSize(bytes: number): string {
     if (bytes === 0) return '0 Bytes';
     
@@ -176,7 +177,7 @@ export class FileUtils {
 
   /**
    * Parse file size string to bytes
-   */
+    */
   static parseFileSize(sizeStr: string): number {
     const units = {
       'b': 1,
@@ -198,14 +199,14 @@ export class FileUtils {
 
   /**
    * Check if file size is within limits
-   */
+    */
   static isFileSizeValid(size: number, maxSize: number): boolean {
     return size > 0 && size <= maxSize;
   }
 
   /**
    * Get supported file extensions for media type
-   */
+    */
   static getSupportedExtensions(mediaType: MediaType): string[] {
     const extensions: string[] = [];
     
@@ -221,7 +222,7 @@ export class FileUtils {
 
   /**
    * Check if file type is supported
-   */
+    */
   static isFileTypeSupported(filename: string, supportedTypes: string[]): boolean {
     const extension = this.getFileExtension(filename);
     return supportedTypes.includes(extension);
@@ -229,7 +230,7 @@ export class FileUtils {
 
   /**
    * Generate file path with timestamp organization
-   */
+    */
   static generateDateBasedPath(filename: string, basePath = 'uploads'): string {
     const now = new Date();
     const year = now.getFullYear();
@@ -242,7 +243,7 @@ export class FileUtils {
 
   /**
    * Extract file info from path
-   */
+    */
   static extractFileInfo(filePath: string): {
     directory: string;
     filename: string;
@@ -269,7 +270,7 @@ export class FileUtils {
 
   /**
    * Validate file against multiple criteria
-   */
+    */
   static validateFile(
     file: File | { name: string; size: number; type: string },
     criteria: {

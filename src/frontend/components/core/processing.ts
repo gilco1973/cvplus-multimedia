@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Core media processing components
- */
+  */
 
 export { VideoIntroduction, VideoPlayer, VideoGenerationPanel } from './processing';
 export * from './processing/types';

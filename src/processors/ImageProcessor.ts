@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Image Processor
  * 
  * High-level image processing orchestrator that manages
@@ -6,7 +7,7 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0 - CVPlus Multimedia Module
- */
+  */
 
 import { MediaProcessor } from './MediaProcessor';
 import { ProcessingStage } from './types';
@@ -15,7 +16,7 @@ export class ImageProcessor extends MediaProcessor {
   
   /**
    * Process a single image processing stage
-   */
+    */
   protected async processStage(stage: ProcessingStage, input: any): Promise<any> {
     switch (stage.processor) {
       case 'resize':
@@ -43,7 +44,7 @@ export class ImageProcessor extends MediaProcessor {
 
   /**
    * Validate image input
-   */
+    */
   protected validateInput(input: any): boolean {
     if (!input) return false;
     
@@ -57,7 +58,7 @@ export class ImageProcessor extends MediaProcessor {
 
   /**
    * Get image processor capabilities
-   */
+    */
   getCapabilities(): Record<string, any> {
     return {
       supportedFormats: ['jpeg', 'png', 'webp', 'avif', 'gif', 'svg', 'bmp', 'tiff'],

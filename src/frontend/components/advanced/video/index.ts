@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Advanced Video Components Index
  * 
  * Exports all advanced video generation and processing components
@@ -6,7 +7,7 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 // Multi-Provider Video Generation
 export { MultiProviderVideoGenerator } from './MultiProviderVideoGenerator';
@@ -38,7 +39,7 @@ export {
  * Comprehensive collection of enterprise-grade video generation
  * and processing components with multi-provider support,
  * real-time monitoring, and AI-powered optimization.
- */
+  */
 export const AdvancedVideoComponents = {
   MultiProviderVideoGenerator,
   VideoProcessingMonitor,

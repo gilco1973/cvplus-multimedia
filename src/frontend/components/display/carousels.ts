@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Carousel display components
- */
+  */
 
 export { TestimonialsCarousel, TestimonialCard, CarouselControls } from './carousels';
 export * from './carousels/types';

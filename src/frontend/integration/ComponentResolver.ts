@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * CVPlus Multimedia Component Resolver
  * 
  * Provides intelligent component resolution with fallbacks and version compatibility
@@ -6,7 +7,7 @@
  * @author Gil Klainert
  * @version 1.0.0
  * @license PROPRIETARY
- */
+  */
 
 import React from 'react';
 
@@ -58,7 +59,7 @@ export class ComponentResolver {
 
   /**
    * Register a component with optional configuration
-   */
+    */
   register(
     name: string, 
     component: React.ComponentType<any>,
@@ -73,14 +74,14 @@ export class ComponentResolver {
 
   /**
    * Register a global fallback for a component
-   */
+    */
   registerFallback(name: string, fallback: React.ComponentType<any>): void {
     this.globalFallbacks.set(name, fallback);
   }
 
   /**
    * Resolve a component by name with compatibility checks
-   */
+    */
   resolveComponent(name: string): React.ComponentType<any> | null {
     const config = this.components.get(name);
     
@@ -100,7 +101,7 @@ export class ComponentResolver {
 
   /**
    * Check version compatibility
-   */
+    */
   checkCompatibility(version: string): boolean {
     try {
       const componentVersion = parseVersion(version);
@@ -115,35 +116,35 @@ export class ComponentResolver {
 
   /**
    * Get all registered component names
-   */
+    */
   getRegisteredComponents(): string[] {
     return Array.from(this.components.keys());
   }
 
   /**
    * Check if component exists
-   */
+    */
   hasComponent(name: string): boolean {
     return this.components.has(name);
   }
 
   /**
    * Get component info
-   */
+    */
   getComponentInfo(name: string): ComponentConfig | null {
     return this.components.get(name) || null;
   }
 
   /**
    * Set current version for compatibility checks
-   */
+    */
   setCurrentVersion(version: string): void {
     this.currentVersion = version;
   }
 
   /**
    * Clear all registered components
-   */
+    */
   clear(): void {
     this.components.clear();
     this.globalFallbacks.clear();

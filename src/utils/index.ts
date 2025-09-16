@@ -1,11 +1,12 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Utilities Index
  * 
  * Exports all utility functions and classes for the CVPlus Multimedia Module.
  * 
  * @author Gil Klainert
  * @version 1.0.0 - CVPlus Multimedia Module
- */
+  */
 
 // ============================================================================
 // FILE UTILITIES
@@ -110,7 +111,7 @@ export const UTIL_CONSTANTS = {
 
 /**
  * Create a comprehensive file validation configuration
- */
+  */
 export function createValidationConfig(mediaType: 'image' | 'video' | 'audio') {
   const baseConfig = {
     maxSize: UTIL_CONSTANTS.MAX_FILE_SIZE.IMAGE,
@@ -152,7 +153,7 @@ export function createValidationConfig(mediaType: 'image' | 'video' | 'audio') {
 
 /**
  * Get recommended settings for media optimization
- */
+  */
 export function getOptimizationSettings(
   mediaType: 'image' | 'video' | 'audio',
   quality: 'low' | 'medium' | 'high' | 'lossless' = 'medium'
@@ -195,7 +196,7 @@ export function getOptimizationSettings(
 
 /**
  * Check if a file meets the requirements for a specific use case
- */
+  */
 export function validateForUseCase(
   file: { name: string; size: number; type: string },
   useCase: 'avatar' | 'banner' | 'thumbnail' | 'document' | 'video-upload' | 'audio-upload'
@@ -253,7 +254,7 @@ export function validateForUseCase(
 
 /**
  * Generate processing options based on target platform
- */
+  */
 export function getProcessingOptionsForPlatform(
   platform: 'web' | 'mobile' | 'email' | 'social' | 'print',
   mediaType: 'image' | 'video' | 'audio'

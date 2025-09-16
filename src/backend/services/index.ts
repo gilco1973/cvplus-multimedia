@@ -1,7 +1,8 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Multimedia Backend Services Index
  * Exports all multimedia services for Firebase Functions
- */
+  */
 
 export { podcastGenerationService } from './podcast-generation.service';
 export { portfolioGalleryService } from './portfolio-gallery.service';

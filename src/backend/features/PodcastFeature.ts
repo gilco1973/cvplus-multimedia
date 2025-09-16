@@ -3,7 +3,7 @@
 /**
  * Podcast feature generator for multimedia module
  * Creates an AI-generated career podcast player using React AIPodcastPlayer component
- */
+  */
 export class PodcastFeature implements CVFeature {
 
   async generate(cv: CVData, jobId: string, options?: any): Promise<string> {
@@ -32,7 +32,7 @@ export class PodcastFeature implements CVFeature {
 
   /**
    * Extract podcast data from CV for the React component
-   */
+    */
   private extractPodcastData(cv: CVData, jobId: string, options?: any): any {
     const contactName = cv.personalInfo?.name || 'Professional';
     const yearsOfExperience = this.calculateYearsOfExperience(cv);
@@ -53,7 +53,7 @@ export class PodcastFeature implements CVFeature {
 
   /**
    * Calculate years of experience from CV
-   */
+    */
   private calculateYearsOfExperience(cv: CVData): number {
     if (!cv.experience || cv.experience.length === 0) return 0;
 
@@ -72,7 +72,7 @@ export class PodcastFeature implements CVFeature {
 
   /**
    * Extract key highlights for podcast content
-   */
+    */
   private extractKeyHighlights(cv: CVData): string[] {
     const highlights: string[] = [];
 
@@ -107,7 +107,7 @@ export class PodcastFeature implements CVFeature {
 
   /**
    * Generate React component placeholder
-   */
+    */
   private generateReactComponentPlaceholder(jobId: string, contactName: string, props: any, options?: any): string {
     const serializedProps = JSON.stringify(props).replace(/"/g, '&quot;');
 
@@ -135,7 +135,7 @@ export class PodcastFeature implements CVFeature {
 
   getStyles(): string {
     return `
-      /* Fallback styles for environments without React */
+      /* Fallback styles for environments without React  */
       .podcast-fallback {
         margin: 30px 0;
         padding: 25px;

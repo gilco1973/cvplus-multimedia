@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Multimedia Processors
  * 
  * High-level media processing interfaces that orchestrate
@@ -6,7 +7,7 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0 - CVPlus Multimedia Module
- */
+  */
 
 export { ImageProcessor } from './ImageProcessor';
 export { VideoProcessor } from './VideoProcessor';

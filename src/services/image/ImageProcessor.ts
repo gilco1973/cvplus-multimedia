@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Image Processor
  * 
  * Core image processing operations using Sharp library for high-performance
  * image manipulation, format conversion, and advanced transformations.
- */
+  */
 
 import { 
   ImageProcessingConfig,
@@ -15,7 +16,7 @@ import { Logger } from '../utils/Logger';
 
 /**
  * High-performance image processing using Sharp
- */
+  */
 export class ImageProcessor {
   private readonly logger: Logger;
   private readonly config: ImageProcessingConfig;
@@ -27,7 +28,7 @@ export class ImageProcessor {
 
   /**
    * Process image with specified operations
-   */
+    */
   public async process(
     buffer: Buffer,
     operations: ImageProcessingOperation[]
@@ -52,7 +53,7 @@ export class ImageProcessor {
 
   /**
    * Apply single operation to Sharp pipeline
-   */
+    */
   private async applyOperation(pipeline: any, operation: ImageProcessingOperation): Promise<any> {
     switch (operation.type) {
       case 'resize':
@@ -114,7 +115,7 @@ export class ImageProcessor {
 
   /**
    * Apply resize operation
-   */
+    */
   private applyResize(pipeline: any, operation: ImageProcessingOperation): any {
     const { width, height, fit, position, background } = operation.params;
 
@@ -129,7 +130,7 @@ export class ImageProcessor {
 
   /**
    * Apply crop operation
-   */
+    */
   private applyCrop(pipeline: any, operation: ImageProcessingOperation): any {
     const { x, y, width, height } = operation.params;
     return pipeline.extract({ left: x, top: y, width, height });
@@ -137,7 +138,7 @@ export class ImageProcessor {
 
   /**
    * Apply rotation
-   */
+    */
   private applyRotate(pipeline: any, operation: ImageProcessingOperation): any {
     const { angle, background } = operation.params;
     const options: any = {};
@@ -148,7 +149,7 @@ export class ImageProcessor {
 
   /**
    * Apply flip operation
-   */
+    */
   private applyFlip(pipeline: any, operation: ImageProcessingOperation): any {
     const { horizontal, vertical } = operation.params;
     
@@ -165,7 +166,7 @@ export class ImageProcessor {
 
   /**
    * Apply blur effect
-   */
+    */
   private applyBlur(pipeline: any, operation: ImageProcessingOperation): any {
     const { sigma } = operation.params;
     return pipeline.blur(sigma || 1);
@@ -173,7 +174,7 @@ export class ImageProcessor {
 
   /**
    * Apply sharpening
-   */
+    */
   private applySharpen(pipeline: any, operation: ImageProcessingOperation): any {
     const { sigma, flat, jagged } = operation.params;
     const options: any = {};
@@ -187,7 +188,7 @@ export class ImageProcessor {
 
   /**
    * Apply brightness adjustment
-   */
+    */
   private applyBrightness(pipeline: any, operation: ImageProcessingOperation): any {
     const { value } = operation.params;
     return pipeline.modulate({ brightness: value });
@@ -195,7 +196,7 @@ export class ImageProcessor {
 
   /**
    * Apply contrast adjustment
-   */
+    */
   private applyContrast(pipeline: any, operation: ImageProcessingOperation): any {
     const { value } = operation.params;
     return pipeline.linear(value, -(128 * value) + 128);
@@ -203,7 +204,7 @@ export class ImageProcessor {
 
   /**
    * Apply saturation adjustment
-   */
+    */
   private applySaturation(pipeline: any, operation: ImageProcessingOperation): any {
     const { value } = operation.params;
     return pipeline.modulate({ saturation: value });
@@ -211,7 +212,7 @@ export class ImageProcessor {
 
   /**
    * Apply gamma correction
-   */
+    */
   private applyGamma(pipeline: any, operation: ImageProcessingOperation): any {
     const { value } = operation.params;
     return pipeline.gamma(value);
@@ -219,14 +220,14 @@ export class ImageProcessor {
 
   /**
    * Apply grayscale conversion
-   */
+    */
   private applyGrayscale(pipeline: any, operation: ImageProcessingOperation): any {
     return pipeline.grayscale();
   }
 
   /**
    * Apply sepia effect
-   */
+    */
   private applySepia(pipeline: any, operation: ImageProcessingOperation): any {
     // Sepia effect using color matrix
     return pipeline.recomb([
@@ -238,21 +239,21 @@ export class ImageProcessor {
 
   /**
    * Apply negative effect
-   */
+    */
   private applyNegate(pipeline: any, operation: ImageProcessingOperation): any {
     return pipeline.negate();
   }
 
   /**
    * Apply normalization
-   */
+    */
   private applyNormalize(pipeline: any, operation: ImageProcessingOperation): any {
     return pipeline.normalize();
   }
 
   /**
    * Apply threshold
-   */
+    */
   private applyThreshold(pipeline: any, operation: ImageProcessingOperation): any {
     const { value, grayscale } = operation.params;
     const options: any = { threshold: value };
@@ -263,7 +264,7 @@ export class ImageProcessor {
 
   /**
    * Apply tint
-   */
+    */
   private applyTint(pipeline: any, operation: ImageProcessingOperation): any {
     const { color } = operation.params;
     return pipeline.tint(color);
@@ -271,7 +272,7 @@ export class ImageProcessor {
 
   /**
    * Apply overlay
-   */
+    */
   private applyOverlay(pipeline: any, operation: ImageProcessingOperation): any {
     const { overlay, position, blend } = operation.params;
     
@@ -287,7 +288,7 @@ export class ImageProcessor {
 
   /**
    * Create Sharp pipeline with initial configuration
-   */
+    */
   private createSharpPipeline(buffer: Buffer): any {
     // This would initialize Sharp with the buffer
     // For now, returning a mock pipeline
@@ -315,7 +316,7 @@ export class ImageProcessor {
 
   /**
    * Get processing capabilities
-   */
+    */
   public getCapabilities(): ProcessingCapabilities {
     return {
       operations: [
@@ -335,7 +336,7 @@ export class ImageProcessor {
 
   /**
    * Validate operation parameters
-   */
+    */
   public validateOperation(operation: ImageProcessingOperation): boolean {
     try {
       // Basic validation - can be extended
@@ -362,7 +363,7 @@ export class ImageProcessor {
 
   /**
    * Get operation cost estimate (for resource planning)
-   */
+    */
   public estimateOperationCost(operation: ImageProcessingOperation, imageSize: number): number {
     const baseCost = imageSize / (1024 * 1024); // Base cost per MB
 

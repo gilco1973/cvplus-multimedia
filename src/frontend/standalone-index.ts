@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * CVPlus Multimedia Frontend - Standalone Integration Export
  * 
  * Zero-dependency integration layer for Phase 1.5 multimedia components
@@ -6,7 +7,7 @@
  * @author Gil Klainert
  * @version 1.0.0
  * @license PROPRIETARY  
- */
+  */
 
 // ============================================================================
 // STANDALONE INTEGRATION LAYER
@@ -40,7 +41,7 @@ export interface StandaloneIntegrationConfig {
 
 /**
  * Initialize standalone integration with configuration
- */
+  */
 export const initializeStandaloneIntegration = (config: Partial<StandaloneIntegrationConfig> = {}) => {
   const defaultConfig: StandaloneIntegrationConfig = {
     autoInitialize: true,
@@ -61,7 +62,7 @@ export const initializeStandaloneIntegration = (config: Partial<StandaloneIntegr
 
 /**
  * Check if standalone integration is available and working
- */
+  */
 export const isStandaloneIntegrationReady = (): boolean => {
   return true; // Always ready since it has no dependencies
 };

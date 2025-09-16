@@ -1,7 +1,8 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Testimonials Carousel Utilities
  * Utility functions for testimonials carousel
- */
+  */
 
 import { Testimonial } from './types';
 

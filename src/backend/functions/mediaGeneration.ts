@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Cloud Functions for Media Generation
- */
+  */
 
 import { onCall, HttpsError, CallableRequest } from 'firebase-functions/v2/https';
 import * as admin from 'firebase-admin';
@@ -10,7 +11,7 @@ import { corsOptions } from '../config/cors';
 
 /**
  * Generate video introduction script
- */
+  */
 export const generateVideoIntro = onCall(
   { 
     timeoutSeconds: 120,
@@ -78,7 +79,7 @@ export const generateVideoIntro = onCall(
 
 /**
  * Convert text to audio
- */
+  */
 export const generateAudioFromText = onCall(
   { 
     timeoutSeconds: 240,
@@ -124,7 +125,7 @@ export const generateAudioFromText = onCall(
 
 /**
  * Regenerate media with different settings
- */
+  */
 export const regenerateMedia = onCall(
   { 
     timeoutSeconds: 180,
@@ -191,7 +192,7 @@ export const regenerateMedia = onCall(
 
 /**
  * Get media generation status
- */
+  */
 export const getMediaStatus = onCall(
   { 
     timeoutSeconds: 60,
@@ -248,7 +249,7 @@ export const getMediaStatus = onCall(
 
 /**
  * Download media content
- */
+  */
 export const downloadMediaContent = onCall(
   { 
     timeoutSeconds: 60,

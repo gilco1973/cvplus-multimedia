@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Job Queue Implementation
  * 
  * Manages job queuing with priority support, persistence,
  * and efficient processing coordination for multimedia jobs.
- */
+  */
 
 import { JobResult, JobPriority } from '../../types';
 import { Logger } from '../utils/Logger';
@@ -19,7 +20,7 @@ export interface QueueStats {
 
 /**
  * Priority-based job queue implementation
- */
+  */
 export class JobQueue {
   private readonly logger: Logger;
   private readonly queues: Map<JobPriority, JobResult[]>;
@@ -39,7 +40,7 @@ export class JobQueue {
 
   /**
    * Add job to appropriate priority queue
-   */
+    */
   public async enqueue(job: JobResult): Promise<void> {
     try {
       const priority = job.priority || 'normal';
@@ -68,7 +69,7 @@ export class JobQueue {
 
   /**
    * Get next job from highest priority queue
-   */
+    */
   public async dequeue(): Promise<JobResult | null> {
     try {
       // Check queues in priority order
@@ -97,7 +98,7 @@ export class JobQueue {
 
   /**
    * Remove specific job from queue
-   */
+    */
   public async remove(jobId: string): Promise<boolean> {
     try {
       for (const [priority, queue] of this.queues) {
@@ -126,7 +127,7 @@ export class JobQueue {
 
   /**
    * Get job by ID from any queue
-   */
+    */
   public async getJob(jobId: string): Promise<JobResult | null> {
     for (const queue of this.queues.values()) {
       const job = queue.find(job => job.id === jobId);
@@ -140,7 +141,7 @@ export class JobQueue {
 
   /**
    * Get all jobs from specific priority queue
-   */
+    */
   public async getJobsByPriority(priority: JobPriority): Promise<JobResult[]> {
     const queue = this.queues.get(priority);
     return queue ? [...queue] : [];
@@ -148,7 +149,7 @@ export class JobQueue {
 
   /**
    * Get all queued jobs
-   */
+    */
   public async getAllJobs(): Promise<JobResult[]> {
     const allJobs: JobResult[] = [];
     
@@ -162,7 +163,7 @@ export class JobQueue {
 
   /**
    * Get queue statistics
-   */
+    */
   public async getStats(): Promise<QueueStats> {
     const stats: QueueStats = {
       totalJobs: 0,
@@ -191,7 +192,7 @@ export class JobQueue {
 
   /**
    * Get queue size for specific priority
-   */
+    */
   public getQueueSize(priority?: JobPriority): number {
     if (priority) {
       const queue = this.queues.get(priority);
@@ -208,14 +209,14 @@ export class JobQueue {
 
   /**
    * Check if queue is empty
-   */
+    */
   public isEmpty(): boolean {
     return this.getQueueSize() === 0;
   }
 
   /**
    * Clear all queues
-   */
+    */
   public async clear(): Promise<void> {
     for (const queue of this.queues.values()) {
       queue.length = 0;
@@ -226,7 +227,7 @@ export class JobQueue {
 
   /**
    * Clear specific priority queue
-   */
+    */
   public async clearPriority(priority: JobPriority): Promise<void> {
     const queue = this.queues.get(priority);
     if (queue) {
@@ -237,7 +238,7 @@ export class JobQueue {
 
   /**
    * Update job priority (move between queues)
-   */
+    */
   public async updateJobPriority(jobId: string, newPriority: JobPriority): Promise<boolean> {
     try {
       // Find and remove job from current queue
@@ -274,7 +275,7 @@ export class JobQueue {
 
   /**
    * Peek at next job without removing it
-   */
+    */
   public async peek(): Promise<JobResult | null> {
     for (const priority of this.priorityOrder) {
       const queue = this.queues.get(priority);
@@ -288,7 +289,7 @@ export class JobQueue {
 
   /**
    * Get jobs older than specified time
-   */
+    */
   public async getOldJobs(olderThanMs: number): Promise<JobResult[]> {
     const cutoffTime = new Date(Date.now() - olderThanMs);
     const oldJobs: JobResult[] = [];
@@ -306,7 +307,7 @@ export class JobQueue {
 
   /**
    * Remove old jobs from queues
-   */
+    */
   public async cleanupOldJobs(olderThanMs: number): Promise<number> {
     const cutoffTime = new Date(Date.now() - olderThanMs);
     let removedCount = 0;
@@ -332,7 +333,7 @@ export class JobQueue {
 
   /**
    * Export queue state for debugging
-   */
+    */
   public exportState(): Record<string, any> {
     const state: Record<string, any> = {
       timestamp: new Date().toISOString(),

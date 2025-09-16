@@ -1,7 +1,8 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Subscription types for multimedia module
  * Local definitions to avoid dependency violations
- */
+  */
 
 export interface UserSubscription {
   subscriptionStatus: 'free' | 'premium' | 'lifetime';

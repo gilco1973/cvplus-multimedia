@@ -1,11 +1,12 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Enhanced ATS (Applicant Tracking System) Types
  * 
  * ATS integration types for enhanced CV features.
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 export interface ATSIntegration {
   id: string;

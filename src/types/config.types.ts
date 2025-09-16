@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Configuration types for CVPlus multimedia module
- */
+  */
 
 import { QualityLevel } from './media.types';
 import { StorageProvider, CDNProvider } from './storage.types';
@@ -36,34 +37,34 @@ export interface ServiceConfig {
 // ============================================================================
 
 export interface MultimediaModuleConfig {
-  /** General configuration */
+  /** General configuration  */
   general: GeneralConfig;
   
-  /** Storage configuration */
+  /** Storage configuration  */
   storage: StorageModuleConfig;
   
-  /** CDN configuration */
+  /** CDN configuration  */
   cdn?: CDNModuleConfig;
   
-  /** Processing configuration */
+  /** Processing configuration  */
   processing: ProcessingModuleConfig;
   
-  /** Security configuration */
+  /** Security configuration  */
   security: SecurityModuleConfig;
   
-  /** Performance configuration */
+  /** Performance configuration  */
   performance: PerformanceModuleConfig;
   
-  /** Monitoring configuration */
+  /** Monitoring configuration  */
   monitoring: MonitoringModuleConfig;
   
-  /** Feature flags */
+  /** Feature flags  */
   features: FeatureFlags;
   
-  /** Environment-specific settings */
+  /** Environment-specific settings  */
   environment: EnvironmentConfig;
   
-  /** Integration settings */
+  /** Integration settings  */
   integrations: IntegrationConfig;
 }
 
@@ -72,60 +73,60 @@ export interface MultimediaModuleConfig {
 // ============================================================================
 
 export interface GeneralConfig {
-  /** Module version */
+  /** Module version  */
   version: string;
   
-  /** Module name */
+  /** Module name  */
   name: string;
   
-  /** Debug mode */
+  /** Debug mode  */
   debug: boolean;
   
-  /** Logging configuration */
+  /** Logging configuration  */
   logging: LoggingConfig;
   
-  /** Default locale */
+  /** Default locale  */
   defaultLocale: string;
   
-  /** Supported locales */
+  /** Supported locales  */
   supportedLocales: string[];
   
-  /** Timezone */
+  /** Timezone  */
   timezone: string;
   
-  /** API rate limits */
+  /** API rate limits  */
   rateLimits: RateLimitsConfig;
   
-  /** Request timeout */
+  /** Request timeout  */
   requestTimeoutMs: number;
   
-  /** Retry configuration */
+  /** Retry configuration  */
   retryConfig: RetryConfig;
 }
 
 export interface LoggingConfig {
-  /** Log level */
+  /** Log level  */
   level: LogLevel;
   
-  /** Log format */
+  /** Log format  */
   format: LogFormat;
   
-  /** Log destinations */
+  /** Log destinations  */
   destinations: LogDestination[];
   
-  /** Include stack traces */
+  /** Include stack traces  */
   includeStackTrace: boolean;
   
-  /** Include request details */
+  /** Include request details  */
   includeRequestDetails: boolean;
   
-  /** Log retention days */
+  /** Log retention days  */
   retentionDays: number;
   
-  /** Structured logging */
+  /** Structured logging  */
   structured: boolean;
   
-  /** Log sampling rate */
+  /** Log sampling rate  */
   samplingRate?: number;
 }
 
@@ -134,45 +135,45 @@ export type LogFormat = 'json' | 'text' | 'structured' | 'custom';
 export type LogDestination = 'console' | 'file' | 'database' | 'external' | 'syslog';
 
 export interface RateLimitsConfig {
-  /** Requests per minute */
+  /** Requests per minute  */
   requestsPerMinute: number;
   
-  /** Uploads per hour */
+  /** Uploads per hour  */
   uploadsPerHour: number;
   
-  /** Processing jobs per hour */
+  /** Processing jobs per hour  */
   processingJobsPerHour: number;
   
-  /** API calls per minute */
+  /** API calls per minute  */
   apiCallsPerMinute: number;
   
-  /** Burst allowance */
+  /** Burst allowance  */
   burstAllowance: number;
   
-  /** Rate limit by user */
+  /** Rate limit by user  */
   byUser: boolean;
   
-  /** Rate limit by IP */
+  /** Rate limit by IP  */
   byIP: boolean;
 }
 
 export interface RetryConfig {
-  /** Maximum attempts */
+  /** Maximum attempts  */
   maxAttempts: number;
   
-  /** Base delay (ms) */
+  /** Base delay (ms)  */
   baseDelayMs: number;
   
-  /** Max delay (ms) */
+  /** Max delay (ms)  */
   maxDelayMs: number;
   
-  /** Backoff multiplier */
+  /** Backoff multiplier  */
   backoffMultiplier: number;
   
-  /** Jitter enabled */
+  /** Jitter enabled  */
   jitter: boolean;
   
-  /** Retryable error codes */
+  /** Retryable error codes  */
   retryableErrorCodes: string[];
 }
 
@@ -181,278 +182,278 @@ export interface RetryConfig {
 // ============================================================================
 
 export interface StorageModuleConfig {
-  /** Primary storage provider */
+  /** Primary storage provider  */
   primaryProvider: StorageProvider;
   
-  /** Provider configurations */
+  /** Provider configurations  */
   providers: Record<StorageProvider, StorageProviderConfig>;
   
-  /** Backup configuration */
+  /** Backup configuration  */
   backup: BackupConfig;
   
-  /** File organization */
+  /** File organization  */
   fileOrganization: FileOrganizationConfig;
   
-  /** Access control */
+  /** Access control  */
   accessControl: AccessControlConfig;
   
-  /** Cleanup policies */
+  /** Cleanup policies  */
   cleanup: CleanupConfig;
   
-  /** Encryption settings */
+  /** Encryption settings  */
   encryption: EncryptionConfig;
   
-  /** Quota management */
+  /** Quota management  */
   quotaManagement: QuotaManagementConfig;
 }
 
 export interface StorageProviderConfig {
-  /** Provider enabled */
+  /** Provider enabled  */
   enabled: boolean;
   
-  /** Provider-specific settings */
+  /** Provider-specific settings  */
   settings: Record<string, unknown>;
   
-  /** Authentication */
+  /** Authentication  */
   authentication: AuthenticationConfig;
   
-  /** Default bucket/container */
+  /** Default bucket/container  */
   defaultBucket: string;
   
-  /** Region */
+  /** Region  */
   region?: string;
   
-  /** Endpoint URL */
+  /** Endpoint URL  */
   endpointUrl?: string;
   
-  /** Connection timeout */
+  /** Connection timeout  */
   connectionTimeoutMs: number;
   
-  /** Request timeout */
+  /** Request timeout  */
   requestTimeoutMs: number;
   
-  /** Max concurrent connections */
+  /** Max concurrent connections  */
   maxConcurrentConnections: number;
   
-  /** Retry settings */
+  /** Retry settings  */
   retrySettings: ProviderRetrySettings;
 }
 
 export interface AuthenticationConfig {
-  /** Authentication type */
+  /** Authentication type  */
   type: AuthenticationType;
   
-  /** Credentials */
+  /** Credentials  */
   credentials: Record<string, string>;
   
-  /** Token refresh settings */
+  /** Token refresh settings  */
   tokenRefresh?: TokenRefreshConfig;
   
-  /** Security settings */
+  /** Security settings  */
   security?: AuthSecurityConfig;
 }
 
 export type AuthenticationType = 'api-key' | 'oauth' | 'service-account' | 'iam' | 'basic' | 'custom';
 
 export interface TokenRefreshConfig {
-  /** Auto refresh */
+  /** Auto refresh  */
   autoRefresh: boolean;
   
-  /** Refresh threshold (seconds) */
+  /** Refresh threshold (seconds)  */
   refreshThresholdSeconds: number;
   
-  /** Max refresh attempts */
+  /** Max refresh attempts  */
   maxRefreshAttempts: number;
   
-  /** Refresh endpoint */
+  /** Refresh endpoint  */
   refreshEndpoint?: string;
 }
 
 export interface AuthSecurityConfig {
-  /** Use secure connections only */
+  /** Use secure connections only  */
   secureOnly: boolean;
   
-  /** Certificate validation */
+  /** Certificate validation  */
   validateCertificates: boolean;
   
-  /** Custom CA certificates */
+  /** Custom CA certificates  */
   customCACerts?: string[];
   
-  /** Client certificates */
+  /** Client certificates  */
   clientCerts?: ClientCertificateConfig;
 }
 
 export interface ClientCertificateConfig {
-  /** Certificate file path */
+  /** Certificate file path  */
   certFile: string;
   
-  /** Private key file path */
+  /** Private key file path  */
   keyFile: string;
   
-  /** Passphrase */
+  /** Passphrase  */
   passphrase?: string;
 }
 
 export interface ProviderRetrySettings {
-  /** Max retry attempts */
+  /** Max retry attempts  */
   maxAttempts: number;
   
-  /** Retry delay (ms) */
+  /** Retry delay (ms)  */
   retryDelayMs: number;
   
-  /** Exponential backoff */
+  /** Exponential backoff  */
   exponentialBackoff: boolean;
   
-  /** Retryable status codes */
+  /** Retryable status codes  */
   retryableStatusCodes: number[];
 }
 
 export interface BackupConfig {
-  /** Backup enabled */
+  /** Backup enabled  */
   enabled: boolean;
   
-  /** Backup provider */
+  /** Backup provider  */
   provider: StorageProvider;
   
-  /** Backup frequency */
+  /** Backup frequency  */
   frequency: BackupFrequency;
   
-  /** Backup retention */
+  /** Backup retention  */
   retention: BackupRetentionConfig;
   
-  /** Incremental backups */
+  /** Incremental backups  */
   incremental: boolean;
   
-  /** Backup encryption */
+  /** Backup encryption  */
   encryption: boolean;
   
-  /** Backup verification */
+  /** Backup verification  */
   verification: boolean;
   
-  /** Backup scheduling */
+  /** Backup scheduling  */
   scheduling?: BackupSchedulingConfig;
 }
 
 export type BackupFrequency = 'continuous' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'custom';
 
 export interface BackupRetentionConfig {
-  /** Daily backups to keep */
+  /** Daily backups to keep  */
   dailyBackups: number;
   
-  /** Weekly backups to keep */
+  /** Weekly backups to keep  */
   weeklyBackups: number;
   
-  /** Monthly backups to keep */
+  /** Monthly backups to keep  */
   monthlyBackups: number;
   
-  /** Yearly backups to keep */
+  /** Yearly backups to keep  */
   yearlyBackups: number;
   
-  /** Custom retention rules */
+  /** Custom retention rules  */
   customRules?: RetentionRule[];
 }
 
 export interface RetentionRule {
-  /** Rule name */
+  /** Rule name  */
   name: string;
   
-  /** Rule condition */
+  /** Rule condition  */
   condition: string;
   
-  /** Retention period (days) */
+  /** Retention period (days)  */
   retentionDays: number;
   
-  /** Rule priority */
+  /** Rule priority  */
   priority: number;
 }
 
 export interface BackupSchedulingConfig {
-  /** Backup time */
+  /** Backup time  */
   time: string;
   
-  /** Timezone */
+  /** Timezone  */
   timezone: string;
   
-  /** Backup window */
+  /** Backup window  */
   window: BackupWindow;
   
-  /** Exclude patterns */
+  /** Exclude patterns  */
   excludePatterns?: string[];
   
-  /** Include patterns */
+  /** Include patterns  */
   includePatterns?: string[];
 }
 
 export interface BackupWindow {
-  /** Start time */
+  /** Start time  */
   startTime: string;
   
-  /** End time */
+  /** End time  */
   endTime: string;
   
-  /** Days of week */
+  /** Days of week  */
   daysOfWeek: string[];
 }
 
 export interface FileOrganizationConfig {
-  /** Directory structure */
+  /** Directory structure  */
   directoryStructure: DirectoryStructure;
   
-  /** File naming */
+  /** File naming  */
   fileNaming: FileNamingConfig;
   
-  /** File categorization */
+  /** File categorization  */
   categorization: FileCategorization;
   
-  /** Metadata storage */
+  /** Metadata storage  */
   metadataStorage: MetadataStorageConfig;
 }
 
 export interface DirectoryStructure {
-  /** Structure type */
+  /** Structure type  */
   type: DirectoryStructureType;
   
-  /** Custom pattern */
+  /** Custom pattern  */
   pattern?: string;
   
-  /** Date format */
+  /** Date format  */
   dateFormat?: string;
   
-  /** Include user ID */
+  /** Include user ID  */
   includeUserId: boolean;
   
-  /** Include file type */
+  /** Include file type  */
   includeFileType: boolean;
   
-  /** Max depth */
+  /** Max depth  */
   maxDepth: number;
 }
 
 export type DirectoryStructureType = 'flat' | 'date-based' | 'user-based' | 'type-based' | 'custom';
 
 export interface FileNamingConfig {
-  /** Naming strategy */
+  /** Naming strategy  */
   strategy: FileNamingStrategy;
   
-  /** Include timestamp */
+  /** Include timestamp  */
   includeTimestamp: boolean;
   
-  /** Include hash */
+  /** Include hash  */
   includeHash: boolean;
   
-  /** Include version */
+  /** Include version  */
   includeVersion: boolean;
   
-  /** Custom prefix */
+  /** Custom prefix  */
   customPrefix?: string;
   
-  /** Custom suffix */
+  /** Custom suffix  */
   customSuffix?: string;
   
-  /** Case handling */
+  /** Case handling  */
   caseHandling: CaseHandling;
   
-  /** Special character handling */
+  /** Special character handling  */
   specialCharacterHandling: SpecialCharacterHandling;
 }
 
@@ -461,483 +462,483 @@ export type CaseHandling = 'preserve' | 'lowercase' | 'uppercase' | 'title-case'
 export type SpecialCharacterHandling = 'preserve' | 'replace' | 'remove' | 'encode';
 
 export interface FileCategorization {
-  /** Auto-categorization */
+  /** Auto-categorization  */
   autoCategorization: boolean;
   
-  /** Categories */
+  /** Categories  */
   categories: FileCategory[];
   
-  /** Default category */
+  /** Default category  */
   defaultCategory: string;
   
-  /** Custom rules */
+  /** Custom rules  */
   customRules: CategorizationRule[];
 }
 
 export interface FileCategory {
-  /** Category name */
+  /** Category name  */
   name: string;
   
-  /** Category description */
+  /** Category description  */
   description: string;
   
-  /** File patterns */
+  /** File patterns  */
   patterns: string[];
   
-  /** Storage settings */
+  /** Storage settings  */
   storageSettings?: CategoryStorageSettings;
   
-  /** Processing settings */
+  /** Processing settings  */
   processingSettings?: CategoryProcessingSettings;
 }
 
 export interface CategoryStorageSettings {
-  /** Storage class */
+  /** Storage class  */
   storageClass?: string;
   
-  /** Retention period */
+  /** Retention period  */
   retentionDays?: number;
   
-  /** Compression */
+  /** Compression  */
   compression?: boolean;
   
-  /** Encryption */
+  /** Encryption  */
   encryption?: boolean;
 }
 
 export interface CategoryProcessingSettings {
-  /** Auto-processing */
+  /** Auto-processing  */
   autoProcessing?: boolean;
   
-  /** Processing options */
+  /** Processing options  */
   processingOptions?: Record<string, unknown>;
   
-  /** Quality settings */
+  /** Quality settings  */
   qualitySettings?: QualitySettings;
 }
 
 export interface QualitySettings {
-  /** Default quality */
+  /** Default quality  */
   defaultQuality: QualityLevel;
   
-  /** Quality levels */
+  /** Quality levels  */
   availableQualities: QualityLevel[];
   
-  /** Auto-optimize */
+  /** Auto-optimize  */
   autoOptimize: boolean;
   
-  /** Quality targets */
+  /** Quality targets  */
   qualityTargets?: QualityTarget[];
 }
 
 export interface QualityTarget {
-  /** Target name */
+  /** Target name  */
   name: string;
   
-  /** Quality level */
+  /** Quality level  */
   quality: QualityLevel;
   
-  /** File size target */
+  /** File size target  */
   fileSizeTarget?: number;
   
-  /** Performance target */
+  /** Performance target  */
   performanceTarget?: number;
 }
 
 export interface CategorizationRule {
-  /** Rule name */
+  /** Rule name  */
   name: string;
   
-  /** Rule condition */
+  /** Rule condition  */
   condition: string;
   
-  /** Target category */
+  /** Target category  */
   targetCategory: string;
   
-  /** Rule priority */
+  /** Rule priority  */
   priority: number;
   
-  /** Rule enabled */
+  /** Rule enabled  */
   enabled: boolean;
 }
 
 export interface MetadataStorageConfig {
-  /** Store metadata separately */
+  /** Store metadata separately  */
   separateStorage: boolean;
   
-  /** Metadata format */
+  /** Metadata format  */
   format: MetadataFormat;
   
-  /** Include system metadata */
+  /** Include system metadata  */
   includeSystemMetadata: boolean;
   
-  /** Include custom metadata */
+  /** Include custom metadata  */
   includeCustomMetadata: boolean;
   
-  /** Metadata indexing */
+  /** Metadata indexing  */
   indexing: MetadataIndexingConfig;
 }
 
 export type MetadataFormat = 'json' | 'xml' | 'yaml' | 'binary' | 'custom';
 
 export interface MetadataIndexingConfig {
-  /** Indexing enabled */
+  /** Indexing enabled  */
   enabled: boolean;
   
-  /** Searchable fields */
+  /** Searchable fields  */
   searchableFields: string[];
   
-  /** Full-text search */
+  /** Full-text search  */
   fullTextSearch: boolean;
   
-  /** Index refresh interval */
+  /** Index refresh interval  */
   refreshIntervalMinutes: number;
 }
 
 export interface AccessControlConfig {
-  /** Default access level */
+  /** Default access level  */
   defaultAccessLevel: AccessLevel;
   
-  /** Access control rules */
+  /** Access control rules  */
   rules: AccessControlRule[];
   
-  /** Authentication required */
+  /** Authentication required  */
   authenticationRequired: boolean;
   
-  /** Authorization provider */
+  /** Authorization provider  */
   authorizationProvider?: string;
   
-  /** Session management */
+  /** Session management  */
   sessionManagement: SessionManagementConfig;
 }
 
 export type AccessLevel = 'public' | 'authenticated' | 'private' | 'restricted';
 
 export interface AccessControlRule {
-  /** Rule name */
+  /** Rule name  */
   name: string;
   
-  /** Resource pattern */
+  /** Resource pattern  */
   resourcePattern: string;
   
-  /** Required permissions */
+  /** Required permissions  */
   requiredPermissions: string[];
   
-  /** Allowed users */
+  /** Allowed users  */
   allowedUsers?: string[];
   
-  /** Allowed roles */
+  /** Allowed roles  */
   allowedRoles?: string[];
   
-  /** IP restrictions */
+  /** IP restrictions  */
   ipRestrictions?: string[];
   
-  /** Time restrictions */
+  /** Time restrictions  */
   timeRestrictions?: TimeRestriction[];
 }
 
 export interface TimeRestriction {
-  /** Days of week */
+  /** Days of week  */
   daysOfWeek: string[];
   
-  /** Start time */
+  /** Start time  */
   startTime: string;
   
-  /** End time */
+  /** End time  */
   endTime: string;
   
-  /** Timezone */
+  /** Timezone  */
   timezone: string;
 }
 
 export interface SessionManagementConfig {
-  /** Session timeout */
+  /** Session timeout  */
   timeoutMinutes: number;
   
-  /** Session renewal */
+  /** Session renewal  */
   renewalEnabled: boolean;
   
-  /** Concurrent sessions */
+  /** Concurrent sessions  */
   maxConcurrentSessions: number;
   
-  /** Session storage */
+  /** Session storage  */
   sessionStorage: SessionStorageConfig;
 }
 
 export interface SessionStorageConfig {
-  /** Storage type */
+  /** Storage type  */
   type: 'memory' | 'database' | 'redis' | 'custom';
   
-  /** Storage settings */
+  /** Storage settings  */
   settings: Record<string, unknown>;
   
-  /** Encryption */
+  /** Encryption  */
   encryption: boolean;
 }
 
 export interface CleanupConfig {
-  /** Auto-cleanup enabled */
+  /** Auto-cleanup enabled  */
   enabled: boolean;
   
-  /** Cleanup schedule */
+  /** Cleanup schedule  */
   schedule: CleanupSchedule;
   
-  /** Cleanup rules */
+  /** Cleanup rules  */
   rules: CleanupRule[];
   
-  /** Dry run mode */
+  /** Dry run mode  */
   dryRun: boolean;
   
-  /** Notification settings */
+  /** Notification settings  */
   notifications?: CleanupNotifications;
 }
 
 export interface CleanupSchedule {
-  /** Cleanup frequency */
+  /** Cleanup frequency  */
   frequency: CleanupFrequency;
   
-  /** Cleanup time */
+  /** Cleanup time  */
   time?: string;
   
-  /** Cleanup days */
+  /** Cleanup days  */
   days?: string[];
   
-  /** Custom cron expression */
+  /** Custom cron expression  */
   cronExpression?: string;
 }
 
 export type CleanupFrequency = 'hourly' | 'daily' | 'weekly' | 'monthly' | 'custom';
 
 export interface CleanupRule {
-  /** Rule name */
+  /** Rule name  */
   name: string;
   
-  /** Rule condition */
+  /** Rule condition  */
   condition: CleanupCondition;
   
-  /** Cleanup action */
+  /** Cleanup action  */
   action: CleanupAction;
   
-  /** Rule priority */
+  /** Rule priority  */
   priority: number;
   
-  /** Rule enabled */
+  /** Rule enabled  */
   enabled: boolean;
 }
 
 export interface CleanupCondition {
-  /** File age (days) */
+  /** File age (days)  */
   fileAgeDays?: number;
   
-  /** File size */
+  /** File size  */
   fileSize?: FileSizeCondition;
   
-  /** File type */
+  /** File type  */
   fileType?: string[];
   
-  /** Access pattern */
+  /** Access pattern  */
   accessPattern?: AccessPatternCondition;
   
-  /** Custom condition */
+  /** Custom condition  */
   customCondition?: string;
 }
 
 export interface FileSizeCondition {
-  /** Operator */
+  /** Operator  */
   operator: 'gt' | 'lt' | 'gte' | 'lte' | 'eq';
   
-  /** Size value */
+  /** Size value  */
   value: number;
   
-  /** Size unit */
+  /** Size unit  */
   unit: 'bytes' | 'kb' | 'mb' | 'gb' | 'tb';
 }
 
 export interface AccessPatternCondition {
-  /** Last accessed days ago */
+  /** Last accessed days ago  */
   lastAccessedDays?: number;
   
-  /** Access count threshold */
+  /** Access count threshold  */
   accessCountThreshold?: number;
   
-  /** Time period for access count */
+  /** Time period for access count  */
   accessCountPeriodDays?: number;
 }
 
 export interface CleanupAction {
-  /** Action type */
+  /** Action type  */
   type: CleanupActionType;
   
-  /** Action parameters */
+  /** Action parameters  */
   parameters?: Record<string, unknown>;
   
-  /** Confirmation required */
+  /** Confirmation required  */
   confirmationRequired?: boolean;
   
-  /** Backup before cleanup */
+  /** Backup before cleanup  */
   backupBeforeCleanup?: boolean;
 }
 
 export type CleanupActionType = 'delete' | 'archive' | 'move' | 'compress' | 'custom';
 
 export interface CleanupNotifications {
-  /** Notification enabled */
+  /** Notification enabled  */
   enabled: boolean;
   
-  /** Notification channels */
+  /** Notification channels  */
   channels: string[];
   
-  /** Summary frequency */
+  /** Summary frequency  */
   summaryFrequency: 'daily' | 'weekly' | 'monthly';
   
-  /** Include statistics */
+  /** Include statistics  */
   includeStatistics: boolean;
 }
 
 export interface EncryptionConfig {
-  /** Encryption enabled */
+  /** Encryption enabled  */
   enabled: boolean;
   
-  /** Encryption at rest */
+  /** Encryption at rest  */
   atRest: EncryptionAtRestConfig;
   
-  /** Encryption in transit */
+  /** Encryption in transit  */
   inTransit: EncryptionInTransitConfig;
   
-  /** Key management */
+  /** Key management  */
   keyManagement: KeyManagementConfig;
 }
 
 export interface EncryptionAtRestConfig {
-  /** Algorithm */
+  /** Algorithm  */
   algorithm: EncryptionAlgorithm;
   
-  /** Key size */
+  /** Key size  */
   keySize: number;
   
-  /** Provider managed */
+  /** Provider managed  */
   providerManaged: boolean;
   
-  /** Custom key */
+  /** Custom key  */
   customKey?: string;
 }
 
 export type EncryptionAlgorithm = 'AES-256-GCM' | 'AES-256-CBC' | 'ChaCha20-Poly1305';
 
 export interface EncryptionInTransitConfig {
-  /** TLS version */
+  /** TLS version  */
   tlsVersion: string;
   
-  /** Cipher suites */
+  /** Cipher suites  */
   cipherSuites?: string[];
   
-  /** Certificate validation */
+  /** Certificate validation  */
   validateCertificates: boolean;
   
-  /** Custom certificates */
+  /** Custom certificates  */
   customCertificates?: string[];
 }
 
 export interface KeyManagementConfig {
-  /** Key management service */
+  /** Key management service  */
   service: KeyManagementService;
   
-  /** Key rotation */
+  /** Key rotation  */
   keyRotation: KeyRotationConfig;
   
-  /** Key backup */
+  /** Key backup  */
   keyBackup: boolean;
   
-  /** Access control */
+  /** Access control  */
   accessControl: KeyAccessControlConfig;
 }
 
 export type KeyManagementService = 'aws-kms' | 'azure-keyvault' | 'gcp-kms' | 'hashicorp-vault' | 'custom';
 
 export interface KeyRotationConfig {
-  /** Auto-rotation */
+  /** Auto-rotation  */
   autoRotation: boolean;
   
-  /** Rotation frequency (days) */
+  /** Rotation frequency (days)  */
   rotationFrequencyDays: number;
   
-  /** Grace period (days) */
+  /** Grace period (days)  */
   gracePeriodDays: number;
   
-  /** Notification before rotation */
+  /** Notification before rotation  */
   notificationBeforeRotation: boolean;
 }
 
 export interface KeyAccessControlConfig {
-  /** Allowed users */
+  /** Allowed users  */
   allowedUsers: string[];
   
-  /** Allowed roles */
+  /** Allowed roles  */
   allowedRoles: string[];
   
-  /** IP restrictions */
+  /** IP restrictions  */
   ipRestrictions?: string[];
   
-  /** Time restrictions */
+  /** Time restrictions  */
   timeRestrictions?: TimeRestriction[];
 }
 
 export interface QuotaManagementConfig {
-  /** Quota enforcement */
+  /** Quota enforcement  */
   enforcement: QuotaEnforcementConfig;
   
-  /** Quota types */
+  /** Quota types  */
   quotaTypes: QuotaTypeConfig[];
   
-  /** Usage monitoring */
+  /** Usage monitoring  */
   usageMonitoring: UsageMonitoringConfig;
   
-  /** Quota notifications */
+  /** Quota notifications  */
   notifications: QuotaNotificationConfig;
 }
 
 export interface QuotaEnforcementConfig {
-  /** Enforcement enabled */
+  /** Enforcement enabled  */
   enabled: boolean;
   
-  /** Soft limits */
+  /** Soft limits  */
   softLimits: boolean;
   
-  /** Grace period */
+  /** Grace period  */
   gracePeriodHours: number;
   
-  /** Overage handling */
+  /** Overage handling  */
   overageHandling: OverageHandlingConfig;
 }
 
 export interface OverageHandlingConfig {
-  /** Allow overage */
+  /** Allow overage  */
   allowOverage: boolean;
   
-  /** Overage limit */
+  /** Overage limit  */
   overageLimit?: number;
   
-  /** Overage cost */
+  /** Overage cost  */
   overageCost?: number;
   
-  /** Auto-upgrade */
+  /** Auto-upgrade  */
   autoUpgrade?: boolean;
 }
 
 export interface QuotaTypeConfig {
-  /** Quota type */
+  /** Quota type  */
   type: QuotaType;
   
-  /** Default limit */
+  /** Default limit  */
   defaultLimit: number;
   
-  /** Unit */
+  /** Unit  */
   unit: string;
   
-  /** Reset period */
+  /** Reset period  */
   resetPeriod: QuotaResetPeriod;
   
-  /** Per-user quotas */
+  /** Per-user quotas  */
   perUserQuotas?: Record<string, number>;
 }
 
@@ -945,46 +946,46 @@ export type QuotaType = 'storage' | 'bandwidth' | 'requests' | 'processing' | 'u
 export type QuotaResetPeriod = 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
 
 export interface UsageMonitoringConfig {
-  /** Real-time monitoring */
+  /** Real-time monitoring  */
   realTimeMonitoring: boolean;
   
-  /** Monitoring interval */
+  /** Monitoring interval  */
   monitoringIntervalMinutes: number;
   
-  /** Usage aggregation */
+  /** Usage aggregation  */
   usageAggregation: UsageAggregationConfig;
   
-  /** Usage reporting */
+  /** Usage reporting  */
   usageReporting: UsageReportingConfig;
 }
 
 export interface UsageAggregationConfig {
-  /** Aggregation levels */
+  /** Aggregation levels  */
   levels: AggregationLevel[];
   
-  /** Retention period */
+  /** Retention period  */
   retentionDays: number;
   
-  /** Compression */
+  /** Compression  */
   compression: boolean;
 }
 
 export type AggregationLevel = 'minute' | 'hour' | 'day' | 'week' | 'month';
 
 export interface UsageReportingConfig {
-  /** Reporting enabled */
+  /** Reporting enabled  */
   enabled: boolean;
   
-  /** Report frequency */
+  /** Report frequency  */
   frequency: ReportFrequency;
   
-  /** Report formats */
+  /** Report formats  */
   formats: ReportFormat[];
   
-  /** Report recipients */
+  /** Report recipients  */
   recipients: string[];
   
-  /** Include trends */
+  /** Include trends  */
   includeTrends: boolean;
 }
 
@@ -992,43 +993,43 @@ export type ReportFrequency = 'daily' | 'weekly' | 'monthly' | 'quarterly';
 export type ReportFormat = 'email' | 'pdf' | 'csv' | 'json' | 'dashboard';
 
 export interface QuotaNotificationConfig {
-  /** Notifications enabled */
+  /** Notifications enabled  */
   enabled: boolean;
   
-  /** Warning thresholds */
+  /** Warning thresholds  */
   warningThresholds: number[];
   
-  /** Critical thresholds */
+  /** Critical thresholds  */
   criticalThresholds: number[];
   
-  /** Notification channels */
+  /** Notification channels  */
   channels: NotificationChannel[];
   
-  /** Escalation rules */
+  /** Escalation rules  */
   escalationRules?: EscalationRule[];
 }
 
 export interface NotificationChannel {
-  /** Channel type */
+  /** Channel type  */
   type: NotificationChannelType;
   
-  /** Channel configuration */
+  /** Channel configuration  */
   configuration: Record<string, unknown>;
   
-  /** Channel priority */
+  /** Channel priority  */
   priority: number;
 }
 
 export type NotificationChannelType = 'email' | 'sms' | 'webhook' | 'slack' | 'teams';
 
 export interface EscalationRule {
-  /** Threshold level */
+  /** Threshold level  */
   thresholdLevel: number;
   
-  /** Escalation delay */
+  /** Escalation delay  */
   escalationDelayMinutes: number;
   
-  /** Escalation targets */
+  /** Escalation targets  */
   escalationTargets: string[];
 }
 
@@ -1037,199 +1038,199 @@ export interface EscalationRule {
 // ============================================================================
 
 export interface CDNModuleConfig {
-  /** CDN enabled */
+  /** CDN enabled  */
   enabled: boolean;
   
-  /** Primary CDN provider */
+  /** Primary CDN provider  */
   primaryProvider: CDNProvider;
   
-  /** Provider configurations */
+  /** Provider configurations  */
   providers: Record<CDNProvider, CDNProviderConfig>;
   
-  /** Cache configuration */
+  /** Cache configuration  */
   cache: CDNCacheConfig;
   
-  /** Distribution settings */
+  /** Distribution settings  */
   distribution: CDNDistributionConfig;
   
-  /** Security settings */
+  /** Security settings  */
   security: CDNSecurityConfig;
   
-  /** Performance optimization */
+  /** Performance optimization  */
   performance: CDNPerformanceConfig;
 }
 
 export interface CDNProviderConfig {
-  /** Provider enabled */
+  /** Provider enabled  */
   enabled: boolean;
   
-  /** API credentials */
+  /** API credentials  */
   credentials: Record<string, string>;
   
-  /** Default distribution */
+  /** Default distribution  */
   defaultDistribution: string;
   
-  /** Regions */
+  /** Regions  */
   regions: string[];
   
-  /** Custom domains */
+  /** Custom domains  */
   customDomains: string[];
   
-  /** SSL certificate */
+  /** SSL certificate  */
   sslCertificate?: SSLCertificateConfig;
 }
 
 export interface SSLCertificateConfig {
-  /** Certificate type */
+  /** Certificate type  */
   type: 'provider-managed' | 'custom' | 'lets-encrypt';
   
-  /** Certificate details */
+  /** Certificate details  */
   details?: Record<string, string>;
   
-  /** Auto-renewal */
+  /** Auto-renewal  */
   autoRenewal?: boolean;
 }
 
 export interface CDNCacheConfig {
-  /** Default TTL */
+  /** Default TTL  */
   defaultTTLSeconds: number;
   
-  /** Cache rules */
+  /** Cache rules  */
   rules: CDNCacheRule[];
   
-  /** Invalidation settings */
+  /** Invalidation settings  */
   invalidation: CDNInvalidationConfig;
   
-  /** Compression */
+  /** Compression  */
   compression: CDNCompressionConfig;
 }
 
 export interface CDNCacheRule {
-  /** Path pattern */
+  /** Path pattern  */
   pathPattern: string;
   
-  /** TTL */
+  /** TTL  */
   ttlSeconds: number;
   
-  /** Cache headers */
+  /** Cache headers  */
   cacheHeaders?: string[];
   
-  /** Query string handling */
+  /** Query string handling  */
   queryStringHandling: 'ignore' | 'include' | 'whitelist';
   
-  /** Whitelist parameters */
+  /** Whitelist parameters  */
   whitelistParameters?: string[];
 }
 
 export interface CDNInvalidationConfig {
-  /** Auto-invalidation */
+  /** Auto-invalidation  */
   autoInvalidation: boolean;
   
-  /** Batch size */
+  /** Batch size  */
   batchSize: number;
   
-  /** Batch delay */
+  /** Batch delay  */
   batchDelaySeconds: number;
   
-  /** Wildcard support */
+  /** Wildcard support  */
   wildcardSupport: boolean;
 }
 
 export interface CDNCompressionConfig {
-  /** Compression enabled */
+  /** Compression enabled  */
   enabled: boolean;
   
-  /** Compression algorithms */
+  /** Compression algorithms  */
   algorithms: CompressionAlgorithm[];
   
-  /** Minimum file size */
+  /** Minimum file size  */
   minFileSizeBytes: number;
   
-  /** File types */
+  /** File types  */
   fileTypes: string[];
 }
 
 export interface CDNDistributionConfig {
-  /** Price class */
+  /** Price class  */
   priceClass: 'all' | 'us-europe' | 'us-europe-asia';
   
-  /** HTTP version */
+  /** HTTP version  */
   httpVersion: '1.1' | '2.0' | '3.0';
   
-  /** IPv6 enabled */
+  /** IPv6 enabled  */
   ipv6Enabled: boolean;
   
-  /** Logging */
+  /** Logging  */
   logging?: CDNLoggingConfig;
 }
 
 export interface CDNLoggingConfig {
-  /** Logging enabled */
+  /** Logging enabled  */
   enabled: boolean;
   
-  /** Log bucket */
+  /** Log bucket  */
   bucket: string;
   
-  /** Log prefix */
+  /** Log prefix  */
   prefix: string;
   
-  /** Include cookies */
+  /** Include cookies  */
   includeCookies: boolean;
 }
 
 export interface CDNSecurityConfig {
-  /** WAF enabled */
+  /** WAF enabled  */
   wafEnabled: boolean;
   
-  /** HTTPS redirect */
+  /** HTTPS redirect  */
   httpsRedirect: boolean;
   
-  /** Security headers */
+  /** Security headers  */
   securityHeaders: SecurityHeadersConfig;
   
-  /** Access restrictions */
+  /** Access restrictions  */
   accessRestrictions?: AccessRestrictionsConfig;
 }
 
 export interface SecurityHeadersConfig {
-  /** HSTS */
+  /** HSTS  */
   hsts: boolean;
   
-  /** Content security policy */
+  /** Content security policy  */
   csp?: string;
   
-  /** X-Frame-Options */
+  /** X-Frame-Options  */
   frameOptions?: 'DENY' | 'SAMEORIGIN';
   
-  /** Referrer policy */
+  /** Referrer policy  */
   referrerPolicy?: string;
 }
 
 export interface AccessRestrictionsConfig {
-  /** Allowed countries */
+  /** Allowed countries  */
   allowedCountries?: string[];
   
-  /** Blocked countries */
+  /** Blocked countries  */
   blockedCountries?: string[];
   
-  /** IP whitelist */
+  /** IP whitelist  */
   ipWhitelist?: string[];
   
-  /** IP blacklist */
+  /** IP blacklist  */
   ipBlacklist?: string[];
 }
 
 export interface CDNPerformanceConfig {
-  /** Origin timeout */
+  /** Origin timeout  */
   originTimeoutSeconds: number;
   
-  /** Origin retries */
+  /** Origin retries  */
   originRetries: number;
   
-  /** Keep-alive timeout */
+  /** Keep-alive timeout  */
   keepAliveTimeoutSeconds: number;
   
-  /** Connection pooling */
+  /** Connection pooling  */
   connectionPooling: boolean;
 }
 
@@ -1238,271 +1239,271 @@ export interface CDNPerformanceConfig {
 // ============================================================================
 
 export interface ProcessingModuleConfig {
-  /** Processing mode */
+  /** Processing mode  */
   mode: ProcessingMode;
   
-  /** Default processing options */
+  /** Default processing options  */
   defaults: DefaultProcessingOptions;
   
-  /** Quality settings */
+  /** Quality settings  */
   quality: ProcessingQualityConfig;
   
-  /** Performance settings */
+  /** Performance settings  */
   performance: ProcessingPerformanceConfig;
   
-  /** Resource limits */
+  /** Resource limits  */
   resourceLimits: ProcessingResourceLimits;
   
-  /** Pipeline configuration */
+  /** Pipeline configuration  */
   pipelines: PipelineConfig;
   
-  /** Worker configuration */
+  /** Worker configuration  */
   workers: WorkerConfig;
 }
 
 export interface DefaultProcessingOptions {
-  /** Image processing defaults */
+  /** Image processing defaults  */
   image: ImageProcessingOptions;
   
-  /** Video processing defaults */
+  /** Video processing defaults  */
   video: VideoProcessingOptions;
   
-  /** Audio processing defaults */
+  /** Audio processing defaults  */
   audio: AudioProcessingOptions;
 }
 
 export interface ProcessingQualityConfig {
-  /** Quality assessment enabled */
+  /** Quality assessment enabled  */
   assessmentEnabled: boolean;
   
-  /** Minimum quality threshold */
+  /** Minimum quality threshold  */
   minQualityThreshold: number;
   
-  /** Quality metrics */
+  /** Quality metrics  */
   qualityMetrics: QualityMetric[];
   
-  /** Auto-quality adjustment */
+  /** Auto-quality adjustment  */
   autoQualityAdjustment: boolean;
 }
 
 export interface QualityMetric {
-  /** Metric name */
+  /** Metric name  */
   name: string;
   
-  /** Metric weight */
+  /** Metric weight  */
   weight: number;
   
-  /** Target value */
+  /** Target value  */
   targetValue?: number;
   
-  /** Minimum value */
+  /** Minimum value  */
   minValue?: number;
 }
 
 export interface ProcessingPerformanceConfig {
-  /** Parallel processing */
+  /** Parallel processing  */
   parallelProcessing: boolean;
   
-  /** Max concurrent jobs */
+  /** Max concurrent jobs  */
   maxConcurrentJobs: number;
   
-  /** Processing timeout */
+  /** Processing timeout  */
   processingTimeoutSeconds: number;
   
-  /** Memory optimization */
+  /** Memory optimization  */
   memoryOptimization: boolean;
   
-  /** GPU acceleration */
+  /** GPU acceleration  */
   gpuAcceleration: boolean;
 }
 
 export interface ProcessingResourceLimits {
-  /** Max file size */
+  /** Max file size  */
   maxFileSizeBytes: number;
   
-  /** Max memory usage */
+  /** Max memory usage  */
   maxMemoryUsageBytes: number;
   
-  /** Max CPU usage */
+  /** Max CPU usage  */
   maxCpuUsagePercent: number;
   
-  /** Max processing time */
+  /** Max processing time  */
   maxProcessingTimeSeconds: number;
   
-  /** Max output files */
+  /** Max output files  */
   maxOutputFiles: number;
 }
 
 export interface PipelineConfig {
-  /** Custom pipelines */
+  /** Custom pipelines  */
   customPipelines: CustomPipelineConfig[];
   
-  /** Pipeline selection */
+  /** Pipeline selection  */
   pipelineSelection: PipelineSelectionConfig;
   
-  /** Pipeline caching */
+  /** Pipeline caching  */
   pipelineCaching: boolean;
   
-  /** Pipeline validation */
+  /** Pipeline validation  */
   pipelineValidation: boolean;
 }
 
 export interface CustomPipelineConfig {
-  /** Pipeline name */
+  /** Pipeline name  */
   name: string;
   
-  /** Pipeline stages */
+  /** Pipeline stages  */
   stages: PipelineStageConfig[];
   
-  /** Pipeline conditions */
+  /** Pipeline conditions  */
   conditions?: PipelineConditionConfig;
   
-  /** Pipeline metadata */
+  /** Pipeline metadata  */
   metadata?: Record<string, unknown>;
 }
 
 export interface PipelineStageConfig {
-  /** Stage name */
+  /** Stage name  */
   name: string;
   
-  /** Stage processor */
+  /** Stage processor  */
   processor: string;
   
-  /** Stage options */
+  /** Stage options  */
   options: Record<string, unknown>;
   
-  /** Stage conditions */
+  /** Stage conditions  */
   conditions?: Record<string, unknown>;
 }
 
 export interface PipelineConditionConfig {
-  /** File type conditions */
+  /** File type conditions  */
   fileTypes?: string[];
   
-  /** File size conditions */
+  /** File size conditions  */
   fileSizeRange?: [number, number];
   
-  /** Quality conditions */
+  /** Quality conditions  */
   qualityRange?: [number, number];
   
-  /** Custom conditions */
+  /** Custom conditions  */
   customConditions?: string[];
 }
 
 export interface PipelineSelectionConfig {
-  /** Selection strategy */
+  /** Selection strategy  */
   strategy: 'auto' | 'manual' | 'rule-based';
   
-  /** Selection rules */
+  /** Selection rules  */
   selectionRules?: PipelineSelectionRule[];
   
-  /** Fallback pipeline */
+  /** Fallback pipeline  */
   fallbackPipeline: string;
 }
 
 export interface PipelineSelectionRule {
-  /** Rule condition */
+  /** Rule condition  */
   condition: string;
   
-  /** Target pipeline */
+  /** Target pipeline  */
   targetPipeline: string;
   
-  /** Rule priority */
+  /** Rule priority  */
   priority: number;
 }
 
 export interface WorkerConfig {
-  /** Worker pools */
+  /** Worker pools  */
   pools: WorkerPoolConfig[];
   
-  /** Scaling configuration */
+  /** Scaling configuration  */
   scaling: WorkerScalingConfig;
   
-  /** Health monitoring */
+  /** Health monitoring  */
   healthMonitoring: WorkerHealthConfig;
 }
 
 export interface WorkerPoolConfig {
-  /** Pool name */
+  /** Pool name  */
   name: string;
   
-  /** Worker type */
+  /** Worker type  */
   workerType: string;
   
-  /** Pool size */
+  /** Pool size  */
   size: number;
   
-  /** Worker resources */
+  /** Worker resources  */
   resources: WorkerResourceConfig;
   
-  /** Specialized tasks */
+  /** Specialized tasks  */
   specializedTasks?: string[];
 }
 
 export interface WorkerResourceConfig {
-  /** CPU allocation */
+  /** CPU allocation  */
   cpuCores: number;
   
-  /** Memory allocation */
+  /** Memory allocation  */
   memoryMB: number;
   
-  /** GPU allocation */
+  /** GPU allocation  */
   gpuMemoryMB?: number;
   
-  /** Disk space */
+  /** Disk space  */
   diskSpaceMB: number;
 }
 
 export interface WorkerScalingConfig {
-  /** Auto-scaling enabled */
+  /** Auto-scaling enabled  */
   autoScaling: boolean;
   
-  /** Min workers */
+  /** Min workers  */
   minWorkers: number;
   
-  /** Max workers */
+  /** Max workers  */
   maxWorkers: number;
   
-  /** Scaling triggers */
+  /** Scaling triggers  */
   scalingTriggers: ScalingTriggerConfig[];
 }
 
 export interface ScalingTriggerConfig {
-  /** Trigger metric */
+  /** Trigger metric  */
   metric: string;
   
-  /** Threshold */
+  /** Threshold  */
   threshold: number;
   
-  /** Scaling action */
+  /** Scaling action  */
   action: 'scale-up' | 'scale-down';
   
-  /** Cooldown period */
+  /** Cooldown period  */
   cooldownSeconds: number;
 }
 
 export interface WorkerHealthConfig {
-  /** Health checks enabled */
+  /** Health checks enabled  */
   healthChecks: boolean;
   
-  /** Check interval */
+  /** Check interval  */
   checkIntervalSeconds: number;
   
-  /** Unhealthy threshold */
+  /** Unhealthy threshold  */
   unhealthyThreshold: number;
   
-  /** Recovery actions */
+  /** Recovery actions  */
   recoveryActions: WorkerRecoveryAction[];
 }
 
 export interface WorkerRecoveryAction {
-  /** Action type */
+  /** Action type  */
   type: 'restart' | 'replace' | 'scale' | 'alert';
   
-  /** Action configuration */
+  /** Action configuration  */
   configuration: Record<string, unknown>;
   
-  /** Action timeout */
+  /** Action timeout  */
   timeoutSeconds: number;
 }
 
@@ -1511,1080 +1512,1080 @@ export interface WorkerRecoveryAction {
 // ============================================================================
 
 export interface SecurityModuleConfig {
-  /** Authentication */
+  /** Authentication  */
   authentication: SecurityAuthConfig;
   
-  /** Authorization */
+  /** Authorization  */
   authorization: SecurityAuthzConfig;
   
-  /** Input validation */
+  /** Input validation  */
   inputValidation: InputValidationConfig;
   
-  /** Output sanitization */
+  /** Output sanitization  */
   outputSanitization: OutputSanitizationConfig;
   
-  /** Security headers */
+  /** Security headers  */
   securityHeaders: SecurityHeadersModuleConfig;
   
-  /** Audit logging */
+  /** Audit logging  */
   auditLogging: AuditLoggingConfig;
 }
 
 export interface SecurityAuthConfig {
-  /** Authentication providers */
+  /** Authentication providers  */
   providers: AuthProviderConfig[];
   
-  /** Token configuration */
+  /** Token configuration  */
   token: TokenConfig;
   
-  /** Session security */
+  /** Session security  */
   sessionSecurity: SessionSecurityConfig;
   
-  /** Multi-factor authentication */
+  /** Multi-factor authentication  */
   mfa?: MFAConfig;
 }
 
 export interface AuthProviderConfig {
-  /** Provider name */
+  /** Provider name  */
   name: string;
   
-  /** Provider type */
+  /** Provider type  */
   type: string;
   
-  /** Provider configuration */
+  /** Provider configuration  */
   configuration: Record<string, unknown>;
   
-  /** Provider priority */
+  /** Provider priority  */
   priority: number;
   
-  /** Provider enabled */
+  /** Provider enabled  */
   enabled: boolean;
 }
 
 export interface TokenConfig {
-  /** Token algorithm */
+  /** Token algorithm  */
   algorithm: string;
   
-  /** Token expiration */
+  /** Token expiration  */
   expirationSeconds: number;
   
-  /** Refresh token expiration */
+  /** Refresh token expiration  */
   refreshExpirationSeconds: number;
   
-  /** Token issuer */
+  /** Token issuer  */
   issuer: string;
   
-  /** Token audience */
+  /** Token audience  */
   audience: string[];
 }
 
 export interface SessionSecurityConfig {
-  /** Secure cookies */
+  /** Secure cookies  */
   secureCookies: boolean;
   
-  /** HTTP-only cookies */
+  /** HTTP-only cookies  */
   httpOnlyCookies: boolean;
   
-  /** SameSite attribute */
+  /** SameSite attribute  */
   sameSite: 'strict' | 'lax' | 'none';
   
-  /** Session fixation protection */
+  /** Session fixation protection  */
   fixationProtection: boolean;
 }
 
 export interface MFAConfig {
-  /** MFA enabled */
+  /** MFA enabled  */
   enabled: boolean;
   
-  /** MFA methods */
+  /** MFA methods  */
   methods: MFAMethod[];
   
-  /** MFA requirement */
+  /** MFA requirement  */
   requirement: 'optional' | 'required' | 'conditional';
   
-  /** Backup codes */
+  /** Backup codes  */
   backupCodes: boolean;
 }
 
 export interface MFAMethod {
-  /** Method type */
+  /** Method type  */
   type: 'totp' | 'sms' | 'email' | 'push' | 'hardware';
   
-  /** Method configuration */
+  /** Method configuration  */
   configuration: Record<string, unknown>;
   
-  /** Method priority */
+  /** Method priority  */
   priority: number;
   
-  /** Method enabled */
+  /** Method enabled  */
   enabled: boolean;
 }
 
 export interface SecurityAuthzConfig {
-  /** Authorization model */
+  /** Authorization model  */
   model: 'rbac' | 'abac' | 'acl' | 'custom';
   
-  /** Default permissions */
+  /** Default permissions  */
   defaultPermissions: string[];
   
-  /** Permission inheritance */
+  /** Permission inheritance  */
   permissionInheritance: boolean;
   
-  /** Dynamic permissions */
+  /** Dynamic permissions  */
   dynamicPermissions: boolean;
 }
 
 export interface InputValidationConfig {
-  /** Strict validation */
+  /** Strict validation  */
   strictValidation: boolean;
   
-  /** File type validation */
+  /** File type validation  */
   fileTypeValidation: FileTypeValidationConfig;
   
-  /** Content validation */
+  /** Content validation  */
   contentValidation: ContentValidationConfig;
   
-  /** Size validation */
+  /** Size validation  */
   sizeValidation: SizeValidationConfig;
 }
 
 export interface FileTypeValidationConfig {
-  /** Allowed file types */
+  /** Allowed file types  */
   allowedTypes: string[];
   
-  /** Blocked file types */
+  /** Blocked file types  */
   blockedTypes: string[];
   
-  /** Magic number validation */
+  /** Magic number validation  */
   magicNumberValidation: boolean;
   
-  /** Content type validation */
+  /** Content type validation  */
   contentTypeValidation: boolean;
 }
 
 export interface ContentValidationConfig {
-  /** Malware scanning */
+  /** Malware scanning  */
   malwareScanning: boolean;
   
-  /** Content filtering */
+  /** Content filtering  */
   contentFiltering: ContentFilteringConfig;
   
-  /** Metadata validation */
+  /** Metadata validation  */
   metadataValidation: boolean;
   
-  /** Custom validation rules */
+  /** Custom validation rules  */
   customRules: ValidationRuleConfig[];
 }
 
 export interface ContentFilteringConfig {
-  /** Adult content detection */
+  /** Adult content detection  */
   adultContent: boolean;
   
-  /** Violence detection */
+  /** Violence detection  */
   violenceDetection: boolean;
   
-  /** Spam detection */
+  /** Spam detection  */
   spamDetection: boolean;
   
-  /** Profanity filtering */
+  /** Profanity filtering  */
   profanityFiltering: boolean;
 }
 
 export interface ValidationRuleConfig {
-  /** Rule name */
+  /** Rule name  */
   name: string;
   
-  /** Rule expression */
+  /** Rule expression  */
   expression: string;
   
-  /** Rule severity */
+  /** Rule severity  */
   severity: 'warning' | 'error' | 'critical';
   
-  /** Rule enabled */
+  /** Rule enabled  */
   enabled: boolean;
 }
 
 export interface SizeValidationConfig {
-  /** Maximum file size */
+  /** Maximum file size  */
   maxFileSize: number;
   
-  /** Maximum dimension */
+  /** Maximum dimension  */
   maxDimension?: number;
   
-  /** Minimum dimension */
+  /** Minimum dimension  */
   minDimension?: number;
   
-  /** Aspect ratio limits */
+  /** Aspect ratio limits  */
   aspectRatioLimits?: [number, number];
 }
 
 export interface OutputSanitizationConfig {
-  /** Metadata stripping */
+  /** Metadata stripping  */
   metadataStripping: boolean;
   
-  /** Content sanitization */
+  /** Content sanitization  */
   contentSanitization: boolean;
   
-  /** URL sanitization */
+  /** URL sanitization  */
   urlSanitization: boolean;
   
-  /** Header sanitization */
+  /** Header sanitization  */
   headerSanitization: boolean;
 }
 
 export interface SecurityHeadersModuleConfig {
-  /** CORS headers */
+  /** CORS headers  */
   cors: CORSHeadersConfig;
   
-  /** CSP headers */
+  /** CSP headers  */
   csp?: CSPHeadersConfig;
   
-  /** Security headers */
+  /** Security headers  */
   security: SecurityHeadersSetConfig;
 }
 
 export interface CORSHeadersConfig {
-  /** Allowed origins */
+  /** Allowed origins  */
   allowedOrigins: string[];
   
-  /** Allowed methods */
+  /** Allowed methods  */
   allowedMethods: string[];
   
-  /** Allowed headers */
+  /** Allowed headers  */
   allowedHeaders: string[];
   
-  /** Exposed headers */
+  /** Exposed headers  */
   exposedHeaders?: string[];
   
-  /** Allow credentials */
+  /** Allow credentials  */
   allowCredentials: boolean;
   
-  /** Max age */
+  /** Max age  */
   maxAge: number;
 }
 
 export interface CSPHeadersConfig {
-  /** CSP directives */
+  /** CSP directives  */
   directives: Record<string, string[]>;
   
-  /** Report URI */
+  /** Report URI  */
   reportUri?: string;
   
-  /** Report only mode */
+  /** Report only mode  */
   reportOnly: boolean;
 }
 
 export interface SecurityHeadersSetConfig {
-  /** X-Content-Type-Options */
+  /** X-Content-Type-Options  */
   contentTypeOptions: boolean;
   
-  /** X-Frame-Options */
+  /** X-Frame-Options  */
   frameOptions: string;
   
-  /** X-XSS-Protection */
+  /** X-XSS-Protection  */
   xssProtection: boolean;
   
-  /** Referrer-Policy */
+  /** Referrer-Policy  */
   referrerPolicy: string;
   
-  /** Permissions-Policy */
+  /** Permissions-Policy  */
   permissionsPolicy?: string;
 }
 
 export interface AuditLoggingConfig {
-  /** Audit logging enabled */
+  /** Audit logging enabled  */
   enabled: boolean;
   
-  /** Audit events */
+  /** Audit events  */
   auditEvents: AuditEventConfig[];
   
-  /** Audit storage */
+  /** Audit storage  */
   storage: AuditStorageConfig;
   
-  /** Audit retention */
+  /** Audit retention  */
   retentionDays: number;
 }
 
 export interface AuditEventConfig {
-  /** Event type */
+  /** Event type  */
   type: string;
   
-  /** Event level */
+  /** Event level  */
   level: 'info' | 'warning' | 'error';
   
-  /** Include details */
+  /** Include details  */
   includeDetails: boolean;
   
-  /** Event enabled */
+  /** Event enabled  */
   enabled: boolean;
 }
 
 export interface AuditStorageConfig {
-  /** Storage type */
+  /** Storage type  */
   type: 'database' | 'file' | 'external';
   
-  /** Storage configuration */
+  /** Storage configuration  */
   configuration: Record<string, unknown>;
   
-  /** Encryption */
+  /** Encryption  */
   encryption: boolean;
   
-  /** Integrity protection */
+  /** Integrity protection  */
   integrityProtection: boolean;
 }
 
 export interface PerformanceModuleConfig {
-  /** Caching */
+  /** Caching  */
   caching: CachingConfig;
   
-  /** Optimization */
+  /** Optimization  */
   optimization: OptimizationConfig;
   
-  /** Monitoring */
+  /** Monitoring  */
   monitoring: PerformanceMonitoringConfig;
   
-  /** Resource management */
+  /** Resource management  */
   resourceManagement: ResourceManagementConfig;
 }
 
 export interface CachingConfig {
-  /** Cache layers */
+  /** Cache layers  */
   layers: CacheLayerConfig[];
   
-  /** Cache strategies */
+  /** Cache strategies  */
   strategies: CacheStrategyConfig;
   
-  /** Cache invalidation */
+  /** Cache invalidation  */
   invalidation: CacheInvalidationConfig;
 }
 
 export interface CacheLayerConfig {
-  /** Layer name */
+  /** Layer name  */
   name: string;
   
-  /** Layer type */
+  /** Layer type  */
   type: 'memory' | 'disk' | 'distributed' | 'cdn';
   
-  /** Layer configuration */
+  /** Layer configuration  */
   configuration: Record<string, unknown>;
   
-  /** Layer priority */
+  /** Layer priority  */
   priority: number;
   
-  /** Layer enabled */
+  /** Layer enabled  */
   enabled: boolean;
 }
 
 export interface CacheStrategyConfig {
-  /** Default strategy */
+  /** Default strategy  */
   defaultStrategy: 'lru' | 'lfu' | 'ttl' | 'custom';
   
-  /** Strategy parameters */
+  /** Strategy parameters  */
   strategyParameters: Record<string, unknown>;
   
-  /** Per-resource strategies */
+  /** Per-resource strategies  */
   perResourceStrategies?: Record<string, string>;
 }
 
 export interface CacheInvalidationConfig {
-  /** Invalidation strategy */
+  /** Invalidation strategy  */
   strategy: 'manual' | 'automatic' | 'event-driven';
   
-  /** Invalidation triggers */
+  /** Invalidation triggers  */
   triggers: CacheInvalidationTrigger[];
   
-  /** Batch invalidation */
+  /** Batch invalidation  */
   batchInvalidation: boolean;
 }
 
 export interface CacheInvalidationTrigger {
-  /** Trigger event */
+  /** Trigger event  */
   event: string;
   
-  /** Cache keys pattern */
+  /** Cache keys pattern  */
   keysPattern: string;
   
-  /** Invalidation delay */
+  /** Invalidation delay  */
   delaySeconds?: number;
 }
 
 export interface OptimizationConfig {
-  /** Image optimization */
+  /** Image optimization  */
   image: ImageOptimizationConfig;
   
-  /** Video optimization */
+  /** Video optimization  */
   video: VideoOptimizationConfig;
   
-  /** Audio optimization */
+  /** Audio optimization  */
   audio: AudioOptimizationConfig;
   
-  /** Delivery optimization */
+  /** Delivery optimization  */
   delivery: DeliveryOptimizationConfig;
 }
 
 export interface ImageOptimizationConfig {
-  /** Auto-optimization */
+  /** Auto-optimization  */
   autoOptimization: boolean;
   
-  /** Optimization level */
+  /** Optimization level  */
   optimizationLevel: 'basic' | 'standard' | 'aggressive';
   
-  /** Format selection */
+  /** Format selection  */
   formatSelection: 'auto' | 'manual';
   
-  /** Quality adaptation */
+  /** Quality adaptation  */
   qualityAdaptation: boolean;
 }
 
 export interface VideoOptimizationConfig {
-  /** Adaptive bitrate */
+  /** Adaptive bitrate  */
   adaptiveBitrate: boolean;
   
-  /** Transcoding profiles */
+  /** Transcoding profiles  */
   transcodingProfiles: string[];
   
-  /** Thumbnail optimization */
+  /** Thumbnail optimization  */
   thumbnailOptimization: boolean;
   
-  /** Streaming optimization */
+  /** Streaming optimization  */
   streamingOptimization: boolean;
 }
 
 export interface AudioOptimizationConfig {
-  /** Bitrate optimization */
+  /** Bitrate optimization  */
   bitrateOptimization: boolean;
   
-  /** Format optimization */
+  /** Format optimization  */
   formatOptimization: boolean;
   
-  /** Normalization */
+  /** Normalization  */
   normalization: boolean;
   
-  /** Compression */
+  /** Compression  */
   compression: boolean;
 }
 
 export interface DeliveryOptimizationConfig {
-  /** Geographic optimization */
+  /** Geographic optimization  */
   geographicOptimization: boolean;
   
-  /** Device optimization */
+  /** Device optimization  */
   deviceOptimization: boolean;
   
-  /** Connection optimization */
+  /** Connection optimization  */
   connectionOptimization: boolean;
   
-  /** Time-based optimization */
+  /** Time-based optimization  */
   timeBasedOptimization: boolean;
 }
 
 export interface PerformanceMonitoringConfig {
-  /** Real-time monitoring */
+  /** Real-time monitoring  */
   realTimeMonitoring: boolean;
   
-  /** Metrics collection */
+  /** Metrics collection  */
   metricsCollection: MetricsCollectionConfig;
   
-  /** Performance alerts */
+  /** Performance alerts  */
   performanceAlerts: PerformanceAlertConfig[];
   
-  /** Benchmarking */
+  /** Benchmarking  */
   benchmarking: BenchmarkingConfig;
 }
 
 export interface MetricsCollectionConfig {
-  /** Collection interval */
+  /** Collection interval  */
   intervalSeconds: number;
   
-  /** Metrics to collect */
+  /** Metrics to collect  */
   metrics: string[];
   
-  /** Aggregation levels */
+  /** Aggregation levels  */
   aggregationLevels: string[];
   
-  /** Retention period */
+  /** Retention period  */
   retentionDays: number;
 }
 
 export interface PerformanceAlertConfig {
-  /** Alert name */
+  /** Alert name  */
   name: string;
   
-  /** Alert condition */
+  /** Alert condition  */
   condition: string;
   
-  /** Alert threshold */
+  /** Alert threshold  */
   threshold: number;
   
-  /** Alert channels */
+  /** Alert channels  */
   channels: string[];
   
-  /** Alert enabled */
+  /** Alert enabled  */
   enabled: boolean;
 }
 
 export interface BenchmarkingConfig {
-  /** Benchmarking enabled */
+  /** Benchmarking enabled  */
   enabled: boolean;
   
-  /** Benchmark suites */
+  /** Benchmark suites  */
   suites: BenchmarkSuiteConfig[];
   
-  /** Benchmark frequency */
+  /** Benchmark frequency  */
   frequency: string;
   
-  /** Baseline comparison */
+  /** Baseline comparison  */
   baselineComparison: boolean;
 }
 
 export interface BenchmarkSuiteConfig {
-  /** Suite name */
+  /** Suite name  */
   name: string;
   
-  /** Test cases */
+  /** Test cases  */
   testCases: string[];
   
-  /** Performance targets */
+  /** Performance targets  */
   targets: Record<string, number>;
   
-  /** Suite enabled */
+  /** Suite enabled  */
   enabled: boolean;
 }
 
 export interface ResourceManagementConfig {
-  /** Resource pooling */
+  /** Resource pooling  */
   resourcePooling: ResourcePoolingConfig;
   
-  /** Load balancing */
+  /** Load balancing  */
   loadBalancing: LoadBalancingConfig;
   
-  /** Resource limits */
+  /** Resource limits  */
   resourceLimits: ResourceLimitsConfig;
   
-  /** Resource monitoring */
+  /** Resource monitoring  */
   resourceMonitoring: ResourceMonitoringConfig;
 }
 
 export interface ResourcePoolingConfig {
-  /** Connection pooling */
+  /** Connection pooling  */
   connectionPooling: boolean;
   
-  /** Thread pooling */
+  /** Thread pooling  */
   threadPooling: ThreadPoolingConfig;
   
-  /** Memory pooling */
+  /** Memory pooling  */
   memoryPooling: boolean;
   
-  /** Pool sizing strategy */
+  /** Pool sizing strategy  */
   poolSizingStrategy: 'fixed' | 'dynamic' | 'adaptive';
 }
 
 export interface ThreadPoolingConfig {
-  /** Core pool size */
+  /** Core pool size  */
   corePoolSize: number;
   
-  /** Maximum pool size */
+  /** Maximum pool size  */
   maxPoolSize: number;
   
-  /** Keep alive time */
+  /** Keep alive time  */
   keepAliveTimeSeconds: number;
   
-  /** Queue capacity */
+  /** Queue capacity  */
   queueCapacity: number;
 }
 
 export interface LoadBalancingConfig {
-  /** Load balancing algorithm */
+  /** Load balancing algorithm  */
   algorithm: 'round-robin' | 'weighted' | 'least-connections' | 'least-response-time';
   
-  /** Health checks */
+  /** Health checks  */
   healthChecks: boolean;
   
-  /** Failover configuration */
+  /** Failover configuration  */
   failover: boolean;
   
-  /** Session persistence */
+  /** Session persistence  */
   sessionPersistence: boolean;
 }
 
 export interface ResourceLimitsConfig {
-  /** CPU limits */
+  /** CPU limits  */
   cpuLimits: ResourceLimit;
   
-  /** Memory limits */
+  /** Memory limits  */
   memoryLimits: ResourceLimit;
   
-  /** Disk I/O limits */
+  /** Disk I/O limits  */
   diskIOLimits: ResourceLimit;
   
-  /** Network I/O limits */
+  /** Network I/O limits  */
   networkIOLimits: ResourceLimit;
 }
 
 export interface ResourceLimit {
-  /** Soft limit */
+  /** Soft limit  */
   softLimit: number;
   
-  /** Hard limit */
+  /** Hard limit  */
   hardLimit: number;
   
-  /** Warning threshold */
+  /** Warning threshold  */
   warningThreshold: number;
   
-  /** Critical threshold */
+  /** Critical threshold  */
   criticalThreshold: number;
 }
 
 export interface ResourceMonitoringConfig {
-  /** Monitoring enabled */
+  /** Monitoring enabled  */
   enabled: boolean;
   
-  /** Monitoring interval */
+  /** Monitoring interval  */
   intervalSeconds: number;
   
-  /** Resource alerts */
+  /** Resource alerts  */
   resourceAlerts: ResourceAlert[];
   
-  /** Historical tracking */
+  /** Historical tracking  */
   historicalTracking: boolean;
 }
 
 export interface ResourceAlert {
-  /** Resource type */
+  /** Resource type  */
   resourceType: string;
   
-  /** Alert threshold */
+  /** Alert threshold  */
   threshold: number;
   
-  /** Alert duration */
+  /** Alert duration  */
   durationSeconds: number;
   
-  /** Alert channels */
+  /** Alert channels  */
   channels: string[];
 }
 
 export interface MonitoringModuleConfig {
-  /** Health checks */
+  /** Health checks  */
   healthChecks: HealthCheckConfig[];
   
-  /** Metrics */
+  /** Metrics  */
   metrics: MetricsConfig;
   
-  /** Alerting */
+  /** Alerting  */
   alerting: AlertingModuleConfig;
   
-  /** Tracing */
+  /** Tracing  */
   tracing: TracingConfig;
   
-  /** Dashboards */
+  /** Dashboards  */
   dashboards: DashboardModuleConfig;
 }
 
 export interface HealthCheckConfig {
-  /** Check name */
+  /** Check name  */
   name: string;
   
-  /** Check endpoint */
+  /** Check endpoint  */
   endpoint: string;
   
-  /** Check interval */
+  /** Check interval  */
   intervalSeconds: number;
   
-  /** Check timeout */
+  /** Check timeout  */
   timeoutSeconds: number;
   
-  /** Check enabled */
+  /** Check enabled  */
   enabled: boolean;
 }
 
 export interface MetricsConfig {
-  /** Metrics provider */
+  /** Metrics provider  */
   provider: 'prometheus' | 'datadog' | 'newrelic' | 'custom';
   
-  /** Metrics configuration */
+  /** Metrics configuration  */
   configuration: Record<string, unknown>;
   
-  /** Custom metrics */
+  /** Custom metrics  */
   customMetrics: CustomMetricConfig[];
 }
 
 export interface CustomMetricConfig {
-  /** Metric name */
+  /** Metric name  */
   name: string;
   
-  /** Metric type */
+  /** Metric type  */
   type: 'counter' | 'gauge' | 'histogram' | 'summary';
   
-  /** Metric labels */
+  /** Metric labels  */
   labels: string[];
   
-  /** Metric description */
+  /** Metric description  */
   description: string;
 }
 
 export interface AlertingModuleConfig {
-  /** Alert manager */
+  /** Alert manager  */
   alertManager: AlertManagerConfig;
   
-  /** Notification channels */
+  /** Notification channels  */
   notificationChannels: NotificationChannelModuleConfig[];
   
-  /** Alert rules */
+  /** Alert rules  */
   alertRules: AlertRuleConfig[];
 }
 
 export interface AlertManagerConfig {
-  /** Alert manager type */
+  /** Alert manager type  */
   type: 'prometheus' | 'grafana' | 'custom';
   
-  /** Alert manager configuration */
+  /** Alert manager configuration  */
   configuration: Record<string, unknown>;
   
-  /** Routing rules */
+  /** Routing rules  */
   routingRules: AlertRoutingRule[];
 }
 
 export interface AlertRoutingRule {
-  /** Rule matcher */
+  /** Rule matcher  */
   matcher: string;
   
-  /** Target channel */
+  /** Target channel  */
   targetChannel: string;
   
-  /** Rule priority */
+  /** Rule priority  */
   priority: number;
 }
 
 export interface NotificationChannelModuleConfig {
-  /** Channel name */
+  /** Channel name  */
   name: string;
   
-  /** Channel type */
+  /** Channel type  */
   type: 'email' | 'slack' | 'webhook' | 'sms';
   
-  /** Channel configuration */
+  /** Channel configuration  */
   configuration: Record<string, unknown>;
   
-  /** Channel enabled */
+  /** Channel enabled  */
   enabled: boolean;
 }
 
 export interface AlertRuleConfig {
-  /** Rule name */
+  /** Rule name  */
   name: string;
   
-  /** Rule query */
+  /** Rule query  */
   query: string;
   
-  /** Rule threshold */
+  /** Rule threshold  */
   threshold: number;
   
-  /** Rule duration */
+  /** Rule duration  */
   durationSeconds: number;
   
-  /** Rule labels */
+  /** Rule labels  */
   labels: Record<string, string>;
   
-  /** Rule enabled */
+  /** Rule enabled  */
   enabled: boolean;
 }
 
 export interface TracingConfig {
-  /** Tracing enabled */
+  /** Tracing enabled  */
   enabled: boolean;
   
-  /** Tracing provider */
+  /** Tracing provider  */
   provider: 'jaeger' | 'zipkin' | 'datadog' | 'custom';
   
-  /** Sampling configuration */
+  /** Sampling configuration  */
   sampling: TracingSamplingConfig;
   
-  /** Trace retention */
+  /** Trace retention  */
   retentionDays: number;
 }
 
 export interface TracingSamplingConfig {
-  /** Sampling rate */
+  /** Sampling rate  */
   rate: number;
   
-  /** Sampling strategy */
+  /** Sampling strategy  */
   strategy: 'probabilistic' | 'rate-limiting' | 'adaptive';
   
-  /** Per-operation sampling */
+  /** Per-operation sampling  */
   perOperationSampling?: Record<string, number>;
 }
 
 export interface DashboardModuleConfig {
-  /** Dashboard provider */
+  /** Dashboard provider  */
   provider: 'grafana' | 'kibana' | 'custom';
   
-  /** Dashboard configuration */
+  /** Dashboard configuration  */
   configuration: Record<string, unknown>;
   
-  /** Default dashboards */
+  /** Default dashboards  */
   defaultDashboards: string[];
   
-  /** Custom dashboards */
+  /** Custom dashboards  */
   customDashboards: CustomDashboardConfig[];
 }
 
 export interface CustomDashboardConfig {
-  /** Dashboard name */
+  /** Dashboard name  */
   name: string;
   
-  /** Dashboard definition */
+  /** Dashboard definition  */
   definition: Record<string, unknown>;
   
-  /** Dashboard enabled */
+  /** Dashboard enabled  */
   enabled: boolean;
 }
 
 export interface FeatureFlags {
-  /** Enable experimental features */
+  /** Enable experimental features  */
   experimentalFeatures: boolean;
   
-  /** Advanced processing */
+  /** Advanced processing  */
   advancedProcessing: boolean;
   
-  /** ML-based optimization */
+  /** ML-based optimization  */
   mlOptimization: boolean;
   
-  /** Real-time processing */
+  /** Real-time processing  */
   realTimeProcessing: boolean;
   
-  /** Beta features */
+  /** Beta features  */
   betaFeatures: Record<string, boolean>;
 }
 
 export interface EnvironmentConfig {
-  /** Environment name */
+  /** Environment name  */
   name: 'development' | 'staging' | 'production';
   
-  /** Debug mode */
+  /** Debug mode  */
   debug: boolean;
   
-  /** Mock services */
+  /** Mock services  */
   mockServices: boolean;
   
-  /** External service URLs */
+  /** External service URLs  */
   externalServices: Record<string, string>;
   
-  /** Environment variables */
+  /** Environment variables  */
   environmentVariables: Record<string, string>;
   
-  /** Secrets management */
+  /** Secrets management  */
   secretsManagement: SecretsManagementConfig;
 }
 
 export interface SecretsManagementConfig {
-  /** Secrets provider */
+  /** Secrets provider  */
   provider: 'aws-secrets' | 'azure-keyvault' | 'gcp-secret' | 'hashicorp-vault' | 'kubernetes';
   
-  /** Provider configuration */
+  /** Provider configuration  */
   configuration: Record<string, unknown>;
   
-  /** Secret rotation */
+  /** Secret rotation  */
   secretRotation: boolean;
   
-  /** Secret caching */
+  /** Secret caching  */
   secretCaching: SecretCachingConfig;
 }
 
 export interface SecretCachingConfig {
-  /** Caching enabled */
+  /** Caching enabled  */
   enabled: boolean;
   
-  /** Cache TTL */
+  /** Cache TTL  */
   ttlSeconds: number;
   
-  /** Cache encryption */
+  /** Cache encryption  */
   encryption: boolean;
   
-  /** Cache invalidation */
+  /** Cache invalidation  */
   invalidation: string[];
 }
 
 export interface IntegrationConfig {
-  /** CVPlus core integration */
+  /** CVPlus core integration  */
   cvplusCore: CVPlusCoreIntegration;
   
-  /** Authentication integration */
+  /** Authentication integration  */
   authentication: AuthenticationIntegration;
   
-  /** External APIs */
+  /** External APIs  */
   externalAPIs: ExternalAPIIntegration[];
   
-  /** Webhook integrations */
+  /** Webhook integrations  */
   webhooks: WebhookIntegration[];
 }
 
 export interface CVPlusCoreIntegration {
-  /** Integration enabled */
+  /** Integration enabled  */
   enabled: boolean;
   
-  /** Core service URL */
+  /** Core service URL  */
   serviceUrl: string;
   
-  /** API version */
+  /** API version  */
   apiVersion: string;
   
-  /** Authentication method */
+  /** Authentication method  */
   authenticationMethod: 'api-key' | 'oauth' | 'jwt';
   
-  /** Retry configuration */
+  /** Retry configuration  */
   retryConfiguration: RetryConfig;
 }
 
 export interface AuthenticationIntegration {
-  /** Auth provider */
+  /** Auth provider  */
   provider: string;
   
-  /** Integration configuration */
+  /** Integration configuration  */
   configuration: Record<string, unknown>;
   
-  /** Token validation */
+  /** Token validation  */
   tokenValidation: TokenValidationConfig;
   
-  /** User mapping */
+  /** User mapping  */
   userMapping: UserMappingConfig;
 }
 
 export interface TokenValidationConfig {
-  /** Validation method */
+  /** Validation method  */
   method: 'local' | 'remote' | 'introspection';
   
-  /** Validation endpoint */
+  /** Validation endpoint  */
   endpoint?: string;
   
-  /** Cache validation results */
+  /** Cache validation results  */
   cacheResults: boolean;
   
-  /** Cache TTL */
+  /** Cache TTL  */
   cacheTTLSeconds: number;
 }
 
 export interface UserMappingConfig {
-  /** User ID field */
+  /** User ID field  */
   userIdField: string;
   
-  /** User role field */
+  /** User role field  */
   userRoleField?: string;
   
-  /** Custom field mappings */
+  /** Custom field mappings  */
   customFieldMappings: Record<string, string>;
   
-  /** Default user role */
+  /** Default user role  */
   defaultRole: string;
 }
 
 export interface ExternalAPIIntegration {
-  /** API name */
+  /** API name  */
   name: string;
   
-  /** API base URL */
+  /** API base URL  */
   baseUrl: string;
   
-  /** Authentication */
+  /** Authentication  */
   authentication: APIAuthenticationConfig;
   
-  /** Rate limiting */
+  /** Rate limiting  */
   rateLimiting: APIRateLimitingConfig;
   
-  /** Retry policy */
+  /** Retry policy  */
   retryPolicy: APIRetryPolicy;
   
-  /** Circuit breaker */
+  /** Circuit breaker  */
   circuitBreaker?: APICircuitBreakerConfig;
 }
 
 export interface APIAuthenticationConfig {
-  /** Authentication type */
+  /** Authentication type  */
   type: 'none' | 'api-key' | 'basic' | 'oauth' | 'jwt';
   
-  /** Authentication parameters */
+  /** Authentication parameters  */
   parameters: Record<string, string>;
   
-  /** Authentication headers */
+  /** Authentication headers  */
   headers?: Record<string, string>;
 }
 
 export interface APIRateLimitingConfig {
-  /** Requests per second */
+  /** Requests per second  */
   requestsPerSecond: number;
   
-  /** Burst size */
+  /** Burst size  */
   burstSize: number;
   
-  /** Rate limit strategy */
+  /** Rate limit strategy  */
   strategy: 'token-bucket' | 'sliding-window';
 }
 
 export interface APIRetryPolicy {
-  /** Max attempts */
+  /** Max attempts  */
   maxAttempts: number;
   
-  /** Retry delay */
+  /** Retry delay  */
   retryDelayMs: number;
   
-  /** Exponential backoff */
+  /** Exponential backoff  */
   exponentialBackoff: boolean;
   
-  /** Retryable status codes */
+  /** Retryable status codes  */
   retryableStatusCodes: number[];
 }
 
 export interface APICircuitBreakerConfig {
-  /** Failure threshold */
+  /** Failure threshold  */
   failureThreshold: number;
   
-  /** Success threshold */
+  /** Success threshold  */
   successThreshold: number;
   
-  /** Timeout */
+  /** Timeout  */
   timeoutMs: number;
   
-  /** Reset timeout */
+  /** Reset timeout  */
   resetTimeoutMs: number;
 }
 
 export interface WebhookIntegration {
-  /** Webhook name */
+  /** Webhook name  */
   name: string;
   
-  /** Webhook URL */
+  /** Webhook URL  */
   url: string;
   
-  /** Webhook events */
+  /** Webhook events  */
   events: string[];
   
-  /** Webhook security */
+  /** Webhook security  */
   security: WebhookSecurityConfig;
   
-  /** Webhook retry */
+  /** Webhook retry  */
   retry: WebhookRetryConfig;
 }
 
 export interface WebhookSecurityConfig {
-  /** Signature validation */
+  /** Signature validation  */
   signatureValidation: boolean;
   
-  /** Secret key */
+  /** Secret key  */
   secretKey?: string;
   
-  /** IP whitelist */
+  /** IP whitelist  */
   ipWhitelist?: string[];
   
-  /** HTTPS required */
+  /** HTTPS required  */
   httpsRequired: boolean;
 }
 
 export interface WebhookRetryConfig {
-  /** Max attempts */
+  /** Max attempts  */
   maxAttempts: number;
   
-  /** Retry intervals */
+  /** Retry intervals  */
   retryIntervals: number[];
   
-  /** Exponential backoff */
+  /** Exponential backoff  */
   exponentialBackoff: boolean;
 }

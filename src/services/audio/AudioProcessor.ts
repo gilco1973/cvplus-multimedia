@@ -1,11 +1,12 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Audio Processor Service
  * 
  * Placeholder implementation for audio processing operations.
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 import { AudioProcessingOptions, ProcessingResult } from '../../types';
 

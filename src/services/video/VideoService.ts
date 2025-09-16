@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Video Processing Service
  * 
  * Comprehensive video processing service supporting transcoding, optimization,
  * frame extraction, thumbnail generation, and advanced video manipulation.
- */
+  */
 
 import { 
   ProcessingOptions,
@@ -25,7 +26,7 @@ import { ThumbnailGenerator } from './ThumbnailGenerator';
 /**
  * Main video processing service implementation
  * Provides high-level interface for all video operations
- */
+  */
 export class VideoService extends MediaService {
   private readonly processor: VideoProcessor;
   private readonly transcoder: VideoTranscoder;
@@ -58,7 +59,7 @@ export class VideoService extends MediaService {
 
   /**
    * Main video processing entry point
-   */
+    */
   public async processMedia(
     input: File | Buffer | string,
     options: ProcessingOptions
@@ -122,7 +123,7 @@ export class VideoService extends MediaService {
 
   /**
    * Validate video input
-   */
+    */
   public async validateInput(
     input: File | Buffer | string,
     options: ProcessingOptions
@@ -167,14 +168,14 @@ export class VideoService extends MediaService {
 
   /**
    * Get supported media types
-   */
+    */
   public getSupportedTypes(): MediaType[] {
     return ['video'];
   }
 
   /**
    * Get service capabilities
-   */
+    */
   public getCapabilities(): Record<string, any> {
     return {
       formats: VideoService.SUPPORTED_FORMATS,
@@ -197,7 +198,7 @@ export class VideoService extends MediaService {
 
   /**
    * Transcode video to different format/quality
-   */
+    */
   public async transcodeVideo(
     input: File | Buffer | string,
     options: VideoTranscodingOptions
@@ -220,7 +221,7 @@ export class VideoService extends MediaService {
 
   /**
    * Generate video thumbnails
-   */
+    */
   public async generateThumbnails(
     input: File | Buffer | string,
     options: VideoThumbnailOptions = {}
@@ -240,7 +241,7 @@ export class VideoService extends MediaService {
 
   /**
    * Extract frames at specific timestamps
-   */
+    */
   public async extractFrames(
     input: File | Buffer | string,
     timestamps: number[]
@@ -268,7 +269,7 @@ export class VideoService extends MediaService {
 
   /**
    * Analyze video content and metadata
-   */
+    */
   public async analyzeVideo(
     input: File | Buffer | string
   ): Promise<VideoAnalysisResult> {
@@ -278,7 +279,7 @@ export class VideoService extends MediaService {
 
   /**
    * Prepare video for streaming (generate multiple bitrates)
-   */
+    */
   public async prepareForStreaming(
     input: File | Buffer | string,
     qualities: Array<{ width: number; height: number; bitrate: number; name: string }>
@@ -322,7 +323,7 @@ export class VideoService extends MediaService {
 
   /**
    * Batch process multiple videos
-   */
+    */
   public async batchProcess(
     inputs: Array<File | Buffer | string>,
     options: VideoProcessingOptions,
@@ -354,7 +355,7 @@ export class VideoService extends MediaService {
 
   /**
    * Service-specific option preprocessing
-   */
+    */
   protected async serviceSpecificOptionPreprocessing(
     options: ProcessingOptions
   ): Promise<ProcessingOptions> {
@@ -381,7 +382,7 @@ export class VideoService extends MediaService {
 
   /**
    * Validate video constraints
-   */
+    */
   private async validateVideoConstraints(analysis: VideoAnalysisResult): Promise<void> {
     if (analysis.duration > VideoService.MAX_DURATION) {
       throw new Error(`Video duration ${analysis.duration}s exceeds maximum allowed`);
@@ -399,7 +400,7 @@ export class VideoService extends MediaService {
 
   /**
    * Load video buffer from various input types
-   */
+    */
   private async loadVideoBuffer(input: File | Buffer | string): Promise<Buffer> {
     if (Buffer.isBuffer(input)) {
       return input;
@@ -419,7 +420,7 @@ export class VideoService extends MediaService {
 
   /**
    * Get input size in bytes
-   */
+    */
   private getInputSize(input: File | Buffer | string): number {
     if (Buffer.isBuffer(input)) {
       return input.length;
@@ -434,7 +435,7 @@ export class VideoService extends MediaService {
 
   /**
    * Detect video format from buffer
-   */
+    */
   private async detectFormat(buffer: Buffer): Promise<string> {
     // Simple format detection based on magic numbers
     const signature = buffer.slice(0, 12);

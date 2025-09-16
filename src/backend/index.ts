@@ -1,7 +1,8 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Multimedia Backend Index
  * Main export file for multimedia backend functionality
- */
+  */
 
 // Functions
 export * from './functions';

@@ -1,7 +1,8 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Testimonials Carousel Types
  * Types for testimonials carousel components
- */
+  */
 
 import { CVFeatureProps } from '../galleries/types';
 

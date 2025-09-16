@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Image Analyzer
  * 
  * Analyzes image content and metadata to provide insights
  * about format, dimensions, quality, color profile, and more.
- */
+  */
 
 import { ImageAnalysisResult } from '../../types';
 import { Logger } from '../utils/Logger';
@@ -19,7 +20,7 @@ export class ImageAnalyzer {
 
   /**
    * Analyze image and extract comprehensive information
-   */
+    */
   public async analyzeImage(buffer: Buffer): Promise<ImageAnalysisResult> {
     try {
       this.logger.debug('Starting image analysis', { size: buffer.length });
@@ -53,7 +54,7 @@ export class ImageAnalyzer {
 
   /**
    * Detect image format from buffer
-   */
+    */
   private async detectFormat(buffer: Buffer): Promise<string> {
     // Check file signatures
     if (buffer[0] === 0xFF && buffer[1] === 0xD8) {
@@ -83,7 +84,7 @@ export class ImageAnalyzer {
 
   /**
    * Extract image dimensions
-   */
+    */
   private async extractDimensions(buffer: Buffer): Promise<{ width: number; height: number }> {
     const format = await this.detectFormat(buffer);
 
@@ -110,7 +111,7 @@ export class ImageAnalyzer {
 
   /**
    * Extract JPEG dimensions
-   */
+    */
   private extractJpegDimensions(buffer: Buffer): { width: number; height: number } {
     let offset = 2; // Skip 0xFFD8
 
@@ -142,7 +143,7 @@ export class ImageAnalyzer {
 
   /**
    * Extract PNG dimensions
-   */
+    */
   private extractPngDimensions(buffer: Buffer): { width: number; height: number } {
     // IHDR chunk starts at offset 12 (after PNG signature and chunk length/type)
     const width = buffer.readUInt32BE(16);
@@ -152,7 +153,7 @@ export class ImageAnalyzer {
 
   /**
    * Extract GIF dimensions
-   */
+    */
   private extractGifDimensions(buffer: Buffer): { width: number; height: number } {
     const width = buffer.readUInt16LE(6);
     const height = buffer.readUInt16LE(8);
@@ -161,7 +162,7 @@ export class ImageAnalyzer {
 
   /**
    * Extract WebP dimensions
-   */
+    */
   private extractWebpDimensions(buffer: Buffer): { width: number; height: number } {
     // WebP format is complex, this is a simplified version
     if (buffer.subarray(12, 16).equals(Buffer.from('VP8 '))) {
@@ -176,7 +177,7 @@ export class ImageAnalyzer {
 
   /**
    * Extract BMP dimensions
-   */
+    */
   private extractBmpDimensions(buffer: Buffer): { width: number; height: number } {
     const width = buffer.readUInt32LE(18);
     const height = Math.abs(buffer.readInt32LE(22));
@@ -185,7 +186,7 @@ export class ImageAnalyzer {
 
   /**
    * Estimate image quality (for JPEG)
-   */
+    */
   private async estimateQuality(buffer: Buffer): Promise<number | undefined> {
     const format = await this.detectFormat(buffer);
     
@@ -211,7 +212,7 @@ export class ImageAnalyzer {
 
   /**
    * Analyze color profile
-   */
+    */
   private async analyzeColorProfile(buffer: Buffer): Promise<any> {
     return {
       colorSpace: 'sRGB', // Default assumption
@@ -223,7 +224,7 @@ export class ImageAnalyzer {
 
   /**
    * Extract metadata
-   */
+    */
   private async extractMetadata(buffer: Buffer): Promise<Record<string, any>> {
     const format = await this.detectFormat(buffer);
     
@@ -236,7 +237,7 @@ export class ImageAnalyzer {
 
   /**
    * Check for transparency
-   */
+    */
   private async checkTransparency(buffer: Buffer): Promise<boolean> {
     const format = await this.detectFormat(buffer);
     
@@ -254,7 +255,7 @@ export class ImageAnalyzer {
 
   /**
    * Check PNG transparency
-   */
+    */
   private checkPngTransparency(buffer: Buffer): boolean {
     // Check color type in IHDR chunk
     const colorType = buffer[25];
@@ -265,7 +266,7 @@ export class ImageAnalyzer {
 
   /**
    * Check for animation
-   */
+    */
   private async checkAnimation(buffer: Buffer): Promise<boolean> {
     const format = await this.detectFormat(buffer);
     
@@ -288,7 +289,7 @@ export class ImageAnalyzer {
 
   /**
    * Estimate compression ratio
-   */
+    */
   private async estimateCompression(buffer: Buffer): Promise<number> {
     const dimensions = await this.extractDimensions(buffer);
     const uncompressedSize = dimensions.width * dimensions.height * 3; // 3 bytes per pixel (RGB)
@@ -300,7 +301,7 @@ export class ImageAnalyzer {
 
   /**
    * Extract technical details
-   */
+    */
   private async extractTechnicalDetails(buffer: Buffer): Promise<Record<string, any>> {
     return {
       fileSize: buffer.length,
@@ -311,7 +312,7 @@ export class ImageAnalyzer {
 
   /**
    * Calculate entropy (measure of randomness)
-   */
+    */
   private calculateEntropy(buffer: Buffer): number {
     const frequencies = new Array(256).fill(0);
     
@@ -334,7 +335,7 @@ export class ImageAnalyzer {
 
   /**
    * Calculate average color (simplified)
-   */
+    */
   private calculateAverageColor(buffer: Buffer): { r: number; g: number; b: number } {
     // This is a very simplified implementation
     // In practice, would need to decode the image data

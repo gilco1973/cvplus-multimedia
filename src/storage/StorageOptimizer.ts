@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Storage Optimizer
  * 
  * Optimizes multimedia files before storage including compression,
@@ -6,7 +7,7 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0 - CVPlus Multimedia Module
- */
+  */
 
 import { MediaType } from '../types/media.types';
 
@@ -59,7 +60,7 @@ export class StorageOptimizer {
 
   /**
    * Optimize file for storage
-   */
+    */
   async optimize(
     input: File | Buffer | string,
     options?: OptimizationOptions
@@ -120,7 +121,7 @@ export class StorageOptimizer {
 
   /**
    * Optimize image files
-   */
+    */
   private async optimizeImage(
     input: File | Buffer | string,
     options?: OptimizationOptions
@@ -177,7 +178,7 @@ export class StorageOptimizer {
 
   /**
    * Optimize video files
-   */
+    */
   private async optimizeVideo(
     input: File | Buffer | string,
     options?: OptimizationOptions
@@ -220,7 +221,7 @@ export class StorageOptimizer {
 
   /**
    * Optimize audio files
-   */
+    */
   private async optimizeAudio(
     input: File | Buffer | string,
     options?: OptimizationOptions
@@ -263,7 +264,7 @@ export class StorageOptimizer {
 
   /**
    * General file optimization
-   */
+    */
   private async optimizeGeneral(
     input: File | Buffer | string,
     options?: OptimizationOptions
@@ -286,7 +287,7 @@ export class StorageOptimizer {
 
   /**
    * Get detailed optimization analysis
-   */
+    */
   async analyzeOptimizationPotential(
     input: File | Buffer | string
   ): Promise<{
@@ -341,7 +342,7 @@ export class StorageOptimizer {
 
   /**
    * Convert input to Buffer
-   */
+    */
   private async inputToBuffer(input: File | Buffer | string): Promise<Buffer> {
     if (Buffer.isBuffer(input)) {
       return input;
@@ -367,7 +368,7 @@ export class StorageOptimizer {
 
   /**
    * Detect media type from input
-   */
+    */
   private detectMediaType(input: File | Buffer | string): MediaType | string {
     if (input instanceof File) {
       const type = input.type;
@@ -388,7 +389,7 @@ export class StorageOptimizer {
 
   /**
    * Get input format
-   */
+    */
   private getInputFormat(input: File | Buffer | string): string {
     if (input instanceof File) {
       return input.type.split('/')[1] || 'unknown';
@@ -404,7 +405,7 @@ export class StorageOptimizer {
 
   /**
    * Get optimal image format based on content
-   */
+    */
   private getOptimalImageFormat(input: File | Buffer | string): string {
     if (this.config.autoFormat) {
       // Return modern format for better compression
@@ -416,21 +417,21 @@ export class StorageOptimizer {
 
   /**
    * Get optimal video format
-   */
+    */
   private getOptimalVideoFormat(): string {
     return this.config.autoFormat ? 'mp4' : 'mp4';
   }
 
   /**
    * Get optimal audio format
-   */
+    */
   private getOptimalAudioFormat(): string {
     return this.config.autoFormat ? 'aac' : 'mp3';
   }
 
   /**
    * Get quality level as percentage
-   */
+    */
   private getQualityLevel(): number {
     switch (this.config.quality) {
       case 'low': return 60;
@@ -443,7 +444,7 @@ export class StorageOptimizer {
 
   /**
    * Get input size
-   */
+    */
   private getInputSize(input: File | Buffer | string): number {
     if (Buffer.isBuffer(input)) {
       return input.length;
@@ -458,7 +459,7 @@ export class StorageOptimizer {
 
   /**
    * Get output size
-   */
+    */
   private getOutputSize(output: Buffer | File): number {
     if (Buffer.isBuffer(output)) {
       return output.length;
@@ -473,7 +474,7 @@ export class StorageOptimizer {
 
   /**
    * Estimate processing time based on file size and type
-   */
+    */
   private estimateProcessingTime(size: number, mediaType: MediaType | string): number {
     // Estimate in milliseconds
     const baseTime = 100; // 100ms base processing time
@@ -493,7 +494,7 @@ export class StorageOptimizer {
 
   /**
    * Get optimizer capabilities
-   */
+    */
   getCapabilities(): Record<string, any> {
     return {
       supportedFormats: {

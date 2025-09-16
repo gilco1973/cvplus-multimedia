@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Configuration Manager
  * 
  * Manages configuration loading, validation, and service-specific
  * configuration management for multimedia services.
- */
+  */
 
 import { ServiceConfig, ServiceType } from '../../types';
 import { multimediaConfig } from '../../config/MultimediaConfig';
@@ -22,7 +23,7 @@ export class ConfigManager {
 
   /**
    * Load configuration with optional overrides
-   */
+    */
   public async loadConfig(overrides?: Partial<ServiceConfig>): Promise<void> {
     try {
       this.baseConfig = {
@@ -46,7 +47,7 @@ export class ConfigManager {
 
   /**
    * Get service-specific configuration
-   */
+    */
   public async getServiceConfig(
     serviceType: ServiceType,
     overrides?: Partial<ServiceConfig>
@@ -74,14 +75,14 @@ export class ConfigManager {
 
   /**
    * Get default configuration for service type
-   */
+    */
   public async getDefaultServiceConfig(serviceType: ServiceType): Promise<Partial<ServiceConfig>> {
     return this.getServiceDefaults(serviceType);
   }
 
   /**
    * Set service-specific configuration
-   */
+    */
   public setServiceConfig(serviceType: ServiceType, config: Partial<ServiceConfig>): void {
     this.serviceConfigs.set(serviceType, config);
     this.logger.debug(`Configuration set for ${serviceType} service`);
@@ -89,14 +90,14 @@ export class ConfigManager {
 
   /**
    * Get current base configuration
-   */
+    */
   public getBaseConfig(): ServiceConfig {
     return { ...this.baseConfig };
   }
 
   /**
    * Update base configuration
-   */
+    */
   public updateBaseConfig(updates: Partial<ServiceConfig>): void {
     this.baseConfig = { ...this.baseConfig, ...updates };
     this.logger.info('Base configuration updated');
@@ -104,7 +105,7 @@ export class ConfigManager {
 
   /**
    * Validate configuration
-   */
+    */
   public validateConfig(config: ServiceConfig): { valid: boolean; errors: string[] } {
     const errors: string[] = [];
 
@@ -188,7 +189,7 @@ export class ConfigManager {
 
   /**
    * Get service-specific default configurations
-   */
+    */
   private getServiceDefaults(serviceType: ServiceType): Partial<ServiceConfig> {
     const defaults: Record<ServiceType, Partial<ServiceConfig>> = {
       image: {
@@ -247,7 +248,7 @@ export class ConfigManager {
 
   /**
    * Get configuration value by path
-   */
+    */
   public getConfigValue(path: string, defaultValue?: any): any {
     const keys = path.split('.');
     let current: any = this.baseConfig;
@@ -265,7 +266,7 @@ export class ConfigManager {
 
   /**
    * Set configuration value by path
-   */
+    */
   public setConfigValue(path: string, value: any): void {
     const keys = path.split('.');
     const lastKey = keys.pop()!;
@@ -284,14 +285,14 @@ export class ConfigManager {
 
   /**
    * Check if feature is enabled
-   */
+    */
   public isFeatureEnabled(feature: string): boolean {
     return this.getConfigValue(`features.${feature}`, false);
   }
 
   /**
    * Get environment-specific configuration
-   */
+    */
   public getEnvironmentConfig(): Partial<ServiceConfig> {
     const environment = this.baseConfig.environment;
     
@@ -320,7 +321,7 @@ export class ConfigManager {
 
   /**
    * Export configuration for debugging (sanitized)
-   */
+    */
   public exportConfig(): Record<string, any> {
     const config = JSON.parse(JSON.stringify(this.baseConfig));
 
@@ -344,7 +345,7 @@ export class ConfigManager {
 
   /**
    * Reset configuration to defaults
-   */
+    */
   public resetToDefaults(): void {
     this.baseConfig = multimediaConfig.getConfig();
     this.serviceConfigs.clear();

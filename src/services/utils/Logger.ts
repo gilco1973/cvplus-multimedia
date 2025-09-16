@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Multimedia Logger Utility
  * 
  * Centralized logging for multimedia services with structured logging,
  * log levels, and performance tracking capabilities.
- */
+  */
 
 export enum LogLevel {
   DEBUG = 0,
@@ -27,7 +28,7 @@ export interface LogEntry {
 
 /**
  * Logger class for multimedia services
- */
+  */
 export class Logger {
   private readonly context: string;
   private readonly logLevel: LogLevel;
@@ -52,35 +53,35 @@ export class Logger {
 
   /**
    * Log debug message
-   */
+    */
   public debug(message: string, data?: any): void {
     this.log(LogLevel.DEBUG, message, data);
   }
 
   /**
    * Log info message
-   */
+    */
   public info(message: string, data?: any): void {
     this.log(LogLevel.INFO, message, data);
   }
 
   /**
    * Log warning message
-   */
+    */
   public warn(message: string, data?: any): void {
     this.log(LogLevel.WARN, message, data);
   }
 
   /**
    * Log error message
-   */
+    */
   public error(message: string, data?: any): void {
     this.log(LogLevel.ERROR, message, data);
   }
 
   /**
    * Log with performance metrics
-   */
+    */
   public performance(
     message: string,
     operationType: string,
@@ -98,7 +99,7 @@ export class Logger {
 
   /**
    * Core logging method
-   */
+    */
   private log(
     level: LogLevel,
     message: string,
@@ -139,7 +140,7 @@ export class Logger {
 
   /**
    * Output log entry to console
-   */
+    */
   private outputToConsole(entry: LogEntry): void {
     const timestamp = entry.timestamp.toISOString();
     const levelName = LogLevel[entry.level];
@@ -159,7 +160,7 @@ export class Logger {
 
   /**
    * Output log entry to file (placeholder)
-   */
+    */
   private outputToFile(entry: LogEntry): void {
     // File output implementation would go here
     // For now, this is a placeholder
@@ -167,7 +168,7 @@ export class Logger {
 
   /**
    * Get appropriate console method for log level
-   */
+    */
   private getConsoleMethod(level: LogLevel): Function {
     switch (level) {
       case LogLevel.DEBUG:
@@ -185,7 +186,7 @@ export class Logger {
 
   /**
    * Get current memory usage
-   */
+    */
   private getMemoryUsage(): number {
     if (typeof process !== 'undefined' && process.memoryUsage) {
       return process.memoryUsage().heapUsed;
@@ -195,35 +196,35 @@ export class Logger {
 
   /**
    * Get recent log entries
-   */
+    */
   public getRecentLogs(count: number = 50): LogEntry[] {
     return this.logEntries.slice(-count);
   }
 
   /**
    * Get logs by level
-   */
+    */
   public getLogsByLevel(level: LogLevel): LogEntry[] {
     return this.logEntries.filter(entry => entry.level === level);
   }
 
   /**
    * Get error logs
-   */
+    */
   public getErrorLogs(): LogEntry[] {
     return this.getLogsByLevel(LogLevel.ERROR);
   }
 
   /**
    * Clear log entries
-   */
+    */
   public clearLogs(): void {
     this.logEntries.length = 0;
   }
 
   /**
    * Export logs as JSON
-   */
+    */
   public exportLogs(): string {
     return JSON.stringify(this.logEntries, null, 2);
   }

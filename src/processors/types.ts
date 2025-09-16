@@ -1,11 +1,12 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Processor Types
  * 
  * Type definitions for multimedia processors.
  * 
  * @author Gil Klainert
  * @version 1.0.0 - CVPlus Multimedia Module
- */
+  */
 
 export interface ProcessorConfig {
   concurrency?: number;

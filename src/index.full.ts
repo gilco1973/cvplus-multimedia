@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * CVPlus Multimedia Module - Main Entry Point (Minimal Build)
  * 
  * Basic multimedia types and utilities for the CVPlus platform.
@@ -6,7 +7,7 @@
  * @author Gil Klainert
  * @version 1.0.0
  * @license PROPRIETARY
- */
+  */
 
 // ============================================================================
 // CORE TYPES

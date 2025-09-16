@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * MultimediaPlayer Components
  *
  * Professional multimedia player system with playlist management,
  * keyboard shortcuts, and comprehensive media format support.
- */
+  */
 
 // Main components
 export { MultimediaPlayer } from './MultimediaPlayer';

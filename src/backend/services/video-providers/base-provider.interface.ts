@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Base Provider Interface for Video Generation Services
  * 
  * Defines the common interface for all video generation providers
@@ -6,7 +7,7 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 import { ParsedCV } from '../../types/enhanced-models';
 
@@ -128,7 +129,7 @@ export interface ProviderPerformanceMetrics {
 
 /**
  * Base interface that all video generation providers must implement
- */
+  */
 export interface VideoGenerationProvider {
   readonly name: string;
   readonly priority: number; // 1 = highest priority
@@ -137,12 +138,12 @@ export interface VideoGenerationProvider {
   
   /**
    * Initialize the provider with configuration
-   */
+    */
   initialize(config: ProviderConfig): Promise<void>;
   
   /**
    * Generate a video using the provider's API
-   */
+    */
   generateVideo(
     script: string,
     options: VideoGenerationOptions
@@ -150,37 +151,37 @@ export interface VideoGenerationProvider {
   
   /**
    * Check the status of a video generation job
-   */
+    */
   checkStatus(jobId: string): Promise<VideoGenerationStatus>;
   
   /**
    * Cancel a video generation job if supported
-   */
+    */
   cancelJob?(jobId: string): Promise<boolean>;
   
   /**
    * Get the current health status of the provider
-   */
+    */
   getHealthStatus(): Promise<ProviderHealthStatus>;
   
   /**
    * Get performance metrics for the provider
-   */
+    */
   getPerformanceMetrics(period: '1h' | '24h' | '7d' | '30d'): Promise<ProviderPerformanceMetrics>;
   
   /**
    * Validate if the provider can handle the given requirements
-   */
+    */
   canHandle(requirements: VideoRequirements): boolean;
   
   /**
    * Get estimated cost for video generation
-   */
+    */
   getEstimatedCost(options: VideoGenerationOptions): Promise<number>;
   
   /**
    * Handle webhook callbacks if supported
-   */
+    */
   handleWebhook?(payload: any): Promise<VideoGenerationStatus>;
 }
 
@@ -213,7 +214,7 @@ export interface ProviderConfig {
 
 /**
  * Error types specific to video generation providers
- */
+  */
 export enum VideoProviderErrorType {
   AUTHENTICATION_ERROR = 'authentication_error',
   RATE_LIMIT_EXCEEDED = 'rate_limit_exceeded',
@@ -243,7 +244,7 @@ export class VideoProviderError extends Error {
 
 /**
  * Provider selection criteria for intelligent routing
- */
+  */
 export interface ProviderSelectionCriteria {
   requirements: VideoRequirements;
   preferences: {
@@ -264,7 +265,7 @@ export interface ProviderSelectionCriteria {
 
 /**
  * Provider selection result with scoring details
- */
+  */
 export interface ProviderSelectionResult {
   selectedProvider: VideoGenerationProvider;
   fallbackProviders: VideoGenerationProvider[];
@@ -276,7 +277,7 @@ export interface ProviderSelectionResult {
 
 /**
  * Factory pattern for creating providers
- */
+  */
 export abstract class BaseVideoProvider implements VideoGenerationProvider {
   abstract readonly name: string;
   abstract readonly priority: number;

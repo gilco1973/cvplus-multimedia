@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Firebase Storage Adapter
  * 
  * Firebase Storage implementation for the multimedia storage service
  * with upload, download, delete, and metadata operations.
- */
+  */
 
 import { UploadOptions, UploadResult } from '../../types/storage.types';
 import { Logger } from '../utils/Logger';
@@ -19,7 +20,7 @@ export class FirebaseStorageAdapter {
 
   /**
    * Upload file to Firebase Storage
-   */
+    */
   public async upload(
     input: File | Buffer | string,
     options: UploadOptions
@@ -58,7 +59,7 @@ export class FirebaseStorageAdapter {
 
   /**
    * Download file from Firebase Storage
-   */
+    */
   public async download(url: string, options: UploadOptions): Promise<Buffer> {
     try {
       this.logger.info('Downloading from Firebase Storage', { url });
@@ -82,7 +83,7 @@ export class FirebaseStorageAdapter {
 
   /**
    * Delete file from Firebase Storage
-   */
+    */
   public async delete(url: string, options: UploadOptions): Promise<boolean> {
     try {
       this.logger.info('Deleting from Firebase Storage', { url });
@@ -101,7 +102,7 @@ export class FirebaseStorageAdapter {
 
   /**
    * List files in Firebase Storage
-   */
+    */
   public async list(prefix: string, options: UploadOptions): Promise<UploadResult[]> {
     try {
       this.logger.info('Listing Firebase Storage files', { prefix });
@@ -119,7 +120,7 @@ export class FirebaseStorageAdapter {
 
   /**
    * Get file metadata from Firebase Storage
-   */
+    */
   public async getMetadata(url: string, options: UploadOptions): Promise<Record<string, any>> {
     try {
       this.logger.info('Getting Firebase Storage metadata', { url });
@@ -142,7 +143,7 @@ export class FirebaseStorageAdapter {
 
   /**
    * Generate signed URL for Firebase Storage
-   */
+    */
   public async getSignedUrl(
     url: string, 
     options: UploadOptions & { expiresIn?: number }
@@ -163,7 +164,7 @@ export class FirebaseStorageAdapter {
 
   /**
    * Copy file within Firebase Storage
-   */
+    */
   public async copy(
     sourceUrl: string, 
     destinationPath: string, 
@@ -194,7 +195,7 @@ export class FirebaseStorageAdapter {
 
   /**
    * Get adapter capabilities
-   */
+    */
   public getCapabilities(): Record<string, any> {
     return {
       provider: 'firebase',
@@ -218,7 +219,7 @@ export class FirebaseStorageAdapter {
 
   /**
    * Convert input to buffer
-   */
+    */
   private async inputToBuffer(input: File | Buffer | string): Promise<Buffer> {
     if (Buffer.isBuffer(input)) {
       return input;
@@ -238,7 +239,7 @@ export class FirebaseStorageAdapter {
 
   /**
    * Detect content type from input
-   */
+    */
   private detectContentType(input: File | Buffer | string): string {
     if (input instanceof File) {
       return input.type || 'application/octet-stream';

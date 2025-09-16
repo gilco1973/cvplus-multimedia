@@ -3,7 +3,7 @@
 /**
  * QR Code feature generator for multimedia module
  * Creates a dynamic QR code with advanced customization and analytics
- */
+  */
 export class QRCodeFeature implements CVFeature {
 
   async generate(cv: CVData, jobId: string, options?: any): Promise<string> {
@@ -23,7 +23,7 @@ export class QRCodeFeature implements CVFeature {
 
   /**
    * Extract QR code data from CV and generate URLs
-   */
+    */
   private extractQRCodeData(cv: CVData, jobId: string, options?: any): any {
     const baseUrl = 'https://getmycv-ai.web.app';
     const profileName = cv.personalInfo?.name?.replace(/\s+/g, '-').toLowerCase() || jobId;
@@ -56,7 +56,7 @@ export class QRCodeFeature implements CVFeature {
 
   /**
    * Get default customization options
-   */
+    */
   private getDefaultCustomization(): any {
     return {
       size: 256,
@@ -69,7 +69,7 @@ export class QRCodeFeature implements CVFeature {
 
   /**
    * Generate React component placeholder for modern CV rendering
-   */
+    */
   private generateReactComponentPlaceholder(jobId: string, props: any): string {
     return `
       <div class="cv-feature-container qr-code-feature">
@@ -88,7 +88,7 @@ export class QRCodeFeature implements CVFeature {
 
   getStyles(): string {
     return `
-      /* CV Feature Container Styles */
+      /* CV Feature Container Styles  */
       .cv-feature-container.qr-code-feature {
         margin: 2rem 0;
         max-width: 400px;
@@ -96,7 +96,7 @@ export class QRCodeFeature implements CVFeature {
         margin-right: auto;
       }
 
-      /* React Component Placeholder Styles */
+      /* React Component Placeholder Styles  */
       .react-component-placeholder[data-component="DynamicQRCode"] {
         min-height: 350px;
         position: relative;
@@ -108,7 +108,7 @@ export class QRCodeFeature implements CVFeature {
         text-align: center;
       }
 
-      /* Component Loading Styles */
+      /* Component Loading Styles  */
       .component-loading {
         display: flex;
         flex-direction: column;
@@ -133,7 +133,7 @@ export class QRCodeFeature implements CVFeature {
         100% { transform: rotate(360deg); }
       }
 
-      /* Fallback QR Code Styles */
+      /* Fallback QR Code Styles  */
       .qr-fallback {
         text-align: center;
         padding: 2rem;
@@ -177,7 +177,7 @@ export class QRCodeFeature implements CVFeature {
         word-break: break-all;
       }
 
-      /* Error Styles */
+      /* Error Styles  */
       .qr-error {
         text-align: center;
         padding: 2rem;
@@ -197,7 +197,7 @@ export class QRCodeFeature implements CVFeature {
         font-size: 0.875rem;
       }
 
-      /* Responsive Styles */
+      /* Responsive Styles  */
       @media (max-width: 768px) {
         .cv-feature-container.qr-code-feature {
           margin: 1rem 0;
@@ -214,7 +214,7 @@ export class QRCodeFeature implements CVFeature {
         }
       }
 
-      /* Print Styles */
+      /* Print Styles  */
       @media print {
         .cv-feature-container.qr-code-feature {
           page-break-inside: avoid;
@@ -232,7 +232,7 @@ export class QRCodeFeature implements CVFeature {
         }
       }
 
-      /* Dark Mode Support */
+      /* Dark Mode Support  */
       @media (prefers-color-scheme: dark) {
         .react-component-placeholder[data-component="DynamicQRCode"] {
           background: linear-gradient(135deg, #1e293b 0%, #334155 100%);

@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Type definitions for utility components
- */
+  */
 
 export interface FileUploadProps {
   accept?: string;

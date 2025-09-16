@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Advanced Components for Multimedia Module - Phase 3 Implementation
  * 
  * Enterprise-grade multimedia components with advanced features:
@@ -10,7 +11,7 @@
  * 
  * @author Gil Klainert
  * @version 3.0.0
- */
+  */
 
 // Phase 3: Advanced Video Generation
 export * from './video';
@@ -71,7 +72,7 @@ export type {
  * - Real-time analytics and business intelligence  
  * - AI-powered content enhancement and recommendations
  * - Progressive enhancement and adaptive experiences
- */
+  */
 export const Phase3AdvancedComponents = {
   // Video Generation & Processing
   MultiProviderVideoGenerator,

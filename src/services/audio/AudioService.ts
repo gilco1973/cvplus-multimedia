@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Audio Processing Service
  * 
  * Comprehensive audio processing service supporting format conversion,
  * optimization, noise reduction, and advanced audio manipulation.
- */
+  */
 
 import { 
   ProcessingOptions,
@@ -25,7 +26,7 @@ import { WaveformGenerator } from './WaveformGenerator';
 /**
  * Main audio processing service implementation
  * Provides high-level interface for all audio operations
- */
+  */
 export class AudioService extends MediaService {
   private readonly processor: AudioProcessor;
   private readonly transcoder: AudioTranscoder;
@@ -58,7 +59,7 @@ export class AudioService extends MediaService {
 
   /**
    * Main audio processing entry point
-   */
+    */
   public async processMedia(
     input: File | Buffer | string,
     options: ProcessingOptions
@@ -127,7 +128,7 @@ export class AudioService extends MediaService {
 
   /**
    * Validate audio input
-   */
+    */
   public async validateInput(
     input: File | Buffer | string,
     options: ProcessingOptions
@@ -166,14 +167,14 @@ export class AudioService extends MediaService {
 
   /**
    * Get supported media types
-   */
+    */
   public getSupportedTypes(): MediaType[] {
     return ['audio'];
   }
 
   /**
    * Get service capabilities
-   */
+    */
   public getCapabilities(): Record<string, any> {
     return {
       formats: AudioService.SUPPORTED_FORMATS,
@@ -196,7 +197,7 @@ export class AudioService extends MediaService {
 
   /**
    * Transcode audio to different format/quality
-   */
+    */
   public async transcodeAudio(
     input: File | Buffer | string,
     options: AudioTranscodingOptions
@@ -219,7 +220,7 @@ export class AudioService extends MediaService {
 
   /**
    * Generate audio waveform visualization
-   */
+    */
   public async generateWaveform(
     input: File | Buffer | string,
     options: any = {}
@@ -238,7 +239,7 @@ export class AudioService extends MediaService {
 
   /**
    * Enhance audio quality (noise reduction, normalization, etc.)
-   */
+    */
   public async enhanceAudio(
     input: File | Buffer | string,
     options: AudioEnhancementOptions
@@ -258,7 +259,7 @@ export class AudioService extends MediaService {
 
   /**
    * Optimize audio for podcast/voice content
-   */
+    */
   public async optimizeForPodcast(
     input: File | Buffer | string
   ): Promise<ProcessingResult> {
@@ -304,7 +305,7 @@ export class AudioService extends MediaService {
 
   /**
    * Split audio into segments
-   */
+    */
   public async splitAudio(
     input: File | Buffer | string,
     segments: Array<{ start: number; end: number; name?: string }>
@@ -340,7 +341,7 @@ export class AudioService extends MediaService {
 
   /**
    * Merge multiple audio files
-   */
+    */
   public async mergeAudio(
     inputs: Array<File | Buffer | string>,
     options: { fadeIn?: number; fadeOut?: number; crossfade?: number } = {}
@@ -363,7 +364,7 @@ export class AudioService extends MediaService {
 
   /**
    * Analyze audio content and metadata
-   */
+    */
   public async analyzeAudio(
     input: File | Buffer | string
   ): Promise<AudioAnalysisResult> {
@@ -373,7 +374,7 @@ export class AudioService extends MediaService {
 
   /**
    * Batch process multiple audio files
-   */
+    */
   public async batchProcess(
     inputs: Array<File | Buffer | string>,
     options: AudioProcessingOptions,
@@ -405,7 +406,7 @@ export class AudioService extends MediaService {
 
   /**
    * Service-specific option preprocessing
-   */
+    */
   protected async serviceSpecificOptionPreprocessing(
     options: ProcessingOptions
   ): Promise<ProcessingOptions> {
@@ -431,7 +432,7 @@ export class AudioService extends MediaService {
 
   /**
    * Validate audio constraints
-   */
+    */
   private async validateAudioConstraints(analysis: AudioAnalysisResult): Promise<void> {
     if (analysis.duration > AudioService.MAX_DURATION) {
       throw new Error(`Audio duration ${analysis.duration}s exceeds maximum allowed`);
@@ -448,7 +449,7 @@ export class AudioService extends MediaService {
 
   /**
    * Load audio buffer from various input types
-   */
+    */
   private async loadAudioBuffer(input: File | Buffer | string): Promise<Buffer> {
     if (Buffer.isBuffer(input)) {
       return input;
@@ -468,7 +469,7 @@ export class AudioService extends MediaService {
 
   /**
    * Get input size in bytes
-   */
+    */
   private getInputSize(input: File | Buffer | string): number {
     if (Buffer.isBuffer(input)) {
       return input.length;
@@ -483,7 +484,7 @@ export class AudioService extends MediaService {
 
   /**
    * Detect audio format from buffer
-   */
+    */
   private async detectFormat(buffer: Buffer): Promise<string> {
     // Simple format detection based on magic numbers
     const signature = buffer.slice(0, 12);

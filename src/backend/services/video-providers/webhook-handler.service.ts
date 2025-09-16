@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Video Provider Webhook Handler Service
  * 
  * Centralized webhook handling for all video generation providers
@@ -6,7 +7,7 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 import * as admin from 'firebase-admin';
 import * as crypto from 'crypto';
@@ -50,7 +51,7 @@ export class VideoWebhookHandler {
   
   /**
    * Process incoming webhook from any provider
-   */
+    */
   async processWebhook(
     provider: string,
     headers: Record<string, string>,
@@ -95,7 +96,7 @@ export class VideoWebhookHandler {
   
   /**
    * Process HeyGen webhook payload
-   */
+    */
   private async processHeyGenWebhook(payload: any): Promise<VideoGenerationStatus> {
     
     // Validate required fields
@@ -136,7 +137,7 @@ export class VideoWebhookHandler {
   
   /**
    * Process D-ID webhook payload (for fallback compatibility)
-   */
+    */
   private async processDidWebhook(payload: any): Promise<VideoGenerationStatus> {
     
     // D-ID webhook structure (if they support webhooks)
@@ -173,7 +174,7 @@ export class VideoWebhookHandler {
   
   /**
    * Process RunwayML webhook payload
-   */
+    */
   private async processRunwayMLWebhook(payload: any): Promise<VideoGenerationStatus> {
     
     const jobId = payload.task?.metadata?.jobId || payload.jobId;
@@ -211,7 +212,7 @@ export class VideoWebhookHandler {
   
   /**
    * Validate webhook signature and timestamp
-   */
+    */
   private async validateWebhook(
     provider: string,
     headers: Record<string, string>,
@@ -262,7 +263,7 @@ export class VideoWebhookHandler {
   
   /**
    * Calculate HMAC signature for webhook validation
-   */
+    */
   private calculateSignature(payload: string, secret: string): string {
     return crypto
       .createHmac('sha256', secret)
@@ -272,7 +273,7 @@ export class VideoWebhookHandler {
   
   /**
    * Verify webhook signature using secure comparison
-   */
+    */
   private verifySignature(received: string, expected: string): boolean {
     // Remove any prefix (like "sha256=")
     const cleanReceived = received.replace(/^sha256=/, '');
@@ -291,7 +292,7 @@ export class VideoWebhookHandler {
   
   /**
    * Map HeyGen status to standardized status
-   */
+    */
   private mapHeyGenStatus(heygenStatus: string): 'queued' | 'processing' | 'completed' | 'failed' {
     switch (heygenStatus?.toLowerCase()) {
       case 'queued':
@@ -312,7 +313,7 @@ export class VideoWebhookHandler {
   
   /**
    * Map D-ID status to standardized status
-   */
+    */
   private mapDidStatus(didStatus: string): 'queued' | 'processing' | 'completed' | 'failed' {
     switch (didStatus?.toLowerCase()) {
       case 'created':
@@ -334,7 +335,7 @@ export class VideoWebhookHandler {
   
   /**
    * Map RunwayML status to standardized status
-   */
+    */
   private mapRunwayMLStatus(runwaymlStatus: string): 'queued' | 'processing' | 'completed' | 'failed' {
     switch (runwaymlStatus?.toLowerCase()) {
       case 'pending':
@@ -355,7 +356,7 @@ export class VideoWebhookHandler {
   
   /**
    * Check if HeyGen error is retryable
-   */
+    */
   private isRetryableHeyGenError(errorCode: string): boolean {
     const retryableErrors = [
       'RATE_LIMIT_EXCEEDED',
@@ -369,7 +370,7 @@ export class VideoWebhookHandler {
   
   /**
    * Check if RunwayML error is retryable
-   */
+    */
   private isRetryableRunwayMLError(errorCode: string): boolean {
     const retryableErrors = [
       'RATE_LIMIT_EXCEEDED',
@@ -383,7 +384,7 @@ export class VideoWebhookHandler {
   
   /**
    * Update job status in Firestore
-   */
+    */
   private async updateJobStatus(
     jobId: string,
     status: VideoGenerationStatus
@@ -437,7 +438,7 @@ export class VideoWebhookHandler {
   
   /**
    * Notify clients of status updates via real-time channels
-   */
+    */
   private async notifyStatusUpdate(
     jobId: string,
     status: VideoGenerationStatus
@@ -460,14 +461,14 @@ export class VideoWebhookHandler {
   
   /**
    * Get webhook configuration for a provider
-   */
+    */
   public getWebhookConfig(provider: string): WebhookValidationConfig | undefined {
     return this.validationConfigs.get(provider.toLowerCase());
   }
   
   /**
    * Update webhook configuration for a provider
-   */
+    */
   public updateWebhookConfig(
     provider: string,
     config: WebhookValidationConfig

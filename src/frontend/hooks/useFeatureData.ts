@@ -1,7 +1,8 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Feature Data Hook
  * Temporary hook for fetching feature data - to be replaced with real implementation
- */
+  */
 
 import { useState, useEffect } from 'react';
 

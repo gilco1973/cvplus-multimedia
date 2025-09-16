@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * CVPlus Multimedia Integration Utilities
  * 
  * Provides utility functions for component integration, error handling, and performance monitoring
@@ -6,7 +7,7 @@
  * @author Gil Klainert
  * @version 1.0.0
  * @license PROPRIETARY
- */
+  */
 
 import React from 'react';
 
@@ -150,7 +151,7 @@ class MultimediaErrorBoundary extends React.Component<MultimediaErrorBoundaryPro
 
 /**
  * Wraps a component with error boundary and performance tracking
- */
+  */
 export function withIntegrationWrapper<P extends Record<string, any>>(
   Component: React.ComponentType<P>,
   componentName: string,
@@ -209,7 +210,7 @@ export function withIntegrationWrapper<P extends Record<string, any>>(
 
 /**
  * Type-safe props validator
- */
+  */
 export function validateProps<T extends Record<string, any>>(
   props: T,
   schema: Record<keyof T, 'string' | 'number' | 'boolean' | 'object' | 'function' | 'required'>
@@ -244,7 +245,7 @@ export function validateProps<T extends Record<string, any>>(
 
 /**
  * Creates a lazy-loaded component with error handling
- */
+  */
 export function createLazyComponent<P extends Record<string, any>>(
   importFn: () => Promise<{ default: React.ComponentType<P> }>,
   componentName: string,

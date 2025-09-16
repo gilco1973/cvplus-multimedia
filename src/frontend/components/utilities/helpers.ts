@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Utility helper functions for multimedia components
- */
+  */
 
 export const formatFileSize = (bytes: number): string => {
   if (bytes === 0) return '0 Bytes';

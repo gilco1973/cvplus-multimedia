@@ -253,7 +253,7 @@ export const generateVideo = onRequest(
 
 /**
  * Get video limits based on subscription tier
- */
+  */
 function getVideoLimits(tier: string) {
   const limits = {
     free: {
@@ -291,7 +291,7 @@ function getVideoLimits(tier: string) {
 
 /**
  * Validate video features against subscription tier
- */
+  */
 function validateVideoFeatures(features: any, tier: string): { valid: boolean; message?: string } {
   const limits = getVideoLimits(tier);
 
@@ -322,7 +322,7 @@ function validateVideoFeatures(features: any, tier: string): { valid: boolean; m
 
 /**
  * Validate avatar ID against subscription tier
- */
+  */
 function isValidAvatarId(avatarId: string, tier: string): boolean {
   const limits = getVideoLimits(tier);
   return limits.availableAvatars.includes(avatarId);
@@ -330,7 +330,7 @@ function isValidAvatarId(avatarId: string, tier: string): boolean {
 
 /**
  * Calculate estimated video processing time based on features
- */
+  */
 function calculateVideoProcessingTime(features: any): number {
   let baseTime = 120; // 2 minutes base time
 
@@ -354,7 +354,7 @@ function calculateVideoProcessingTime(features: any): number {
 
 /**
  * Get available avatar options for subscription tier
- */
+  */
 export function getAvailableAvatars(tier: string): Array<{ id: string; name: string; preview: string }> {
   const avatarDatabase = {
     'amy-jcwCkr1grs': {
@@ -392,7 +392,7 @@ export function getAvailableAvatars(tier: string): Array<{ id: string; name: str
 
 /**
  * Get available video templates for subscription tier
- */
+  */
 export function getAvailableTemplates(tier: string): Array<{ id: string; name: string; description: string }> {
   const templateDatabase = {
     professional: {

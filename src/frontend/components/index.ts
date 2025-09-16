@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Frontend Components for CVPlus Multimedia Module
  * 
  * This module provides a comprehensive collection of multimedia components
@@ -7,7 +8,7 @@
  * @author Gil Klainert
  * @version 2.0.0 - Phase 1 Migration Architecture
  * @license PROPRIETARY
- */
+  */
 
 // ============================================================================
 // CORE MULTIMEDIA COMPONENTS (Basic functionality)

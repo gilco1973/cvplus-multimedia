@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Circuit Breaker Utility
  * 
  * Implements circuit breaker pattern for fault tolerance
  * and preventing cascade failures in multimedia processing.
- */
+  */
 
 import { CircuitBreakerConfig } from '../../types';
 
@@ -25,7 +26,7 @@ export interface CircuitBreakerStats {
 
 /**
  * Circuit breaker implementation for multimedia services
- */
+  */
 export class CircuitBreaker {
   private state: CircuitState = CircuitState.CLOSED;
   private failures: number = 0;
@@ -39,7 +40,7 @@ export class CircuitBreaker {
 
   /**
    * Check if operation can be executed
-   */
+    */
   public canExecute(): boolean {
     const now = Date.now();
 
@@ -64,7 +65,7 @@ export class CircuitBreaker {
 
   /**
    * Record successful operation
-   */
+    */
   public recordSuccess(): void {
     this.requests++;
     this.successes++;
@@ -78,7 +79,7 @@ export class CircuitBreaker {
 
   /**
    * Record failed operation
-   */
+    */
   public recordFailure(): void {
     this.requests++;
     this.failures++;
@@ -91,7 +92,7 @@ export class CircuitBreaker {
 
   /**
    * Reset circuit breaker to closed state
-   */
+    */
   public reset(): void {
     this.state = CircuitState.CLOSED;
     this.failures = 0;
@@ -100,7 +101,7 @@ export class CircuitBreaker {
 
   /**
    * Get current statistics
-   */
+    */
   public getStats(): CircuitBreakerStats {
     return {
       state: this.state,
@@ -115,7 +116,7 @@ export class CircuitBreaker {
 
   /**
    * Get failure rate (0-1)
-   */
+    */
   public getFailureRate(): number {
     if (this.requests === 0) return 0;
     return this.failures / this.requests;
@@ -123,28 +124,28 @@ export class CircuitBreaker {
 
   /**
    * Check if circuit is open
-   */
+    */
   public isOpen(): boolean {
     return this.state === CircuitState.OPEN;
   }
 
   /**
    * Check if circuit is closed
-   */
+    */
   public isClosed(): boolean {
     return this.state === CircuitState.CLOSED;
   }
 
   /**
    * Check if circuit is half-open
-   */
+    */
   public isHalfOpen(): boolean {
     return this.state === CircuitState.HALF_OPEN;
   }
 
   /**
    * Open the circuit
-   */
+    */
   private openCircuit(): void {
     this.state = CircuitState.OPEN;
     this.nextAttemptTime = Date.now() + this.config.resetTimeout;

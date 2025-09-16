@@ -1,13 +1,14 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * CV Feature Integration Types for Multimedia Module
  *
  * Types and interfaces for integrating multimedia features with CV processing.
- */
+  */
 
 /**
  * Parsed CV data structure from CV processing module
  * This is a subset of the full ParsedCV type from @cvplus/cv-processing
- */
+  */
 export interface CVData {
   personalInfo?: {
     name?: string;
@@ -61,7 +62,7 @@ export interface CVData {
 
 /**
  * CV feature generator interface for multimedia features
- */
+  */
 export interface CVFeature {
   generate(cv: CVData, jobId: string, options?: any): Promise<string>;
   getStyles(): string;
@@ -70,7 +71,7 @@ export interface CVFeature {
 
 /**
  * Feature generation options
- */
+  */
 export interface FeatureOptions {
   theme?: 'light' | 'dark' | 'auto';
   customStyles?: string;
@@ -80,7 +81,7 @@ export interface FeatureOptions {
 
 /**
  * Feature result with metadata
- */
+  */
 export interface FeatureResult {
   html: string;
   styles: string;

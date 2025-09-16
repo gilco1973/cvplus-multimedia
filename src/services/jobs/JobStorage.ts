@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Job Storage
  * 
  * Handles persistence and retrieval of job data and status
  * with support for different storage backends.
- */
+  */
 
 import { JobResult, JobStatus } from '../../types';
 import { Logger } from '../utils/Logger';
@@ -21,7 +22,7 @@ export class JobStorage {
 
   /**
    * Save job to storage
-   */
+    */
   public async saveJob(job: JobResult): Promise<void> {
     try {
       this.jobs.set(job.id, { ...job });
@@ -34,7 +35,7 @@ export class JobStorage {
 
   /**
    * Get job from storage
-   */
+    */
   public async getJob(jobId: string): Promise<JobResult | null> {
     try {
       const job = this.jobs.get(jobId);
@@ -47,7 +48,7 @@ export class JobStorage {
 
   /**
    * List jobs with filtering
-   */
+    */
   public async listJobs(filters: any = {}): Promise<JobResult[]> {
     try {
       let jobs = Array.from(this.jobs.values());
@@ -84,7 +85,7 @@ export class JobStorage {
 
   /**
    * Get job statistics
-   */
+    */
   public async getJobStats(): Promise<Record<string, any>> {
     try {
       const jobs = Array.from(this.jobs.values());
@@ -108,7 +109,7 @@ export class JobStorage {
 
   /**
    * Delete job from storage
-   */
+    */
   public async deleteJob(jobId: string): Promise<boolean> {
     try {
       const deleted = this.jobs.delete(jobId);
@@ -124,7 +125,7 @@ export class JobStorage {
 
   /**
    * Delete old jobs
-   */
+    */
   public async deleteOldJobs(olderThanMs: number): Promise<number> {
     try {
       const cutoffTime = new Date(Date.now() - olderThanMs);

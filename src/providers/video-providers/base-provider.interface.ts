@@ -1,7 +1,8 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Base Video Provider Interface
  * Defines common types and interfaces for video generation providers
- */
+  */
 
 export interface VideoGenerationOptions {
   duration?: 'short' | 'medium' | 'long';

@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * HeyGen Webhook Handler Function
  * 
  * Firebase Function to handle HeyGen webhook callbacks for real-time
@@ -6,7 +7,7 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 import { onRequest } from 'firebase-functions/v2/https';
 import { videoWebhookHandler } from '../services/video-providers/webhook-handler.service';
@@ -18,7 +19,7 @@ import { requestCorsOptions, corsMiddleware } from '../config/cors';
  * 
  * Receives webhook callbacks from HeyGen API when video generation
  * status changes (queued -> processing -> completed/failed)
- */
+  */
 export const heygenWebhook = onRequest(
   {
     timeoutSeconds: 60,
@@ -165,7 +166,7 @@ export const heygenWebhook = onRequest(
  * 
  * Generic webhook endpoint that can handle multiple providers
  * based on the provider parameter in the URL path
- */
+  */
 export const videoWebhook = onRequest(
   {
     timeoutSeconds: 60,
@@ -263,7 +264,7 @@ export const videoWebhook = onRequest(
  * Webhook Health Check Endpoint
  * 
  * Simple health check endpoint for monitoring webhook availability
- */
+  */
 export const webhookHealth = onRequest(
   {
     timeoutSeconds: 10,

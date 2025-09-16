@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Retry Manager Utility
  * 
  * Manages retry logic with exponential backoff, jitter,
  * and configurable retry policies for multimedia operations.
- */
+  */
 
 import { RetryConfig } from '../../types';
 
@@ -24,13 +25,13 @@ export interface RetryAttempt {
 
 /**
  * Retry manager with advanced retry strategies
- */
+  */
 export class RetryManager {
   constructor(private readonly config: RetryConfig) {}
 
   /**
    * Execute operation with retry logic
-   */
+    */
   public async executeWithRetry<T>(
     operation: () => Promise<T>,
     context?: string
@@ -87,7 +88,7 @@ export class RetryManager {
 
   /**
    * Execute with retry and progress callback
-   */
+    */
   public async executeWithRetryAndProgress<T>(
     operation: () => Promise<T>,
     onRetry?: (attempt: number, error: Error, delay: number) => void
@@ -135,7 +136,7 @@ export class RetryManager {
 
   /**
    * Calculate delay for retry attempt
-   */
+    */
   private calculateDelay(attempt: number): number {
     let delay: number;
 
@@ -176,7 +177,7 @@ export class RetryManager {
 
   /**
    * Check if error is retryable
-   */
+    */
   private isRetryableError(error: Error): boolean {
     const message = error.message.toLowerCase();
     const name = error.name.toLowerCase();
@@ -232,7 +233,7 @@ export class RetryManager {
 
   /**
    * Calculate fibonacci number for fibonacci retry strategy
-   */
+    */
   private fibonacci(n: number): number {
     if (n <= 1) return 1;
     if (n === 2) return 1;
@@ -251,14 +252,14 @@ export class RetryManager {
 
   /**
    * Delay execution for specified milliseconds
-   */
+    */
   private delay(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   /**
    * Create a retry-enabled version of an async function
-   */
+    */
   public createRetryableFunction<T extends any[], R>(
     fn: (...args: T) => Promise<R>,
     context?: string
@@ -270,14 +271,14 @@ export class RetryManager {
 
   /**
    * Get retry configuration
-   */
+    */
   public getConfig(): RetryConfig {
     return { ...this.config };
   }
 
   /**
    * Calculate total maximum retry time
-   */
+    */
   public calculateMaxRetryTime(): number {
     let totalTime = 0;
     

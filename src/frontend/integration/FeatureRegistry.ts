@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * CVPlus Multimedia Feature Registry
  * 
  * Manages feature flags and namespace-based component registration
@@ -6,7 +7,7 @@
  * @author Gil Klainert
  * @version 1.0.0
  * @license PROPRIETARY
- */
+  */
 
 // ============================================================================
 // TYPES & INTERFACES
@@ -42,7 +43,7 @@ export class FeatureRegistry {
 
   /**
    * Register a namespace with its features
-   */
+    */
   registerNamespace(config: NamespaceConfig): void {
     this.namespaces.set(config.namespace, config);
     
@@ -55,7 +56,7 @@ export class FeatureRegistry {
 
   /**
    * Check if a feature is enabled
-   */
+    */
   isFeatureEnabled(featureName: string): boolean {
     const [namespace, feature] = this.parseFeatureName(featureName);
     const namespaceConfig = this.namespaces.get(namespace);
@@ -82,7 +83,7 @@ export class FeatureRegistry {
 
   /**
    * Get feature configuration
-   */
+    */
   getFeatureConfig(featureName: string): FeatureConfig | null {
     const [namespace, feature] = this.parseFeatureName(featureName);
     const namespaceConfig = this.namespaces.get(namespace);
@@ -92,7 +93,7 @@ export class FeatureRegistry {
 
   /**
    * Update a feature configuration
-   */
+    */
   updateFeature(featureName: string, updates: Partial<FeatureConfig>): void {
     const [namespace, feature] = this.parseFeatureName(featureName);
     const namespaceConfig = this.namespaces.get(namespace);
@@ -117,14 +118,14 @@ export class FeatureRegistry {
 
   /**
    * Get fallback strategy for a namespace
-   */
+    */
   getFallbackStrategy(namespace: string): string {
     return this.namespaces.get(namespace)?.fallbackStrategy || 'hidden';
   }
 
   /**
    * Subscribe to feature changes
-   */
+    */
   subscribe(featureName: string, callback: (config: FeatureConfig) => void): () => void {
     if (!this.listeners.has(featureName)) {
       this.listeners.set(featureName, new Set());
@@ -140,14 +141,14 @@ export class FeatureRegistry {
 
   /**
    * Get all features in a namespace
-   */
+    */
   getNamespaceFeatures(namespace: string): Record<string, FeatureConfig> {
     return this.namespaces.get(namespace)?.features || {};
   }
 
   /**
    * Check if dependencies are satisfied
-   */
+    */
   checkDependencies(featureName: string): boolean {
     const config = this.getFeatureConfig(featureName);
     if (!config?.dependencies) return true;

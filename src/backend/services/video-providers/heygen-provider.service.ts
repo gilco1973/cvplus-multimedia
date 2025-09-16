@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * HeyGen Video Generation Provider
  * 
  * Primary video generation provider using HeyGen API v2 with webhook support,
@@ -6,7 +7,7 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 import axios, { AxiosInstance } from 'axios';
 import * as admin from 'firebase-admin';

@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Storage Module Index
  * 
  * Exports all storage adapters, managers, and utilities for the
@@ -6,7 +7,7 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0 - CVPlus Multimedia Module
- */
+  */
 
 // ============================================================================
 // STORAGE ADAPTERS
@@ -81,39 +82,39 @@ export const STORAGE_DEFAULTS = {
 
 /**
  * Storage factory for creating storage adapters
- */
+  */
 export class StorageFactory {
   /**
    * Create Firebase storage adapter
-   */
+    */
   static createFirebaseAdapter(config: any) {
     return new FirebaseStorageAdapter(config);
   }
   
   /**
    * Create S3 storage adapter
-   */
+    */
   static createS3Adapter(config: S3Config) {
     return new S3StorageAdapter(config);
   }
   
   /**
    * Create CDN manager
-   */
+    */
   static createCDNManager(config: any) {
     return new CDNManager(config);
   }
   
   /**
    * Create storage optimizer
-   */
+    */
   static createStorageOptimizer(config: OptimizationConfig) {
     return new StorageOptimizer(config);
   }
   
   /**
    * Create unified storage service
-   */
+    */
   static createStorageService(config: any) {
     return new StorageService(config);
   }

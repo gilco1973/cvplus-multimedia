@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Audio Processor
  * 
  * High-level audio processing orchestrator that manages
@@ -7,7 +8,7 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0 - CVPlus Multimedia Module
- */
+  */
 
 import { MediaProcessor } from './MediaProcessor';
 import { ProcessingStage } from './types';
@@ -16,7 +17,7 @@ export class AudioProcessor extends MediaProcessor {
   
   /**
    * Process a single audio processing stage
-   */
+    */
   protected async processStage(stage: ProcessingStage, input: any): Promise<any> {
     switch (stage.processor) {
       case 'transcode':
@@ -50,7 +51,7 @@ export class AudioProcessor extends MediaProcessor {
 
   /**
    * Validate audio input
-   */
+    */
   protected validateInput(input: any): boolean {
     if (!input) return false;
     
@@ -65,7 +66,7 @@ export class AudioProcessor extends MediaProcessor {
 
   /**
    * Get audio processor capabilities
-   */
+    */
   getCapabilities(): Record<string, any> {
     return {
       supportedFormats: ['mp3', 'aac', 'ogg', 'wav', 'flac', 'm4a', 'wma', 'opus'],

@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Type definitions for core multimedia components
- */
+  */
 
 export interface MediaProcessingProps {
   file: File;

@@ -1,10 +1,11 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * MultimediaService Initializer - Firebase Setup Utility
  * Provides easy initialization of MultimediaService with Firebase instances
  *
  * @author CVPlus Development Team
  * @version 1.0.0
- */
+  */
 
 import { Functions, connectFunctionsEmulator } from 'firebase/functions';
 import { FirebaseStorage, connectStorageEmulator } from 'firebase/storage';
@@ -41,7 +42,7 @@ export class MultimediaServiceInitializer {
 
   /**
    * Initialize MultimediaService with Firebase instances
-   */
+    */
   static initialize(options: MultimediaServiceInitOptions): MultimediaService {
     if (MultimediaServiceInitializer.initialized) {
       if (options.enableLogging) {
@@ -74,7 +75,7 @@ export class MultimediaServiceInitializer {
 
   /**
    * Setup Firebase emulators for development
-   */
+    */
   private static setupEmulators(
     functions: Functions,
     storage: FirebaseStorage,
@@ -104,21 +105,21 @@ export class MultimediaServiceInitializer {
 
   /**
    * Check if MultimediaService is initialized
-   */
+    */
   static isInitialized(): boolean {
     return MultimediaServiceInitializer.initialized;
   }
 
   /**
    * Reset initialization state (for testing)
-   */
+    */
   static reset(): void {
     MultimediaServiceInitializer.initialized = false;
   }
 
   /**
    * Create easy initialization function for different environments
-   */
+    */
   static createInitializer(baseConfig: Partial<MultimediaServiceInitOptions>) {
     return (functions: Functions, storage: FirebaseStorage, overrides?: Partial<MultimediaServiceInitOptions>) => {
       const config: MultimediaServiceInitOptions = {
@@ -134,7 +135,7 @@ export class MultimediaServiceInitializer {
 
   /**
    * Development environment initializer
-   */
+    */
   static forDevelopment(functions: Functions, storage: FirebaseStorage): MultimediaService {
     return MultimediaServiceInitializer.initialize({
       functions,
@@ -151,7 +152,7 @@ export class MultimediaServiceInitializer {
 
   /**
    * Production environment initializer
-   */
+    */
   static forProduction(functions: Functions, storage: FirebaseStorage): MultimediaService {
     return MultimediaServiceInitializer.initialize({
       functions,
@@ -163,7 +164,7 @@ export class MultimediaServiceInitializer {
 
   /**
    * Testing environment initializer
-   */
+    */
   static forTesting(functions: Functions, storage: FirebaseStorage): MultimediaService {
     // Reset state for clean testing
     MultimediaServiceInitializer.reset();

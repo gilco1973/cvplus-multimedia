@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Display player components
- */
+  */
 export { MultimediaPlayer, PlaylistManager, KeyboardShortcuts } from './players';
 export type { MultimediaPlayerProps, MediaTrack, PlayerControls } from './players';
 

@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * CVPlus Multimedia Module - Frontend Complete Export
  * 
  * This file provides complete frontend exports including upload components,
@@ -7,7 +8,7 @@
  * @author Gil Klainert
  * @version 2.1.0 (includes Phase 2D upload components)
  * @license PROPRIETARY
- */
+  */
 
 // ============================================================================
 // UPLOAD & FILE MANAGEMENT COMPONENTS (Phase 2D - NEW)
@@ -64,7 +65,7 @@ export {
  * @author Gil Klainert
  * @version 1.0.0
  * @license PROPRIETARY
- */
+  */
 
 // ============================================================================
 // FRONTEND INTEGRATION - STANDALONE VERSION (WORKING)

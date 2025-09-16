@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * CVPlus Multimedia Frontend - Simple Integration Export
  * 
  * Simplified integration layer for Phase 1.5 with minimal dependencies
@@ -6,7 +7,7 @@
  * @author Gil Klainert
  * @version 1.0.0
  * @license PROPRIETARY  
- */
+  */
 
 // ============================================================================
 // SIMPLE INTEGRATION LAYER
@@ -44,14 +45,14 @@ export interface SimpleIntegrationConfig {
 
 /**
  * Check if simple integration is available
- */
+  */
 export const isSimpleIntegrationAvailable = (): boolean => {
   return true; // Always available since it has minimal dependencies
 };
 
 /**
  * Initialize simple integration with configuration
- */
+  */
 export const initializeSimpleIntegration = (config: Partial<SimpleIntegrationConfig> = {}) => {
   const defaultConfig: SimpleIntegrationConfig = {
     enableErrorBoundaries: true,
@@ -73,7 +74,8 @@ export const SUPPORTED_REACT_VERSIONS = ['>=18.0.0'];
 // INTEGRATION GUIDE
 // ============================================================================
 
-/*
+/* 
+  */
 Usage in parent CVPlus project:
 
 1. Install the multimedia package:
@@ -107,4 +109,4 @@ Usage in parent CVPlus project:
      fallback={MyCustomFallbackComponent}
      {...props}
    />
-*/
+/*  */

@@ -1,11 +1,12 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Audio Transcoder Service
  * 
  * Placeholder implementation for audio transcoding operations.
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 import { AudioTranscodingOptions, ProcessingResult } from '../../types';
 

@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Storage and CDN type definitions for CVPlus multimedia module
- */
+  */
 
 import { MediaFile } from './media.types';
 // Removed core dependency for minimal build
@@ -27,93 +28,93 @@ export type AccessLevel = 'public' | 'private' | 'authenticated' | 'premium';
 // ============================================================================
 
 export interface StorageConfig {
-  /** Primary storage provider */
+  /** Primary storage provider  */
   provider: StorageProvider;
   
-  /** Storage configuration by provider */
+  /** Storage configuration by provider  */
   providers: Record<StorageProvider, ProviderConfig>;
   
-  /** Default storage class */
+  /** Default storage class  */
   defaultStorageClass: StorageClass;
   
-  /** Default access level */
+  /** Default access level  */
   defaultAccessLevel: AccessLevel;
   
-  /** Enable multi-provider backup */
+  /** Enable multi-provider backup  */
   enableBackup?: boolean;
   
-  /** Backup provider configuration */
+  /** Backup provider configuration  */
   backupProvider?: StorageProvider;
   
-  /** CDN configuration */
+  /** CDN configuration  */
   cdn?: CDNConfig;
   
-  /** Storage quotas and limits */
+  /** Storage quotas and limits  */
   limits: StorageLimits;
   
-  /** Retention policies */
+  /** Retention policies  */
   retention: RetentionPolicy;
 }
 
 export interface ProviderConfig {
-  /** Provider is enabled */
+  /** Provider is enabled  */
   enabled: boolean;
   
-  /** Provider-specific settings */
+  /** Provider-specific settings  */
   settings: Record<string, unknown>;
   
-  /** Authentication configuration */
+  /** Authentication configuration  */
   auth: AuthConfig;
   
-  /** Regional configuration */
+  /** Regional configuration  */
   regions?: string[];
   
-  /** Default bucket/container */
+  /** Default bucket/container  */
   defaultBucket: string;
   
-  /** Connection timeout */
+  /** Connection timeout  */
   timeout?: number;
   
-  /** Retry configuration */
+  /** Retry configuration  */
   retry?: RetryConfig;
 }
 
 export interface AuthConfig {
-  /** Authentication type */
+  /** Authentication type  */
   type: 'api-key' | 'service-account' | 'oauth' | 'iam';
   
-  /** Credentials */
+  /** Credentials  */
   credentials: Record<string, string>;
   
-  /** Token refresh configuration */
+  /** Token refresh configuration  */
   tokenRefresh?: TokenRefreshConfig;
 }
 
 export interface TokenRefreshConfig {
-  /** Auto refresh tokens */
+  /** Auto refresh tokens  */
   autoRefresh: boolean;
   
-  /** Refresh threshold (seconds before expiry) */
+  /** Refresh threshold (seconds before expiry)  */
   refreshThreshold: number;
   
-  /** Maximum refresh attempts */
+  /** Maximum refresh attempts  */
   maxAttempts: number;
 }
 
 export interface RetryConfig {
-  /** Maximum retry attempts */
+  /** Maximum retry attempts  */
   maxAttempts: number;
   
-  /** Initial delay (ms) */
+  /** Initial delay (ms)  */
   initialDelay: number;
   
-  /** Delay multiplier for exponential backoff */
+  /** Delay multiplier for exponential backoff  */
   backoffMultiplier: number;
   
-  /** Maximum delay (ms) */
+  /** Maximum delay (ms)  */
   maxDelay: number;
   
-  /** Jitter for retry timing */
+  /** Jitter for retry timing  */
   jitter: boolean;
 }
 
@@ -122,315 +123,315 @@ export interface RetryConfig {
 // ============================================================================
 
 export interface CDNConfig {
-  /** CDN provider */
+  /** CDN provider  */
   provider: CDNProvider;
   
-  /** CDN endpoint URL */
+  /** CDN endpoint URL  */
   endpoint: string;
   
-  /** Custom domains */
+  /** Custom domains  */
   customDomains?: string[];
   
-  /** Cache configuration */
+  /** Cache configuration  */
   cache: CDNCacheConfig;
   
-  /** Security settings */
+  /** Security settings  */
   security: CDNSecurityConfig;
   
-  /** Geographic distribution */
+  /** Geographic distribution  */
   geoDistribution?: GeoDistributionConfig;
   
-  /** Compression settings */
+  /** Compression settings  */
   compression: CompressionConfig;
   
-  /** Image optimization */
+  /** Image optimization  */
   imageOptimization?: ImageCDNConfig;
 }
 
 export type CDNProvider = 'cloudfront' | 'cloudflare' | 'fastly' | 'azure-cdn' | 'gcs-cdn';
 
 export interface CDNCacheConfig {
-  /** Default TTL (seconds) */
+  /** Default TTL (seconds)  */
   defaultTTL: number;
   
-  /** Cache rules by content type */
+  /** Cache rules by content type  */
   rules: CacheRule[];
   
-  /** Browser cache settings */
+  /** Browser cache settings  */
   browserCache: BrowserCacheConfig;
   
-  /** Cache invalidation settings */
+  /** Cache invalidation settings  */
   invalidation: InvalidationConfig;
 }
 
 export interface CacheRule {
-  /** Content pattern (glob or regex) */
+  /** Content pattern (glob or regex)  */
   pattern: string;
   
-  /** TTL for this rule */
+  /** TTL for this rule  */
   ttl: number;
   
-  /** Cache behavior */
+  /** Cache behavior  */
   behavior: CacheBehavior;
   
-  /** Headers to include in cache key */
+  /** Headers to include in cache key  */
   varyHeaders?: string[];
 }
 
 export type CacheBehavior = 'cache' | 'no-cache' | 'private' | 'public';
 
 export interface BrowserCacheConfig {
-  /** Enable browser caching */
+  /** Enable browser caching  */
   enabled: boolean;
   
-  /** Max age for browser cache */
+  /** Max age for browser cache  */
   maxAge: number;
   
-  /** Use immutable caching */
+  /** Use immutable caching  */
   immutable: boolean;
   
-  /** ETags enabled */
+  /** ETags enabled  */
   etags: boolean;
 }
 
 export interface InvalidationConfig {
-  /** Auto invalidation on update */
+  /** Auto invalidation on update  */
   autoInvalidate: boolean;
   
-  /** Batch invalidations */
+  /** Batch invalidations  */
   batchInvalidations: boolean;
   
-  /** Max invalidations per batch */
+  /** Max invalidations per batch  */
   maxBatchSize: number;
   
-  /** Invalidation delay (ms) */
+  /** Invalidation delay (ms)  */
   delay: number;
 }
 
 export interface CDNSecurityConfig {
-  /** HTTPS only */
+  /** HTTPS only  */
   httpsOnly: boolean;
   
-  /** HSTS settings */
+  /** HSTS settings  */
   hsts?: HSTSConfig;
   
-  /** Access control */
+  /** Access control  */
   accessControl: AccessControlConfig;
   
-  /** Rate limiting */
+  /** Rate limiting  */
   rateLimiting?: RateLimitingConfig;
   
-  /** WAF settings */
+  /** WAF settings  */
   waf?: WAFConfig;
 }
 
 export interface HSTSConfig {
-  /** HSTS enabled */
+  /** HSTS enabled  */
   enabled: boolean;
   
-  /** Max age (seconds) */
+  /** Max age (seconds)  */
   maxAge: number;
   
-  /** Include subdomains */
+  /** Include subdomains  */
   includeSubdomains: boolean;
   
-  /** Preload */
+  /** Preload  */
   preload: boolean;
 }
 
 export interface AccessControlConfig {
-  /** Allowed origins */
+  /** Allowed origins  */
   allowedOrigins: string[];
   
-  /** Referrer restrictions */
+  /** Referrer restrictions  */
   referrerRestrictions?: string[];
   
-  /** IP restrictions */
+  /** IP restrictions  */
   ipRestrictions?: IPRestriction[];
   
-  /** Geographic restrictions */
+  /** Geographic restrictions  */
   geoRestrictions?: GeoRestriction[];
 }
 
 export interface IPRestriction {
-  /** IP address or CIDR */
+  /** IP address or CIDR  */
   ip: string;
   
-  /** Allow or deny */
+  /** Allow or deny  */
   action: 'allow' | 'deny';
   
-  /** Description */
+  /** Description  */
   description?: string;
 }
 
 export interface GeoRestriction {
-  /** Country codes */
+  /** Country codes  */
   countries: string[];
   
-  /** Allow or deny */
+  /** Allow or deny  */
   action: 'allow' | 'deny';
   
-  /** Description */
+  /** Description  */
   description?: string;
 }
 
 export interface RateLimitingConfig {
-  /** Requests per second */
+  /** Requests per second  */
   requestsPerSecond: number;
   
-  /** Burst capacity */
+  /** Burst capacity  */
   burstCapacity: number;
   
-  /** Rate limiting by IP */
+  /** Rate limiting by IP  */
   byIP: boolean;
   
-  /** Rate limiting by user */
+  /** Rate limiting by user  */
   byUser?: boolean;
   
-  /** Rate limiting by API key */
+  /** Rate limiting by API key  */
   byApiKey?: boolean;
 }
 
 export interface WAFConfig {
-  /** WAF enabled */
+  /** WAF enabled  */
   enabled: boolean;
   
-  /** WAF rules */
+  /** WAF rules  */
   rules: WAFRule[];
   
-  /** Default action */
+  /** Default action  */
   defaultAction: 'allow' | 'deny';
 }
 
 export interface WAFRule {
-  /** Rule name */
+  /** Rule name  */
   name: string;
   
-  /** Rule condition */
+  /** Rule condition  */
   condition: string;
   
-  /** Action to take */
+  /** Action to take  */
   action: 'allow' | 'deny' | 'challenge';
   
-  /** Priority */
+  /** Priority  */
   priority: number;
 }
 
 export interface GeoDistributionConfig {
-  /** Edge locations */
+  /** Edge locations  */
   edgeLocations: EdgeLocation[];
   
-  /** Origin failover */
+  /** Origin failover  */
   originFailover?: OriginFailoverConfig;
   
-  /** Load balancing */
+  /** Load balancing  */
   loadBalancing?: LoadBalancingConfig;
 }
 
 export interface EdgeLocation {
-  /** Location identifier */
+  /** Location identifier  */
   id: string;
   
-  /** Region */
+  /** Region  */
   region: string;
   
-  /** Country */
+  /** Country  */
   country: string;
   
-  /** City */
+  /** City  */
   city?: string;
   
-  /** Enabled */
+  /** Enabled  */
   enabled: boolean;
   
-  /** Priority */
+  /** Priority  */
   priority?: number;
 }
 
 export interface OriginFailoverConfig {
-  /** Enable failover */
+  /** Enable failover  */
   enabled: boolean;
   
-  /** Primary origin */
+  /** Primary origin  */
   primaryOrigin: string;
   
-  /** Secondary origins */
+  /** Secondary origins  */
   secondaryOrigins: string[];
   
-  /** Health check settings */
+  /** Health check settings  */
   healthCheck: HealthCheckConfig;
 }
 
 export interface LoadBalancingConfig {
-  /** Load balancing method */
+  /** Load balancing method  */
   method: 'round-robin' | 'least-connections' | 'ip-hash' | 'geographic';
   
-  /** Health checks enabled */
+  /** Health checks enabled  */
   healthChecks: boolean;
   
-  /** Session persistence */
+  /** Session persistence  */
   sessionPersistence?: boolean;
 }
 
 export interface HealthCheckConfig {
-  /** Check interval (seconds) */
+  /** Check interval (seconds)  */
   interval: number;
   
-  /** Timeout (seconds) */
+  /** Timeout (seconds)  */
   timeout: number;
   
-  /** Healthy threshold */
+  /** Healthy threshold  */
   healthyThreshold: number;
   
-  /** Unhealthy threshold */
+  /** Unhealthy threshold  */
   unhealthyThreshold: number;
   
-  /** Check path */
+  /** Check path  */
   path: string;
   
-  /** Expected status codes */
+  /** Expected status codes  */
   expectedStatusCodes: number[];
 }
 
 export interface CompressionConfig {
-  /** Enable compression */
+  /** Enable compression  */
   enabled: boolean;
   
-  /** Compression types */
+  /** Compression types  */
   types: CompressionType[];
   
-  /** Minimum file size for compression */
+  /** Minimum file size for compression  */
   minSize: number;
   
-  /** Maximum file size for compression */
+  /** Maximum file size for compression  */
   maxSize: number;
   
-  /** Compression level */
+  /** Compression level  */
   level: number;
 }
 
 export type CompressionType = 'gzip' | 'brotli' | 'deflate';
 
 export interface ImageCDNConfig {
-  /** Enable image optimization */
+  /** Enable image optimization  */
   enabled: boolean;
   
-  /** Auto WebP conversion */
+  /** Auto WebP conversion  */
   autoWebP: boolean;
   
-  /** Auto AVIF conversion */
+  /** Auto AVIF conversion  */
   autoAVIF: boolean;
   
-  /** Resize on demand */
+  /** Resize on demand  */
   resizeOnDemand: boolean;
   
-  /** Quality optimization */
+  /** Quality optimization  */
   qualityOptimization: boolean;
   
-  /** Progressive JPEG */
+  /** Progressive JPEG  */
   progressiveJPEG: boolean;
   
-  /** Supported operations */
+  /** Supported operations  */
   supportedOperations: ImageOperation[];
 }
 
@@ -441,65 +442,65 @@ export type ImageOperation = 'resize' | 'crop' | 'rotate' | 'flip' | 'blur' | 's
 // ============================================================================
 
 export interface StorageLimits {
-  /** Maximum file size (bytes) */
+  /** Maximum file size (bytes)  */
   maxFileSize: number;
   
-  /** Maximum total storage (bytes) */
+  /** Maximum total storage (bytes)  */
   maxTotalStorage?: number;
   
-  /** Maximum files per user */
+  /** Maximum files per user  */
   maxFilesPerUser?: number;
   
-  /** Maximum upload rate (bytes/second) */
+  /** Maximum upload rate (bytes/second)  */
   maxUploadRate?: number;
   
-  /** Maximum concurrent uploads */
+  /** Maximum concurrent uploads  */
   maxConcurrentUploads: number;
   
-  /** Allowed file types */
+  /** Allowed file types  */
   allowedFileTypes: string[];
   
-  /** Blocked file types */
+  /** Blocked file types  */
   blockedFileTypes?: string[];
   
-  /** File name restrictions */
+  /** File name restrictions  */
   fileNameRestrictions?: FileNameRestrictions;
 }
 
 export interface FileNameRestrictions {
-  /** Maximum filename length */
+  /** Maximum filename length  */
   maxLength: number;
   
-  /** Allowed characters pattern */
+  /** Allowed characters pattern  */
   allowedPattern?: string;
   
-  /** Reserved names */
+  /** Reserved names  */
   reservedNames?: string[];
   
-  /** Case sensitive */
+  /** Case sensitive  */
   caseSensitive: boolean;
 }
 
 export interface RetentionPolicy {
-  /** Default retention period (days) */
+  /** Default retention period (days)  */
   defaultRetention: number;
   
-  /** Retention by access level */
+  /** Retention by access level  */
   retentionByAccess: Record<AccessLevel, number>;
   
-  /** Retention by file type */
+  /** Retention by file type  */
   retentionByType?: Record<string, number>;
   
-  /** Auto-cleanup enabled */
+  /** Auto-cleanup enabled  */
   autoCleanup: boolean;
   
-  /** Cleanup schedule */
+  /** Cleanup schedule  */
   cleanupSchedule?: string;
   
-  /** Notification before deletion */
+  /** Notification before deletion  */
   notifyBeforeDeletion: boolean;
   
-  /** Notification period (days) */
+  /** Notification period (days)  */
   notificationPeriod: number;
 }
 
@@ -508,57 +509,57 @@ export interface RetentionPolicy {
 // ============================================================================
 
 export interface UploadOptions {
-  /** Storage path */
+  /** Storage path  */
   path?: string;
   
-  /** Storage class */
+  /** Storage class  */
   storageClass?: StorageClass;
   
-  /** Access level */
+  /** Access level  */
   accessLevel?: AccessLevel;
   
-  /** Content type override */
+  /** Content type override  */
   contentType?: string;
   
-  /** Custom metadata */
+  /** Custom metadata  */
   metadata?: Record<string, string>;
   
-  /** Upload encryption */
+  /** Upload encryption  */
   encryption?: EncryptionOptions;
   
-  /** Progress callback */
+  /** Progress callback  */
   onProgress?: (progress: UploadProgress) => void;
   
-  /** Chunk size for multipart upload */
+  /** Chunk size for multipart upload  */
   chunkSize?: number;
   
-  /** Enable resumable upload */
+  /** Enable resumable upload  */
   resumable?: boolean;
   
-  /** Upload timeout (ms) */
+  /** Upload timeout (ms)  */
   timeout?: number;
   
-  /** Retry configuration */
+  /** Retry configuration  */
   retry?: RetryConfig;
   
-  /** Generate CDN URL */
+  /** Generate CDN URL  */
   generateCDNUrl?: boolean;
   
-  /** Cache settings */
+  /** Cache settings  */
   cache?: FileCacheSettings;
 }
 
 export interface EncryptionOptions {
-  /** Encryption enabled */
+  /** Encryption enabled  */
   enabled: boolean;
   
-  /** Encryption algorithm */
+  /** Encryption algorithm  */
   algorithm: EncryptionAlgorithm;
   
-  /** Encryption key management */
+  /** Encryption key management  */
   keyManagement: KeyManagement;
   
-  /** Custom encryption key */
+  /** Custom encryption key  */
   customKey?: string;
 }
 
@@ -566,58 +567,58 @@ export type EncryptionAlgorithm = 'AES-256-GCM' | 'AES-256-CBC' | 'ChaCha20-Poly
 export type KeyManagement = 'provider-managed' | 'customer-managed' | 'bring-your-own-key';
 
 export interface FileCacheSettings {
-  /** Cache TTL (seconds) */
+  /** Cache TTL (seconds)  */
   ttl?: number;
   
-  /** Browser cache max age */
+  /** Browser cache max age  */
   browserCacheMaxAge?: number;
   
-  /** Cache-Control header */
+  /** Cache-Control header  */
   cacheControl?: string;
   
-  /** ETag generation */
+  /** ETag generation  */
   generateETag?: boolean;
 }
 
 export interface DownloadOptions {
-  /** Include metadata */
+  /** Include metadata  */
   includeMetadata?: boolean;
   
-  /** Response type */
+  /** Response type  */
   responseType?: 'blob' | 'buffer' | 'stream' | 'json';
   
-  /** Range download */
+  /** Range download  */
   range?: DownloadRange;
   
-  /** Download timeout (ms) */
+  /** Download timeout (ms)  */
   timeout?: number;
   
-  /** Progress callback */
+  /** Progress callback  */
   onProgress?: (progress: DownloadProgress) => void;
 }
 
 export interface DownloadRange {
-  /** Start byte */
+  /** Start byte  */
   start: number;
   
-  /** End byte */
+  /** End byte  */
   end?: number;
 }
 
 export interface DownloadProgress {
-  /** Bytes downloaded */
+  /** Bytes downloaded  */
   bytesDownloaded: number;
   
-  /** Total bytes */
+  /** Total bytes  */
   totalBytes: number;
   
-  /** Download percentage */
+  /** Download percentage  */
   percentage: number;
   
-  /** Download speed (bytes/second) */
+  /** Download speed (bytes/second)  */
   downloadSpeed: number;
   
-  /** Estimated time remaining (ms) */
+  /** Estimated time remaining (ms)  */
   estimatedTimeRemaining: number;
 }
 
@@ -626,66 +627,66 @@ export interface DownloadProgress {
 // ============================================================================
 
 export interface FileInfo {
-  /** File path */
+  /** File path  */
   path: string;
   
-  /** File name */
+  /** File name  */
   name: string;
   
-  /** File size */
+  /** File size  */
   size: number;
   
-  /** Content type */
+  /** Content type  */
   contentType: string;
   
-  /** ETag */
+  /** ETag  */
   etag: string;
   
-  /** Last modified */
+  /** Last modified  */
   lastModified: Date;
   
-  /** Creation date */
+  /** Creation date  */
   createdAt: Date;
   
-  /** Storage class */
+  /** Storage class  */
   storageClass: StorageClass;
   
-  /** Access level */
+  /** Access level  */
   accessLevel: AccessLevel;
   
-  /** Custom metadata */
+  /** Custom metadata  */
   metadata: Record<string, string>;
   
-  /** Encryption information */
+  /** Encryption information  */
   encryption?: FileEncryptionInfo;
   
-  /** Storage provider */
+  /** Storage provider  */
   provider: StorageProvider;
   
-  /** Storage location/region */
+  /** Storage location/region  */
   location: string;
   
-  /** Public URL */
+  /** Public URL  */
   publicUrl?: string;
   
-  /** CDN URL */
+  /** CDN URL  */
   cdnUrl?: string;
   
-  /** Signed URL expiration */
+  /** Signed URL expiration  */
   signedUrlExpiration?: Date;
 }
 
 export interface FileEncryptionInfo {
-  /** Is encrypted */
+  /** Is encrypted  */
   encrypted: boolean;
   
-  /** Encryption algorithm */
+  /** Encryption algorithm  */
   algorithm: EncryptionAlgorithm;
   
-  /** Key management type */
+  /** Key management type  */
   keyManagement: KeyManagement;
   
-  /** Encryption key ID */
+  /** Encryption key ID  */
   keyId?: string;
 }
 
@@ -694,124 +695,124 @@ export interface FileEncryptionInfo {
 // ============================================================================
 
 export interface StorageService {
-  /** Upload file */
+  /** Upload file  */
   upload(file: MediaFile, options?: UploadOptions): Promise<UploadResult>;
   
-  /** Download file */
+  /** Download file  */
   download(path: string, options?: DownloadOptions): Promise<MediaFile>;
   
-  /** Get file information */
+  /** Get file information  */
   getFileInfo(path: string): Promise<FileInfo>;
   
-  /** Delete file */
+  /** Delete file  */
   delete(path: string): Promise<void>;
   
-  /** List files */
+  /** List files  */
   list(prefix?: string, options?: ListOptions): Promise<FileInfo[]>;
   
-  /** Copy file */
+  /** Copy file  */
   copy(sourcePath: string, destinationPath: string): Promise<void>;
   
-  /** Move file */
+  /** Move file  */
   move(sourcePath: string, destinationPath: string): Promise<void>;
   
-  /** Generate signed URL */
+  /** Generate signed URL  */
   generateSignedUrl(path: string, options?: SignedUrlOptions): Promise<string>;
   
-  /** Check if file exists */
+  /** Check if file exists  */
   exists(path: string): Promise<boolean>;
   
-  /** Get storage usage */
+  /** Get storage usage  */
   getUsage(): Promise<StorageUsage>;
 }
 
 export interface ListOptions {
-  /** Maximum results */
+  /** Maximum results  */
   maxResults?: number;
   
-  /** Pagination token */
+  /** Pagination token  */
   pageToken?: string;
   
-  /** Include metadata */
+  /** Include metadata  */
   includeMetadata?: boolean;
   
-  /** Filter by file type */
+  /** Filter by file type  */
   fileType?: string;
   
-  /** Filter by date range */
+  /** Filter by date range  */
   dateRange?: DateRange;
   
-  /** Sort options */
+  /** Sort options  */
   sort?: SortOptions;
 }
 
 export interface DateRange {
-  /** Start date */
+  /** Start date  */
   start: Date;
   
-  /** End date */
+  /** End date  */
   end: Date;
 }
 
 export interface SortOptions {
-  /** Sort field */
+  /** Sort field  */
   field: 'name' | 'size' | 'modified' | 'created';
   
-  /** Sort order */
+  /** Sort order  */
   order: 'asc' | 'desc';
 }
 
 export interface SignedUrlOptions {
-  /** URL expiration (seconds from now) */
+  /** URL expiration (seconds from now)  */
   expiresIn: number;
   
-  /** HTTP method allowed */
+  /** HTTP method allowed  */
   method?: 'GET' | 'PUT' | 'POST' | 'DELETE';
   
-  /** Content type restriction */
+  /** Content type restriction  */
   contentType?: string;
   
-  /** Additional query parameters */
+  /** Additional query parameters  */
   queryParameters?: Record<string, string>;
   
-  /** Response headers */
+  /** Response headers  */
   responseHeaders?: Record<string, string>;
 }
 
 export interface StorageUsage {
-  /** Total storage used (bytes) */
+  /** Total storage used (bytes)  */
   totalUsed: number;
   
-  /** Storage limit (bytes) */
+  /** Storage limit (bytes)  */
   totalLimit?: number;
   
-  /** Usage percentage */
+  /** Usage percentage  */
   usagePercentage: number;
   
-  /** File count */
+  /** File count  */
   fileCount: number;
   
-  /** Usage by file type */
+  /** Usage by file type  */
   usageByType: Record<string, number>;
   
-  /** Usage by access level */
+  /** Usage by access level  */
   usageByAccess: Record<AccessLevel, number>;
   
-  /** Monthly usage trend */
+  /** Monthly usage trend  */
   monthlyUsage?: MonthlyUsage[];
 }
 
 export interface MonthlyUsage {
-  /** Month */
+  /** Month  */
   month: string;
   
-  /** Storage used */
+  /** Storage used  */
   storageUsed: number;
   
-  /** Transfer used */
+  /** Transfer used  */
   transferUsed: number;
   
-  /** Number of requests */
+  /** Number of requests  */
   requests: number;
 }
 
@@ -820,134 +821,134 @@ export interface MonthlyUsage {
 // ============================================================================
 
 export interface BatchStorageOperation {
-  /** Operation type */
+  /** Operation type  */
   type: 'upload' | 'download' | 'delete' | 'copy' | 'move';
   
-  /** Operation parameters */
+  /** Operation parameters  */
   parameters: Record<string, unknown>;
   
-  /** Operation priority */
+  /** Operation priority  */
   priority?: number;
 }
 
 export interface BatchStorageResult {
-  /** Batch operation ID */
+  /** Batch operation ID  */
   batchId: string;
   
-  /** Total operations */
+  /** Total operations  */
   totalOperations: number;
   
-  /** Successful operations */
+  /** Successful operations  */
   successfulOperations: number;
   
-  /** Failed operations */
+  /** Failed operations  */
   failedOperations: number;
   
-  /** Operation results */
+  /** Operation results  */
   results: BatchOperationResult[];
   
-  /** Overall status */
+  /** Overall status  */
   status: 'completed' | 'partial' | 'failed';
   
-  /** Batch processing time */
+  /** Batch processing time  */
   processingTime: number;
 }
 
 export interface BatchOperationResult {
-  /** Operation index */
+  /** Operation index  */
   operationIndex: number;
   
-  /** Operation status */
+  /** Operation status  */
   status: 'success' | 'failed';
   
-  /** Operation result */
+  /** Operation result  */
   result?: unknown;
   
-  /** Error details (if failed) */
+  /** Error details (if failed)  */
   error?: ErrorDetails;
   
-  /** Operation processing time */
+  /** Operation processing time  */
   processingTime: number;
 }
 
 /**
  * Upload result interface
- */
+  */
 export interface UploadResult {
-  /** File URL */
+  /** File URL  */
   url: string;
   
-  /** File key/path */
+  /** File key/path  */
   key: string;
   
-  /** File size in bytes */
+  /** File size in bytes  */
   size: number;
   
-  /** Content type */
+  /** Content type  */
   contentType: string;
   
-  /** ETag */
+  /** ETag  */
   etag?: string;
   
-  /** Upload completion timestamp */
+  /** Upload completion timestamp  */
   completedAt: Date;
 }
 
 /**
  * Upload progress interface
- */
+  */
 export interface UploadProgress {
-  /** Session ID */
+  /** Session ID  */
   sessionId: string;
   
-  /** File being uploaded */
+  /** File being uploaded  */
   file: File;
   
-  /** Upload status */
+  /** Upload status  */
   status: 'pending' | 'uploading' | 'complete' | 'failed';
   
-  /** Bytes uploaded */
+  /** Bytes uploaded  */
   bytesUploaded: number;
   
-  /** Total bytes */
+  /** Total bytes  */
   totalBytes: number;
   
-  /** Progress percentage */
+  /** Progress percentage  */
   percentage: number;
   
-  /** Upload speed in bytes/sec */
+  /** Upload speed in bytes/sec  */
   uploadSpeed?: number;
   
-  /** Estimated time remaining in seconds */
+  /** Estimated time remaining in seconds  */
   estimatedTimeRemaining?: number;
 }
 
 /**
  * Media metadata interface
- */
+  */
 export interface MediaMetadata {
-  /** File name */
+  /** File name  */
   fileName: string;
   
-  /** File size */
+  /** File size  */
   size: number;
   
-  /** MIME type */
+  /** MIME type  */
   mimeType: string;
   
-  /** Upload timestamp */
+  /** Upload timestamp  */
   uploadedAt: Date;
   
-  /** Download timestamp */
+  /** Download timestamp  */
   downloadedAt?: Date;
   
-  /** File dimensions (for images/videos) */
+  /** File dimensions (for images/videos)  */
   width?: number;
   height?: number;
   
-  /** Duration (for audio/video) */
+  /** Duration (for audio/video)  */
   duration?: number;
   
-  /** Additional metadata */
+  /** Additional metadata  */
   [key: string]: unknown;
 }

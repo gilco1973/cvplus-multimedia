@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Audio processing type definitions for CVPlus multimedia module
- */
+  */
 
 import { 
   MediaFile, 
@@ -14,101 +15,101 @@ import {
 // ============================================================================
 
 export interface AudioProcessingOptions {
-  /** Target bitrate in bits per second */
+  /** Target bitrate in bits per second  */
   bitrate?: number;
   
-  /** Output format */
+  /** Output format  */
   format?: AudioFormat;
   
-  /** Sample rate in Hz */
+  /** Sample rate in Hz  */
   sampleRate?: number;
   
-  /** Number of audio channels */
+  /** Number of audio channels  */
   channels?: number;
   
-  /** Quality level */
+  /** Quality level  */
   quality?: QualityLevel;
   
-  /** Normalize audio volume */
+  /** Normalize audio volume  */
   normalize?: boolean;
   
-  /** Apply noise reduction */
+  /** Apply noise reduction  */
   noiseReduction?: boolean;
   
-  /** Audio enhancement options */
+  /** Audio enhancement options  */
   enhancement?: AudioEnhancementOptions;
   
-  /** Volume adjustment (0.0 to 2.0) */
+  /** Volume adjustment (0.0 to 2.0)  */
   volume?: number;
   
-  /** Fade in duration (seconds) */
+  /** Fade in duration (seconds)  */
   fadeIn?: number;
   
-  /** Fade out duration (seconds) */
+  /** Fade out duration (seconds)  */
   fadeOut?: number;
   
-  /** Trim start time (seconds) */
+  /** Trim start time (seconds)  */
   trimStart?: number;
   
-  /** Trim end time (seconds) */
+  /** Trim end time (seconds)  */
   trimEnd?: number;
   
-  /** Audio filters to apply */
+  /** Audio filters to apply  */
   filters?: AudioFilter[];
   
-  /** Compression settings */
+  /** Compression settings  */
   compression?: CompressionSettings;
   
-  /** Generate waveform visualization */
+  /** Generate waveform visualization  */
   generateWaveform?: boolean;
   
-  /** Waveform options */
+  /** Waveform options  */
   waveformOptions?: WaveformOptions;
 }
 
 export interface AudioEnhancementOptions {
-  /** Enable voice enhancement */
+  /** Enable voice enhancement  */
   voiceEnhancement?: boolean;
   
-  /** Enable music enhancement */
+  /** Enable music enhancement  */
   musicEnhancement?: boolean;
   
-  /** Bass boost level (0.0 to 1.0) */
+  /** Bass boost level (0.0 to 1.0)  */
   bassBoost?: number;
   
-  /** Treble enhancement level (0.0 to 1.0) */
+  /** Treble enhancement level (0.0 to 1.0)  */
   trebleEnhancement?: number;
   
-  /** Enable surround sound simulation */
+  /** Enable surround sound simulation  */
   surroundSound?: boolean;
   
-  /** Dynamic range compression */
+  /** Dynamic range compression  */
   dynamicRangeCompression?: boolean;
   
-  /** De-esser for voice content */
+  /** De-esser for voice content  */
   deEsser?: boolean;
   
-  /** Stereo width adjustment */
+  /** Stereo width adjustment  */
   stereoWidth?: number;
 }
 
 export interface CompressionSettings extends Record<string, unknown> {
-  /** Compression algorithm */
+  /** Compression algorithm  */
   algorithm?: CompressionAlgorithm;
   
-  /** Compression ratio */
+  /** Compression ratio  */
   ratio?: number;
   
-  /** Threshold level */
+  /** Threshold level  */
   threshold?: number;
   
-  /** Attack time (ms) */
+  /** Attack time (ms)  */
   attack?: number;
   
-  /** Release time (ms) */
+  /** Release time (ms)  */
   release?: number;
   
-  /** Make-up gain */
+  /** Make-up gain  */
   makeupGain?: number;
 }
 
@@ -119,16 +120,16 @@ export type CompressionAlgorithm = 'standard' | 'multiband' | 'adaptive' | 'tran
 // ============================================================================
 
 export interface AudioFilter {
-  /** Filter type */
+  /** Filter type  */
   type: AudioFilterType;
   
-  /** Filter parameters */
+  /** Filter parameters  */
   parameters: Record<string, unknown>;
   
-  /** Filter application order */
+  /** Filter application order  */
   order?: number;
   
-  /** Bypass filter */
+  /** Bypass filter  */
   bypass?: boolean;
 }
 
@@ -144,24 +145,24 @@ export type AudioFilterType =
 export interface EqualizerFilter extends AudioFilter {
   type: 'equalizer';
   parameters: {
-    /** Equalizer bands */
+    /** Equalizer bands  */
     bands: EqualizerBand[];
-    /** Pre-gain */
+    /** Pre-gain  */
     preGain?: number;
   };
 }
 
 export interface EqualizerBand {
-  /** Frequency in Hz */
+  /** Frequency in Hz  */
   frequency: number;
   
-  /** Gain in dB */
+  /** Gain in dB  */
   gain: number;
   
-  /** Q factor (bandwidth) */
+  /** Q factor (bandwidth)  */
   q?: number;
   
-  /** Filter type */
+  /** Filter type  */
   filterType?: 'peak' | 'shelf' | 'highpass' | 'lowpass';
 }
 
@@ -173,15 +174,15 @@ export interface CompressorFilter extends AudioFilter {
 export interface ReverbFilter extends AudioFilter {
   type: 'reverb';
   parameters: {
-    /** Reverb type */
+    /** Reverb type  */
     type: ReverbType;
-    /** Wet/dry mix (0.0 to 1.0) */
+    /** Wet/dry mix (0.0 to 1.0)  */
     mix: number;
-    /** Room size */
+    /** Room size  */
     roomSize?: number;
-    /** Decay time */
+    /** Decay time  */
     decayTime?: number;
-    /** Pre-delay */
+    /** Pre-delay  */
     preDelay?: number;
   };
 }
@@ -193,81 +194,81 @@ export type ReverbType = 'room' | 'hall' | 'chamber' | 'cathedral' | 'spring' | 
 // ============================================================================
 
 export interface WaveformOptions {
-  /** Waveform width in pixels */
+  /** Waveform width in pixels  */
   width: number;
   
-  /** Waveform height in pixels */
+  /** Waveform height in pixels  */
   height: number;
   
-  /** Waveform color */
+  /** Waveform color  */
   color: string;
   
-  /** Background color */
+  /** Background color  */
   backgroundColor?: string;
   
-  /** Progress color */
+  /** Progress color  */
   progressColor?: string;
   
-  /** Number of sample points */
+  /** Number of sample points  */
   samples?: number;
   
-  /** Waveform style */
+  /** Waveform style  */
   style?: WaveformStyle;
   
-  /** Show frequency spectrum */
+  /** Show frequency spectrum  */
   showSpectrum?: boolean;
   
-  /** Spectrum options */
+  /** Spectrum options  */
   spectrumOptions?: SpectrumOptions;
   
-  /** Generate animated waveform */
+  /** Generate animated waveform  */
   animated?: boolean;
   
-  /** Animation options */
+  /** Animation options  */
   animationOptions?: AnimationOptions;
 }
 
 export type WaveformStyle = 'bars' | 'line' | 'filled' | 'mirror' | 'circular';
 
 export interface SpectrumOptions {
-  /** FFT size */
+  /** FFT size  */
   fftSize: number;
   
-  /** Frequency range */
+  /** Frequency range  */
   frequencyRange: [number, number];
   
-  /** Color mapping */
+  /** Color mapping  */
   colorMap: ColorMapping;
   
-  /** Logarithmic scale */
+  /** Logarithmic scale  */
   logarithmic?: boolean;
 }
 
 export interface ColorMapping {
-  /** Low frequency color */
+  /** Low frequency color  */
   low: string;
   
-  /** Mid frequency color */
+  /** Mid frequency color  */
   mid: string;
   
-  /** High frequency color */
+  /** High frequency color  */
   high: string;
   
-  /** Gradient type */
+  /** Gradient type  */
   gradientType?: 'linear' | 'radial';
 }
 
 export interface AnimationOptions {
-  /** Animation duration */
+  /** Animation duration  */
   duration: number;
   
-  /** Frame rate */
+  /** Frame rate  */
   frameRate: number;
   
-  /** Animation type */
+  /** Animation type  */
   type: 'progress' | 'pulse' | 'bounce' | 'wave';
   
-  /** Loop animation */
+  /** Loop animation  */
   loop?: boolean;
 }
 
@@ -276,201 +277,201 @@ export interface AnimationOptions {
 // ============================================================================
 
 export interface AudioMetadata {
-  /** Duration in seconds */
+  /** Duration in seconds  */
   duration: number;
   
-  /** Sample rate */
+  /** Sample rate  */
   sampleRate: number;
   
-  /** Number of channels */
+  /** Number of channels  */
   channels: number;
   
-  /** Channel layout */
+  /** Channel layout  */
   channelLayout: string;
   
-  /** Bitrate */
+  /** Bitrate  */
   bitrate: number;
   
-  /** Bit depth */
+  /** Bit depth  */
   bitDepth: number;
   
-  /** Audio codec */
+  /** Audio codec  */
   codec: string;
   
-  /** Container format */
+  /** Container format  */
   container: string;
   
-  /** Music metadata */
+  /** Music metadata  */
   musicMetadata?: MusicMetadata;
   
-  /** Audio analysis */
+  /** Audio analysis  */
   analysis?: AudioAnalysis;
   
-  /** Peak levels */
+  /** Peak levels  */
   peakLevels?: ChannelPeak[];
   
-  /** RMS levels */
+  /** RMS levels  */
   rmsLevels?: ChannelRMS[];
   
-  /** Loudness information */
+  /** Loudness information  */
   loudness?: LoudnessInfo;
 }
 
 export interface MusicMetadata {
-  /** Track title */
+  /** Track title  */
   title?: string;
   
-  /** Artist name */
+  /** Artist name  */
   artist?: string;
   
-  /** Album name */
+  /** Album name  */
   album?: string;
   
-  /** Track number */
+  /** Track number  */
   trackNumber?: number;
   
-  /** Total tracks */
+  /** Total tracks  */
   totalTracks?: number;
   
-  /** Disc number */
+  /** Disc number  */
   discNumber?: number;
   
-  /** Release year */
+  /** Release year  */
   year?: number;
   
-  /** Genre */
+  /** Genre  */
   genre?: string;
   
-  /** Composer */
+  /** Composer  */
   composer?: string;
   
-  /** Album artist */
+  /** Album artist  */
   albumArtist?: string;
   
-  /** BPM (beats per minute) */
+  /** BPM (beats per minute)  */
   bpm?: number;
   
-  /** Musical key */
+  /** Musical key  */
   key?: string;
   
-  /** Mood */
+  /** Mood  */
   mood?: string;
   
-  /** Copyright */
+  /** Copyright  */
   copyright?: string;
   
-  /** Comment */
+  /** Comment  */
   comment?: string;
   
-  /** Album artwork */
+  /** Album artwork  */
   artwork?: MediaFile;
 }
 
 export interface AudioAnalysis {
-  /** Tempo (BPM) */
+  /** Tempo (BPM)  */
   tempo?: number;
   
-  /** Musical key */
+  /** Musical key  */
   key?: string;
   
-  /** Time signature */
+  /** Time signature  */
   timeSignature?: string;
   
-  /** Energy level (0-1) */
+  /** Energy level (0-1)  */
   energy: number;
   
-  /** Valence (mood) (0-1) */
+  /** Valence (mood) (0-1)  */
   valence: number;
   
-  /** Danceability (0-1) */
+  /** Danceability (0-1)  */
   danceability: number;
   
-  /** Acousticness (0-1) */
+  /** Acousticness (0-1)  */
   acousticness: number;
   
-  /** Instrumentalness (0-1) */
+  /** Instrumentalness (0-1)  */
   instrumentalness: number;
   
-  /** Speechiness (0-1) */
+  /** Speechiness (0-1)  */
   speechiness: number;
   
-  /** Liveness (0-1) */
+  /** Liveness (0-1)  */
   liveness: number;
   
-  /** Dominant frequencies */
+  /** Dominant frequencies  */
   dominantFrequencies: FrequencyPeak[];
   
-  /** Silence detection */
+  /** Silence detection  */
   silenceRanges: TimeRange[];
   
-  /** Speech detection */
+  /** Speech detection  */
   speechRanges: TimeRange[];
   
-  /** Music detection */
+  /** Music detection  */
   musicRanges: TimeRange[];
 }
 
 export interface FrequencyPeak {
-  /** Frequency in Hz */
+  /** Frequency in Hz  */
   frequency: number;
   
-  /** Amplitude */
+  /** Amplitude  */
   amplitude: number;
   
-  /** Q factor */
+  /** Q factor  */
   q: number;
 }
 
 export interface TimeRange {
-  /** Start time in seconds */
+  /** Start time in seconds  */
   start: number;
   
-  /** End time in seconds */
+  /** End time in seconds  */
   end: number;
   
-  /** Duration in seconds */
+  /** Duration in seconds  */
   duration: number;
   
-  /** Confidence level (0-1) */
+  /** Confidence level (0-1)  */
   confidence?: number;
 }
 
 export interface ChannelPeak {
-  /** Channel index */
+  /** Channel index  */
   channel: number;
   
-  /** Peak amplitude */
+  /** Peak amplitude  */
   peak: number;
   
-  /** Peak position in seconds */
+  /** Peak position in seconds  */
   position: number;
 }
 
 export interface ChannelRMS {
-  /** Channel index */
+  /** Channel index  */
   channel: number;
   
-  /** RMS level */
+  /** RMS level  */
   rms: number;
   
-  /** Average RMS over time */
+  /** Average RMS over time  */
   averageRms: number;
 }
 
 export interface LoudnessInfo {
-  /** Integrated loudness (LUFS) */
+  /** Integrated loudness (LUFS)  */
   integratedLoudness: number;
   
-  /** Loudness range (LU) */
+  /** Loudness range (LU)  */
   loudnessRange: number;
   
-  /** True peak (dBTP) */
+  /** True peak (dBTP)  */
   truePeak: number;
   
-  /** EBU R128 compliant */
+  /** EBU R128 compliant  */
   r128Compliant: boolean;
   
-  /** Suggested normalization gain */
+  /** Suggested normalization gain  */
   normalizationGain?: number;
 }
 
@@ -479,147 +480,147 @@ export interface LoudnessInfo {
 // ============================================================================
 
 export interface ProcessedAudio extends ProcessedMedia<AudioProcessingOptions> {
-  /** Audio-specific metadata */
+  /** Audio-specific metadata  */
   audioMetadata: AudioMetadata;
   
-  /** Generated waveform */
+  /** Generated waveform  */
   waveform?: WaveformResult;
   
-  /** Audio spectrum analysis */
+  /** Audio spectrum analysis  */
   spectrum?: SpectrumResult;
   
-  /** Audio quality assessment */
+  /** Audio quality assessment  */
   audioQuality: AudioQualityAssessment;
   
-  /** Processing statistics */
+  /** Processing statistics  */
   processingStats: AudioProcessingStats;
   
-  /** Alternative formats */
+  /** Alternative formats  */
   alternativeFormats?: ProcessedAudioFormat[];
 }
 
 export interface WaveformResult {
-  /** Waveform image file */
+  /** Waveform image file  */
   image: MediaFile;
   
-  /** Waveform data points */
+  /** Waveform data points  */
   data: WaveformDataPoint[];
   
-  /** SVG version */
+  /** SVG version  */
   svg?: string;
   
-  /** Interactive HTML */
+  /** Interactive HTML  */
   interactive?: string;
   
-  /** Animation frames (if animated) */
+  /** Animation frames (if animated)  */
   animationFrames?: MediaFile[];
 }
 
 export interface WaveformDataPoint {
-  /** Time position (seconds) */
+  /** Time position (seconds)  */
   time: number;
   
-  /** Amplitude value (-1.0 to 1.0) */
+  /** Amplitude value (-1.0 to 1.0)  */
   amplitude: number;
   
-  /** Frequency analysis */
+  /** Frequency analysis  */
   frequency?: number;
 }
 
 export interface SpectrumResult {
-  /** Spectrum image */
+  /** Spectrum image  */
   image: MediaFile;
   
-  /** Spectrum data */
+  /** Spectrum data  */
   data: SpectrumDataPoint[];
   
-  /** Peak frequencies */
+  /** Peak frequencies  */
   peaks: FrequencyPeak[];
   
-  /** Spectral centroid */
+  /** Spectral centroid  */
   spectralCentroid: number;
   
-  /** Spectral bandwidth */
+  /** Spectral bandwidth  */
   spectralBandwidth: number;
 }
 
 export interface SpectrumDataPoint {
-  /** Frequency in Hz */
+  /** Frequency in Hz  */
   frequency: number;
   
-  /** Magnitude */
+  /** Magnitude  */
   magnitude: number;
   
-  /** Phase */
+  /** Phase  */
   phase: number;
 }
 
 export interface AudioQualityAssessment {
-  /** Overall audio quality (0-100) */
+  /** Overall audio quality (0-100)  */
   overall: number;
   
-  /** Signal-to-noise ratio */
+  /** Signal-to-noise ratio  */
   signalToNoise: number;
   
-  /** Dynamic range */
+  /** Dynamic range  */
   dynamicRange: number;
   
-  /** Frequency response score */
+  /** Frequency response score  */
   frequencyResponse: number;
   
-  /** Harmonic distortion level */
+  /** Harmonic distortion level  */
   harmonicDistortion: number;
   
-  /** Stereo imaging quality */
+  /** Stereo imaging quality  */
   stereoImaging?: number;
   
-  /** Compression quality */
+  /** Compression quality  */
   compressionQuality: number;
   
-  /** Perceived quality score */
+  /** Perceived quality score  */
   perceivedQuality: number;
 }
 
 export interface AudioProcessingStats {
-  /** Samples processed per second */
+  /** Samples processed per second  */
   processingSps: number;
   
-  /** Peak memory usage */
+  /** Peak memory usage  */
   peakMemoryUsage: number;
   
-  /** CPU usage percentage */
+  /** CPU usage percentage  */
   cpuUsage: number;
   
-  /** Processing efficiency */
+  /** Processing efficiency  */
   efficiency: number;
   
-  /** Clipping events */
+  /** Clipping events  */
   clippingEvents: number;
   
-  /** Silence removed (seconds) */
+  /** Silence removed (seconds)  */
   silenceRemoved?: number;
 }
 
 export interface ProcessedAudioFormat {
-  /** Audio format */
+  /** Audio format  */
   format: AudioFormat;
   
-  /** Processed file */
+  /** Processed file  */
   file: MediaFile;
   
-  /** File URL */
+  /** File URL  */
   url: string;
   
-  /** Format-specific metadata */
+  /** Format-specific metadata  */
   metadata: AudioMetadata;
   
-  /** Quality score for this format */
+  /** Quality score for this format  */
   qualityScore: number;
   
-  /** Compression ratio */
+  /** Compression ratio  */
   compressionRatio: number;
   
-  /** Compatibility score */
+  /** Compatibility score  */
   compatibilityScore: number;
 }
 
@@ -628,248 +629,248 @@ export interface ProcessedAudioFormat {
 // ============================================================================
 
 export interface PodcastProcessingOptions extends AudioProcessingOptions {
-  /** Enable voice enhancement */
+  /** Enable voice enhancement  */
   voiceEnhancement: boolean;
   
-  /** Remove background noise */
+  /** Remove background noise  */
   backgroundNoiseRemoval: boolean;
   
-  /** Normalize speech levels */
+  /** Normalize speech levels  */
   speechNormalization: boolean;
   
-  /** Generate chapters */
+  /** Generate chapters  */
   generateChapters?: boolean;
   
-  /** Chapter detection options */
+  /** Chapter detection options  */
   chapterDetection?: ChapterDetectionOptions;
   
-  /** Generate transcript */
+  /** Generate transcript  */
   generateTranscript?: boolean;
   
-  /** Transcript options */
+  /** Transcript options  */
   transcriptOptions?: TranscriptOptions;
   
-  /** Audio branding */
+  /** Audio branding  */
   branding?: AudioBrandingOptions;
 }
 
 export interface ChapterDetectionOptions {
-  /** Minimum chapter length (seconds) */
+  /** Minimum chapter length (seconds)  */
   minChapterLength: number;
   
-  /** Silence threshold for chapter breaks */
+  /** Silence threshold for chapter breaks  */
   silenceThreshold: number;
   
-  /** Volume change threshold */
+  /** Volume change threshold  */
   volumeChangeThreshold: number;
   
-  /** Speaker change detection */
+  /** Speaker change detection  */
   speakerChangeDetection?: boolean;
 }
 
 export interface TranscriptOptions {
-  /** Language for transcription */
+  /** Language for transcription  */
   language: string;
   
-  /** Include timestamps */
+  /** Include timestamps  */
   includeTimestamps: boolean;
   
-  /** Include speaker identification */
+  /** Include speaker identification  */
   speakerIdentification?: boolean;
   
-  /** Confidence threshold */
+  /** Confidence threshold  */
   confidenceThreshold?: number;
   
-  /** Output format */
+  /** Output format  */
   outputFormat: 'text' | 'srt' | 'vtt' | 'json';
 }
 
 export interface AudioBrandingOptions {
-  /** Intro audio file */
+  /** Intro audio file  */
   intro?: MediaFile;
   
-  /** Outro audio file */
+  /** Outro audio file  */
   outro?: MediaFile;
   
-  /** Background music */
+  /** Background music  */
   backgroundMusic?: MediaFile;
   
-  /** Background music volume */
+  /** Background music volume  */
   backgroundMusicVolume?: number;
   
-  /** Jingles or sound effects */
+  /** Jingles or sound effects  */
   soundEffects?: SoundEffect[];
 }
 
 export interface SoundEffect {
-  /** Sound effect file */
+  /** Sound effect file  */
   file: MediaFile;
   
-  /** Insertion time (seconds) */
+  /** Insertion time (seconds)  */
   time: number;
   
-  /** Volume level */
+  /** Volume level  */
   volume: number;
   
-  /** Fade in/out duration */
+  /** Fade in/out duration  */
   fade?: number;
 }
 
 export interface PodcastResult extends ProcessedAudio {
-  /** Generated chapters */
+  /** Generated chapters  */
   chapters?: AudioChapter[];
   
-  /** Generated transcript */
+  /** Generated transcript  */
   transcript?: TranscriptResult;
   
-  /** Speaker segments */
+  /** Speaker segments  */
   speakerSegments?: SpeakerSegment[];
   
-  /** Content analysis */
+  /** Content analysis  */
   contentAnalysis: ContentAnalysis;
 }
 
 export interface AudioChapter {
-  /** Chapter title */
+  /** Chapter title  */
   title: string;
   
-  /** Start time (seconds) */
+  /** Start time (seconds)  */
   startTime: number;
   
-  /** End time (seconds) */
+  /** End time (seconds)  */
   endTime: number;
   
-  /** Chapter description */
+  /** Chapter description  */
   description?: string;
   
-  /** Chapter artwork */
+  /** Chapter artwork  */
   artwork?: MediaFile;
 }
 
 export interface TranscriptResult {
-  /** Full transcript text */
+  /** Full transcript text  */
   text: string;
   
-  /** Formatted transcript file */
+  /** Formatted transcript file  */
   file: MediaFile;
   
-  /** Transcript segments */
+  /** Transcript segments  */
   segments: TranscriptSegment[];
   
-  /** Overall confidence */
+  /** Overall confidence  */
   confidence: number;
   
-  /** Language detected */
+  /** Language detected  */
   language: string;
 }
 
 export interface TranscriptSegment {
-  /** Segment text */
+  /** Segment text  */
   text: string;
   
-  /** Start time (seconds) */
+  /** Start time (seconds)  */
   startTime: number;
   
-  /** End time (seconds) */
+  /** End time (seconds)  */
   endTime: number;
   
-  /** Confidence score */
+  /** Confidence score  */
   confidence: number;
   
-  /** Speaker ID (if identified) */
+  /** Speaker ID (if identified)  */
   speakerId?: string;
   
-  /** Word-level breakdown */
+  /** Word-level breakdown  */
   words?: TranscriptWord[];
 }
 
 export interface TranscriptWord {
-  /** Word text */
+  /** Word text  */
   word: string;
   
-  /** Start time (seconds) */
+  /** Start time (seconds)  */
   startTime: number;
   
-  /** End time (seconds) */
+  /** End time (seconds)  */
   endTime: number;
   
-  /** Confidence score */
+  /** Confidence score  */
   confidence: number;
 }
 
 export interface SpeakerSegment {
-  /** Speaker ID */
+  /** Speaker ID  */
   speakerId: string;
   
-  /** Speaker name (if known) */
+  /** Speaker name (if known)  */
   speakerName?: string;
   
-  /** Segment start time */
+  /** Segment start time  */
   startTime: number;
   
-  /** Segment end time */
+  /** Segment end time  */
   endTime: number;
   
-  /** Speaking duration */
+  /** Speaking duration  */
   duration: number;
   
-  /** Voice characteristics */
+  /** Voice characteristics  */
   voiceCharacteristics?: VoiceCharacteristics;
 }
 
 export interface VoiceCharacteristics {
-  /** Fundamental frequency (pitch) */
+  /** Fundamental frequency (pitch)  */
   f0: number;
   
-  /** Speaking rate (words per minute) */
+  /** Speaking rate (words per minute)  */
   speakingRate: number;
   
-  /** Voice energy */
+  /** Voice energy  */
   energy: number;
   
-  /** Gender classification */
+  /** Gender classification  */
   gender?: 'male' | 'female' | 'unknown';
   
-  /** Age estimation */
+  /** Age estimation  */
   ageEstimate?: number;
   
-  /** Accent/dialect */
+  /** Accent/dialect  */
   accent?: string;
 }
 
 export interface ContentAnalysis {
-  /** Content type */
+  /** Content type  */
   contentType: 'speech' | 'music' | 'mixed' | 'noise';
   
-  /** Speech-to-music ratio */
+  /** Speech-to-music ratio  */
   speechMusicRatio: number;
   
-  /** Content mood */
+  /** Content mood  */
   mood: 'positive' | 'negative' | 'neutral';
   
-  /** Emotional intensity (0-1) */
+  /** Emotional intensity (0-1)  */
   emotionalIntensity: number;
   
-  /** Engagement score (0-1) */
+  /** Engagement score (0-1)  */
   engagementScore: number;
   
-  /** Content tags */
+  /** Content tags  */
   tags: string[];
   
-  /** Topic detection */
+  /** Topic detection  */
   topics?: ContentTopic[];
 }
 
 export interface ContentTopic {
-  /** Topic name */
+  /** Topic name  */
   topic: string;
   
-  /** Confidence score */
+  /** Confidence score  */
   confidence: number;
   
-  /** Time ranges where topic appears */
+  /** Time ranges where topic appears  */
   timeRanges: TimeRange[];
   
-  /** Keywords related to topic */
+  /** Keywords related to topic  */
   keywords: string[];
 }

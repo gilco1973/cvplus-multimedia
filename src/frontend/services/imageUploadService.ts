@@ -1,7 +1,8 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Image Upload Service
  * Handles image uploads, validation, processing, and Firebase Storage integration
- */
+  */
 
 import { getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject } from 'firebase/storage';
 import { initializeApp, getApps } from 'firebase/app';
@@ -59,7 +60,7 @@ export class ImageUploadService {
 
   /**
    * Validates an image file
-   */
+    */
   static validateImageFile(file: File): ValidationResult {
     const warnings: string[] = [];
 
@@ -98,21 +99,21 @@ export class ImageUploadService {
 
   /**
    * Creates a preview URL for an image file
-   */
+    */
   static createPreviewUrl(file: File): string {
     return URL.createObjectURL(file);
   }
 
   /**
    * Revokes a preview URL to free memory
-   */
+    */
   static revokePreviewUrl(url: string): void {
     URL.revokeObjectURL(url);
   }
 
   /**
    * Uploads a profile picture to Firebase Storage
-   */
+    */
   static async uploadProfilePicture(
     file: File,
     userId: string,
@@ -192,7 +193,7 @@ export class ImageUploadService {
 
   /**
    * Uploads a general media file
-   */
+    */
   static async uploadMediaFile(
     file: File,
     userId: string,
@@ -274,7 +275,7 @@ export class ImageUploadService {
 
   /**
    * Deletes a file from Firebase Storage
-   */
+    */
   static async deleteFile(filePath: string): Promise<boolean> {
     try {
       const storage = getStorage();
@@ -289,7 +290,7 @@ export class ImageUploadService {
 
   /**
    * Compresses an image before upload (client-side)
-   */
+    */
   static async compressImage(file: File, maxWidth: number = 1920, quality: number = 0.8): Promise<File> {
     return new Promise((resolve, reject) => {
       const canvas = document.createElement('canvas');

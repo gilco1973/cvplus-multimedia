@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Podcast Generation Service
  * 
  * Service for testing podcast generation functionality and API availability.
@@ -6,7 +7,7 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 export class PodcastGenerationService {
   private elevenLabsApiKey: string | undefined;
@@ -19,14 +20,14 @@ export class PodcastGenerationService {
 
   /**
    * Check if podcast generation service is available
-   */
+    */
   isAvailable(): boolean {
     return !!(this.elevenLabsApiKey && this.openaiApiKey);
   }
 
   /**
    * Test podcast generation functionality
-   */
+    */
   async testPodcastGeneration(): Promise<{
     success: boolean;
     responseTime?: number;
@@ -68,7 +69,7 @@ export class PodcastGenerationService {
 
   /**
    * Get service status information
-   */
+    */
   getServiceStatus(): {
     name: string;
     available: boolean;
@@ -90,7 +91,7 @@ export class PodcastGenerationService {
 
   /**
    * Get available voices for testing
-   */
+    */
   getAvailableVoices(): Array<{
     id: string;
     name: string;

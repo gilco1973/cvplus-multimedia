@@ -1,15 +1,16 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Multimedia Configuration Manager
  * 
  * Centralized configuration management for all multimedia services
  * with environment-specific settings and validation.
- */
+  */
 
 import { ServiceConfig, MultimediaEnvironment } from '../types';
 
 /**
  * Default configuration values for different environments
- */
+  */
 const DEFAULT_CONFIGS: Record<MultimediaEnvironment, Partial<ServiceConfig>> = {
   development: {
     version: '1.0.0',
@@ -178,7 +179,7 @@ const DEFAULT_CONFIGS: Record<MultimediaEnvironment, Partial<ServiceConfig>> = {
 
 /**
  * Multimedia configuration manager
- */
+  */
 export class MultimediaConfig {
   private static instance: MultimediaConfig;
   private config: ServiceConfig;
@@ -191,7 +192,7 @@ export class MultimediaConfig {
 
   /**
    * Get singleton instance
-   */
+    */
   public static getInstance(): MultimediaConfig {
     if (!MultimediaConfig.instance) {
       MultimediaConfig.instance = new MultimediaConfig();
@@ -201,14 +202,14 @@ export class MultimediaConfig {
 
   /**
    * Get configuration for service
-   */
+    */
   public getConfig(): ServiceConfig {
     return { ...this.config };
   }
 
   /**
    * Get configuration for specific service
-   */
+    */
   public getServiceConfig(serviceType: string): Partial<ServiceConfig> {
     const baseConfig = this.getConfig();
     
@@ -225,7 +226,7 @@ export class MultimediaConfig {
 
   /**
    * Update configuration
-   */
+    */
   public updateConfig(updates: Partial<ServiceConfig>): void {
     this.config = {
       ...this.config,
@@ -235,42 +236,42 @@ export class MultimediaConfig {
 
   /**
    * Get current environment
-   */
+    */
   public getEnvironment(): MultimediaEnvironment {
     return this.environment;
   }
 
   /**
    * Check if feature is enabled
-   */
+    */
   public isFeatureEnabled(feature: string): boolean {
     return this.config.features?.[feature] === true;
   }
 
   /**
    * Get storage configuration
-   */
+    */
   public getStorageConfig() {
     return this.config.storage;
   }
 
   /**
    * Get security configuration
-   */
+    */
   public getSecurityConfig() {
     return this.config.security;
   }
 
   /**
    * Get job configuration
-   */
+    */
   public getJobConfig() {
     return this.config.jobs;
   }
 
   /**
    * Validate configuration
-   */
+    */
   public validateConfig(): { valid: boolean; errors: string[] } {
     const errors: string[] = [];
 
@@ -315,7 +316,7 @@ export class MultimediaConfig {
 
   /**
    * Export configuration for debugging
-   */
+    */
   public exportConfig(): string {
     return JSON.stringify({
       environment: this.environment,
@@ -326,7 +327,7 @@ export class MultimediaConfig {
 
   /**
    * Detect current environment
-   */
+    */
   private detectEnvironment(): MultimediaEnvironment {
     const nodeEnv = process.env.NODE_ENV?.toLowerCase();
     const cvplusEnv = process.env.CVPLUS_ENV?.toLowerCase();
@@ -351,7 +352,7 @@ export class MultimediaConfig {
 
   /**
    * Load configuration based on environment
-   */
+    */
   private loadConfiguration(): ServiceConfig {
     const baseConfig = DEFAULT_CONFIGS[this.environment];
     
@@ -366,7 +367,7 @@ export class MultimediaConfig {
 
   /**
    * Load configuration from environment variables
-   */
+    */
   private loadEnvironmentConfig(): Partial<ServiceConfig> {
     const envConfig: Partial<ServiceConfig> = {};
 
@@ -406,7 +407,7 @@ export class MultimediaConfig {
 
   /**
    * Sanitize configuration for safe export (remove sensitive data)
-   */
+    */
   private sanitizeConfigForExport(config: ServiceConfig): any {
     const sanitized = JSON.parse(JSON.stringify(config));
 

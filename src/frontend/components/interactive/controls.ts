@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Interactive control components
- */
+  */
 
 export const InteractiveControls = () => {
   return null; // To be implemented in Phase 2C

@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * RunwayML Status Check Function
  * 
  * Firebase Function to manually check RunwayML video generation status
@@ -6,7 +7,7 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 import { onRequest } from 'firebase-functions/v2/https';
 import { onTaskDispatched } from 'firebase-functions/v2/tasks';
@@ -24,7 +25,7 @@ const corsOptions = {
  * 
  * HTTP endpoint to manually check status of a RunwayML video generation job
  * Useful for debugging and manual status updates
- */
+  */
 export const runwaymlStatusCheck = onRequest(
   {
     timeoutSeconds: 30,
@@ -148,7 +149,7 @@ export const runwaymlStatusCheck = onRequest(
  * 
  * Check status for multiple RunwayML jobs in a single request
  * Useful for monitoring dashboard and bulk status updates
- */
+  */
 export const runwaymlBatchStatusCheck = onRequest(
   {
     timeoutSeconds: 60,
@@ -270,7 +271,7 @@ export const runwaymlBatchStatusCheck = onRequest(
  * 
  * Cloud Task handler for automated status polling of RunwayML jobs
  * This provides backup polling in case the internal polling manager fails
- */
+  */
 export const runwaymlPollingTask = onTaskDispatched(
   {
     retryConfig: {
@@ -361,7 +362,7 @@ export const runwaymlPollingTask = onTaskDispatched(
  * 
  * Cloud Task handler for cleaning up old RunwayML job records
  * Runs periodically to remove completed jobs older than specified retention period
- */
+  */
 export const runwaymlCleanupTask = onTaskDispatched(
   {
     retryConfig: {

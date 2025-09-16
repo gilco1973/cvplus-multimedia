@@ -1,7 +1,8 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Processing Components Index
  * Export all video processing components
- */
+  */
 
 export { VideoIntroduction } from './VideoIntroduction';
 export { VideoPlayer } from './VideoPlayer';

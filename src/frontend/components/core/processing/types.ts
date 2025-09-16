@@ -1,7 +1,8 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Processing Component Types
  * Types for video processing components
- */
+  */
 
 import { CVFeatureProps } from '../../display/galleries/types';
 

@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Error handling types for CVPlus multimedia module
- */
+  */
 
 // Removed core dependency for minimal build
 
@@ -16,34 +17,34 @@ interface ErrorDetails {
 // ============================================================================
 
 export interface MultimediaError extends ErrorDetails {
-  /** Error category */
+  /** Error category  */
   category: MultimediaErrorCategory;
   
-  /** Error severity level */
+  /** Error severity level  */
   severity: ErrorSeverity;
   
-  /** Error context */
+  /** Error context  */
   context: ErrorContext;
   
-  /** Recovery suggestions */
+  /** Recovery suggestions  */
   recoverySuggestions: RecoverySuggestion[];
   
-  /** Technical details */
+  /** Technical details  */
   technicalDetails: TechnicalErrorDetails;
   
-  /** User-friendly message */
+  /** User-friendly message  */
   userMessage: string;
   
-  /** Is error recoverable */
+  /** Is error recoverable  */
   recoverable: boolean;
   
-  /** Retry configuration */
+  /** Retry configuration  */
   retryConfig?: ErrorRetryConfig;
   
-  /** Related errors */
+  /** Related errors  */
   relatedErrors?: MultimediaError[];
   
-  /** Error metrics */
+  /** Error metrics  */
   metrics?: ErrorMetrics;
 }
 
@@ -66,304 +67,304 @@ export type MultimediaErrorCategory =
 export type ErrorSeverity = 'low' | 'medium' | 'high' | 'critical';
 
 export interface ErrorContext extends Record<string, unknown> {
-  /** Operation being performed */
+  /** Operation being performed  */
   operation: string;
   
-  /** File information */
+  /** File information  */
   file?: FileErrorContext;
   
-  /** Processing stage */
+  /** Processing stage  */
   processingStage?: string;
   
-  /** User context */
+  /** User context  */
   user?: UserErrorContext;
   
-  /** Request context */
+  /** Request context  */
   request?: RequestErrorContext;
   
-  /** System context */
+  /** System context  */
   system?: SystemErrorContext;
   
-  /** Session context */
+  /** Session context  */
   session?: SessionErrorContext;
   
-  /** Environment context */
+  /** Environment context  */
   environment?: EnvironmentContext;
 }
 
 export interface FileErrorContext {
-  /** File name */
+  /** File name  */
   fileName: string;
   
-  /** File size */
+  /** File size  */
   fileSize: number;
   
-  /** File type */
+  /** File type  */
   fileType: string;
   
-  /** File format */
+  /** File format  */
   format: string;
   
-  /** File path */
+  /** File path  */
   path?: string;
   
-  /** File metadata */
+  /** File metadata  */
   metadata?: Record<string, unknown>;
   
-  /** Processing options */
+  /** Processing options  */
   processingOptions?: Record<string, unknown>;
 }
 
 export interface UserErrorContext {
-  /** User ID */
+  /** User ID  */
   userId: string;
   
-  /** User plan */
+  /** User plan  */
   userPlan: string;
   
-  /** User quotas */
+  /** User quotas  */
   quotas?: QuotaErrorContext;
   
-  /** User preferences */
+  /** User preferences  */
   preferences?: Record<string, unknown>;
   
-  /** User session info */
+  /** User session info  */
   sessionInfo?: Record<string, unknown>;
 }
 
 export interface QuotaErrorContext {
-  /** Current usage */
+  /** Current usage  */
   currentUsage: number;
   
-  /** Quota limit */
+  /** Quota limit  */
   quotaLimit: number;
   
-  /** Quota type */
+  /** Quota type  */
   quotaType: string;
   
-  /** Reset time */
+  /** Reset time  */
   resetTime?: Date;
   
-  /** Overage amount */
+  /** Overage amount  */
   overageAmount?: number;
 }
 
 export interface RequestErrorContext {
-  /** Request ID */
+  /** Request ID  */
   requestId: string;
   
-  /** Request method */
+  /** Request method  */
   method: string;
   
-  /** Request URL */
+  /** Request URL  */
   url: string;
   
-  /** Request headers */
+  /** Request headers  */
   headers?: Record<string, string>;
   
-  /** Request parameters */
+  /** Request parameters  */
   parameters?: Record<string, unknown>;
   
-  /** Request body size */
+  /** Request body size  */
   bodySize?: number;
   
-  /** Request timestamp */
+  /** Request timestamp  */
   timestamp: Date;
   
-  /** Request duration */
+  /** Request duration  */
   duration?: number;
 }
 
 export interface SystemErrorContext {
-  /** Server information */
+  /** Server information  */
   server: ServerErrorContext;
   
-  /** Resource usage */
+  /** Resource usage  */
   resourceUsage?: ResourceErrorContext;
   
-  /** Dependencies */
+  /** Dependencies  */
   dependencies?: DependencyErrorContext[];
   
-  /** System version */
+  /** System version  */
   version?: string;
   
-  /** Configuration */
+  /** Configuration  */
   configuration?: Record<string, unknown>;
 }
 
 export interface ServerErrorContext {
-  /** Server ID */
+  /** Server ID  */
   serverId: string;
   
-  /** Server region */
+  /** Server region  */
   region: string;
   
-  /** Available resources */
+  /** Available resources  */
   availableResources: ResourceAvailability;
   
-  /** Load metrics */
+  /** Load metrics  */
   load?: LoadMetrics;
   
-  /** Health status */
+  /** Health status  */
   healthStatus: HealthStatus;
 }
 
 export interface ResourceAvailability {
-  /** CPU availability */
+  /** CPU availability  */
   cpu: ResourceStatus;
   
-  /** Memory availability */
+  /** Memory availability  */
   memory: ResourceStatus;
   
-  /** Disk availability */
+  /** Disk availability  */
   disk: ResourceStatus;
   
-  /** Network availability */
+  /** Network availability  */
   network?: ResourceStatus;
   
-  /** GPU availability */
+  /** GPU availability  */
   gpu?: ResourceStatus;
 }
 
 export interface ResourceStatus {
-  /** Available amount */
+  /** Available amount  */
   available: number;
   
-  /** Total amount */
+  /** Total amount  */
   total: number;
   
-  /** Usage percentage */
+  /** Usage percentage  */
   usagePercentage: number;
   
-  /** Status */
+  /** Status  */
   status: 'ok' | 'warning' | 'critical';
 }
 
 export interface LoadMetrics {
-  /** CPU load */
+  /** CPU load  */
   cpuLoad: number;
   
-  /** Memory usage */
+  /** Memory usage  */
   memoryUsage: number;
   
-  /** Active connections */
+  /** Active connections  */
   activeConnections: number;
   
-  /** Requests per second */
+  /** Requests per second  */
   requestsPerSecond: number;
   
-  /** Queue size */
+  /** Queue size  */
   queueSize: number;
 }
 
 export type HealthStatus = 'healthy' | 'degraded' | 'unhealthy' | 'unknown';
 
 export interface ResourceErrorContext {
-  /** Resource type */
+  /** Resource type  */
   type: 'cpu' | 'memory' | 'disk' | 'network' | 'gpu';
   
-  /** Current usage */
+  /** Current usage  */
   currentUsage: number;
   
-  /** Maximum usage */
+  /** Maximum usage  */
   maxUsage: number;
   
-  /** Usage percentage */
+  /** Usage percentage  */
   usagePercentage: number;
   
-  /** Threshold exceeded */
+  /** Threshold exceeded  */
   thresholdExceeded: boolean;
   
-  /** Resource limits */
+  /** Resource limits  */
   limits: ResourceLimits;
 }
 
 export interface ResourceLimits {
-  /** Soft limit */
+  /** Soft limit  */
   softLimit: number;
   
-  /** Hard limit */
+  /** Hard limit  */
   hardLimit: number;
   
-  /** Warning threshold */
+  /** Warning threshold  */
   warningThreshold: number;
   
-  /** Critical threshold */
+  /** Critical threshold  */
   criticalThreshold: number;
 }
 
 export interface DependencyErrorContext {
-  /** Dependency name */
+  /** Dependency name  */
   name: string;
   
-  /** Dependency type */
+  /** Dependency type  */
   type: 'service' | 'database' | 'api' | 'library' | 'external';
   
-  /** Status */
+  /** Status  */
   status: DependencyStatus;
   
-  /** Response time */
+  /** Response time  */
   responseTime?: number;
   
-  /** Error details */
+  /** Error details  */
   errorDetails?: string;
   
-  /** Last successful interaction */
+  /** Last successful interaction  */
   lastSuccessful?: Date;
 }
 
 export type DependencyStatus = 'available' | 'degraded' | 'unavailable' | 'timeout' | 'unknown';
 
 export interface SessionErrorContext {
-  /** Session ID */
+  /** Session ID  */
   sessionId: string;
   
-  /** Session state */
+  /** Session state  */
   state: SessionState;
   
-  /** Session data */
+  /** Session data  */
   data?: Record<string, unknown>;
   
-  /** Session duration */
+  /** Session duration  */
   duration: number;
   
-  /** Previous operations */
+  /** Previous operations  */
   previousOperations?: string[];
   
-  /** Session errors */
+  /** Session errors  */
   sessionErrors?: string[];
 }
 
 export type SessionState = 'active' | 'expired' | 'invalid' | 'terminated';
 
 export interface EnvironmentContext {
-  /** Environment name */
+  /** Environment name  */
   environment: 'development' | 'staging' | 'production' | 'testing';
   
-  /** Service version */
+  /** Service version  */
   version: string;
   
-  /** Deployment information */
+  /** Deployment information  */
   deployment?: DeploymentContext;
   
-  /** Feature flags */
+  /** Feature flags  */
   featureFlags?: Record<string, boolean>;
   
-  /** Configuration */
+  /** Configuration  */
   configuration?: Record<string, unknown>;
 }
 
 export interface DeploymentContext {
-  /** Deployment ID */
+  /** Deployment ID  */
   deploymentId: string;
   
-  /** Deployment time */
+  /** Deployment time  */
   deploymentTime: Date;
   
-  /** Git commit */
+  /** Git commit  */
   gitCommit?: string;
   
-  /** Build information */
+  /** Build information  */
   buildInfo?: Record<string, unknown>;
 }
 
@@ -372,31 +373,31 @@ export interface DeploymentContext {
 // ============================================================================
 
 export interface RecoverySuggestion {
-  /** Suggestion type */
+  /** Suggestion type  */
   type: RecoverySuggestionType;
   
-  /** Suggestion description */
+  /** Suggestion description  */
   description: string;
   
-  /** Action to take */
+  /** Action to take  */
   action: RecoveryAction;
   
-  /** Priority */
+  /** Priority  */
   priority: RecoveryPriority;
   
-  /** Automatic recovery */
+  /** Automatic recovery  */
   automatic: boolean;
   
-  /** Success probability */
+  /** Success probability  */
   successProbability: number;
   
-  /** Time estimate */
+  /** Time estimate  */
   timeEstimate?: number;
   
-  /** Prerequisites */
+  /** Prerequisites  */
   prerequisites?: string[];
   
-  /** Side effects */
+  /** Side effects  */
   sideEffects?: string[];
 }
 
@@ -412,22 +413,22 @@ export type RecoverySuggestionType =
   | 'manual-intervention';
 
 export interface RecoveryAction {
-  /** Action type */
+  /** Action type  */
   type: 'automatic' | 'manual' | 'user-choice';
   
-  /** Action description */
+  /** Action description  */
   description: string;
   
-  /** Action parameters */
+  /** Action parameters  */
   parameters?: Record<string, unknown>;
   
-  /** Action timeout */
+  /** Action timeout  */
   timeout?: number;
   
-  /** Confirmation required */
+  /** Confirmation required  */
   confirmationRequired: boolean;
   
-  /** Reversible */
+  /** Reversible  */
   reversible: boolean;
 }
 
@@ -438,159 +439,159 @@ export type RecoveryPriority = 'low' | 'medium' | 'high' | 'critical';
 // ============================================================================
 
 export interface TechnicalErrorDetails {
-  /** Stack trace */
+  /** Stack trace  */
   stackTrace?: string;
   
-  /** Error code */
+  /** Error code  */
   errorCode: string;
   
-  /** Internal error ID */
+  /** Internal error ID  */
   internalErrorId?: string;
   
-  /** Component that failed */
+  /** Component that failed  */
   failingComponent: string;
   
-  /** Function/method that failed */
+  /** Function/method that failed  */
   failingFunction?: string;
   
-  /** Line number */
+  /** Line number  */
   lineNumber?: number;
   
-  /** File name */
+  /** File name  */
   fileName?: string;
   
-  /** Exception type */
+  /** Exception type  */
   exceptionType?: string;
   
-  /** Inner exceptions */
+  /** Inner exceptions  */
   innerExceptions?: TechnicalErrorDetails[];
   
-  /** Debug information */
+  /** Debug information  */
   debugInfo?: Record<string, unknown>;
   
-  /** Performance metrics */
+  /** Performance metrics  */
   performanceMetrics?: PerformanceErrorMetrics;
   
-  /** Memory information */
+  /** Memory information  */
   memoryInfo?: MemoryErrorInfo;
   
-  /** Thread information */
+  /** Thread information  */
   threadInfo?: ThreadErrorInfo;
 }
 
 export interface PerformanceErrorMetrics {
-  /** Execution time */
+  /** Execution time  */
   executionTime: number;
   
-  /** CPU usage */
+  /** CPU usage  */
   cpuUsage: number;
   
-  /** Memory usage */
+  /** Memory usage  */
   memoryUsage: number;
   
-  /** I/O operations */
+  /** I/O operations  */
   ioOperations?: IOOperationMetrics;
   
-  /** Network operations */
+  /** Network operations  */
   networkOperations?: NetworkOperationMetrics;
 }
 
 export interface IOOperationMetrics {
-  /** Read operations */
+  /** Read operations  */
   reads: number;
   
-  /** Write operations */
+  /** Write operations  */
   writes: number;
   
-  /** Bytes read */
+  /** Bytes read  */
   bytesRead: number;
   
-  /** Bytes written */
+  /** Bytes written  */
   bytesWritten: number;
   
-  /** I/O time */
+  /** I/O time  */
   ioTime: number;
 }
 
 export interface NetworkOperationMetrics {
-  /** Requests made */
+  /** Requests made  */
   requests: number;
   
-  /** Bytes sent */
+  /** Bytes sent  */
   bytesSent: number;
   
-  /** Bytes received */
+  /** Bytes received  */
   bytesReceived: number;
   
-  /** Network time */
+  /** Network time  */
   networkTime: number;
   
-  /** Connection errors */
+  /** Connection errors  */
   connectionErrors: number;
 }
 
 export interface MemoryErrorInfo {
-  /** Current memory usage */
+  /** Current memory usage  */
   currentUsage: number;
   
-  /** Peak memory usage */
+  /** Peak memory usage  */
   peakUsage: number;
   
-  /** Available memory */
+  /** Available memory  */
   availableMemory: number;
   
-  /** Garbage collection info */
+  /** Garbage collection info  */
   gcInfo?: GCInfo;
   
-  /** Memory leaks detected */
+  /** Memory leaks detected  */
   memoryLeaks?: MemoryLeak[];
 }
 
 export interface GCInfo {
-  /** GC runs */
+  /** GC runs  */
   gcRuns: number;
   
-  /** GC time */
+  /** GC time  */
   gcTime: number;
   
-  /** Objects collected */
+  /** Objects collected  */
   objectsCollected: number;
   
-  /** Memory freed */
+  /** Memory freed  */
   memoryFreed: number;
 }
 
 export interface MemoryLeak {
-  /** Object type */
+  /** Object type  */
   objectType: string;
   
-  /** Instance count */
+  /** Instance count  */
   instanceCount: number;
   
-  /** Memory consumed */
+  /** Memory consumed  */
   memoryConsumed: number;
   
-  /** Growth rate */
+  /** Growth rate  */
   growthRate: number;
 }
 
 export interface ThreadErrorInfo {
-  /** Thread ID */
+  /** Thread ID  */
   threadId: string;
   
-  /** Thread name */
+  /** Thread name  */
   threadName: string;
   
-  /** Thread state */
+  /** Thread state  */
   threadState: string;
   
-  /** Is main thread */
+  /** Is main thread  */
   isMainThread: boolean;
   
-  /** Thread priority */
+  /** Thread priority  */
   priority?: number;
   
-  /** CPU time */
+  /** CPU time  */
   cpuTime?: number;
 }
 
@@ -599,47 +600,47 @@ export interface ThreadErrorInfo {
 // ============================================================================
 
 export interface ErrorRetryConfig {
-  /** Maximum retry attempts */
+  /** Maximum retry attempts  */
   maxAttempts: number;
   
-  /** Retry strategy */
+  /** Retry strategy  */
   strategy: RetryStrategy;
   
-  /** Base delay (ms) */
+  /** Base delay (ms)  */
   baseDelay: number;
   
-  /** Maximum delay (ms) */
+  /** Maximum delay (ms)  */
   maxDelay: number;
   
-  /** Backoff multiplier */
+  /** Backoff multiplier  */
   backoffMultiplier: number;
   
-  /** Jitter enabled */
+  /** Jitter enabled  */
   jitter: boolean;
   
-  /** Retry conditions */
+  /** Retry conditions  */
   retryConditions: RetryCondition[];
   
-  /** Stop conditions */
+  /** Stop conditions  */
   stopConditions: StopCondition[];
   
-  /** Timeout per attempt */
+  /** Timeout per attempt  */
   attemptTimeout?: number;
   
-  /** Total timeout */
+  /** Total timeout  */
   totalTimeout?: number;
 }
 
 export type RetryStrategy = 'fixed' | 'exponential' | 'linear' | 'custom';
 
 export interface RetryCondition {
-  /** Condition type */
+  /** Condition type  */
   type: RetryConditionType;
   
-  /** Condition parameters */
+  /** Condition parameters  */
   parameters: Record<string, unknown>;
   
-  /** Should retry */
+  /** Should retry  */
   shouldRetry: boolean;
 }
 
@@ -654,13 +655,13 @@ export type RetryConditionType =
   | 'custom';
 
 export interface StopCondition {
-  /** Condition type */
+  /** Condition type  */
   type: StopConditionType;
   
-  /** Condition parameters */
+  /** Condition parameters  */
   parameters: Record<string, unknown>;
   
-  /** Should stop retrying */
+  /** Should stop retrying  */
   shouldStop: boolean;
 }
 
@@ -678,138 +679,138 @@ export type StopConditionType =
 // ============================================================================
 
 export interface ErrorMetrics {
-  /** Occurrence count */
+  /** Occurrence count  */
   occurrenceCount: number;
   
-  /** First occurrence */
+  /** First occurrence  */
   firstOccurrence: Date;
   
-  /** Last occurrence */
+  /** Last occurrence  */
   lastOccurrence: Date;
   
-  /** Frequency */
+  /** Frequency  */
   frequency: ErrorFrequency;
   
-  /** Resolution time */
+  /** Resolution time  */
   resolutionTime?: number;
   
-  /** Impact assessment */
+  /** Impact assessment  */
   impact: ErrorImpact;
   
-  /** Related metrics */
+  /** Related metrics  */
   relatedMetrics?: Record<string, number>;
   
-  /** Cost impact */
+  /** Cost impact  */
   costImpact?: CostImpact;
   
-  /** User impact */
+  /** User impact  */
   userImpact?: UserImpact;
 }
 
 export interface ErrorFrequency {
-  /** Occurrences per hour */
+  /** Occurrences per hour  */
   perHour: number;
   
-  /** Occurrences per day */
+  /** Occurrences per day  */
   perDay: number;
   
-  /** Trend */
+  /** Trend  */
   trend: 'increasing' | 'decreasing' | 'stable' | 'unknown';
   
-  /** Peak times */
+  /** Peak times  */
   peakTimes?: Date[];
 }
 
 export interface ErrorImpact {
-  /** Business impact level */
+  /** Business impact level  */
   businessImpact: ImpactLevel;
   
-  /** Technical impact level */
+  /** Technical impact level  */
   technicalImpact: ImpactLevel;
   
-  /** User experience impact */
+  /** User experience impact  */
   userExperienceImpact: ImpactLevel;
   
-  /** Affected systems */
+  /** Affected systems  */
   affectedSystems: string[];
   
-  /** Affected users count */
+  /** Affected users count  */
   affectedUsersCount?: number;
   
-  /** Service availability impact */
+  /** Service availability impact  */
   availabilityImpact?: number;
   
-  /** Performance impact */
+  /** Performance impact  */
   performanceImpact?: PerformanceImpact;
 }
 
 export type ImpactLevel = 'minimal' | 'low' | 'medium' | 'high' | 'critical';
 
 export interface PerformanceImpact {
-  /** Response time increase */
+  /** Response time increase  */
   responseTimeIncrease: number;
   
-  /** Throughput decrease */
+  /** Throughput decrease  */
   throughputDecrease: number;
   
-  /** Resource usage increase */
+  /** Resource usage increase  */
   resourceUsageIncrease: number;
   
-  /** Error rate increase */
+  /** Error rate increase  */
   errorRateIncrease: number;
 }
 
 export interface CostImpact {
-  /** Direct cost */
+  /** Direct cost  */
   directCost: number;
   
-  /** Indirect cost */
+  /** Indirect cost  */
   indirectCost?: number;
   
-  /** Resource waste cost */
+  /** Resource waste cost  */
   resourceWasteCost?: number;
   
-  /** SLA penalty cost */
+  /** SLA penalty cost  */
   slaPenaltyCost?: number;
   
-  /** Recovery cost */
+  /** Recovery cost  */
   recoveryCost?: number;
   
-  /** Currency */
+  /** Currency  */
   currency: string;
 }
 
 export interface UserImpact {
-  /** Affected user count */
+  /** Affected user count  */
   affectedUsers: number;
   
-  /** User sessions impacted */
+  /** User sessions impacted  */
   sessionsImpacted: number;
   
-  /** Operations failed */
+  /** Operations failed  */
   operationsFailed: number;
   
-  /** User satisfaction impact */
+  /** User satisfaction impact  */
   satisfactionImpact?: number;
   
-  /** Support tickets created */
+  /** Support tickets created  */
   supportTickets?: number;
   
-  /** User churn potential */
+  /** User churn potential  */
   churnPotential?: ChurnPotential;
 }
 
 export interface ChurnPotential {
-  /** Churn risk level */
+  /** Churn risk level  */
   riskLevel: 'low' | 'medium' | 'high';
   
-  /** Estimated churn count */
+  /** Estimated churn count  */
   estimatedChurnCount: number;
   
-  /** Revenue at risk */
+  /** Revenue at risk  */
   revenueAtRisk: number;
   
-  /** Mitigation actions */
+  /** Mitigation actions  */
   mitigationActions: string[];
 }
 
@@ -845,19 +846,19 @@ export interface UploadError extends MultimediaError {
 export type UploadStage = 'initiation' | 'transfer' | 'verification' | 'completion';
 
 export interface ConnectionInfo {
-  /** Connection type */
+  /** Connection type  */
   type: string;
   
-  /** Bandwidth */
+  /** Bandwidth  */
   bandwidth: number;
   
-  /** Latency */
+  /** Latency  */
   latency: number;
   
-  /** Packet loss */
+  /** Packet loss  */
   packetLoss: number;
   
-  /** Connection stability */
+  /** Connection stability  */
   stability: 'stable' | 'unstable' | 'intermittent';
 }
 
@@ -880,16 +881,16 @@ export interface CDNError extends MultimediaError {
 }
 
 export interface OriginResponseInfo {
-  /** Origin status code */
+  /** Origin status code  */
   statusCode: number;
   
-  /** Origin response time */
+  /** Origin response time  */
   responseTime: number;
   
-  /** Origin headers */
+  /** Origin headers  */
   headers?: Record<string, string>;
   
-  /** Origin error */
+  /** Origin error  */
   error?: string;
 }
 
@@ -903,27 +904,27 @@ export interface ValidationError extends MultimediaError {
 export type ValidationType = 'file' | 'format' | 'size' | 'quality' | 'metadata' | 'content';
 
 export interface ValidationRule {
-  /** Rule name */
+  /** Rule name  */
   name: string;
   
-  /** Rule description */
+  /** Rule description  */
   description: string;
   
-  /** Rule parameters */
+  /** Rule parameters  */
   parameters: Record<string, unknown>;
   
-  /** Rule severity */
+  /** Rule severity  */
   severity: ErrorSeverity;
 }
 
 export interface FailedValidationRule extends ValidationRule {
-  /** Actual value */
+  /** Actual value  */
   actualValue: unknown;
   
-  /** Expected value */
+  /** Expected value  */
   expectedValue: unknown;
   
-  /** Failure reason */
+  /** Failure reason  */
   failureReason: string;
 }
 
@@ -937,21 +938,21 @@ export interface QuotaError extends MultimediaError {
 export type QuotaType = 'storage' | 'bandwidth' | 'processing' | 'requests' | 'features';
 
 export interface UpgradeOption {
-  /** Plan name */
+  /** Plan name  */
   planName: string;
   
-  /** Plan description */
+  /** Plan description  */
   description: string;
   
-  /** Additional quota */
+  /** Additional quota  */
   additionalQuota: number;
   
-  /** Cost */
+  /** Cost  */
   cost: number;
   
-  /** Currency */
+  /** Currency  */
   currency: string;
   
-  /** Upgrade URL */
+  /** Upgrade URL  */
   upgradeUrl?: string;
 }

@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Video processing type definitions for CVPlus multimedia module
- */
+  */
 
 import { 
   MediaFile, 
@@ -15,64 +16,64 @@ import {
 // ============================================================================
 
 export interface VideoProcessingOptions {
-  /** Target width in pixels */
+  /** Target width in pixels  */
   width?: number;
   
-  /** Target height in pixels */
+  /** Target height in pixels  */
   height?: number;
   
-  /** Video bitrate in bits per second */
+  /** Video bitrate in bits per second  */
   bitrate?: number;
   
-  /** Output format */
+  /** Output format  */
   format?: VideoFormat;
   
-  /** Video codec */
+  /** Video codec  */
   codec?: VideoCodec;
   
-  /** Audio codec */
+  /** Audio codec  */
   audioCodec?: AudioCodec;
   
-  /** Quality level */
+  /** Quality level  */
   quality?: QualityLevel;
   
-  /** Frame rate (fps) */
+  /** Frame rate (fps)  */
   frameRate?: number;
   
-  /** Audio bitrate */
+  /** Audio bitrate  */
   audioBitrate?: number;
   
-  /** Video profile */
+  /** Video profile  */
   profile?: VideoProfile;
   
-  /** Preset for encoding speed vs quality */
+  /** Preset for encoding speed vs quality  */
   preset?: EncodingPreset;
   
-  /** Start time for trimming (seconds) */
+  /** Start time for trimming (seconds)  */
   startTime?: number;
   
-  /** End time for trimming (seconds) */
+  /** End time for trimming (seconds)  */
   endTime?: number;
   
-  /** Duration for trimming (seconds) */
+  /** Duration for trimming (seconds)  */
   duration?: number;
   
-  /** Enable two-pass encoding */
+  /** Enable two-pass encoding  */
   twoPass?: boolean;
   
-  /** Generate thumbnails */
+  /** Generate thumbnails  */
   generateThumbnails?: boolean;
   
-  /** Thumbnail options */
+  /** Thumbnail options  */
   thumbnailOptions?: ThumbnailGenerationOptions;
   
-  /** Video filters to apply */
+  /** Video filters to apply  */
   filters?: VideoFilter[];
   
-  /** Aspect ratio handling */
+  /** Aspect ratio handling  */
   aspectRatio?: AspectRatioHandling;
   
-  /** Audio processing options */
+  /** Audio processing options  */
   audioProcessing?: VideoAudioProcessingOptions;
 }
 
@@ -82,13 +83,13 @@ export type VideoProfile = 'baseline' | 'main' | 'high' | 'high10' | 'high422' |
 export type EncodingPreset = 'ultrafast' | 'superfast' | 'veryfast' | 'faster' | 'fast' | 'medium' | 'slow' | 'slower' | 'veryslow';
 
 export interface AspectRatioHandling {
-  /** How to handle aspect ratio changes */
+  /** How to handle aspect ratio changes  */
   mode: 'stretch' | 'crop' | 'pad' | 'maintain';
   
-  /** Padding color for 'pad' mode */
+  /** Padding color for 'pad' mode  */
   paddingColor?: string;
   
-  /** Crop position for 'crop' mode */
+  /** Crop position for 'crop' mode  */
   cropPosition?: CropPosition;
 }
 
@@ -99,42 +100,42 @@ export type CropPosition = 'center' | 'top' | 'bottom' | 'left' | 'right' | 'top
 // ============================================================================
 
 export interface ThumbnailGenerationOptions {
-  /** Number of thumbnails to generate */
+  /** Number of thumbnails to generate  */
   count?: number;
   
-  /** Specific timestamps (seconds) */
+  /** Specific timestamps (seconds)  */
   timestamps?: number[];
   
-  /** Thumbnail width */
+  /** Thumbnail width  */
   width?: number;
   
-  /** Thumbnail height */
+  /** Thumbnail height  */
   height?: number;
   
-  /** Thumbnail format */
+  /** Thumbnail format  */
   format?: ImageFormat;
   
-  /** Thumbnail quality */
+  /** Thumbnail quality  */
   quality?: number;
   
-  /** Generate thumbnail grid/sprite */
+  /** Generate thumbnail grid/sprite  */
   generateSprite?: boolean;
   
-  /** Sprite options */
+  /** Sprite options  */
   spriteOptions?: SpriteOptions;
 }
 
 export interface SpriteOptions {
-  /** Number of columns in sprite */
+  /** Number of columns in sprite  */
   columns: number;
   
-  /** Number of rows in sprite */
+  /** Number of rows in sprite  */
   rows: number;
   
-  /** Spacing between thumbnails */
+  /** Spacing between thumbnails  */
   spacing?: number;
   
-  /** Sprite background color */
+  /** Sprite background color  */
   backgroundColor?: string;
 }
 
@@ -143,13 +144,13 @@ export interface SpriteOptions {
 // ============================================================================
 
 export interface VideoFilter {
-  /** Filter type */
+  /** Filter type  */
   type: VideoFilterType;
   
-  /** Filter parameters */
+  /** Filter parameters  */
   parameters: Record<string, unknown>;
   
-  /** Filter application order */
+  /** Filter application order  */
   order?: number;
 }
 
@@ -163,7 +164,7 @@ export type VideoFilterType =
 export interface BrightnessFilter extends VideoFilter {
   type: 'brightness';
   parameters: {
-    /** Brightness adjustment (-1.0 to 1.0) */
+    /** Brightness adjustment (-1.0 to 1.0)  */
     value: number;
   };
 }
@@ -171,7 +172,7 @@ export interface BrightnessFilter extends VideoFilter {
 export interface ContrastFilter extends VideoFilter {
   type: 'contrast';
   parameters: {
-    /** Contrast adjustment (0.0 to 2.0) */
+    /** Contrast adjustment (0.0 to 2.0)  */
     value: number;
   };
 }
@@ -179,13 +180,13 @@ export interface ContrastFilter extends VideoFilter {
 export interface WatermarkFilter extends VideoFilter {
   type: 'watermark';
   parameters: {
-    /** Watermark image path or text */
+    /** Watermark image path or text  */
     source: string;
-    /** Position on video */
+    /** Position on video  */
     position: WatermarkPosition;
-    /** Opacity (0.0 to 1.0) */
+    /** Opacity (0.0 to 1.0)  */
     opacity: number;
-    /** Scale factor */
+    /** Scale factor  */
     scale?: number;
   };
 }
@@ -200,34 +201,34 @@ export type WatermarkPosition =
 // ============================================================================
 
 export interface VideoAudioProcessingOptions {
-  /** Enable audio processing */
+  /** Enable audio processing  */
   enabled: boolean;
   
-  /** Audio normalization */
+  /** Audio normalization  */
   normalize?: boolean;
   
-  /** Noise reduction */
+  /** Noise reduction  */
   noiseReduction?: boolean;
   
-  /** Audio enhancement */
+  /** Audio enhancement  */
   enhance?: boolean;
   
-  /** Volume adjustment (0.0 to 2.0) */
+  /** Volume adjustment (0.0 to 2.0)  */
   volume?: number;
   
-  /** Audio fade in duration (seconds) */
+  /** Audio fade in duration (seconds)  */
   fadeIn?: number;
   
-  /** Audio fade out duration (seconds) */
+  /** Audio fade out duration (seconds)  */
   fadeOut?: number;
   
-  /** Remove audio track */
+  /** Remove audio track  */
   removeAudio?: boolean;
   
-  /** Replace audio track */
+  /** Replace audio track  */
   replaceAudio?: MediaFile;
   
-  /** Audio synchronization adjustment (milliseconds) */
+  /** Audio synchronization adjustment (milliseconds)  */
   syncAdjustment?: number;
 }
 
@@ -236,213 +237,213 @@ export interface VideoAudioProcessingOptions {
 // ============================================================================
 
 export interface VideoMetadata {
-  /** Video width in pixels */
+  /** Video width in pixels  */
   width: number;
   
-  /** Video height in pixels */
+  /** Video height in pixels  */
   height: number;
   
-  /** Duration in seconds */
+  /** Duration in seconds  */
   duration: number;
   
-  /** Frame rate */
+  /** Frame rate  */
   frameRate: number;
   
-  /** Total frame count */
+  /** Total frame count  */
   frameCount: number;
   
-  /** Video bitrate */
+  /** Video bitrate  */
   bitrate: number;
   
-  /** Video codec information */
+  /** Video codec information  */
   videoCodec: CodecInfo;
   
-  /** Audio codec information */
+  /** Audio codec information  */
   audioCodec?: CodecInfo;
   
-  /** Audio sample rate */
+  /** Audio sample rate  */
   audioSampleRate?: number;
   
-  /** Audio channels */
+  /** Audio channels  */
   audioChannels?: number;
   
-  /** Audio bitrate */
+  /** Audio bitrate  */
   audioBitrate?: number;
   
-  /** Container format */
+  /** Container format  */
   container: string;
   
-  /** Video streams */
+  /** Video streams  */
   videoStreams: VideoStreamInfo[];
   
-  /** Audio streams */
+  /** Audio streams  */
   audioStreams: AudioStreamInfo[];
   
-  /** Subtitle streams */
+  /** Subtitle streams  */
   subtitleStreams?: SubtitleStreamInfo[];
   
-  /** Video creation date */
+  /** Video creation date  */
   creationDate?: Date;
   
-  /** Video title */
+  /** Video title  */
   title?: string;
   
-  /** Video description */
+  /** Video description  */
   description?: string;
   
-  /** Video tags */
+  /** Video tags  */
   tags?: string[];
   
-  /** GPS location data */
+  /** GPS location data  */
   location?: GPSLocation;
   
-  /** Camera/device information */
+  /** Camera/device information  */
   deviceInfo?: DeviceInfo;
 }
 
 export interface CodecInfo {
-  /** Codec name */
+  /** Codec name  */
   name: string;
   
-  /** Long name */
+  /** Long name  */
   longName: string;
   
-  /** Profile */
+  /** Profile  */
   profile?: string;
   
-  /** Level */
+  /** Level  */
   level?: string;
   
-  /** Pixel format */
+  /** Pixel format  */
   pixelFormat?: string;
   
-  /** Color space */
+  /** Color space  */
   colorSpace?: string;
   
-  /** Color range */
+  /** Color range  */
   colorRange?: string;
 }
 
 export interface VideoStreamInfo {
-  /** Stream index */
+  /** Stream index  */
   index: number;
   
-  /** Stream type */
+  /** Stream type  */
   type: 'video';
   
-  /** Codec information */
+  /** Codec information  */
   codec: CodecInfo;
   
-  /** Stream duration */
+  /** Stream duration  */
   duration: number;
   
-  /** Stream bitrate */
+  /** Stream bitrate  */
   bitrate: number;
   
-  /** Language */
+  /** Language  */
   language?: string;
   
-  /** Stream title */
+  /** Stream title  */
   title?: string;
 }
 
 export interface AudioStreamInfo {
-  /** Stream index */
+  /** Stream index  */
   index: number;
   
-  /** Stream type */
+  /** Stream type  */
   type: 'audio';
   
-  /** Codec information */
+  /** Codec information  */
   codec: CodecInfo;
   
-  /** Sample rate */
+  /** Sample rate  */
   sampleRate: number;
   
-  /** Channel count */
+  /** Channel count  */
   channels: number;
   
-  /** Channel layout */
+  /** Channel layout  */
   channelLayout: string;
   
-  /** Stream duration */
+  /** Stream duration  */
   duration: number;
   
-  /** Stream bitrate */
+  /** Stream bitrate  */
   bitrate: number;
   
-  /** Language */
+  /** Language  */
   language?: string;
   
-  /** Stream title */
+  /** Stream title  */
   title?: string;
 }
 
 export interface SubtitleStreamInfo {
-  /** Stream index */
+  /** Stream index  */
   index: number;
   
-  /** Stream type */
+  /** Stream type  */
   type: 'subtitle';
   
-  /** Subtitle format */
+  /** Subtitle format  */
   format: string;
   
-  /** Language */
+  /** Language  */
   language?: string;
   
-  /** Stream title */
+  /** Stream title  */
   title?: string;
   
-  /** Is forced subtitle */
+  /** Is forced subtitle  */
   forced?: boolean;
   
-  /** Is default subtitle */
+  /** Is default subtitle  */
   default?: boolean;
 }
 
 export interface GPSLocation {
-  /** Latitude */
+  /** Latitude  */
   latitude: number;
   
-  /** Longitude */
+  /** Longitude  */
   longitude: number;
   
-  /** Altitude */
+  /** Altitude  */
   altitude?: number;
   
-  /** Location name */
+  /** Location name  */
   name?: string;
 }
 
 export interface DeviceInfo {
-  /** Device make */
+  /** Device make  */
   make?: string;
   
-  /** Device model */
+  /** Device model  */
   model?: string;
   
-  /** Software version */
+  /** Software version  */
   softwareVersion?: string;
   
-  /** Recording settings */
+  /** Recording settings  */
   recordingSettings?: RecordingSettings;
 }
 
 export interface RecordingSettings {
-  /** ISO sensitivity */
+  /** ISO sensitivity  */
   iso?: number;
   
-  /** Exposure time */
+  /** Exposure time  */
   exposureTime?: string;
   
-  /** F-number */
+  /** F-number  */
   fNumber?: number;
   
-  /** White balance */
+  /** White balance  */
   whiteBalance?: string;
   
-  /** Focus mode */
+  /** Focus mode  */
   focusMode?: string;
 }
 
@@ -451,124 +452,124 @@ export interface RecordingSettings {
 // ============================================================================
 
 export interface ProcessedVideo extends ProcessedMedia<VideoProcessingOptions> {
-  /** Video-specific metadata */
+  /** Video-specific metadata  */
   videoMetadata: VideoMetadata;
   
-  /** Generated thumbnails */
+  /** Generated thumbnails  */
   thumbnails: VideoThumbnail[];
   
-  /** Video preview/poster */
+  /** Video preview/poster  */
   poster?: VideoThumbnail;
   
-  /** Streaming versions */
+  /** Streaming versions  */
   streamingVersions?: StreamingVersion[];
   
-  /** Quality assessment specific to video */
+  /** Quality assessment specific to video  */
   videoQuality?: VideoQualityAssessment;
   
-  /** Processing statistics */
+  /** Processing statistics  */
   processingStats: VideoProcessingStats;
 }
 
 export interface VideoThumbnail {
-  /** Timestamp in video (seconds) */
+  /** Timestamp in video (seconds)  */
   timestamp: number;
   
-  /** Thumbnail width */
+  /** Thumbnail width  */
   width: number;
   
-  /** Thumbnail height */
+  /** Thumbnail height  */
   height: number;
   
-  /** Thumbnail file */
+  /** Thumbnail file  */
   file: MediaFile;
   
-  /** Thumbnail URL */
+  /** Thumbnail URL  */
   url: string;
   
-  /** Thumbnail format */
+  /** Thumbnail format  */
   format: ImageFormat;
   
-  /** Is poster frame */
+  /** Is poster frame  */
   isPoster?: boolean;
 }
 
 export interface StreamingVersion {
-  /** Quality identifier */
+  /** Quality identifier  */
   quality: QualityLevel;
   
-  /** Video file */
+  /** Video file  */
   file: MediaFile;
   
-  /** Stream URL */
+  /** Stream URL  */
   url: string;
   
-  /** Bitrate */
+  /** Bitrate  */
   bitrate: number;
   
-  /** Resolution */
+  /** Resolution  */
   resolution: Resolution;
   
-  /** Streaming protocol support */
+  /** Streaming protocol support  */
   protocols: StreamingProtocol[];
 }
 
 export interface Resolution {
-  /** Width in pixels */
+  /** Width in pixels  */
   width: number;
   
-  /** Height in pixels */
+  /** Height in pixels  */
   height: number;
   
-  /** Display name (e.g., "720p", "1080p") */
+  /** Display name (e.g., "720p", "1080p")  */
   name: string;
 }
 
 export type StreamingProtocol = 'hls' | 'dash' | 'smooth' | 'progressive';
 
 export interface VideoQualityAssessment {
-  /** Overall video quality (0-100) */
+  /** Overall video quality (0-100)  */
   overall: number;
   
-  /** Visual quality score */
+  /** Visual quality score  */
   visual: number;
   
-  /** Audio quality score */
+  /** Audio quality score  */
   audio?: number;
   
-  /** Compression efficiency */
+  /** Compression efficiency  */
   compressionEfficiency: number;
   
-  /** Motion handling quality */
+  /** Motion handling quality  */
   motionHandling: number;
   
-  /** Color reproduction quality */
+  /** Color reproduction quality  */
   colorReproduction: number;
   
-  /** Noise level */
+  /** Noise level  */
   noiseLevel: number;
   
-  /** Artifacts level */
+  /** Artifacts level  */
   artifacts: number;
 }
 
 export interface VideoProcessingStats {
-  /** Frames processed per second */
+  /** Frames processed per second  */
   processingFps: number;
   
-  /** Peak memory usage */
+  /** Peak memory usage  */
   peakMemoryUsage: number;
   
-  /** CPU usage percentage */
+  /** CPU usage percentage  */
   cpuUsage: number;
   
-  /** Processing efficiency score */
+  /** Processing efficiency score  */
   efficiency: number;
   
-  /** Error count during processing */
+  /** Error count during processing  */
   errorCount: number;
   
-  /** Warning count during processing */
+  /** Warning count during processing  */
   warningCount: number;
 }
 
@@ -577,56 +578,56 @@ export interface VideoProcessingStats {
 // ============================================================================
 
 export interface AdaptiveBitrateOptions {
-  /** Generate multiple quality levels */
+  /** Generate multiple quality levels  */
   generateMultipleQualities: boolean;
   
-  /** Quality levels to generate */
+  /** Quality levels to generate  */
   qualityLevels: AdaptiveQualityLevel[];
   
-  /** Streaming protocol */
+  /** Streaming protocol  */
   protocol: StreamingProtocol;
   
-  /** Segment duration for streaming */
+  /** Segment duration for streaming  */
   segmentDuration?: number;
   
-  /** Generate manifests */
+  /** Generate manifests  */
   generateManifests?: boolean;
   
-  /** Encryption options */
+  /** Encryption options  */
   encryption?: EncryptionOptions;
 }
 
 export interface AdaptiveQualityLevel {
-  /** Quality name */
+  /** Quality name  */
   name: string;
   
-  /** Video bitrate */
+  /** Video bitrate  */
   videoBitrate: number;
   
-  /** Audio bitrate */
+  /** Audio bitrate  */
   audioBitrate: number;
   
-  /** Resolution */
+  /** Resolution  */
   resolution: Resolution;
   
-  /** Frame rate */
+  /** Frame rate  */
   frameRate: number;
   
-  /** Target file size (optional) */
+  /** Target file size (optional)  */
   targetSize?: number;
 }
 
 export interface EncryptionOptions {
-  /** Enable encryption */
+  /** Enable encryption  */
   enabled: boolean;
   
-  /** Encryption method */
+  /** Encryption method  */
   method: 'AES-128' | 'AES-256';
   
-  /** Key rotation interval */
+  /** Key rotation interval  */
   keyRotationInterval?: number;
   
-  /** DRM system */
+  /** DRM system  */
   drm?: DRMSystem;
 }
 
@@ -638,19 +639,19 @@ export type DRMSystem = 'widevine' | 'playready' | 'fairplay' | 'custom';
 
 // Video transcoding specific options
 export interface VideoTranscodingOptions extends VideoProcessingOptions {
-  /** Transcoding mode */
+  /** Transcoding mode  */
   mode?: 'fast' | 'balanced' | 'quality';
   
-  /** Multi-pass encoding */
+  /** Multi-pass encoding  */
   multiPass?: boolean;
   
-  /** Hardware acceleration */
+  /** Hardware acceleration  */
   hardwareAcceleration?: boolean;
   
-  /** Transcoding preset */
+  /** Transcoding preset  */
   transcodingPreset?: TranscodingPreset;
   
-  /** Output container */
+  /** Output container  */
   container?: VideoContainer;
 }
 
@@ -659,240 +660,240 @@ export type VideoContainer = 'mp4' | 'webm' | 'avi' | 'mov' | 'mkv' | 'flv';
 
 // Video analysis results
 export interface VideoAnalysisResult {
-  /** Analysis success */
+  /** Analysis success  */
   success: boolean;
   
-  /** Video metadata */
+  /** Video metadata  */
   metadata: VideoMetadata;
   
-  /** Quality assessment */
+  /** Quality assessment  */
   quality: VideoQualityAssessment;
   
-  /** Technical analysis */
+  /** Technical analysis  */
   technical: TechnicalAnalysis;
   
-  /** Content analysis */
+  /** Content analysis  */
   content?: ContentAnalysis;
   
-  /** Recommendations */
+  /** Recommendations  */
   recommendations: ProcessingRecommendation[];
 }
 
 export interface TechnicalAnalysis {
-  /** Has video stream */
+  /** Has video stream  */
   hasVideo: boolean;
   
-  /** Has audio stream */
+  /** Has audio stream  */
   hasAudio: boolean;
   
-  /** Is valid format */
+  /** Is valid format  */
   isValidFormat: boolean;
   
-  /** Codec compatibility */
+  /** Codec compatibility  */
   codecCompatibility: CodecCompatibility;
   
-  /** File integrity */
+  /** File integrity  */
   integrity: FileIntegrity;
 }
 
 export interface CodecCompatibility {
-  /** Web compatibility score (0-100) */
+  /** Web compatibility score (0-100)  */
   webCompatibility: number;
   
-  /** Mobile compatibility score (0-100) */
+  /** Mobile compatibility score (0-100)  */
   mobileCompatibility: number;
   
-  /** Supported browsers */
+  /** Supported browsers  */
   supportedBrowsers: string[];
   
-  /** Recommended formats */
+  /** Recommended formats  */
   recommendedFormats: VideoFormat[];
 }
 
 export interface FileIntegrity {
-  /** File is complete */
+  /** File is complete  */
   isComplete: boolean;
   
-  /** File is corrupted */
+  /** File is corrupted  */
   isCorrupted: boolean;
   
-  /** Missing data ranges */
+  /** Missing data ranges  */
   missingRanges: TimeRange[];
   
-  /** Integrity score (0-100) */
+  /** Integrity score (0-100)  */
   score: number;
 }
 
 export interface TimeRange {
-  /** Start time in seconds */
+  /** Start time in seconds  */
   start: number;
   
-  /** End time in seconds */
+  /** End time in seconds  */
   end: number;
 }
 
 export interface ContentAnalysis {
-  /** Scene detection results */
+  /** Scene detection results  */
   scenes: SceneInfo[];
   
-  /** Motion analysis */
+  /** Motion analysis  */
   motion: MotionAnalysis;
   
-  /** Color analysis */
+  /** Color analysis  */
   color: ColorAnalysis;
   
-  /** Audio analysis */
+  /** Audio analysis  */
   audio?: AudioAnalysisInfo;
 }
 
 export interface SceneInfo {
-  /** Scene start time */
+  /** Scene start time  */
   startTime: number;
   
-  /** Scene end time */
+  /** Scene end time  */
   endTime: number;
   
-  /** Scene confidence score */
+  /** Scene confidence score  */
   confidence: number;
   
-  /** Scene thumbnail */
+  /** Scene thumbnail  */
   thumbnail?: VideoThumbnail;
 }
 
 export interface MotionAnalysis {
-  /** Average motion level (0-100) */
+  /** Average motion level (0-100)  */
   averageMotion: number;
   
-  /** Motion intensity over time */
+  /** Motion intensity over time  */
   motionTimeline: MotionPoint[];
   
-  /** Static regions */
+  /** Static regions  */
   staticRegions: TimeRange[];
   
-  /** High motion regions */
+  /** High motion regions  */
   highMotionRegions: TimeRange[];
 }
 
 export interface MotionPoint {
-  /** Timestamp */
+  /** Timestamp  */
   timestamp: number;
   
-  /** Motion intensity (0-100) */
+  /** Motion intensity (0-100)  */
   intensity: number;
 }
 
 export interface ColorAnalysis {
-  /** Dominant colors */
+  /** Dominant colors  */
   dominantColors: string[];
   
-  /** Color histogram */
+  /** Color histogram  */
   histogram: ColorHistogram;
   
-  /** Brightness distribution */
+  /** Brightness distribution  */
   brightness: BrightnessDistribution;
   
-  /** Contrast level (0-100) */
+  /** Contrast level (0-100)  */
   contrast: number;
 }
 
 export interface ColorHistogram {
-  /** Red channel histogram */
+  /** Red channel histogram  */
   red: number[];
   
-  /** Green channel histogram */
+  /** Green channel histogram  */
   green: number[];
   
-  /** Blue channel histogram */
+  /** Blue channel histogram  */
   blue: number[];
 }
 
 export interface BrightnessDistribution {
-  /** Average brightness (0-100) */
+  /** Average brightness (0-100)  */
   average: number;
   
-  /** Brightness histogram */
+  /** Brightness histogram  */
   histogram: number[];
   
-  /** Dark regions percentage */
+  /** Dark regions percentage  */
   darkRegions: number;
   
-  /** Bright regions percentage */
+  /** Bright regions percentage  */
   brightRegions: number;
 }
 
 export interface AudioAnalysisInfo {
-  /** Average volume level */
+  /** Average volume level  */
   averageVolume: number;
   
-  /** Peak volume level */
+  /** Peak volume level  */
   peakVolume: number;
   
-  /** Silent regions */
+  /** Silent regions  */
   silentRegions: TimeRange[];
   
-  /** Audio clipping detected */
+  /** Audio clipping detected  */
   hasClipping: boolean;
 }
 
 export interface ProcessingRecommendation {
-  /** Recommendation type */
+  /** Recommendation type  */
   type: 'quality' | 'performance' | 'compatibility' | 'optimization';
   
-  /** Recommendation message */
+  /** Recommendation message  */
   message: string;
   
-  /** Recommendation priority */
+  /** Recommendation priority  */
   priority: 'low' | 'medium' | 'high' | 'critical';
   
-  /** Suggested action */
+  /** Suggested action  */
   action?: string;
   
-  /** Estimated impact */
+  /** Estimated impact  */
   impact?: string;
 }
 
 // Video thumbnail specific options
 export interface VideoThumbnailOptions extends ThumbnailGenerationOptions {
-  /** Intelligent thumbnail selection */
+  /** Intelligent thumbnail selection  */
   intelligentSelection?: boolean;
   
-  /** Avoid black frames */
+  /** Avoid black frames  */
   avoidBlackFrames?: boolean;
   
-  /** Scene-based selection */
+  /** Scene-based selection  */
   sceneBasedSelection?: boolean;
   
-  /** Motion-based selection */
+  /** Motion-based selection  */
   motionBasedSelection?: boolean;
   
-  /** Custom selection algorithm */
+  /** Custom selection algorithm  */
   customAlgorithm?: ThumbnailSelectionAlgorithm;
 }
 
 export interface ThumbnailSelectionAlgorithm {
-  /** Algorithm name */
+  /** Algorithm name  */
   name: string;
   
-  /** Algorithm parameters */
+  /** Algorithm parameters  */
   parameters: Record<string, unknown>;
   
-  /** Scoring weights */
+  /** Scoring weights  */
   weights: ThumbnailScoreWeights;
 }
 
 export interface ThumbnailScoreWeights {
-  /** Motion weight */
+  /** Motion weight  */
   motion: number;
   
-  /** Brightness weight */
+  /** Brightness weight  */
   brightness: number;
   
-  /** Contrast weight */
+  /** Contrast weight  */
   contrast: number;
   
-  /** Face detection weight */
+  /** Face detection weight  */
   faces: number;
   
-  /** Object detection weight */
+  /** Object detection weight  */
   objects: number;
 }

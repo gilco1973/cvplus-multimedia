@@ -7,7 +7,7 @@ import { UserSubscription, PremiumFeature } from '../../types/subscription.types
 /**
  * Local subscription retrieval function - follows dependency injection pattern
  * Higher layers should provide actual subscription logic
- */
+  */
 const getUserSubscriptionLocal = async (uid: string): Promise<UserSubscription | null> => {
   try {
     const subscriptionDoc = await admin.firestore()

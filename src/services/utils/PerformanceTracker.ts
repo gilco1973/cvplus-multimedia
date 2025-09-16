@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Performance Tracker Utility
  * 
  * Tracks and analyzes performance metrics for multimedia operations
  * including processing times, memory usage, and error rates.
- */
+  */
 
 export interface PerformanceMetric {
   operation: string;
@@ -34,7 +35,7 @@ export interface PerformanceStats {
 
 /**
  * Performance tracking and metrics collection
- */
+  */
 export class PerformanceTracker {
   private readonly metrics: PerformanceMetric[] = [];
   private readonly activeOperations: Map<string, PerformanceMetric> = new Map();
@@ -46,7 +47,7 @@ export class PerformanceTracker {
 
   /**
    * Start tracking an operation
-   */
+    */
   public startOperation(
     operation: string,
     metadata?: Record<string, any>
@@ -67,7 +68,7 @@ export class PerformanceTracker {
 
   /**
    * End tracking an operation (successful)
-   */
+    */
   public endOperation(
     operationId: string,
     additionalMetadata?: Record<string, any>
@@ -94,7 +95,7 @@ export class PerformanceTracker {
 
   /**
    * Record an operation error
-   */
+    */
   public recordError(operation: string, error: Error): void {
     // Check if this is from an active operation
     for (const [id, metric] of this.activeOperations) {
@@ -130,7 +131,7 @@ export class PerformanceTracker {
 
   /**
    * Record a quick metric (when start/end tracking isn't used)
-   */
+    */
   public recordMetric(
     operation: string,
     duration: number,
@@ -159,7 +160,7 @@ export class PerformanceTracker {
 
   /**
    * Get performance statistics
-   */
+    */
   public getStats(operationType?: string): PerformanceStats {
     let relevantMetrics = this.metrics;
     
@@ -218,21 +219,21 @@ export class PerformanceTracker {
 
   /**
    * Get recent metrics
-   */
+    */
   public getRecentMetrics(count: number = 50): PerformanceMetric[] {
     return this.metrics.slice(-count);
   }
 
   /**
    * Get metrics for specific operation
-   */
+    */
   public getMetricsForOperation(operation: string): PerformanceMetric[] {
     return this.metrics.filter(m => m.operation === operation);
   }
 
   /**
    * Get slowest operations
-   */
+    */
   public getSlowestOperations(count: number = 10): PerformanceMetric[] {
     return [...this.metrics]
       .filter(m => m.duration !== undefined)
@@ -242,7 +243,7 @@ export class PerformanceTracker {
 
   /**
    * Get operations with highest memory usage
-   */
+    */
   public getHighestMemoryOperations(count: number = 10): PerformanceMetric[] {
     return [...this.metrics]
       .filter(m => m.memoryDelta !== undefined)
@@ -252,7 +253,7 @@ export class PerformanceTracker {
 
   /**
    * Clear all metrics
-   */
+    */
   public clear(): void {
     this.metrics.length = 0;
     this.activeOperations.clear();
@@ -260,7 +261,7 @@ export class PerformanceTracker {
 
   /**
    * Export metrics as JSON
-   */
+    */
   public exportMetrics(): string {
     return JSON.stringify({
       metrics: this.metrics,
@@ -271,7 +272,7 @@ export class PerformanceTracker {
 
   /**
    * Get currently active operations
-   */
+    */
   public getActiveOperations(): Array<{ id: string; operation: string; duration: number }> {
     const now = performance.now();
     return Array.from(this.activeOperations.entries()).map(([id, metric]) => ({
@@ -283,7 +284,7 @@ export class PerformanceTracker {
 
   /**
    * Add metric to collection
-   */
+    */
   private addMetric(metric: PerformanceMetric): void {
     this.metrics.push(metric);
 
@@ -295,14 +296,14 @@ export class PerformanceTracker {
 
   /**
    * Generate unique operation ID
-   */
+    */
   private generateOperationId(): string {
     return `op_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
   }
 
   /**
    * Get current memory usage
-   */
+    */
   private getMemoryUsage(): number {
     if (typeof process !== 'undefined' && process.memoryUsage) {
       return process.memoryUsage().heapUsed;
@@ -318,7 +319,7 @@ export class PerformanceTracker {
 
   /**
    * Get metrics summary for dashboard
-   */
+    */
   public getDashboardSummary(): Record<string, any> {
     const stats = this.getStats();
     const activeOps = this.getActiveOperations();

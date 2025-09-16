@@ -1,7 +1,7 @@
 /**
  * Video Monitoring Hooks Service
  * Provides monitoring and lifecycle hooks for video generation
- */
+  */
 
 export interface VideoHookEvent {
   videoId: string;

@@ -2,7 +2,7 @@
 
 /**
  * Video Introduction Feature - Generates AI-powered video introduction for CV
- */
+  */
 export class VideoIntroFeature implements CVFeature {
 
   async generate(cv: CVData, jobId: string, options?: any): Promise<string> {
@@ -33,7 +33,7 @@ export class VideoIntroFeature implements CVFeature {
 
   /**
    * Extract video introduction data from CV
-   */
+    */
   private extractVideoIntroData(cv: CVData): any {
     return {
       // Personal information for video script generation
@@ -72,7 +72,7 @@ export class VideoIntroFeature implements CVFeature {
 
   /**
    * Calculate total years of experience
-   */
+    */
   private calculateTotalExperience(experience: any[]): number {
     if (!experience || experience.length === 0) return 0;
 
@@ -92,7 +92,7 @@ export class VideoIntroFeature implements CVFeature {
 
   /**
    * Extract key achievements from CV
-   */
+    */
   private extractKeyAchievements(cv: CVData): string[] {
     const achievements: string[] = [];
 
@@ -116,7 +116,7 @@ export class VideoIntroFeature implements CVFeature {
 
   /**
    * Extract top skills for video mention
-   */
+    */
   private extractTopSkills(skills: { technical?: string[]; soft?: string[]; languages?: string[]; } | undefined): string[] {
     if (!skills) return [];
 
@@ -132,7 +132,7 @@ export class VideoIntroFeature implements CVFeature {
 
   /**
    * Infer industry from CV content
-   */
+    */
   private inferIndustry(cv: CVData): string {
     // Check recent work experience
     const recentRole = cv.experience?.[0]?.position?.toLowerCase() || '';
@@ -165,7 +165,7 @@ export class VideoIntroFeature implements CVFeature {
 
   /**
    * Extract personality traits for video style customization
-   */
+    */
   private extractPersonalityTraits(cv: CVData): any {
     const summary = (cv.summary || '').toLowerCase();
 
@@ -180,7 +180,7 @@ export class VideoIntroFeature implements CVFeature {
 
   /**
    * Generate React component placeholder for modern CV rendering
-   */
+    */
   private generateReactComponentPlaceholder(jobId: string, componentProps: any): string {
     return `
       <div class="cv-feature-container video-introduction-feature">
@@ -199,7 +199,7 @@ export class VideoIntroFeature implements CVFeature {
 
   getStyles(): string {
     return `
-      /* CV Feature Container Styles */
+      /* CV Feature Container Styles  */
       .cv-feature-container.video-introduction-feature {
         margin: 2rem 0;
         background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
@@ -209,7 +209,7 @@ export class VideoIntroFeature implements CVFeature {
         box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.3);
       }
 
-      /* React Component Placeholder Styles */
+      /* React Component Placeholder Styles  */
       .react-component-placeholder {
         min-height: 500px;
         position: relative;
@@ -217,7 +217,7 @@ export class VideoIntroFeature implements CVFeature {
         color: #f1f5f9;
       }
 
-      /* Loading State */
+      /* Loading State  */
       .component-loading {
         display: flex;
         flex-direction: column;
@@ -242,7 +242,7 @@ export class VideoIntroFeature implements CVFeature {
         100% { transform: rotate(360deg); }
       }
 
-      /* Video Player Styles */
+      /* Video Player Styles  */
       .video-introduction-feature .video-player {
         background: #000;
         border-radius: 12px;
@@ -256,7 +256,7 @@ export class VideoIntroFeature implements CVFeature {
         color: white;
       }
 
-      /* Generation Interface Styles */
+      /* Generation Interface Styles  */
       .video-generation-interface {
         text-align: center;
         padding: 3rem 2rem;
@@ -278,7 +278,7 @@ export class VideoIntroFeature implements CVFeature {
         margin-right: auto;
       }
 
-      /* Style Selection Grid */
+      /* Style Selection Grid  */
       .video-style-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -326,7 +326,7 @@ export class VideoIntroFeature implements CVFeature {
         line-height: 1.4;
       }
 
-      /* Generate Button */
+      /* Generate Button  */
       .video-generate-btn {
         background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
         color: white;
@@ -354,7 +354,7 @@ export class VideoIntroFeature implements CVFeature {
         transform: none;
       }
 
-      /* Feature Benefits */
+      /* Feature Benefits  */
       .video-benefits {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -398,7 +398,7 @@ export class VideoIntroFeature implements CVFeature {
         margin: 0;
       }
 
-      /* Responsive Design */
+      /* Responsive Design  */
       @media (max-width: 768px) {
         .cv-feature-container.video-introduction-feature {
           margin: 1rem 0;
@@ -430,7 +430,7 @@ export class VideoIntroFeature implements CVFeature {
         }
       }
 
-      /* Dark mode enhancements */
+      /* Dark mode enhancements  */
       @media (prefers-color-scheme: dark) {
         .video-introduction-feature {
           box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.5);

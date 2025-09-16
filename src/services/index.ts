@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * CVPlus Multimedia Services - Main Export Module
  * 
  * Provides centralized access to all multimedia processing services
@@ -6,7 +7,7 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 // Core Service Exports
 export * from './base/MediaService';

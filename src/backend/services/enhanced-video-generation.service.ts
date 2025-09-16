@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Enhanced Video Generation Service
  * 
  * Multi-provider video generation service with intelligent fallback mechanism,
@@ -7,7 +8,7 @@
  * 
  * @author Gil Klainert
  * @version 2.0.0
- */
+  */
 
 import { ParsedCV } from '../types/enhanced-models';
 import * as admin from 'firebase-admin';
@@ -97,7 +98,7 @@ interface IntelligentFallbackConfig {
 
 /**
  * Enhanced Video Generation Service with Intelligent Fallback Mechanism
- */
+  */
 export class EnhancedVideoGenerationService {
   private providerSelector: ProviderSelectionEngine;
   private errorRecoveryEngine: ErrorRecoveryEngine;
@@ -190,7 +191,7 @@ export class EnhancedVideoGenerationService {
   
   /**
    * Generate enhanced video introduction with intelligent fallback mechanism
-   */
+    */
   async generateVideoIntroduction(
     parsedCV: ParsedCV,
     options: EnhancedVideoGenerationOptions = {},
@@ -368,7 +369,7 @@ export class EnhancedVideoGenerationService {
   
   /**
    * Check video generation status with intelligent monitoring
-   */
+    */
   async checkVideoStatus(jobId: string): Promise<VideoGenerationStatus> {
     const startTime = Date.now();
     
@@ -456,7 +457,7 @@ export class EnhancedVideoGenerationService {
   
   /**
    * Generate basic script (fallback method)
-   */
+    */
   private async generateBasicScript(
     cv: ParsedCV,
     options: EnhancedVideoGenerationOptions
@@ -535,7 +536,7 @@ export class EnhancedVideoGenerationService {
   
   /**
    * Attempt video generation with intelligent provider selection
-   */
+    */
   private async attemptVideoGeneration(
     script: string,
     jobId: string,
@@ -655,7 +656,7 @@ export class EnhancedVideoGenerationService {
   
   /**
    * Attempt error recovery using the error recovery engine
-   */
+    */
   private async attemptErrorRecovery(
     error: VideoProviderError,
     script: string,
@@ -703,7 +704,7 @@ export class EnhancedVideoGenerationService {
   
   /**
    * Build enhanced result from video generation result
-   */
+    */
   private buildEnhancedResult(
     videoResult: VideoGenerationResult,
     jobId: string,
@@ -741,7 +742,7 @@ export class EnhancedVideoGenerationService {
   
   /**
    * Get system health and performance dashboard
-   */
+    */
   async getSystemDashboard(): Promise<any> {
     try {
       const [performanceData, circuitBreakerStats, recoveryStats] = await Promise.all([
@@ -802,7 +803,7 @@ export class EnhancedVideoGenerationService {
   
   /**
    * Cleanup method for proper service shutdown
-   */
+    */
   cleanup(): void {
     if (this.runwaymlProvider && typeof this.runwaymlProvider.cleanup === 'function') {
       this.runwaymlProvider.cleanup();

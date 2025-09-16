@@ -1,10 +1,11 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * MultimediaService - Frontend API service for multimedia operations
  * Provides comprehensive interface for multimedia generation, management, and playback
  *
  * @author CVPlus Development Team
  * @version 1.0.0
- */
+  */
 
 import { httpsCallable, HttpsCallableResult, Functions } from 'firebase/functions';
 import {
@@ -236,7 +237,7 @@ export class MultimediaService {
   /**
    * Initialize Firebase services
    * This should be called during app initialization
-   */
+    */
   public initialize(functions: Functions, storage: FirebaseStorage): void {
     this.functions = functions;
     this.storage = storage;
@@ -244,7 +245,7 @@ export class MultimediaService {
 
   /**
    * Ensure Firebase services are initialized
-   */
+    */
   private ensureInitialized(): void {
     if (!this.functions || !this.storage) {
       throw new Error('MultimediaService not initialized. Call initialize() first.');
@@ -257,7 +258,7 @@ export class MultimediaService {
 
   /**
    * Generate podcast from CV data
-   */
+    */
   async generatePodcast(cvData: CVData, options: PodcastOptions): Promise<GenerationJob> {
     this.ensureInitialized();
 
@@ -299,7 +300,7 @@ export class MultimediaService {
 
   /**
    * Generate video introduction from CV data
-   */
+    */
   async generateVideo(cvData: CVData, options: VideoOptions): Promise<GenerationJob> {
     this.ensureInitialized();
 
@@ -341,7 +342,7 @@ export class MultimediaService {
 
   /**
    * Get generation job status
-   */
+    */
   async getGenerationStatus(jobId: string): Promise<GenerationStatus> {
     this.ensureInitialized();
 
@@ -382,7 +383,7 @@ export class MultimediaService {
 
   /**
    * Cancel ongoing generation
-   */
+    */
   async cancelGeneration(jobId: string): Promise<void> {
     this.ensureInitialized();
 
@@ -408,7 +409,7 @@ export class MultimediaService {
 
   /**
    * Upload media file with progress tracking
-   */
+    */
   async uploadMedia(
     file: File,
     metadata: MediaMetadata,
@@ -493,7 +494,7 @@ export class MultimediaService {
 
   /**
    * Get media item by ID
-   */
+    */
   async getMediaItem(mediaId: string): Promise<MediaItem> {
     this.ensureInitialized();
 
@@ -508,7 +509,7 @@ export class MultimediaService {
 
   /**
    * Delete media item
-   */
+    */
   async deleteMedia(mediaId: string): Promise<void> {
     this.ensureInitialized();
 
@@ -527,7 +528,7 @@ export class MultimediaService {
 
   /**
    * Get user's media items
-   */
+    */
   async getUserMedia(userId: string, filters?: {
     type?: MediaType;
     limit?: number;
@@ -553,7 +554,7 @@ export class MultimediaService {
 
   /**
    * Create new playlist
-   */
+    */
   async createPlaylist(name: string, items: string[] = []): Promise<Playlist> {
     this.ensureInitialized();
 
@@ -571,7 +572,7 @@ export class MultimediaService {
 
   /**
    * Get playlist by ID
-   */
+    */
   async getPlaylist(playlistId: string): Promise<Playlist> {
     this.ensureInitialized();
 
@@ -586,7 +587,7 @@ export class MultimediaService {
 
   /**
    * Update playlist
-   */
+    */
   async updatePlaylist(playlistId: string, updates: PlaylistUpdate): Promise<Playlist> {
     this.ensureInitialized();
 
@@ -604,7 +605,7 @@ export class MultimediaService {
 
   /**
    * Delete playlist
-   */
+    */
   async deletePlaylist(playlistId: string): Promise<void> {
     this.ensureInitialized();
 
@@ -622,7 +623,7 @@ export class MultimediaService {
 
   /**
    * Start media playback session
-   */
+    */
   async play(mediaId: string, options?: {
     quality?: QualityLevel;
     startPosition?: number;
@@ -644,7 +645,7 @@ export class MultimediaService {
 
   /**
    * Pause playback
-   */
+    */
   async pause(sessionId: string): Promise<void> {
     this.ensureInitialized();
 
@@ -658,7 +659,7 @@ export class MultimediaService {
 
   /**
    * Seek to position
-   */
+    */
   async seek(sessionId: string, position: number): Promise<void> {
     this.ensureInitialized();
 
@@ -672,7 +673,7 @@ export class MultimediaService {
 
   /**
    * Set playback volume
-   */
+    */
   async setVolume(sessionId: string, volume: number): Promise<void> {
     this.ensureInitialized();
 
@@ -694,7 +695,7 @@ export class MultimediaService {
 
   /**
    * Subscribe to generation progress updates
-   */
+    */
   subscribeToGeneration(jobId: string, onUpdate?: (status: GenerationStatus) => void): EventSource {
     const eventSource = new EventSource(`/api/generation/${jobId}/events`);
 
@@ -730,7 +731,7 @@ export class MultimediaService {
 
   /**
    * Subscribe to playback events
-   */
+    */
   subscribeToPlayback(sessionId: string, onUpdate?: (session: PlaybackSession) => void): EventSource {
     const eventSource = new EventSource(`/api/playback/${sessionId}/events`);
 
@@ -762,7 +763,7 @@ export class MultimediaService {
 
   /**
    * Generate sharing URL for media
-   */
+    */
   async generateSharingUrl(mediaId: string, options: SharingOptions): Promise<string> {
     this.ensureInitialized();
 
@@ -780,7 +781,7 @@ export class MultimediaService {
 
   /**
    * Generate embed code for media
-   */
+    */
   async generateEmbedCode(mediaId: string, options?: {
     width?: number;
     height?: number;
@@ -807,7 +808,7 @@ export class MultimediaService {
 
   /**
    * Track media engagement
-   */
+    */
   async trackEngagement(mediaId: string, event: {
     type: 'view' | 'play' | 'pause' | 'seek' | 'complete';
     position?: number;
@@ -836,7 +837,7 @@ export class MultimediaService {
 
   /**
    * Determine media type from MIME type
-   */
+    */
   private determineMediaType(mimeType: string): MediaType {
     if (mimeType.startsWith('image/')) return 'image';
     if (mimeType.startsWith('video/')) return 'video';
@@ -846,7 +847,7 @@ export class MultimediaService {
 
   /**
    * Handle Firebase errors with context
-   */
+    */
   private handleFirebaseError(error: any, context: string): Error {
     console.error(`${context}:`, error);
 
@@ -886,7 +887,7 @@ export class MultimediaService {
 
   /**
    * Clean up resources
-   */
+    */
   public dispose(): void {
     // Close all EventSource connections
     this.eventSources.forEach((eventSource) => {

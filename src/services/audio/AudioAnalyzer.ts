@@ -1,11 +1,12 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Audio Analyzer Service
  * 
  * Placeholder implementation for audio analysis operations.
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 import { AudioAnalysis, AudioProcessingOptions } from '../../types';
 

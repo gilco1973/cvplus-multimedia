@@ -1,7 +1,8 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * CVPlus Multimedia Components - Phase 2B Integration Complete
  * Enhanced podcast and audio components unified with parent project features
- */
+  */
 
 // Enhanced Players (Phase 2B Integration)
 export { PodcastPlayer } from './players/PodcastPlayer'; // Parent project enhanced version with premium features

@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Job Processor
  * 
  * Processes multimedia jobs with support for various job types,
  * progress tracking, and error handling.
- */
+  */
 
 import { JobType, ProcessingOptions, ProcessingResult } from '../../types';
 import { Logger } from '../utils/Logger';
@@ -22,7 +23,7 @@ export class JobProcessor {
 
   /**
    * Process job synchronously
-   */
+    */
   public async processSync(
     input: File | Buffer | string,
     options: ProcessingOptions
@@ -35,7 +36,7 @@ export class JobProcessor {
 
   /**
    * Process job with progress callback
-   */
+    */
   public async process(
     input: File | Buffer | string,
     options: ProcessingOptions,
@@ -68,7 +69,7 @@ export class JobProcessor {
 
   /**
    * Check if job type is supported
-   */
+    */
   public supportsJobType(jobType: JobType): boolean {
     const supportedTypes: JobType[] = ['process', 'transcode', 'optimize', 'enhance'];
     return supportedTypes.includes(jobType);
@@ -76,14 +77,14 @@ export class JobProcessor {
 
   /**
    * Get supported job types
-   */
+    */
   public getSupportedJobTypes(): JobType[] {
     return ['process', 'transcode', 'optimize', 'enhance'];
   }
 
   /**
    * Validate job options
-   */
+    */
   public validateJobOptions(options: ProcessingOptions): boolean {
     try {
       // Basic validation
@@ -99,7 +100,7 @@ export class JobProcessor {
 
   /**
    * Determine job type from options
-   */
+    */
   private determineJobType(options: ProcessingOptions): JobType {
     if ((options as any).transcode) return 'transcode';
     if ((options as any).optimize) return 'optimize';
@@ -109,7 +110,7 @@ export class JobProcessor {
 
   /**
    * Get service for specific job type
-   */
+    */
   private async getServiceForJobType(jobType: JobType): Promise<any> {
     // This is simplified - would need to determine media type as well
     return this.serviceFactory.getImageService();

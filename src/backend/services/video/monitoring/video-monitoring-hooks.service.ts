@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Video Monitoring Hooks Service
  * 
  * Lightweight hooks service for integrating monitoring into existing video generation
@@ -7,20 +8,20 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 import { videoMonitoringIntegration } from './video-monitoring-integration.service';
 import { VideoGenerationOptions, VideoGenerationResult } from './video-providers/base-provider.interface';
 
 /**
  * Video Monitoring Hooks - Simple integration points
- */
+  */
 export class VideoMonitoringHooks {
   
   /**
    * Hook: Video generation started
    * Call this when video generation begins
-   */
+    */
   static async onGenerationStart(
     generationId: string,
     userId: string,
@@ -43,7 +44,7 @@ export class VideoMonitoringHooks {
   /**
    * Hook: Video generation completed
    * Call this when video generation completes (success or failure)
-   */
+    */
   static async onGenerationComplete(
     generationId: string,
     result: VideoGenerationResult,
@@ -62,7 +63,7 @@ export class VideoMonitoringHooks {
   /**
    * Hook: Provider switched
    * Call this when the system switches from one provider to another
-   */
+    */
   static async onProviderSwitch(
     generationId: string,
     fromProvider: string,
@@ -83,7 +84,7 @@ export class VideoMonitoringHooks {
   /**
    * Hook: Error occurred
    * Call this when an error occurs during video generation
-   */
+    */
   static async onError(
     generationId: string,
     error: any,
@@ -104,7 +105,7 @@ export class VideoMonitoringHooks {
   /**
    * Hook: Quality assessment
    * Call this when video quality is assessed
-   */
+    */
   static async onQualityAssessment(
     generationId: string,
     qualityScore: number,
@@ -123,7 +124,7 @@ export class VideoMonitoringHooks {
   /**
    * Hook: User feedback received
    * Call this when user provides feedback on generated video
-   */
+    */
   static async onUserFeedback(
     generationId: string,
     userId: string,
@@ -144,7 +145,7 @@ export class VideoMonitoringHooks {
   /**
    * Hook: Get monitoring status
    * Call this to get current monitoring status for health checks
-   */
+    */
   static async getStatus(): Promise<any> {
     try {
       return await videoMonitoringIntegration.getMonitoringStatus();
@@ -160,7 +161,7 @@ export class VideoMonitoringHooks {
   /**
    * Utility: Generate unique generation ID
    * Helper method to generate consistent generation IDs
-   */
+    */
   static generateGenerationId(userId: string, jobId: string): string {
     const timestamp = Date.now();
     const random = Math.random().toString(36).substring(2, 8);
@@ -170,7 +171,7 @@ export class VideoMonitoringHooks {
   /**
    * Utility: Safe resource usage tracking
    * Helper to safely collect resource usage data
-   */
+    */
   static collectResourceUsage(): any {
     try {
       return {
@@ -192,21 +193,21 @@ export class VideoMonitoringHooks {
   /**
    * Utility: Enable/disable monitoring
    * Control monitoring state for testing or maintenance
-   */
+    */
   static setMonitoringEnabled(enabled: boolean): void {
     videoMonitoringIntegration.setMonitoringEnabled(enabled);
   }
 
   /**
    * Testing: Trigger manual metrics calculation
-   */
+    */
   static async triggerMetricsCalculation(): Promise<void> {
     await videoMonitoringIntegration.triggerMetricsCalculation();
   }
 
   /**
    * Testing: Trigger manual alert check
-   */
+    */
   static async triggerAlertCheck(): Promise<void> {
     await videoMonitoringIntegration.triggerAlertCheck();
   }
@@ -214,7 +215,7 @@ export class VideoMonitoringHooks {
 
 /**
  * Convenience wrapper for common monitoring patterns
- */
+  */
 export class VideoGenerationMonitor {
   private generationId: string;
   private userId: string;
@@ -232,7 +233,7 @@ export class VideoGenerationMonitor {
 
   /**
    * Start monitoring for this generation
-   */
+    */
   async start(options: VideoGenerationOptions): Promise<void> {
     await VideoMonitoringHooks.onGenerationStart(
       this.generationId,
@@ -245,7 +246,7 @@ export class VideoGenerationMonitor {
 
   /**
    * Complete monitoring for this generation
-   */
+    */
   async complete(result: VideoGenerationResult): Promise<void> {
     const resourceUsage = VideoMonitoringHooks.collectResourceUsage();
     await VideoMonitoringHooks.onGenerationComplete(
@@ -257,7 +258,7 @@ export class VideoGenerationMonitor {
 
   /**
    * Record provider switch
-   */
+    */
   async switchProvider(toProvider: string, reason: string): Promise<void> {
     await VideoMonitoringHooks.onProviderSwitch(
       this.generationId,
@@ -270,7 +271,7 @@ export class VideoGenerationMonitor {
 
   /**
    * Record error
-   */
+    */
   async recordError(error: any, recoveryAction?: string): Promise<void> {
     await VideoMonitoringHooks.onError(
       this.generationId,
@@ -282,7 +283,7 @@ export class VideoGenerationMonitor {
 
   /**
    * Record quality assessment
-   */
+    */
   async recordQuality(qualityScore: number, qualityFactors?: any): Promise<void> {
     await VideoMonitoringHooks.onQualityAssessment(
       this.generationId,
@@ -293,14 +294,14 @@ export class VideoGenerationMonitor {
 
   /**
    * Get generation ID
-   */
+    */
   getGenerationId(): string {
     return this.generationId;
   }
 
   /**
    * Get generation duration
-   */
+    */
   getDuration(): number {
     return Date.now() - this.startTime.getTime();
   }
@@ -322,4 +323,4 @@ export class VideoGenerationMonitor {
  *   throw error;
  * }
  * ```
- */
+  */

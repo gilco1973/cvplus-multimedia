@@ -1,11 +1,12 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * GeneratedContent Firestore Service
  *
  * Firebase model service for managing GeneratedContent entities with comprehensive
  * CRUD operations, multimedia content management, and generation tracking.
  *
  * @fileoverview GeneratedContent service for Firebase Functions with file management and analytics
- */
+  */
 
 import {
   getFirestore,
@@ -112,7 +113,7 @@ function invalidateCache(id: string): void {
 
 /**
  * Create a new GeneratedContent in Firestore
- */
+  */
 export async function createGeneratedContent(
   contentData: Omit<GeneratedContent, 'id' | 'createdAt' | 'updatedAt'>
 ): Promise<GeneratedContent> {
@@ -170,7 +171,7 @@ export async function createGeneratedContent(
 
 /**
  * Get GeneratedContent by ID
- */
+  */
 export async function getGeneratedContent(id: string): Promise<GeneratedContent | null> {
   // Check cache first
   const cached = getCachedContent(id);
@@ -207,7 +208,7 @@ export async function getGeneratedContent(id: string): Promise<GeneratedContent 
 
 /**
  * Update GeneratedContent
- */
+  */
 export async function updateGeneratedContent(
   id: string,
   updates: Partial<Omit<GeneratedContent, 'id' | 'createdAt'>>
@@ -254,7 +255,7 @@ export async function updateGeneratedContent(
 
 /**
  * Delete GeneratedContent
- */
+  */
 export async function deleteGeneratedContent(id: string): Promise<boolean> {
   const db = getFirestore();
   const contentRef = doc(db, COLLECTION_NAME, id);
@@ -279,7 +280,7 @@ export async function deleteGeneratedContent(id: string): Promise<boolean> {
 
 /**
  * Update generation status
- */
+  */
 export async function updateGenerationStatus(
   contentId: string,
   status: GenerationStatus,
@@ -298,7 +299,7 @@ export async function updateGenerationStatus(
 
 /**
  * Mark content as completed
- */
+  */
 export async function completeGeneration(
   contentId: string,
   fileUrl: string,
@@ -320,7 +321,7 @@ export async function completeGeneration(
 
 /**
  * Mark content as failed
- */
+  */
 export async function failGeneration(
   contentId: string,
   errorMessage: string,
@@ -361,7 +362,7 @@ export async function failGeneration(
 
 /**
  * Update generation progress
- */
+  */
 export async function updateGenerationProgress(
   contentId: string,
   processingTimeMs: number
@@ -396,7 +397,7 @@ export interface GeneratedContentQueryOptions {
 
 /**
  * Query GeneratedContent with pagination
- */
+  */
 export async function queryGeneratedContent(options: GeneratedContentQueryOptions = {}): Promise<{
   contents: GeneratedContent[];
   lastDoc: DocumentSnapshot | null;
@@ -491,7 +492,7 @@ export async function queryGeneratedContent(options: GeneratedContentQueryOption
 
 /**
  * Get content by job ID
- */
+  */
 export async function getContentByJobId(jobId: string): Promise<GeneratedContent[]> {
   const result = await queryGeneratedContent({
     jobId,
@@ -505,7 +506,7 @@ export async function getContentByJobId(jobId: string): Promise<GeneratedContent
 
 /**
  * Get content by type and status
- */
+  */
 export async function getContentByTypeAndStatus(
   contentType: ContentType,
   status: GenerationStatus,
@@ -524,7 +525,7 @@ export async function getContentByTypeAndStatus(
 
 /**
  * Get pending generations
- */
+  */
 export async function getPendingGenerations(limit: number = 100): Promise<GeneratedContent[]> {
   const result = await queryGeneratedContent({
     status: GenerationStatus.PENDING,
@@ -538,7 +539,7 @@ export async function getPendingGenerations(limit: number = 100): Promise<Genera
 
 /**
  * Get failed generations that are retryable
- */
+  */
 export async function getRetryableFailedGenerations(limit: number = 50): Promise<GeneratedContent[]> {
   const db = getFirestore();
   const contentsRef = collection(db, COLLECTION_NAME);
@@ -576,7 +577,7 @@ export async function getRetryableFailedGenerations(limit: number = 50): Promise
 
 /**
  * Get generation statistics by job
- */
+  */
 export async function getJobGenerationStats(jobId: string): Promise<{
   totalContent: number;
   completedContent: number;
@@ -619,7 +620,7 @@ export async function getJobGenerationStats(jobId: string): Promise<{
 
 /**
  * Get system-wide generation statistics
- */
+  */
 export async function getSystemGenerationStats(): Promise<{
   totalGenerated: number;
   generationsByStatus: Record<GenerationStatus, number>;
@@ -730,7 +731,7 @@ export async function getSystemGenerationStats(): Promise<{
 
 /**
  * Clean up expired content
- */
+  */
 export async function cleanupExpiredContent(): Promise<number> {
   const result = await queryGeneratedContent({
     isPermanent: false,
@@ -768,7 +769,7 @@ export async function cleanupExpiredContent(): Promise<number> {
 
 /**
  * Delete old failed generations
- */
+  */
 export async function deleteOldFailedGenerations(olderThanDays: number = 7): Promise<number> {
   const cutoffDate = Timestamp.fromMillis(Date.now() - (olderThanDays * 24 * 60 * 60 * 1000));
   const db = getFirestore();
@@ -807,7 +808,7 @@ export async function deleteOldFailedGenerations(olderThanDays: number = 7): Pro
 
 /**
  * Get error user action based on category
- */
+  */
 function getErrorUserAction(category: ErrorCategory): string {
   switch (category) {
     case ErrorCategory.QUOTA_EXCEEDED:
@@ -834,7 +835,7 @@ function getErrorUserAction(category: ErrorCategory): string {
 
 /**
  * Clear all cached content (for testing/debugging)
- */
+  */
 export function clearContentCache(): void {
   cache.clear();
   logger.debug('GeneratedContent cache cleared');
@@ -842,7 +843,7 @@ export function clearContentCache(): void {
 
 /**
  * Get cache statistics
- */
+  */
 export function getCacheStats(): { size: number; entries: string[] } {
   return {
     size: cache.size,
@@ -852,7 +853,7 @@ export function getCacheStats(): { size: number; entries: string[] } {
 
 /**
  * Estimate content generation cost
- */
+  */
 export function estimateGenerationCost(
   contentType: ContentType,
   parameters?: Record<string, any>

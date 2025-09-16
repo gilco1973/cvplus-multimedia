@@ -1,11 +1,12 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Waveform Generator Service
  * 
  * Placeholder implementation for audio waveform generation.
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 import { WaveformOptions, ProcessingResult } from '../../types';
 

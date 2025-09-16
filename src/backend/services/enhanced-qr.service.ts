@@ -717,7 +717,7 @@ export class EnhancedQRService {
   /**
    * Generate a complete set of QR codes for portal integration
    * Creates QR codes for all portal features (main, chat, contact, download, menu)
-   */
+    */
   async generatePortalQRCodes(jobId: string, portalURLs: PortalUrls): Promise<QRCodeConfig[]> {
     try {
       logger.info(`Generating portal QR codes for job ${jobId}`);
@@ -807,7 +807,7 @@ export class EnhancedQRService {
   /**
    * Update existing QR codes to point to portal URLs
    * Maintains existing QR code IDs but updates their target URLs
-   */
+    */
   async updateExistingQRCodesToPortal(jobId: string, portalURLs: PortalUrls): Promise<void> {
     try {
       logger.info(`Updating existing QR codes to portal URLs for job ${jobId}`);
@@ -852,7 +852,7 @@ export class EnhancedQRService {
   /**
    * Create a complete QR code set for different portal features
    * Returns configuration objects without saving to database
-   */
+    */
   async createPortalQRCodeSet(portalURLs: PortalUrls): Promise<Partial<QRCodeConfig>[]> {
     try {
       const portalTemplates = this.getPortalTemplates();
@@ -929,7 +929,7 @@ export class EnhancedQRService {
   /**
    * Get portal-specific QR code templates
    * Returns templates optimized for portal features
-   */
+    */
   getPortalTemplates(): QRCodeTemplate[] {
     return this.defaultTemplates.filter(template => 
       template.id.startsWith('portal-') || 
@@ -940,7 +940,7 @@ export class EnhancedQRService {
   /**
    * Generate QR codes with portal-optimized analytics tracking
    * Includes enhanced tracking for portal-specific metrics
-   */
+    */
   async generatePortalQRWithAnalytics(jobId: string, portalURLs: PortalUrls, trackingOptions?: {
     enableGeofencing?: boolean;
     enableTimeRestrictions?: boolean;
@@ -991,7 +991,7 @@ export class EnhancedQRService {
   /**
    * Batch update multiple QR codes for portal migration
    * Efficiently updates multiple QR codes to point to portal URLs
-   */
+    */
   async batchUpdateQRCodesForPortal(jobId: string, portalURLs: PortalUrls, qrCodeIds: string[]): Promise<void> {
     try {
       logger.info(`Batch updating ${qrCodeIds.length} QR codes for portal migration`);

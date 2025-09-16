@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * CVPlus Multimedia Frontend Integration - Enhanced Export
  * 
  * Central export file for all frontend multimedia integration components,
@@ -7,7 +8,7 @@
  * @author Gil Klainert
  * @version 2.0.0
  * @license PROPRIETARY  
- */
+  */
 
 import React from 'react';
 
@@ -217,7 +218,7 @@ export interface ComponentWrapperProps {
 
 /**
  * Initialize multimedia integration with custom configuration
- */
+  */
 export const initializeMultimediaIntegration = (config: Partial<MultimediaIntegrationConfig> = {}) => {
   const defaultConfig: MultimediaIntegrationConfig = {
     enableFeatureFlags: true,
@@ -238,7 +239,7 @@ export const initializeMultimediaIntegration = (config: Partial<MultimediaIntegr
 
 /**
  * Check if multimedia integration is available
- */
+  */
 export const isMultimediaIntegrationAvailable = (): boolean => {
   try {
     return !!(componentResolver && featureRegistry);

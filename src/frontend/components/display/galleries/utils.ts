@@ -1,7 +1,8 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Portfolio Gallery Utilities
  * Utility functions for portfolio gallery components
- */
+  */
 
 import { PortfolioProject } from './types';
 

@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Job Manager Service
  * 
  * Manages asynchronous multimedia processing jobs with queuing,
  * status tracking, progress reporting, and retry mechanisms.
- */
+  */
 
 import { 
   ProcessingOptions,
@@ -25,7 +26,7 @@ import { EventEmitter } from 'events';
 
 /**
  * Job management and processing coordination
- */
+  */
 export class JobManager extends MediaService {
   private readonly queue: JobQueue;
   private readonly processor: JobProcessor;
@@ -51,7 +52,7 @@ export class JobManager extends MediaService {
 
   /**
    * Main job processing entry point
-   */
+    */
   public async processMedia(
     input: File | Buffer | string,
     options: ProcessingOptions
@@ -79,7 +80,7 @@ export class JobManager extends MediaService {
 
   /**
    * Create a new processing job
-   */
+    */
   public async createJob(
     input: File | Buffer | string,
     options: ProcessingOptions,
@@ -119,7 +120,7 @@ export class JobManager extends MediaService {
 
   /**
    * Get job status and progress
-   */
+    */
   public async getJobStatus(jobId: string): Promise<JobResult | null> {
     try {
       return await this.storage.getJob(jobId);
@@ -131,7 +132,7 @@ export class JobManager extends MediaService {
 
   /**
    * Cancel a job
-   */
+    */
   public async cancelJob(jobId: string): Promise<boolean> {
     try {
       const job = await this.storage.getJob(jobId);
@@ -171,7 +172,7 @@ export class JobManager extends MediaService {
 
   /**
    * Retry a failed job
-   */
+    */
   public async retryJob(jobId: string): Promise<JobResult | null> {
     try {
       const job = await this.storage.getJob(jobId);
@@ -203,7 +204,7 @@ export class JobManager extends MediaService {
 
   /**
    * Get job result (for completed jobs)
-   */
+    */
   public async getJobResult(jobId: string): Promise<ProcessingResult | null> {
     try {
       const job = await this.storage.getJob(jobId);
@@ -221,7 +222,7 @@ export class JobManager extends MediaService {
 
   /**
    * List jobs with filtering
-   */
+    */
   public async listJobs(
     filters: {
       status?: JobStatus;
@@ -236,7 +237,7 @@ export class JobManager extends MediaService {
 
   /**
    * Get job statistics
-   */
+    */
   public async getJobStats(): Promise<Record<string, any>> {
     const stats = await this.storage.getJobStats();
     const queueStats = await this.queue.getStats();
@@ -251,7 +252,7 @@ export class JobManager extends MediaService {
 
   /**
    * Start job processing
-   */
+    */
   public startProcessing(): void {
     if (this.processingInterval) {
       return; // Already processing
@@ -267,7 +268,7 @@ export class JobManager extends MediaService {
 
   /**
    * Stop job processing
-   */
+    */
   public stopProcessing(): void {
     if (this.processingInterval) {
       clearInterval(this.processingInterval);
@@ -279,7 +280,7 @@ export class JobManager extends MediaService {
 
   /**
    * Subscribe to job events
-   */
+    */
   public onJobEvent(
     event: 'created' | 'started' | 'progress' | 'completed' | 'failed' | 'cancelled',
     callback: (job: JobResult) => void
@@ -289,7 +290,7 @@ export class JobManager extends MediaService {
 
   /**
    * Validate job input
-   */
+    */
   public async validateInput(
     input: File | Buffer | string,
     options: ProcessingOptions
@@ -312,14 +313,14 @@ export class JobManager extends MediaService {
 
   /**
    * Get supported media types
-   */
+    */
   public getSupportedTypes(): MediaType[] {
     return ['image', 'video', 'audio'];
   }
 
   /**
    * Get service capabilities
-   */
+    */
   public getCapabilities(): Record<string, any> {
     return {
       asyncProcessing: true,
@@ -335,7 +336,7 @@ export class JobManager extends MediaService {
 
   /**
    * Process next job in queue
-   */
+    */
   private async processNextJob(): Promise<void> {
     try {
       // Check if we can process more jobs
@@ -361,7 +362,7 @@ export class JobManager extends MediaService {
 
   /**
    * Process individual job
-   */
+    */
   private async processJob(job: JobResult): Promise<void> {
     try {
       // Update job status
@@ -421,14 +422,14 @@ export class JobManager extends MediaService {
 
   /**
    * Generate unique job ID
-   */
+    */
   private generateJobId(): string {
     return `job_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
   }
 
   /**
    * Determine job type from processing options
-   */
+    */
   private determineJobType(options: ProcessingOptions): JobType {
     if ((options as any).transcode) {
       return 'transcode';
@@ -444,7 +445,7 @@ export class JobManager extends MediaService {
 
   /**
    * Estimate completion time based on options
-   */
+    */
   private estimateCompletionTime(options: ProcessingOptions): Date {
     // Simple estimation based on job type
     const baseTime = 30; // 30 seconds base
@@ -469,7 +470,7 @@ export class JobManager extends MediaService {
 
   /**
    * Cleanup resources
-   */
+    */
   public async cleanup(): Promise<void> {
     this.stopProcessing();
     

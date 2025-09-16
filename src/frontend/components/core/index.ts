@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Core Components for Multimedia Module
  * 
  * This module exports core multimedia components that provide fundamental
  * media handling capabilities and basic user interactions.
- */
+  */
 
 // Core wrapper and error components
 export { FeatureWrapper } from './FeatureWrapper';

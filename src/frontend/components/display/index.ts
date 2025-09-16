@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Display Components for Multimedia Module
  * 
  * This module exports display components that provide galleries, players,
  * carousels, and other presentation-focused multimedia components.
- */
+  */
 
 // Gallery Components
 export * from './galleries';

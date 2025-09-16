@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Advanced Progressive Enhancement Components Index
  * 
  * Exports all progressive enhancement components for adaptive
@@ -6,7 +7,7 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 // Feature Detection
 export { 
@@ -29,7 +30,7 @@ export {
  * 
  * Comprehensive suite of components for progressive enhancement
  * and adaptive multimedia experiences.
- */
+  */
 export const AdvancedProgressiveComponents = {
   FeatureDetectionProvider,
   FeatureDetectionDisplay,

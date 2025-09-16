@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Image processing type definitions for CVPlus multimedia module
- */
+  */
 
 import { 
   MediaFile, 
@@ -14,57 +15,57 @@ import {
 // ============================================================================
 
 export interface ImageProcessingOptions {
-  /** Target width in pixels */
+  /** Target width in pixels  */
   width?: number;
   
-  /** Target height in pixels */
+  /** Target height in pixels  */
   height?: number;
   
-  /** Quality setting (1-100) */
+  /** Quality setting (1-100)  */
   quality?: number;
   
-  /** Output format */
+  /** Output format  */
   format?: ImageFormat;
   
-  /** Enable progressive JPEG */
+  /** Enable progressive JPEG  */
   progressive?: boolean;
   
-  /** Use lossless compression */
+  /** Use lossless compression  */
   lossless?: boolean;
   
-  /** Strip metadata from output */
+  /** Strip metadata from output  */
   stripMetadata?: boolean;
   
-  /** Resize strategy */
+  /** Resize strategy  */
   resizeStrategy?: ResizeStrategy;
   
-  /** Background color for transparent images */
+  /** Background color for transparent images  */
   backgroundColor?: string;
   
-  /** Enable sharpening */
+  /** Enable sharpening  */
   sharpen?: boolean | SharpenOptions;
   
-  /** Color space conversion */
+  /** Color space conversion  */
   colorSpace?: ColorSpace;
   
-  /** Compression level (format-specific) */
+  /** Compression level (format-specific)  */
   compressionLevel?: number;
   
-  /** Generate WebP alternative */
+  /** Generate WebP alternative  */
   generateWebP?: boolean;
   
-  /** Generate AVIF alternative */
+  /** Generate AVIF alternative  */
   generateAVIF?: boolean;
 }
 
 export interface SharpenOptions {
-  /** Sharpening sigma (0.3-1000) */
+  /** Sharpening sigma (0.3-1000)  */
   sigma?: number;
   
-  /** Flat area threshold (0-1000) */
+  /** Flat area threshold (0-1000)  */
   flat?: number;
   
-  /** Jaggy threshold (0-1000) */
+  /** Jaggy threshold (0-1000)  */
   jagged?: number;
 }
 
@@ -82,64 +83,64 @@ export type ColorSpace = 'srgb' | 'rgb' | 'cmyk' | 'lab' | 'grey16';
 // ============================================================================
 
 export interface ResponsiveImageOptions extends ImageProcessingOptions {
-  /** Breakpoints for responsive generation */
+  /** Breakpoints for responsive generation  */
   breakpoints: ResponsiveBreakpoint[];
   
-  /** Base image size for calculations */
+  /** Base image size for calculations  */
   baseWidth: number;
   
-  /** Maximum width to generate */
+  /** Maximum width to generate  */
   maxWidth?: number;
   
-  /** Device pixel ratios to support */
+  /** Device pixel ratios to support  */
   devicePixelRatios?: number[];
   
-  /** Art direction alternatives */
+  /** Art direction alternatives  */
   artDirection?: ArtDirectionRule[];
 }
 
 export interface ResponsiveBreakpoint {
-  /** Breakpoint identifier */
+  /** Breakpoint identifier  */
   name: string;
   
-  /** Minimum viewport width */
+  /** Minimum viewport width  */
   minWidth: number;
   
-  /** Maximum viewport width */
+  /** Maximum viewport width  */
   maxWidth?: number;
   
-  /** Target image width */
+  /** Target image width  */
   targetWidth: number;
   
-  /** Quality override for this breakpoint */
+  /** Quality override for this breakpoint  */
   quality?: number;
   
-  /** Format override for this breakpoint */
+  /** Format override for this breakpoint  */
   format?: ImageFormat;
 }
 
 export interface ArtDirectionRule {
-  /** Media query for this rule */
+  /** Media query for this rule  */
   mediaQuery: string;
   
-  /** Crop area for this rule */
+  /** Crop area for this rule  */
   cropArea?: CropArea;
   
-  /** Specific processing options */
+  /** Specific processing options  */
   processingOptions?: Partial<ImageProcessingOptions>;
 }
 
 export interface CropArea {
-  /** Left position (0-1) */
+  /** Left position (0-1)  */
   left: number;
   
-  /** Top position (0-1) */
+  /** Top position (0-1)  */
   top: number;
   
-  /** Width (0-1) */
+  /** Width (0-1)  */
   width: number;
   
-  /** Height (0-1) */
+  /** Height (0-1)  */
   height: number;
 }
 
@@ -148,114 +149,114 @@ export interface CropArea {
 // ============================================================================
 
 export interface ImageMetadata {
-  /** Image width in pixels */
+  /** Image width in pixels  */
   width: number;
   
-  /** Image height in pixels */
+  /** Image height in pixels  */
   height: number;
   
-  /** Aspect ratio */
+  /** Aspect ratio  */
   aspectRatio: number;
   
-  /** Color depth (bits per pixel) */
+  /** Color depth (bits per pixel)  */
   colorDepth: number;
   
-  /** Color space */
+  /** Color space  */
   colorSpace: string;
   
-  /** Has alpha channel */
+  /** Has alpha channel  */
   hasAlpha: boolean;
   
-  /** DPI/resolution */
+  /** DPI/resolution  */
   density?: number;
   
-  /** EXIF data */
+  /** EXIF data  */
   exif?: ImageEXIF;
   
-  /** Color palette (for indexed images) */
+  /** Color palette (for indexed images)  */
   colorPalette?: ColorInfo[];
   
-  /** Dominant colors */
+  /** Dominant colors  */
   dominantColors?: ColorInfo[];
   
-  /** Animated (for GIF/WebP) */
+  /** Animated (for GIF/WebP)  */
   animated?: boolean;
   
-  /** Number of frames (for animated images) */
+  /** Number of frames (for animated images)  */
   frameCount?: number;
 }
 
 export interface ImageEXIF {
-  /** Camera make */
+  /** Camera make  */
   make?: string;
   
-  /** Camera model */
+  /** Camera model  */
   model?: string;
   
-  /** Camera settings */
+  /** Camera settings  */
   cameraSettings?: CameraSettings;
   
-  /** GPS coordinates */
+  /** GPS coordinates  */
   gps?: GPSCoordinates;
   
-  /** Date taken */
+  /** Date taken  */
   dateTaken?: Date;
   
-  /** Image orientation */
+  /** Image orientation  */
   orientation?: number;
   
-  /** Copyright information */
+  /** Copyright information  */
   copyright?: string;
   
-  /** Artist/photographer */
+  /** Artist/photographer  */
   artist?: string;
 }
 
 export interface CameraSettings {
-  /** Aperture (f-stop) */
+  /** Aperture (f-stop)  */
   aperture?: number;
   
-  /** Shutter speed */
+  /** Shutter speed  */
   shutterSpeed?: string;
   
-  /** ISO sensitivity */
+  /** ISO sensitivity  */
   iso?: number;
   
-  /** Focal length */
+  /** Focal length  */
   focalLength?: number;
   
-  /** Flash used */
+  /** Flash used  */
   flash?: boolean;
   
-  /** White balance */
+  /** White balance  */
   whiteBalance?: string;
 }
 
 export interface GPSCoordinates {
-  /** Latitude */
+  /** Latitude  */
   latitude: number;
   
-  /** Longitude */
+  /** Longitude  */
   longitude: number;
   
-  /** Altitude */
+  /** Altitude  */
   altitude?: number;
   
-  /** Direction */
+  /** Direction  */
   direction?: number;
 }
 
 export interface ColorInfo {
-  /** Color in hex format */
+  /** Color in hex format  */
   hex: string;
   
-  /** RGB values */
+  /** RGB values  */
   rgb: [number, number, number];
   
-  /** HSL values */
+  /** HSL values  */
   hsl: [number, number, number];
   
-  /** Color percentage in image */
+  /** Color percentage in image  */
   percentage?: number;
 }
 
@@ -264,90 +265,90 @@ export interface ColorInfo {
 // ============================================================================
 
 export interface ProcessedImage extends ProcessedMedia<ImageProcessingOptions> {
-  /** Image-specific metadata */
+  /** Image-specific metadata  */
   imageMetadata: ImageMetadata;
   
-  /** Generated thumbnails */
+  /** Generated thumbnails  */
   thumbnails?: ImageThumbnail[];
   
-  /** Alternative formats generated */
+  /** Alternative formats generated  */
   alternativeFormats?: ProcessedImageFormat[];
   
-  /** Color analysis results */
+  /** Color analysis results  */
   colorAnalysis?: ColorAnalysis;
 }
 
 export interface ImageThumbnail {
-  /** Thumbnail size identifier */
+  /** Thumbnail size identifier  */
   size: string;
   
-  /** Thumbnail width */
+  /** Thumbnail width  */
   width: number;
   
-  /** Thumbnail height */
+  /** Thumbnail height  */
   height: number;
   
-  /** Thumbnail file */
+  /** Thumbnail file  */
   file: MediaFile;
   
-  /** Thumbnail URL */
+  /** Thumbnail URL  */
   url: string;
   
-  /** Quality level */
+  /** Quality level  */
   quality: QualityLevel;
 }
 
 export interface ProcessedImageFormat {
-  /** Format type */
+  /** Format type  */
   format: ImageFormat;
   
-  /** Processed file */
+  /** Processed file  */
   file: MediaFile;
   
-  /** File URL */
+  /** File URL  */
   url: string;
   
-  /** Format-specific metadata */
+  /** Format-specific metadata  */
   metadata: ImageMetadata;
   
-  /** Quality score for this format */
+  /** Quality score for this format  */
   qualityScore: number;
   
-  /** Compression ratio achieved */
+  /** Compression ratio achieved  */
   compressionRatio: number;
 }
 
 export interface ColorAnalysis {
-  /** Dominant color palette */
+  /** Dominant color palette  */
   dominantColors: ColorInfo[];
   
-  /** Color harmony analysis */
+  /** Color harmony analysis  */
   colorHarmony: ColorHarmony;
   
-  /** Color temperature */
+  /** Color temperature  */
   colorTemperature: number;
   
-  /** Brightness level (0-100) */
+  /** Brightness level (0-100)  */
   brightness: number;
   
-  /** Contrast level (0-100) */
+  /** Contrast level (0-100)  */
   contrast: number;
   
-  /** Saturation level (0-100) */
+  /** Saturation level (0-100)  */
   saturation: number;
   
-  /** Color distribution */
+  /** Color distribution  */
   colorDistribution: Record<string, number>;
 }
 
 export interface ColorHarmony {
-  /** Color scheme type */
+  /** Color scheme type  */
   scheme: 'monochromatic' | 'analogous' | 'complementary' | 'triadic' | 'tetradic' | 'split-complementary';
   
-  /** Harmony score (0-100) */
+  /** Harmony score (0-100)  */
   score: number;
   
-  /** Suggested color improvements */
+  /** Suggested color improvements  */
   suggestions?: string[];
 }
 
@@ -356,45 +357,45 @@ export interface ColorHarmony {
 // ============================================================================
 
 export interface BatchImageProcessingOptions extends ImageProcessingOptions {
-  /** Apply same settings to all images */
+  /** Apply same settings to all images  */
   uniformProcessing?: boolean;
   
-  /** Individual settings per file */
+  /** Individual settings per file  */
   fileSpecificSettings?: Record<string, ImageProcessingOptions>;
   
-  /** Generate responsive sets for all images */
+  /** Generate responsive sets for all images  */
   generateResponsiveSets?: boolean;
   
-  /** Responsive options to apply */
+  /** Responsive options to apply  */
   responsiveOptions?: ResponsiveImageOptions;
   
-  /** Naming pattern for processed files */
+  /** Naming pattern for processed files  */
   namingPattern?: string;
   
-  /** Output directory structure */
+  /** Output directory structure  */
   directoryStructure?: string;
 }
 
 export interface ImageOptimizationResult {
-  /** Original image file */
+  /** Original image file  */
   original: MediaFile;
   
-  /** Optimized image file */
+  /** Optimized image file  */
   optimized: MediaFile;
   
-  /** Optimization settings used */
+  /** Optimization settings used  */
   settings: ImageProcessingOptions;
   
-  /** Size reduction achieved */
+  /** Size reduction achieved  */
   sizeReduction: number;
   
-  /** Quality loss (0-100) */
+  /** Quality loss (0-100)  */
   qualityLoss: number;
   
-  /** Optimization score (0-100) */
+  /** Optimization score (0-100)  */
   optimizationScore: number;
   
-  /** Processing time */
+  /** Processing time  */
   processingTime: number;
 }
 
@@ -403,25 +404,25 @@ export interface ImageOptimizationResult {
 // ============================================================================
 
 export interface WatermarkOptions {
-  /** Watermark image or text */
+  /** Watermark image or text  */
   source: MediaFile | string;
   
-  /** Watermark position */
+  /** Watermark position  */
   position: WatermarkPosition;
   
-  /** Opacity (0-1) */
+  /** Opacity (0-1)  */
   opacity: number;
   
-  /** Scaling factor */
+  /** Scaling factor  */
   scale?: number;
   
-  /** Rotation angle */
+  /** Rotation angle  */
   rotation?: number;
   
-  /** Blend mode */
+  /** Blend mode  */
   blendMode?: BlendMode;
   
-  /** Margin from edges */
+  /** Margin from edges  */
   margin?: MarginOptions;
 }
 
@@ -436,15 +437,15 @@ export type BlendMode =
   | 'color-dodge' | 'color-burn' | 'darken' | 'lighten' | 'difference' | 'exclusion';
 
 export interface MarginOptions {
-  /** Top margin */
+  /** Top margin  */
   top?: number;
   
-  /** Right margin */
+  /** Right margin  */
   right?: number;
   
-  /** Bottom margin */
+  /** Bottom margin  */
   bottom?: number;
   
-  /** Left margin */
+  /** Left margin  */
   left?: number;
 }

@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * RunwayML Video Generation Provider
  * 
  * Secondary video generation provider using RunwayML Gen-2 API with polling-based status checking,
@@ -6,7 +7,7 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 import axios, { AxiosInstance } from 'axios';
 import * as admin from 'firebase-admin';
@@ -100,7 +101,7 @@ interface RunwayMLPromptEnhancement {
 
 /**
  * Polling Manager for RunwayML Status Tracking
- */
+  */
 class RunwayMLPollingManager {
   private activePollers: Map<string, NodeJS.Timeout> = new Map();
   private provider: RunwayMLProvider;
@@ -587,7 +588,7 @@ export class RunwayMLProvider extends BaseVideoProvider {
   
   /**
    * Enhanced prompt generation for creative video content
-   */
+    */
   private async enhancePromptForVideo(
     script: string,
     options: VideoGenerationOptions
@@ -816,7 +817,7 @@ export class RunwayMLProvider extends BaseVideoProvider {
   
   /**
    * Cleanup method to stop all polling when the service shuts down
-   */
+    */
   cleanup(): void {
     this.pollingManager.stopAllPolling();
   }

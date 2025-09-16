@@ -1,7 +1,8 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Portfolio Gallery Types
  * Types for portfolio gallery components
- */
+  */
 
 // Base props interface for CV features
 export interface CVFeatureProps {

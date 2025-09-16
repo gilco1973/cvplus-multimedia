@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Video Generation Service
  * 
  * Service for testing video generation functionality and API availability.
@@ -6,7 +7,7 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 export class VideoGenerationService {
   private didApiKey: string | undefined;
@@ -17,14 +18,14 @@ export class VideoGenerationService {
 
   /**
    * Check if video generation service is available
-   */
+    */
   isAvailable(): boolean {
     return !!this.didApiKey;
   }
 
   /**
    * Test video generation functionality
-   */
+    */
   async testVideoGeneration(): Promise<{
     success: boolean;
     responseTime?: number;
@@ -72,7 +73,7 @@ export class VideoGenerationService {
 
   /**
    * Get service status information
-   */
+    */
   getServiceStatus(): {
     name: string;
     available: boolean;
@@ -91,7 +92,7 @@ export class VideoGenerationService {
 
   /**
    * Get available avatars for testing
-   */
+    */
   getAvailableAvatars(): Array<{
     type: string;
     name: string;
@@ -126,7 +127,7 @@ export class VideoGenerationService {
 
   /**
    * Test specific avatar configuration
-   */
+    */
   async testAvatarConfiguration(type: string): Promise<{
     success: boolean;
     configured: boolean;

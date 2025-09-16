@@ -232,7 +232,7 @@ export const generatePodcast = onRequest(
 
 /**
  * Get podcast limits based on subscription tier
- */
+  */
 function getPodcastLimits(tier: string) {
   const limits = {
     free: {
@@ -262,7 +262,7 @@ function getPodcastLimits(tier: string) {
 
 /**
  * Validate voice ID
- */
+  */
 function isValidVoiceId(voiceId: string): boolean {
   const validVoiceIds = [
     // ElevenLabs voice IDs
@@ -284,7 +284,7 @@ function isValidVoiceId(voiceId: string): boolean {
 
 /**
  * Calculate estimated processing time based on features
- */
+  */
 function calculateEstimatedTime(features: any): number {
   let baseTime = 60; // 1 minute base time for simple podcast
 

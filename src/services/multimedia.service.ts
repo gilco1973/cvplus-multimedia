@@ -84,7 +84,7 @@ export class MultimediaService {
 
   /**
    * Generate multimedia content based on CV data
-   */
+    */
   async generateContent(options: MultimediaGenerationOptions): Promise<GeneratedContent> {
     console.log(`Starting multimedia generation for CV ${options.cvId}, type: ${options.contentType}`);
 
@@ -154,7 +154,7 @@ export class MultimediaService {
 
   /**
    * Generate podcast based on CV content
-   */
+    */
   private async generatePodcast(cvData: ProcessedCV, features: any = {}): Promise<PodcastGenerationResult> {
     console.log('Generating podcast for CV:', cvData.id);
 
@@ -218,7 +218,7 @@ export class MultimediaService {
 
   /**
    * Generate video introduction using D-ID
-   */
+    */
   private async generateVideoIntro(cvData: ProcessedCV, features: any = {}): Promise<VideoGenerationResult> {
     console.log('Generating video intro for CV:', cvData.id);
 
@@ -319,7 +319,7 @@ export class MultimediaService {
 
   /**
    * Generate portfolio PDF
-   */
+    */
   private async generatePortfolioPDF(cvData: ProcessedCV, features: any = {}): Promise<DocumentGenerationResult> {
     console.log('Generating portfolio PDF for CV:', cvData.id);
 
@@ -357,7 +357,7 @@ export class MultimediaService {
 
   /**
    * Generate cover letter
-   */
+    */
   private async generateCoverLetter(cvData: ProcessedCV, features: any = {}): Promise<DocumentGenerationResult> {
     console.log('Generating cover letter for CV:', cvData.id);
 
@@ -392,7 +392,7 @@ export class MultimediaService {
 
   /**
    * Generate podcast script from CV data
-   */
+    */
   private generatePodcastScript(cvData: ProcessedCV): string {
     const { personalInfo, summary, experience, skills } = cvData.structuredData;
 
@@ -413,7 +413,7 @@ Thank you for listening to my professional introduction. I look forward to discu
 
   /**
    * Generate video script from CV data
-   */
+    */
   private generateVideoScript(cvData: ProcessedCV): string {
     const { personalInfo, summary } = cvData.structuredData;
 
@@ -430,7 +430,7 @@ I would love the opportunity to discuss how I can contribute to your team's succ
 
   /**
    * Generate portfolio HTML content
-   */
+    */
   private generatePortfolioHTML(cvData: ProcessedCV, features: any): string {
     const { personalInfo, experience, skills, education } = cvData.structuredData;
 
@@ -482,7 +482,7 @@ I would love the opportunity to discuss how I can contribute to your team's succ
 
   /**
    * Generate cover letter content
-   */
+    */
   private generateCoverLetterContent(cvData: ProcessedCV, features: any): string {
     const { personalInfo } = cvData.structuredData;
     const targetRole = features.targetRole || 'the position';
@@ -510,7 +510,7 @@ Phone: ${personalInfo.phone}
 
   /**
    * Generate thumbnail for video
-   */
+    */
   private async generateThumbnail(videoUrl: string, fileName: string): Promise<string> {
     // In production, use FFmpeg or similar to extract thumbnail
     // For now, return a placeholder
@@ -520,7 +520,7 @@ Phone: ${personalInfo.phone}
 
   /**
    * Get estimated generation cost
-   */
+    */
   async getEstimatedCost(contentType: ContentType, features: any = {}): Promise<number> {
     switch (contentType) {
       case ContentType.PODCAST:
@@ -538,7 +538,7 @@ Phone: ${personalInfo.phone}
 
   /**
    * Check if user has sufficient credits
-   */
+    */
   async checkUserCredits(userId: string, contentType: ContentType, features: any = {}): Promise<boolean> {
     const user = await getUserProfile(userId);
     const cost = await this.getEstimatedCost(contentType, features);

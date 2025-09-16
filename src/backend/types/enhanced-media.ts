@@ -1,11 +1,12 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Enhanced Media Types
  * 
  * Media processing types for enhanced CV features.
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 export interface MediaProcessingRequest {
   id: string;

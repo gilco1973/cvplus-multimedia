@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Comprehensive validation functions for multimedia components
- */
+  */
 
 export interface ValidationOptions {
   maxSize?: number;
@@ -34,7 +35,7 @@ export const validateFileSize = (file: File, maxSizeBytes: number): boolean => {
 
 /**
  * Enhanced image file validation with comprehensive checks
- */
+  */
 export const validateImageFile = (file: File, options: ValidationOptions = {}): DetailedValidationResult => {
   const {
     maxSize = 10 * 1024 * 1024, // 10MB
@@ -92,7 +93,7 @@ export const validateImageFile = (file: File, options: ValidationOptions = {}): 
 
 /**
  * Validate image dimensions (requires loading the image)
- */
+  */
 export const validateImageDimensions = (file: File, options: ValidationOptions = {}): Promise<DetailedValidationResult> => {
   return new Promise((resolve) => {
     if (!file.type.startsWith('image/')) {
@@ -192,7 +193,7 @@ export const validateImageDimensions = (file: File, options: ValidationOptions =
 
 /**
  * Validate document files
- */
+  */
 export const validateDocumentFile = (file: File, options: ValidationOptions = {}): DetailedValidationResult => {
   const {
     maxSize = 50 * 1024 * 1024, // 50MB
@@ -247,7 +248,7 @@ export const validateDocumentFile = (file: File, options: ValidationOptions = {}
 
 /**
  * Validate video files
- */
+  */
 export const validateVideoFile = (file: File, options: ValidationOptions = {}): DetailedValidationResult => {
   const {
     maxSize = 100 * 1024 * 1024, // 100MB
@@ -301,7 +302,7 @@ export const validateVideoFile = (file: File, options: ValidationOptions = {}): 
 
 /**
  * Comprehensive file validation that automatically detects type
- */
+  */
 export const validateFile = async (file: File, options: ValidationOptions = {}): Promise<DetailedValidationResult> => {
   // Determine file category
   if (file.type.startsWith('image/')) {
@@ -328,7 +329,7 @@ export const validateFile = async (file: File, options: ValidationOptions = {}):
 
 /**
  * Batch validate multiple files
- */
+  */
 export const validateFiles = async (
   files: File[], 
   options: ValidationOptions = {}
@@ -345,7 +346,7 @@ export const validateFiles = async (
 
 /**
  * Security validation for filenames
- */
+  */
 export const validateFilename = (filename: string): DetailedValidationResult => {
   const warnings: string[] = [];
   const suggestions: string[] = [];

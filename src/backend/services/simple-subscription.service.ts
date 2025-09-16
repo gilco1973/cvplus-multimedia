@@ -19,7 +19,7 @@ export interface UserSubscriptionData {
 /**
  * Simplified subscription service for multimedia package during migration
  * This provides basic functionality without complex caching dependencies
- */
+  */
 export class SimpleSubscriptionService {
   private db = admin.firestore();
 

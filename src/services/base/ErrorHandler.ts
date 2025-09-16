@@ -1,9 +1,10 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Multimedia Error Handler
  * 
  * Centralized error handling for multimedia services with categorization,
  * retry logic, circuit breaking, and comprehensive logging.
- */
+  */
 
 import { 
   MultimediaError,
@@ -32,7 +33,7 @@ export class ErrorHandler {
 
   /**
    * Main error handling entry point
-   */
+    */
   public handleError(error: Error, context: string = 'unknown'): MultimediaError {
     const multimediaError = this.categorizeError(error, context);
     
@@ -53,14 +54,14 @@ export class ErrorHandler {
 
   /**
    * Handle successful operation (for circuit breaker)
-   */
+    */
   public handleSuccess(context: string): void {
     this.updateCircuitBreaker(context, true);
   }
 
   /**
    * Categorize error into multimedia-specific categories
-   */
+    */
   private categorizeError(error: Error, context: string): MultimediaError {
     if (error instanceof MultimediaError) {
       return error;
@@ -83,7 +84,7 @@ export class ErrorHandler {
 
   /**
    * Determine error category based on error patterns
-   */
+    */
   private determineErrorCategory(error: Error, context: string): ErrorCategory {
     const message = error.message.toLowerCase();
     const errorName = error.name.toLowerCase();
@@ -143,7 +144,7 @@ export class ErrorHandler {
 
   /**
    * Determine if error is retryable
-   */
+    */
   private isRetryableError(error: MultimediaError): boolean {
     const retryableCategories: ErrorCategory[] = [
       'NETWORK_ERROR',
@@ -157,7 +158,7 @@ export class ErrorHandler {
 
   /**
    * Apply error transformation rules based on configuration
-   */
+    */
   private applyErrorTransforms(error: MultimediaError): MultimediaError {
     // Apply user-friendly message transforms
     if (this.config.friendlyMessages) {
@@ -179,7 +180,7 @@ export class ErrorHandler {
 
   /**
    * Get user-friendly error messages
-   */
+    */
   private getFriendlyMessage(error: MultimediaError): string {
     switch (error.category) {
       case 'FILE_NOT_FOUND':
@@ -219,7 +220,7 @@ export class ErrorHandler {
 
   /**
    * Get suggestions for error resolution
-   */
+    */
   private getErrorSuggestions(error: MultimediaError): string[] {
     switch (error.category) {
       case 'FILE_NOT_FOUND':
@@ -257,7 +258,7 @@ export class ErrorHandler {
 
   /**
    * Sanitize error information to prevent sensitive data leaks
-   */
+    */
   private sanitizeError(error: MultimediaError): MultimediaError {
     // Remove sensitive paths
     error.message = error.message.replace(/\/[^\/\s]+\/[^\/\s]+\/[^\/\s]+/g, '[REDACTED_PATH]');
@@ -275,7 +276,7 @@ export class ErrorHandler {
 
   /**
    * Sanitize stack trace information
-   */
+    */
   private sanitizeStackTrace(stack: string): string {
     return stack
       .split('\n')
@@ -288,7 +289,7 @@ export class ErrorHandler {
 
   /**
    * Log error with appropriate level and context
-   */
+    */
   private logError(error: MultimediaError, context: string): void {
     const logData = {
       category: error.category,
@@ -322,7 +323,7 @@ export class ErrorHandler {
 
   /**
    * Update circuit breaker state
-   */
+    */
   private updateCircuitBreaker(context: string, success: boolean): void {
     if (!this.config.circuitBreaker?.enabled) {
       return;
@@ -346,7 +347,7 @@ export class ErrorHandler {
 
   /**
    * Check if circuit breaker allows operation
-   */
+    */
   public isOperationAllowed(context: string): boolean {
     if (!this.config.circuitBreaker?.enabled) {
       return true;
@@ -358,7 +359,7 @@ export class ErrorHandler {
 
   /**
    * Get circuit breaker statistics
-   */
+    */
   public getCircuitBreakerStats(): Record<string, any> {
     const stats: Record<string, any> = {};
     
@@ -371,7 +372,7 @@ export class ErrorHandler {
 
   /**
    * Reset circuit breaker for specific context
-   */
+    */
   public resetCircuitBreaker(context: string): void {
     const breaker = this.circuitBreakers.get(context);
     if (breaker) {

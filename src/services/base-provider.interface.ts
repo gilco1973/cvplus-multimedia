@@ -1,4 +1,5 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Base Video Provider Interface
  * 
  * Common interface for video analytics providers.
@@ -6,7 +7,7 @@
  * 
  * @author Gil Klainert
  * @version 1.0.0
- */
+  */
 
 export interface VideoProviderMetrics {
   providerId: string;

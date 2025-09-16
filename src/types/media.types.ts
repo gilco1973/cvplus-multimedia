@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Core media type definitions for CVPlus multimedia processing
- */
+  */
 
 // Temporarily remove core dependency for minimal build
 
@@ -25,43 +26,43 @@ export type ProcessingStatus = 'queued' | 'processing' | 'completed' | 'failed' 
 // ============================================================================
 
 export interface MediaFile {
-  /** Unique identifier for the media file */
+  /** Unique identifier for the media file  */
   id: string;
   
-  /** Original filename */
+  /** Original filename  */
   name: string;
   
-  /** File extension */
+  /** File extension  */
   extension: string;
   
-  /** MIME type */
+  /** MIME type  */
   mimeType: string;
   
-  /** File size in bytes */
+  /** File size in bytes  */
   size: number;
   
-  /** Media type classification */
+  /** Media type classification  */
   type: MediaType;
   
-  /** File buffer or blob */
+  /** File buffer or blob  */
   data: Buffer | Blob | File;
   
-  /** File buffer (compatibility) */
+  /** File buffer (compatibility)  */
   buffer?: Buffer;
   
-  /** File stream (compatibility) */
+  /** File stream (compatibility)  */
   stream?: NodeJS.ReadableStream;
   
-  /** File metadata */
+  /** File metadata  */
   metadata?: MediaMetadata;
   
-  /** Upload timestamp */
+  /** Upload timestamp  */
   uploadedAt?: Date;
   
-  /** User ID who uploaded the file */
+  /** User ID who uploaded the file  */
   userId?: string;
   
-  /** File hash for deduplication */
+  /** File hash for deduplication  */
   hash?: string;
 }
 
@@ -70,25 +71,25 @@ export interface MediaFile {
 // ============================================================================
 
 export interface MediaMetadata {
-  /** File creation date */
+  /** File creation date  */
   createdAt?: Date;
   
-  /** File modification date */
+  /** File modification date  */
   modifiedAt?: Date;
   
-  /** File author/creator */
+  /** File author/creator  */
   author?: string;
   
-  /** File description */
+  /** File description  */
   description?: string;
   
-  /** File tags */
+  /** File tags  */
   tags?: string[];
   
-  /** Custom properties */
+  /** Custom properties  */
   custom?: Record<string, unknown>;
   
-  /** Storage provider */
+  /** Storage provider  */
   provider?: string;
 }
 
@@ -97,62 +98,62 @@ export interface MediaMetadata {
 // ============================================================================
 
 export interface ProcessedMedia<T = unknown> {
-  /** Original media file reference */
+  /** Original media file reference  */
   original: MediaFile;
   
-  /** Processed file data */
+  /** Processed file data  */
   processed: MediaFile;
   
-  /** Processing options used */
+  /** Processing options used  */
   options: T;
   
-  /** Processing metrics */
+  /** Processing metrics  */
   metrics: ProcessingMetrics;
   
-  /** Processing timestamp */
+  /** Processing timestamp  */
   processedAt: Date;
   
-  /** Processing duration in milliseconds */
+  /** Processing duration in milliseconds  */
   duration: number;
   
-  /** Quality assessment */
+  /** Quality assessment  */
   quality?: QualityAssessment;
 }
 
 export interface ProcessingMetrics {
-  /** Original file size */
+  /** Original file size  */
   originalSize: number;
   
-  /** Processed file size */
+  /** Processed file size  */
   processedSize: number;
   
-  /** Compression ratio (0-1) */
+  /** Compression ratio (0-1)  */
   compressionRatio: number;
   
-  /** Processing time in milliseconds */
+  /** Processing time in milliseconds  */
   processingTime: number;
   
-  /** Memory usage during processing */
+  /** Memory usage during processing  */
   memoryUsage?: number;
   
-  /** Quality score (0-100) */
+  /** Quality score (0-100)  */
   qualityScore?: number;
 }
 
 export interface QualityAssessment {
-  /** Overall quality score (0-100) */
+  /** Overall quality score (0-100)  */
   overall: number;
   
-  /** Sharpness score (0-100) */
+  /** Sharpness score (0-100)  */
   sharpness?: number;
   
-  /** Color accuracy score (0-100) */
+  /** Color accuracy score (0-100)  */
   colorAccuracy?: number;
   
-  /** Noise level (0-100, lower is better) */
+  /** Noise level (0-100, lower is better)  */
   noiseLevel?: number;
   
-  /** Compression artifacts score (0-100, lower is better) */
+  /** Compression artifacts score (0-100, lower is better)  */
   artifacts?: number;
 }
 
@@ -161,59 +162,59 @@ export interface QualityAssessment {
 // ============================================================================
 
 export interface ResponsiveMediaSet {
-  /** Source media file */
+  /** Source media file  */
   source: MediaFile;
   
-  /** Generated responsive versions */
+  /** Generated responsive versions  */
   versions: ResponsiveVersion[];
   
-  /** Breakpoint definitions */
+  /** Breakpoint definitions  */
   breakpoints: Breakpoint[];
   
-  /** Generated srcset string for HTML */
+  /** Generated srcset string for HTML  */
   srcset: string;
   
-  /** Default version to use */
+  /** Default version to use  */
   defaultVersion: ResponsiveVersion;
 }
 
 export interface ResponsiveVersion {
-  /** Quality/size identifier */
+  /** Quality/size identifier  */
   id: string;
   
-  /** Display width */
+  /** Display width  */
   width: number;
   
-  /** Display height */
+  /** Display height  */
   height?: number;
   
-  /** Device pixel ratio */
+  /** Device pixel ratio  */
   dpr: number;
   
-  /** Processed media file */
+  /** Processed media file  */
   file: MediaFile;
   
-  /** File URL */
+  /** File URL  */
   url: string;
   
-  /** Intended usage context */
+  /** Intended usage context  */
   usage: 'mobile' | 'tablet' | 'desktop' | 'retina';
 }
 
 export interface Breakpoint {
-  /** Breakpoint name */
+  /** Breakpoint name  */
   name: string;
   
-  /** Minimum width */
+  /** Minimum width  */
   minWidth: number;
   
-  /** Maximum width */
+  /** Maximum width  */
   maxWidth?: number;
   
-  /** Device pixel ratios to generate */
+  /** Device pixel ratios to generate  */
   devicePixelRatios: number[];
   
-  /** Quality level for this breakpoint */
+  /** Quality level for this breakpoint  */
   quality: QualityLevel;
 }
 
@@ -222,60 +223,60 @@ export interface Breakpoint {
 // ============================================================================
 
 export interface UploadProgress {
-  /** Upload session ID */
+  /** Upload session ID  */
   sessionId: string;
   
-  /** File being uploaded */
+  /** File being uploaded  */
   file: MediaFile;
   
-  /** Bytes uploaded */
+  /** Bytes uploaded  */
   bytesUploaded: number;
   
-  /** Total bytes to upload */
+  /** Total bytes to upload  */
   totalBytes: number;
   
-  /** Upload percentage (0-100) */
+  /** Upload percentage (0-100)  */
   percentage: number;
   
-  /** Upload speed in bytes per second */
+  /** Upload speed in bytes per second  */
   uploadSpeed?: number;
   
-  /** Estimated time remaining in milliseconds */
+  /** Estimated time remaining in milliseconds  */
   estimatedTimeRemaining?: number;
   
-  /** Upload status */
+  /** Upload status  */
   status: 'uploading' | 'paused' | 'completed' | 'failed';
   
-  /** Error details if failed */
+  /** Error details if failed  */
   error?: ErrorDetails;
 }
 
 export interface UploadResult {
-  /** Upload session ID */
+  /** Upload session ID  */
   sessionId: string;
   
-  /** Uploaded file information */
+  /** Uploaded file information  */
   file: MediaFile;
   
-  /** Storage path */
+  /** Storage path  */
   path: string;
   
-  /** Public URL */
+  /** Public URL  */
   url: string;
   
-  /** CDN URL if available */
+  /** CDN URL if available  */
   cdnUrl?: string;
   
-  /** File size in bytes */
+  /** File size in bytes  */
   size?: number;
   
-  /** Upload completion timestamp */
+  /** Upload completion timestamp  */
   completedAt: Date;
   
-  /** Upload duration in milliseconds */
+  /** Upload duration in milliseconds  */
   duration: number;
   
-  /** File hash for verification */
+  /** File hash for verification  */
   hash: string;
 }
 
@@ -284,83 +285,83 @@ export interface UploadResult {
 // ============================================================================
 
 export interface BatchProcessingJob<T = unknown> {
-  /** Batch job ID */
+  /** Batch job ID  */
   id: string;
   
-  /** Files to process */
+  /** Files to process  */
   files: MediaFile[];
   
-  /** Processing options */
+  /** Processing options  */
   options: T;
   
-  /** Processing status */
+  /** Processing status  */
   status: ProcessingStatus;
   
-  /** Individual file statuses */
+  /** Individual file statuses  */
   fileStatuses: BatchFileStatus[];
   
-  /** Overall progress (0-100) */
+  /** Overall progress (0-100)  */
   progress: number;
   
-  /** Job creation timestamp */
+  /** Job creation timestamp  */
   createdAt: Date;
   
-  /** Job start timestamp */
+  /** Job start timestamp  */
   startedAt?: Date;
   
-  /** Job completion timestamp */
+  /** Job completion timestamp  */
   completedAt?: Date;
   
-  /** Processing results */
+  /** Processing results  */
   results: ProcessedMedia<T>[];
   
-  /** Batch processing metrics */
+  /** Batch processing metrics  */
   metrics: BatchMetrics;
 }
 
 export interface BatchFileStatus {
-  /** File ID */
+  /** File ID  */
   fileId: string;
   
-  /** Processing status */
+  /** Processing status  */
   status: ProcessingStatus;
   
-  /** Progress percentage (0-100) */
+  /** Progress percentage (0-100)  */
   progress: number;
   
-  /** Error details if failed */
+  /** Error details if failed  */
   error?: ErrorDetails;
   
-  /** Processing start time */
+  /** Processing start time  */
   startedAt?: Date;
   
-  /** Processing completion time */
+  /** Processing completion time  */
   completedAt?: Date;
 }
 
 export interface BatchMetrics {
-  /** Total files processed */
+  /** Total files processed  */
   totalFiles: number;
   
-  /** Successfully processed files */
+  /** Successfully processed files  */
   successfulFiles: number;
   
-  /** Failed files */
+  /** Failed files  */
   failedFiles: number;
   
-  /** Total processing time */
+  /** Total processing time  */
   totalProcessingTime: number;
   
-  /** Average processing time per file */
+  /** Average processing time per file  */
   averageProcessingTime: number;
   
-  /** Total original size */
+  /** Total original size  */
   totalOriginalSize: number;
   
-  /** Total processed size */
+  /** Total processed size  */
   totalProcessedSize: number;
   
-  /** Overall compression ratio */
+  /** Overall compression ratio  */
   overallCompressionRatio: number;
 }
 

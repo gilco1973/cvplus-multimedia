@@ -1,6 +1,7 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * Gallery display components
- */
+  */
 
 export { PortfolioGallery, ProjectCard, LightboxModal, PortfolioFilters } from './galleries';
 export * from './galleries/types';

@@ -1,10 +1,11 @@
-// @ts-ignore - Export conflicts/**
+// @ts-ignore
+/**
  * MultimediaService Usage Examples
  * Demonstrates how to use the MultimediaService for various operations
  *
  * @author CVPlus Development Team
  * @version 1.0.0
- */
+  */
 
 import { initializeApp } from 'firebase/app';
 import { getFunctions } from 'firebase/functions';
@@ -24,7 +25,7 @@ import {
 
 /**
  * Example 1: Initialize for development with emulators
- */
+  */
 export function initializeForDevelopment() {
   // Initialize Firebase
   const app = initializeApp({
@@ -43,7 +44,7 @@ export function initializeForDevelopment() {
 
 /**
  * Example 2: Initialize for production
- */
+  */
 export function initializeForProduction() {
   const app = initializeApp({
     projectId: 'cvplus-prod',
@@ -65,7 +66,7 @@ export function initializeForProduction() {
 
 /**
  * Example 3: Generate a podcast from CV data
- */
+  */
 export async function generatePodcastExample(multimediaService: MultimediaService) {
   const cvData: CVData = {
     id: 'cv-123',
@@ -142,7 +143,7 @@ export async function generatePodcastExample(multimediaService: MultimediaServic
 
 /**
  * Example 4: Generate a video introduction
- */
+  */
 export async function generateVideoExample(multimediaService: MultimediaService) {
   const cvData: CVData = {
     // ... same CV data as above
@@ -187,7 +188,7 @@ export async function generateVideoExample(multimediaService: MultimediaService)
 
 /**
  * Example 5: Upload and manage media files
- */
+  */
 export async function uploadMediaExample(multimediaService: MultimediaService) {
   const fileInput = document.getElementById('media-upload') as HTMLInputElement;
   const file = fileInput?.files?.[0];
@@ -227,7 +228,7 @@ export async function uploadMediaExample(multimediaService: MultimediaService) {
 
 /**
  * Example 6: Create and manage playlists
- */
+  */
 export async function playlistExample(multimediaService: MultimediaService) {
   try {
     // Create a new playlist
@@ -263,7 +264,7 @@ export async function playlistExample(multimediaService: MultimediaService) {
 
 /**
  * Example 7: Media playback control
- */
+  */
 export async function playbackExample(multimediaService: MultimediaService) {
   const mediaId = 'media-123';
 
@@ -296,7 +297,7 @@ export async function playbackExample(multimediaService: MultimediaService) {
 
 /**
  * Example 8: Generate sharing URLs and embed codes
- */
+  */
 export async function sharingExample(multimediaService: MultimediaService) {
   const mediaId = 'media-123';
 
@@ -328,7 +329,7 @@ export async function sharingExample(multimediaService: MultimediaService) {
 
 /**
  * Example 9: Track media engagement
- */
+  */
 export async function trackEngagementExample(multimediaService: MultimediaService) {
   const mediaId = 'media-123';
 
@@ -369,7 +370,7 @@ export async function trackEngagementExample(multimediaService: MultimediaServic
 
 /**
  * Example 10: Proper service cleanup
- */
+  */
 export function cleanupExample(multimediaService: MultimediaService) {
   // Clean up resources when component unmounts or app closes
   multimediaService.dispose();
@@ -382,7 +383,7 @@ export function cleanupExample(multimediaService: MultimediaService) {
 
 /**
  * Example 11: Comprehensive error handling
- */
+  */
 export async function errorHandlingExample(multimediaService: MultimediaService) {
   try {
     const job = await multimediaService.generatePodcast(
