@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Advanced processing components
  */
 

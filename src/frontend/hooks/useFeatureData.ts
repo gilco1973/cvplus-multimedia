@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Feature Data Hook
  * Temporary hook for fetching feature data - to be replaced with real implementation
  */

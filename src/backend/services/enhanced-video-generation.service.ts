@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Enhanced Video Generation Service
  * 
  * Multi-provider video generation service with intelligent fallback mechanism,

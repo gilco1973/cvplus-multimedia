@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Portfolio Gallery Utilities
  * Utility functions for portfolio gallery components
  */

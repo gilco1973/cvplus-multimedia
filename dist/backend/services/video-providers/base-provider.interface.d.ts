@@ -1,12 +1,3 @@
-/**
- * Base Provider Interface for Video Generation Services
- *
- * Defines the common interface for all video generation providers
- * (HeyGen, D-ID, RunwayML, etc.) with capabilities, rate limits, and health monitoring.
- *
- * @author Gil Klainert
- * @version 1.0.0
- */
 export interface VideoGenerationOptions {
     duration?: 'short' | 'medium' | 'long';
     style?: 'professional' | 'friendly' | 'energetic';

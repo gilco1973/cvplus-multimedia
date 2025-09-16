@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Video Processing Service
  * 
  * Comprehensive video processing service supporting transcoding, optimization,

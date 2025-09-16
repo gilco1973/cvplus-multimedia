@@ -1,12 +1,3 @@
-/**
- * Enhanced Data Models - Main Interface
- *
- * Core enhanced models with imports from modular files.
- * Refactored to maintain <200 line compliance.
- *
- * @author Gil Klainert
- * @version 1.0.0
- */
 export type { ParsedCV } from './job';
 export type { EnhancedJob, PortfolioImage, CalendarSettings, Testimonial, PersonalityProfile, PrivacySettings, SkillsVisualization, SkillCategory, LanguageSkill, Certification } from './enhanced-job';
 export type { FlexibleSkillsFormat } from './enhanced-skills';

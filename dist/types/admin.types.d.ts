@@ -1,8 +1,3 @@
-/**
- * Admin types for multimedia module
- * These are local definitions to avoid dependency violations
- * Higher layers should implement these interfaces
- */
 export declare enum AdminRole {
     SUPER_ADMIN = "super_admin",
     ADMIN = "admin",

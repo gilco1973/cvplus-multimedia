@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * RunwayML Video Generation Provider
  * 
  * Secondary video generation provider using RunwayML Gen-2 API with polling-based status checking,

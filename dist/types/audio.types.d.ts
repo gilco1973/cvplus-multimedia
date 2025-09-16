@@ -1,6 +1,3 @@
-/**
- * Audio processing type definitions for CVPlus multimedia module
- */
 import { MediaFile, ProcessedMedia, QualityLevel, AudioFormat } from './media.types';
 export interface AudioProcessingOptions {
     /** Target bitrate in bits per second */

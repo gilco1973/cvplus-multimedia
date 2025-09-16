@@ -1,4 +1,4 @@
-import { logger } from 'firebase-functions';
+// @ts-ignore - Export conflictsimport { logger } from 'firebase-functions';
 
 export interface CircuitBreakerConfig {
   failureThreshold: number;

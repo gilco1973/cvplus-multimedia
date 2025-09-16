@@ -1,6 +1,3 @@
-/**
- * Media Generation Service for Video Intros and Podcasts
- */
 import { ParsedCV } from '../types/enhanced-models';
 export declare class MediaGenerationService {
     private openai;

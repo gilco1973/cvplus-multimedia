@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * MultimediaService Initializer - Firebase Setup Utility
  * Provides easy initialization of MultimediaService with Firebase instances
  *

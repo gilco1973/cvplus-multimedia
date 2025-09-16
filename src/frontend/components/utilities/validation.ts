@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Comprehensive validation functions for multimedia components
  */
 

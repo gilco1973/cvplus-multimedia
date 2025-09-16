@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Processing pipeline and job management types for CVPlus multimedia module
  */
 

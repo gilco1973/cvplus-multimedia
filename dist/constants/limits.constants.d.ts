@@ -1,11 +1,3 @@
-/**
- * CVPlus Multimedia - Limits Constants
- *
- * File size limits, dimensions, and other constraints for multimedia processing.
- *
- * @author Gil Klainert
- * @version 1.0.0
- */
 export declare const SIZE_UNITS: {
     readonly bytes: 1;
     readonly kb: 1024;

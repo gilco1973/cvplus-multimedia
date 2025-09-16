@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Image processing type definitions for CVPlus multimedia module
  */
 

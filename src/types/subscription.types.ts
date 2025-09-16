@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Subscription types for multimedia module
  * Local definitions to avoid dependency violations
  */

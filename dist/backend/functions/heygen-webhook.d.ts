@@ -1,13 +1,4 @@
 /**
- * HeyGen Webhook Handler Function
- *
- * Firebase Function to handle HeyGen webhook callbacks for real-time
- * video generation status updates with comprehensive error handling.
- *
- * @author Gil Klainert
- * @version 1.0.0
- */
-/**
  * HeyGen Webhook Handler
  *
  * Receives webhook callbacks from HeyGen API when video generation

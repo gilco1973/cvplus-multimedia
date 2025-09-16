@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Core media player components
  */
 

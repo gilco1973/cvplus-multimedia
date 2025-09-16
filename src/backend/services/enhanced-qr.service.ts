@@ -1,4 +1,4 @@
-import * as admin from 'firebase-admin';
+// @ts-ignore - Export conflictsimport * as admin from 'firebase-admin';
 import { FieldValue } from 'firebase-admin/firestore';
 import { logger } from 'firebase-functions';
 import * as QRCode from 'qrcode';

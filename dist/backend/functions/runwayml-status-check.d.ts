@@ -1,13 +1,4 @@
 /**
- * RunwayML Status Check Function
- *
- * Firebase Function to manually check RunwayML video generation status
- * for debugging and manual status updates when polling fails.
- *
- * @author Gil Klainert
- * @version 1.0.0
- */
-/**
  * Manual RunwayML Status Check
  *
  * HTTP endpoint to manually check status of a RunwayML video generation job

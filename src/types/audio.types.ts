@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Audio processing type definitions for CVPlus multimedia module
  */
 

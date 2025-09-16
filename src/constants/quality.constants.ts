@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * CVPlus Multimedia - Quality Constants
  * 
  * Quality and compression settings for multimedia processing.

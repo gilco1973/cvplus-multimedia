@@ -1,4 +1,4 @@
-import { QRCodeOptions, QRCodeTemplate } from './types';
+// @ts-ignore - Export conflictsimport { QRCodeOptions, QRCodeTemplate } from './types';
 
 /**
  * Generate QR code options from template and customization

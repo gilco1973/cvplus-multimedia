@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * CVPlus Multimedia - Processing Constants
  * 
  * Processing-related constants for multimedia operations.

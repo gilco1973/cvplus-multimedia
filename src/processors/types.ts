@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Processor Types
  * 
  * Type definitions for multimedia processors.

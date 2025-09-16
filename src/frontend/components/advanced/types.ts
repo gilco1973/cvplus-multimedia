@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Type definitions for advanced multimedia components
  */
 

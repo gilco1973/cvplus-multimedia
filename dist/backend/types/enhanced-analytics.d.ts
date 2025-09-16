@@ -1,13 +1,4 @@
 /**
- * Enhanced Analytics Types
- *
- * Analytics and tracking types for enhanced CV features.
- * Extracted from enhanced-models.ts to maintain <200 line compliance.
- *
- * @author Gil Klainert
- * @version 1.0.0
- */
-/**
  * Public CV profile data
  */
 export interface PublicCVProfile {

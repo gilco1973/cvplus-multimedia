@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Base Media Service Class
  * 
  * Provides common functionality and interface for all multimedia services

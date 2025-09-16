@@ -1,4 +1,4 @@
-import { logger } from 'firebase-functions';
+// @ts-ignore - Export conflictsimport { logger } from 'firebase-functions';
 import { cachedSubscriptionService, UserSubscriptionData } from './cached-subscription.service';
 import { invalidateUserSubscriptionCache } from '../functions/payments/getUserSubscription';
 

@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Firestore Data Sanitization Utility
  * 
  * Prevents "Unsupported field value: undefined" errors by sanitizing data before Firestore writes.

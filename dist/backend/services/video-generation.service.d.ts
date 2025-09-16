@@ -1,7 +1,3 @@
-/**
- * Video Generation Service
- * Creates professional video introductions with AI avatars
- */
 import { ParsedCV } from '../types/enhanced-models';
 import { EnhancedScriptResult } from './enhanced-prompt-engine.service';
 interface VideoGenerationOptions {

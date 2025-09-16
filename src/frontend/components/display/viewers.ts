@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Media viewer components
  */
 

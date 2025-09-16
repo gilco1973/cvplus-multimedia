@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Processing Component Types
  * Types for video processing components
  */

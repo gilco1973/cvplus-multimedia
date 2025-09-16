@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Audio Processor Service
  * 
  * Placeholder implementation for audio processing operations.

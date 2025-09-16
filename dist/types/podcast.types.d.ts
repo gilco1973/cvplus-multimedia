@@ -1,7 +1,3 @@
-/**
- * Enhanced Podcast Types for Unified Component System
- * Combines features from parent project and multimedia submodule
- */
 export interface PodcastData {
     title?: string;
     description?: string;

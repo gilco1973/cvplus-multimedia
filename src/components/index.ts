@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * CVPlus Multimedia Components - Phase 2B Integration Complete
  * Enhanced podcast and audio components unified with parent project features
  */

@@ -1,6 +1,3 @@
-/**
- * Storage and CDN type definitions for CVPlus multimedia module
- */
 import { MediaFile } from './media.types';
 interface ErrorDetails {
     message: string;

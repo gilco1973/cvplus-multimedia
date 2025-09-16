@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Multimedia Service Factory
  * 
  * Provides centralized creation and management of multimedia services

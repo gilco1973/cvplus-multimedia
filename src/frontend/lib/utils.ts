@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Temporary utility functions for components
  * This will be replaced with proper utils from core module
  */

@@ -1,11 +1,3 @@
-/**
- * Enhanced RAG (Retrieval-Augmented Generation) Types
- *
- * RAG processing types for enhanced CV features.
- *
- * @author Gil Klainert
- * @version 1.0.0
- */
 export interface RAGConfiguration {
     vectorStoreProvider: 'pinecone' | 'weaviate' | 'qdrant' | 'local';
     embeddingModel: string;

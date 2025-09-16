@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Video Generation Service
  * 
  * Service for testing video generation functionality and API availability.

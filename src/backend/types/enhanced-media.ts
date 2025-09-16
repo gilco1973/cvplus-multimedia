@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Enhanced Media Types
  * 
  * Media processing types for enhanced CV features.

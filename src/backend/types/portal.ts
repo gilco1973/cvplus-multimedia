@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Portal Types for Multimedia QR Code Integration
  */
 

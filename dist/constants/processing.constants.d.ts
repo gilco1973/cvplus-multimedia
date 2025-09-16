@@ -1,11 +1,3 @@
-/**
- * CVPlus Multimedia - Processing Constants
- *
- * Processing-related constants for multimedia operations.
- *
- * @author Gil Klainert
- * @version 1.0.0
- */
 export declare const PROCESSING_STAGES: {
     readonly VALIDATION: "validation";
     readonly UPLOAD: "upload";

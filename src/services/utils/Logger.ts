@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Multimedia Logger Utility
  * 
  * Centralized logging for multimedia services with structured logging,

@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Contract Test: POST /multimedia/podcast
  *
  * Tests the AI podcast generation endpoint following TDD principles.

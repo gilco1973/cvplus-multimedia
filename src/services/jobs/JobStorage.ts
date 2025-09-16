@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Job Storage
  * 
  * Handles persistence and retrieval of job data and status

@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * CVPlus Multimedia - Limits Constants
  * 
  * File size limits, dimensions, and other constraints for multimedia processing.

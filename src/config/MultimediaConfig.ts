@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Multimedia Configuration Manager
  * 
  * Centralized configuration management for all multimedia services

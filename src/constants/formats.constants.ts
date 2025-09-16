@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * CVPlus Multimedia - Format Constants
  * 
  * Supported file formats and MIME types for multimedia processing.

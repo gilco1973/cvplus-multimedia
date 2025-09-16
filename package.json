@@ -118,9 +118,10 @@
     "validate-dependencies": "./scripts/validate-dependencies.sh"
   },
   "dependencies": {
-    "@cvplus/core": "file:../core",
     "@cvplus/auth": "file:../auth",
+    "@cvplus/core": "file:../core",
     "@cvplus/i18n": "file:../i18n",
+    "@cvplus/logging": "^1.0.0",
     "@ffmpeg/ffmpeg": "^0.12.10",
     "@types/node": "^22.9.1",
     "aws-sdk": "^2.1691.0",
@@ -137,8 +138,8 @@
     "openai": "^4.0.0",
     "qrcode": "^1.5.3",
     "react": ">=18.0.0",
-    "react-intersection-observer": "^9.16.0",
     "react-hot-toast": "^2.4.1",
+    "react-intersection-observer": "^9.16.0",
     "sharp": "^0.33.5"
   },
   "devDependencies": {

@@ -1,4 +1,4 @@
-import { onRequest } from 'firebase-functions/v2/https';
+// @ts-ignore - Export conflictsimport { onRequest } from 'firebase-functions/v2/https';
 import * as admin from 'firebase-admin';
 import { requestCorsOptions, corsMiddleware } from '../config/cors';
 

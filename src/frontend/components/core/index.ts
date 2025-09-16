@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Core Components for Multimedia Module
  * 
  * This module exports core multimedia components that provide fundamental

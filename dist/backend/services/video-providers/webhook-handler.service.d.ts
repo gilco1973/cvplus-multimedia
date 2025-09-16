@@ -1,12 +1,3 @@
-/**
- * Video Provider Webhook Handler Service
- *
- * Centralized webhook handling for all video generation providers
- * with provider-specific processing and unified status updates.
- *
- * @author Gil Klainert
- * @version 1.0.0
- */
 import { VideoGenerationStatus } from './base-provider.interface';
 interface WebhookValidationConfig {
     secret: string;

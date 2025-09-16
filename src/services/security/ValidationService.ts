@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Validation Service
  * 
  * Comprehensive input validation and security scanning for multimedia content

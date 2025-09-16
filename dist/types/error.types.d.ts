@@ -1,11 +1,3 @@
-/**
- * Error handling types for CVPlus multimedia module
- */
-interface ErrorDetails {
-    message: string;
-    code?: string;
-    context?: Record<string, unknown>;
-}
 export interface MultimediaError extends ErrorDetails {
     /** Error category */
     category: MultimediaErrorCategory;
@@ -623,5 +615,4 @@ export interface UpgradeOption {
     /** Upgrade URL */
     upgradeUrl?: string;
 }
-export {};
 //# sourceMappingURL=error.types.d.ts.map

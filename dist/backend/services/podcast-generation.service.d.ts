@@ -1,7 +1,3 @@
-/**
- * Podcast Generation Service
- * Creates conversational podcasts using AI voices
- */
 import { ParsedCV } from '../types/enhanced-models';
 export declare class PodcastGenerationService {
     private openai;

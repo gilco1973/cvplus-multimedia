@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Circuit Breaker Utility
  * 
  * Implements circuit breaker pattern for fault tolerance

@@ -1,12 +1,3 @@
-/**
- * HeyGen Video Generation Provider
- *
- * Primary video generation provider using HeyGen API v2 with webhook support,
- * advanced avatar customization, and real-time status tracking.
- *
- * @author Gil Klainert
- * @version 1.0.0
- */
 import { BaseVideoProvider, VideoGenerationOptions, VideoGenerationResult, VideoGenerationStatus, ProviderCapabilities, RateLimitConfig, ProviderHealthStatus, ProviderPerformanceMetrics, VideoRequirements, ProviderConfig } from './base-provider.interface';
 interface HeyGenWebhookPayload {
     video_id: string;

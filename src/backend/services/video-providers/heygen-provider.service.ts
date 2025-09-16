@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * HeyGen Video Generation Provider
  * 
  * Primary video generation provider using HeyGen API v2 with webhook support,

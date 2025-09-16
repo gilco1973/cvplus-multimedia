@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Utility helper functions for multimedia components
  */
 

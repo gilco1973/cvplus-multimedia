@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Video Provider Webhook Handler Service
  * 
  * Centralized webhook handling for all video generation providers

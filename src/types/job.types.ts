@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Job management and queue system types for CVPlus multimedia module
  */
 

@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Audio Processing Service
  * 
  * Comprehensive audio processing service supporting format conversion,

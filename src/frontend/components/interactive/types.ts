@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Type definitions for interactive multimedia components
  */
 

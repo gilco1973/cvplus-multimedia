@@ -1,12 +1,3 @@
-/**
- * Enhanced Job Models - Main Interface
- *
- * Core enhanced job interface and related models for CV enhancement features.
- * Properly modularized to maintain <200 line compliance through separation of concerns.
- *
- * @author Gil Klainert
- * @version 1.0.0
- */
 export type { EnhancedJob } from './enhanced-job-core';
 export type { PortfolioImage, CalendarSettings, Testimonial, PersonalityProfile } from './enhanced-media';
 export type { SkillsVisualization, SkillCategory, LanguageSkill, Certification } from './enhanced-skills';

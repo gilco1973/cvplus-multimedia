@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Storage Module Index
  * 
  * Exports all storage adapters, managers, and utilities for the

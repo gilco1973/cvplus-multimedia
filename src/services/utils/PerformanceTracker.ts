@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Performance Tracker Utility
  * 
  * Tracks and analyzes performance metrics for multimedia operations

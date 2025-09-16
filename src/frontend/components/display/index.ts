@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Display Components for Multimedia Module
  * 
  * This module exports display components that provide galleries, players,

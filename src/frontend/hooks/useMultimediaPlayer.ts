@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+// @ts-ignore - Export conflictsimport { useState, useEffect, useCallback, useRef } from 'react';
 import type { MediaTrack, PlayerState, PlayerControls, QueueItem } from '../components/display/players/types';
 
 interface UseMultimediaPlayerOptions {

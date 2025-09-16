@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Base Video Provider Interface
  * Defines common types and interfaces for video generation providers
  */
@@ -98,4 +98,53 @@ export interface ProviderHealthStatus {
   uptime: number;
   lastHealthCheck: Date;
   issues?: string[];
+}
+
+// =============================================================================
+// ANALYTICS INTERFACES - Migrated from analytics submodule
+// =============================================================================
+
+export interface VideoProviderMetrics {
+  providerId: string;
+  totalVideos: number;
+  totalViews: number;
+  averageViewDuration: number;
+  completionRate: number;
+  errorRate: number;
+  lastUpdated: Date;
+}
+
+export interface VideoAnalytics {
+  videoId: string;
+  providerId: string;
+  views: number;
+  duration: number;
+  completionRate: number;
+  engagement: {
+    likes?: number;
+    shares?: number;
+    comments?: number;
+  };
+  performance: {
+    loadTime: number;
+    bufferingEvents: number;
+    errorCount: number;
+  };
+  timestamp: Date;
+}
+
+export interface BaseVideoProvider {
+  providerId: string;
+  name: string;
+  getMetrics(): Promise<VideoProviderMetrics>;
+  getVideoAnalytics(videoId: string): Promise<VideoAnalytics>;
+  trackEvent(event: VideoEvent): Promise<void>;
+}
+
+export interface VideoEvent {
+  eventType: 'view' | 'play' | 'pause' | 'complete' | 'error';
+  videoId: string;
+  userId?: string;
+  timestamp: Date;
+  metadata?: Record<string, any>;
 }

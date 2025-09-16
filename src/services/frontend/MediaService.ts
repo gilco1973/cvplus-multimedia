@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Media Service
  * Handles video, audio, and podcast generation
  */

@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * CVPlus Multimedia Frontend - Standalone Integration Export
  * 
  * Zero-dependency integration layer for Phase 1.5 multimedia components

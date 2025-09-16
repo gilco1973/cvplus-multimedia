@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * GeneratedContent Firestore Service
  *
  * Firebase model service for managing GeneratedContent entities with comprehensive

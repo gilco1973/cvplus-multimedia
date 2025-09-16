@@ -1,11 +1,3 @@
-/**
- * Utilities Index
- *
- * Exports all utility functions and classes for the CVPlus Multimedia Module.
- *
- * @author Gil Klainert
- * @version 1.0.0 - CVPlus Multimedia Module
- */
 export { FileUtils } from './FileUtils';
 export { MediaUtils } from './MediaUtils';
 export type { MediaMetadata, MediaValidationRules } from './MediaUtils';

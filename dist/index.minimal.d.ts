@@ -1,13 +1,3 @@
-/**
- * CVPlus Multimedia Module - Minimal Export for Functions Migration
- *
- * This file provides minimal exports required for Firebase Functions integration
- * during the architectural violation fix migration.
- *
- * @author Gil Klainert
- * @version 1.0.0
- * @license PROPRIETARY
- */
 export type { MediaType, MediaFile, ProcessedMedia, QualityLevel, FileFormat } from './types/media.types';
 export { generatePodcast } from './backend/functions/generatePodcast';
 export { podcastStatus } from './backend/functions/podcastStatus';

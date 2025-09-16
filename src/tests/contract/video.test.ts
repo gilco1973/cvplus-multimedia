@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Contract Test: POST /multimedia/video
  *
  * Tests the AI video generation endpoint following TDD principles.

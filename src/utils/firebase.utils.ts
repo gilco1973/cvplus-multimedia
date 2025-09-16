@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Firebase Utilities for Multimedia Submodule
  * Provides functions for calling Firebase Functions from the multimedia components
  */

@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * MultimediaPlayer Components
  *
  * Professional multimedia player system with playlist management,

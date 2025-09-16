@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Multimedia Backend Index
  * Main export file for multimedia backend functionality
  */

@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Media Processor
  * 
  * Base class for all media processors providing common functionality

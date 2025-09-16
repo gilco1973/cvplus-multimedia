@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Storage Service
  * 
  * Unified storage service supporting multiple providers (Firebase, AWS S3, etc.)

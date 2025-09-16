@@ -1,2 +1,2 @@
-export declare const generatePodcast: import("firebase-functions/v2/https").CallableFunction<any, Promise<any>>;
+export declare const generatePodcast: any;
 //# sourceMappingURL=generatePodcast.d.ts.map

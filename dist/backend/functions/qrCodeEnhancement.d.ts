@@ -1,13 +1,3 @@
-/**
- * QR Code Enhancement Firebase Functions
- *
- * Provides Firebase callable functions for enhancing QR codes with portal functionality.
- * Handles QR code generation, updates, analytics, and tracking.
- *
- * @author Gil Klainert
- * @created 2025-08-19
- * @version 1.0
- */
 import * as functions from 'firebase-functions/v1';
 /**
  * Enhance QR Codes

@@ -1,9 +1,3 @@
-/**
- * Firestore Data Sanitization Utility
- *
- * Prevents "Unsupported field value: undefined" errors by sanitizing data before Firestore writes.
- * Handles nested objects, arrays, and complex data structures safely.
- */
 export interface SanitizationOptions {
     removeUndefined?: boolean;
     removeNull?: boolean;

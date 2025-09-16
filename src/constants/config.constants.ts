@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * CVPlus Multimedia - Configuration Constants
  * 
  * Default configuration values and settings for multimedia services.

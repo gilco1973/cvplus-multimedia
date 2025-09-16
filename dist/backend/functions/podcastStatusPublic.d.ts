@@ -1,2 +1,2 @@
-export declare const podcastStatusPublic: import("firebase-functions/v2/https").HttpsFunction;
+export declare const podcastStatusPublic: any;
 //# sourceMappingURL=podcastStatusPublic.d.ts.map

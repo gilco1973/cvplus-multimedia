@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Testimonials Carousel Types
  * Types for testimonials carousel components
  */

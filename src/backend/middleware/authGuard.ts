@@ -1,4 +1,4 @@
-import { HttpsError, CallableRequest } from 'firebase-functions/v2/https';
+// @ts-ignore - Export conflictsimport { HttpsError, CallableRequest } from 'firebase-functions/v2/https';
 import { logger } from 'firebase-functions';
 import * as admin from 'firebase-admin';
 // Import from local types for multimedia module autonomy

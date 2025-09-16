@@ -1,11 +1,3 @@
-/**
- * CVPlus Multimedia - Format Constants
- *
- * Supported file formats and MIME types for multimedia processing.
- *
- * @author Gil Klainert
- * @version 1.0.0
- */
 export declare const IMAGE_FORMATS: {
     readonly JPEG: {
         readonly extension: ".jpg";

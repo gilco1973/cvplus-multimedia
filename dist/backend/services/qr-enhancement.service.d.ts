@@ -1,13 +1,3 @@
-/**
- * QR Code Enhancement Service
- *
- * Enhances existing QR codes to support portal functionality and creates portal-specific QR codes.
- * Integrates with the existing QR code system while adding portal capabilities.
- *
- * @author Gil Klainert
- * @created 2025-08-19
- * @version 1.0
- */
 import { QRCodeType, QRCodeStyling, PortalUrls, QRCodeAnalytics } from '../types/portal';
 interface QRCodeEnhancementOptions {
     updateExisting: boolean;

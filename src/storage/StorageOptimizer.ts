@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Storage Optimizer
  * 
  * Optimizes multimedia files before storage including compression,

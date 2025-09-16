@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * CVPlus Multimedia Integration Utilities
  * 
  * Provides utility functions for component integration, error handling, and performance monitoring

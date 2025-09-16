@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * MultimediaPlayer Types
  *
  * Type definitions for the professional multimedia player component

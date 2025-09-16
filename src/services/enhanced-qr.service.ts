@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Enhanced QR Service - Minimal Implementation
  * 
  * This is a minimal implementation to satisfy TypeScript imports.

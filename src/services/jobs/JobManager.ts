@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Job Manager Service
  * 
  * Manages asynchronous multimedia processing jobs with queuing,

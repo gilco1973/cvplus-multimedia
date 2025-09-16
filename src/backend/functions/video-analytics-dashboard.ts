@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Video Analytics Dashboard Function
  * 
  * Comprehensive analytics dashboard API for CVPlus video generation platform.

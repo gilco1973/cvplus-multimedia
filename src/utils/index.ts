@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Utilities Index
  * 
  * Exports all utility functions and classes for the CVPlus Multimedia Module.

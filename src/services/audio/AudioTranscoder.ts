@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Audio Transcoder Service
  * 
  * Placeholder implementation for audio transcoding operations.

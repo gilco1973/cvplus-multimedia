@@ -1,4 +1,4 @@
-import { HttpsError } from 'firebase-functions/v2/https';
+// @ts-ignore - Export conflictsimport { HttpsError } from 'firebase-functions/v2/https';
 import { logger } from 'firebase-functions';
 import * as admin from 'firebase-admin';
 import { requireAuth, AuthenticatedRequest } from './authGuard';

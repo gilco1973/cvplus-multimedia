@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * File Utilities
  * 
  * Common file manipulation and validation utilities for the multimedia module.

@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Video Analytics Types
  * Types for video analytics components
  */

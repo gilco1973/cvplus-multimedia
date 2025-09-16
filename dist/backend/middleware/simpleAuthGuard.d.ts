@@ -1,4 +1,3 @@
-import { CallableRequest } from 'firebase-functions/v2/https';
 export interface AuthenticatedRequest extends CallableRequest {
     auth: {
         uid: string;

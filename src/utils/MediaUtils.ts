@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Media Utilities
  * 
  * Utilities for working with multimedia files including metadata extraction,

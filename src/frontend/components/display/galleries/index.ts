@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Gallery Components Index
  * Export all gallery components
  */

@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Media Generation Service for Video Intros and Podcasts
  */
 

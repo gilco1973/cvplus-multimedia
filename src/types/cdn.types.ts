@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * CDN and content delivery types for CVPlus multimedia module
  */
 

@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Enhanced RAG (Retrieval-Augmented Generation) Types
  * 
  * RAG processing types for enhanced CV features.

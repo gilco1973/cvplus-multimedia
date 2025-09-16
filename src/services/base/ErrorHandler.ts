@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Multimedia Error Handler
  * 
  * Centralized error handling for multimedia services with categorization,

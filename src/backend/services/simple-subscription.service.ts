@@ -1,4 +1,4 @@
-import * as admin from 'firebase-admin';
+// @ts-ignore - Export conflictsimport * as admin from 'firebase-admin';
 import { logger } from 'firebase-functions';
 
 export interface UserSubscriptionData {

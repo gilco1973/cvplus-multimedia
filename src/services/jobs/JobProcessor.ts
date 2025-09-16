@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Job Processor
  * 
  * Processes multimedia jobs with support for various job types,

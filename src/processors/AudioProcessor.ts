@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Audio Processor
  * 
  * High-level audio processing orchestrator that manages

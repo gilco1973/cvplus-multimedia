@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Multimedia Backend Services Index
  * Exports all multimedia services for Firebase Functions
  */

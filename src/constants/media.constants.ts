@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Media processing constants for CVPlus multimedia module
  */
 

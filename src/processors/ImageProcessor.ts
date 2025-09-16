@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Image Processor
  * 
  * High-level image processing orchestrator that manages

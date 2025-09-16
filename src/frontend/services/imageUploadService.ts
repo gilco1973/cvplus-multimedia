@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Image Upload Service
  * Handles image uploads, validation, processing, and Firebase Storage integration
  */

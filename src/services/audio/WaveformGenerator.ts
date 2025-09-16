@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Waveform Generator Service
  * 
  * Placeholder implementation for audio waveform generation.

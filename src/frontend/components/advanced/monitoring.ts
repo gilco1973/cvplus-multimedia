@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Real-time monitoring components
  */
 

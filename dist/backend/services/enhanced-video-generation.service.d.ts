@@ -1,13 +1,3 @@
-/**
- * Enhanced Video Generation Service
- *
- * Multi-provider video generation service with intelligent fallback mechanism,
- * AI-driven provider selection, comprehensive error recovery, and real-time
- * performance monitoring for 99.5% reliability.
- *
- * @author Gil Klainert
- * @version 2.0.0
- */
 import { ParsedCV } from '../types/enhanced-models';
 import { EnhancedScriptResult } from './enhanced-prompt-engine.service';
 import { VideoGenerationOptions as BaseVideoGenerationOptions, VideoGenerationStatus } from './video-providers/base-provider.interface';

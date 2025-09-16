@@ -1,6 +1,3 @@
-/**
- * Core media type definitions for CVPlus multimedia processing
- */
 interface ErrorDetails {
     message: string;
     code?: string;

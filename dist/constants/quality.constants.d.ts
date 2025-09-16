@@ -1,11 +1,3 @@
-/**
- * CVPlus Multimedia - Quality Constants
- *
- * Quality and compression settings for multimedia processing.
- *
- * @author Gil Klainert
- * @version 1.0.0
- */
 export declare const IMAGE_QUALITY: {
     readonly LOW: 0.3;
     readonly MEDIUM: 0.6;

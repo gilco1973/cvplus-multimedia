@@ -1,6 +1,3 @@
-/**
- * Job type definitions (keeping existing structure)
- */
 export interface Job {
     id: string;
     userId: string;

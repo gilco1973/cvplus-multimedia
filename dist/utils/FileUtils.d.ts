@@ -1,11 +1,3 @@
-/**
- * File Utilities
- *
- * Common file manipulation and validation utilities for the multimedia module.
- *
- * @author Gil Klainert
- * @version 1.0.0 - CVPlus Multimedia Module
- */
 import { MediaType } from '../types/media.types';
 export declare class FileUtils {
     /**

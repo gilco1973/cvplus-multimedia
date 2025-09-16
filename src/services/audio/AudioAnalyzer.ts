@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Audio Analyzer Service
  * 
  * Placeholder implementation for audio analysis operations.

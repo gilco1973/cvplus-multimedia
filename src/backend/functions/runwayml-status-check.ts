@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * RunwayML Status Check Function
  * 
  * Firebase Function to manually check RunwayML video generation status

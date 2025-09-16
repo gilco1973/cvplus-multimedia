@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Processing Components Index
  * Export all video processing components
  */

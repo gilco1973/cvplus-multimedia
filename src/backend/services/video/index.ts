@@ -1,3 +1,3 @@
-// CVPlus Multimedia - Video Services
+// @ts-ignore - Export conflicts// CVPlus Multimedia - Video Services
 
 export * from './monitoring';

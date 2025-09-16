@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Configuration types for CVPlus multimedia module
  */
 

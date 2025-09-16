@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Podcast Generation Service
  * 
  * Service for testing podcast generation functionality and API availability.

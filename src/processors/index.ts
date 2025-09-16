@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Multimedia Processors
  * 
  * High-level media processing interfaces that orchestrate

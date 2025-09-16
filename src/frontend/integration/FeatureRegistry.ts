@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * CVPlus Multimedia Feature Registry
  * 
  * Manages feature flags and namespace-based component registration

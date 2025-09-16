@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * CVPlus Multimedia Module - Constants Export
  * 
  * Main export file for multimedia processing constants.

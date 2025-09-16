@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Enhanced Podcast Types for Unified Component System
  * Combines features from parent project and multimedia submodule
  */

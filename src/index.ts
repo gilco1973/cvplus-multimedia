@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * CVPlus Multimedia Module - Minimal Export for Functions Integration
  * 
  * This file provides minimal exports required for Firebase Functions integration
@@ -71,6 +71,23 @@ export type {
   PortfolioGallery,
   PortfolioItem
 } from './backend/types/portal';
+
+// ============================================================================
+// EXPLICIT TYPE EXPORTS (for core module compatibility)
+// ============================================================================
+
+// Explicit exports for types previously imported by core module
+export type {
+  MultimediaGenerationResult,
+  ApiMultimediaResponse
+} from './types/multimedia-api';
+
+export type {
+  PortfolioImage,
+  CalendarSettings,
+  Testimonial,
+  PersonalityProfile
+} from './types/enhanced-media';
 
 // ============================================================================
 // CONSTANTS

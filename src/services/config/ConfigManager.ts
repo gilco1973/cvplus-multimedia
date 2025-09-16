@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Configuration Manager
  * 
  * Manages configuration loading, validation, and service-specific

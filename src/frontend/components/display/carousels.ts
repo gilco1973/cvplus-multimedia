@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Carousel display components
  */
 

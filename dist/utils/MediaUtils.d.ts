@@ -1,12 +1,3 @@
-/**
- * Media Utilities
- *
- * Utilities for working with multimedia files including metadata extraction,
- * format detection, and media-specific operations.
- *
- * @author Gil Klainert
- * @version 1.0.0 - CVPlus Multimedia Module
- */
 import { MediaFile } from '../types/media.types';
 export interface MediaMetadata {
     width?: number;

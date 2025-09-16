@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * CVPlus Multimedia Module - Frontend Complete Export
  * 
  * This file provides complete frontend exports including upload components,

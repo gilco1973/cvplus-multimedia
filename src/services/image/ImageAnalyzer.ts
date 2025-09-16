@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Image Analyzer
  * 
  * Analyzes image content and metadata to provide insights

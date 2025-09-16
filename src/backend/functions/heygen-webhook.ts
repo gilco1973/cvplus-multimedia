@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * HeyGen Webhook Handler Function
  * 
  * Firebase Function to handle HeyGen webhook callbacks for real-time

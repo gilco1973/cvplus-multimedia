@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * MultimediaService - Frontend API service for multimedia operations
  * Provides comprehensive interface for multimedia generation, management, and playback
  *

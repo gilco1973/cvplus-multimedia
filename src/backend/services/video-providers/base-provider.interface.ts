@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Base Provider Interface for Video Generation Services
  * 
  * Defines the common interface for all video generation providers

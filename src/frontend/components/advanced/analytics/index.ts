@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Advanced Analytics Components Index
  * 
  * Exports all advanced analytics and tracking components

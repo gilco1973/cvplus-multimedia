@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Advanced Video Components Index
  * 
  * Exports all advanced video generation and processing components

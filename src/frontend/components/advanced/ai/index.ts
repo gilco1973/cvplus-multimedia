@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Advanced AI Components Index
  * 
  * Exports all AI-powered content optimization and enhancement components

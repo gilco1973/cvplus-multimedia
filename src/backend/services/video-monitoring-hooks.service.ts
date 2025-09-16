@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Video Monitoring Hooks Service
  * 
  * Lightweight hooks service for integrating monitoring into existing video generation

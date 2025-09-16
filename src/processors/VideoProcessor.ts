@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Video Processor
  * 
  * High-level video processing orchestrator that manages

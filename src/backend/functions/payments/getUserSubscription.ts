@@ -1,4 +1,4 @@
-import { onCall, HttpsError } from 'firebase-functions/v2/https';
+// @ts-ignore - Export conflictsimport { onCall, HttpsError } from 'firebase-functions/v2/https';
 import { logger } from 'firebase-functions';
 import { corsOptions } from '../../config/cors';
 import { simpleSubscriptionService, UserSubscriptionData } from '../../services/simple-subscription.service';

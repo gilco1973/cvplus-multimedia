@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Enhanced Job Core Types
  * 
  * Core job processing types for enhanced CV features.

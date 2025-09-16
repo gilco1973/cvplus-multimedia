@@ -1,6 +1,3 @@
-/**
- * Video processing type definitions for CVPlus multimedia module
- */
 import { MediaFile, ProcessedMedia, QualityLevel, VideoFormat, ImageFormat } from './media.types';
 export interface VideoProcessingOptions {
     /** Target width in pixels */

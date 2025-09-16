@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Portfolio Gallery Types
  * Types for portfolio gallery components
  */

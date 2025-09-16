@@ -1,12 +1,3 @@
-/**
- * RunwayML Video Generation Provider
- *
- * Secondary video generation provider using RunwayML Gen-2 API with polling-based status checking,
- * creative video generation capabilities, and artistic control for innovative content.
- *
- * @author Gil Klainert
- * @version 1.0.0
- */
 import { BaseVideoProvider, VideoGenerationOptions, VideoGenerationResult, VideoGenerationStatus, ProviderCapabilities, RateLimitConfig, ProviderHealthStatus, ProviderPerformanceMetrics, VideoRequirements, ProviderConfig } from './base-provider.interface';
 interface RunwayMLStatusResponse {
     id: string;

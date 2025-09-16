@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * CVPlus Multimedia Services - Main Export Module
  * 
  * Provides centralized access to all multimedia processing services

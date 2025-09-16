@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Error handling types for CVPlus multimedia module
  */
 

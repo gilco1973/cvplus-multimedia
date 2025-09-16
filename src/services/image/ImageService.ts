@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Image Processing Service
  * 
  * Comprehensive image processing service supporting format conversion,

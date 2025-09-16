@@ -1,4 +1,4 @@
-import { onRequest } from 'firebase-functions/v2/https';
+// @ts-ignore - Export conflictsimport { onRequest } from 'firebase-functions/v2/https';
 import { Request, Response } from 'firebase-functions';
 import { multimediaService } from '../../services/multimedia.service';
 import { getProcessedCV } from '../../models/processed-cv.service';

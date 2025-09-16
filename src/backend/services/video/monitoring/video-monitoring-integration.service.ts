@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Video Monitoring Integration Service
  * 
  * Integration layer between video generation services and monitoring/analytics system.

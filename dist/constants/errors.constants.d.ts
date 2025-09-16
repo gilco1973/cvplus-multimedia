@@ -1,11 +1,3 @@
-/**
- * CVPlus Multimedia - Error Constants
- *
- * Error codes and messages for multimedia processing operations.
- *
- * @author Gil Klainert
- * @version 1.0.0
- */
 export declare const ERROR_CATEGORIES: {
     readonly VALIDATION: "validation";
     readonly UPLOAD: "upload";

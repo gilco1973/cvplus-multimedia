@@ -1,11 +1,3 @@
-/**
- * CVPlus Multimedia - Configuration Constants
- *
- * Default configuration values and settings for multimedia services.
- *
- * @author Gil Klainert
- * @version 1.0.0
- */
 export declare const SERVICE_CONFIG: {
     readonly DEFAULT_TIMEOUT: 30000;
     readonly MAX_RETRIES: 3;

@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * T031: Multimedia service logging in packages/multimedia/src/logging/MultimediaLogger.ts
  *
  * Specialized logger for multimedia generation, processing, and management

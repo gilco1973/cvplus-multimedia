@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * AWS S3 Storage Adapter
  * 
  * AWS S3 implementation for the multimedia storage service

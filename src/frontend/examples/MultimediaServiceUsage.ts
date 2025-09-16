@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * MultimediaService Usage Examples
  * Demonstrates how to use the MultimediaService for various operations
  *

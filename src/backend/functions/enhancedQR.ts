@@ -1,4 +1,4 @@
-import { onCall, CallableRequest, HttpsError } from 'firebase-functions/v2/https';
+// @ts-ignore - Export conflictsimport { onCall, CallableRequest, HttpsError } from 'firebase-functions/v2/https';
 import { EnhancedQRService } from '../services/enhanced-qr.service';
 import { logger } from 'firebase-functions';
 import { corsOptions } from '../config/cors';

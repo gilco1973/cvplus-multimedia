@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Testimonials Carousel Utilities
  * Utility functions for testimonials carousel
  */

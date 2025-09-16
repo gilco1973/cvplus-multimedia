@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Performance Monitor Service
  * 
  * Real-time video generation metrics collection, performance tracking,

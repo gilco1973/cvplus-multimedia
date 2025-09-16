@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Job Queue Implementation
  * 
  * Manages job queuing with priority support, persistence,

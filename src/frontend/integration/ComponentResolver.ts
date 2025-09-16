@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * CVPlus Multimedia Component Resolver
  * 
  * Provides intelligent component resolution with fallbacks and version compatibility

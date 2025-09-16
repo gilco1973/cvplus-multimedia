@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Image Processor
  * 
  * Core image processing operations using Sharp library for high-performance

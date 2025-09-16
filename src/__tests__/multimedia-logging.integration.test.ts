@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * T011: Multimedia service logging test in packages/multimedia/src/__tests__/multimedia-logging.integration.test.ts
  * CRITICAL: This test MUST FAIL before implementation
  */

@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Enhanced ATS (Applicant Tracking System) Types
  * 
  * ATS integration types for enhanced CV features.

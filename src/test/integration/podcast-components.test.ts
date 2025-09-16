@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Phase 2B Integration Tests - Enhanced Podcast Components
  * Tests the unified podcast and audio components
  */

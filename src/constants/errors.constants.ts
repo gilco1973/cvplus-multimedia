@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * CVPlus Multimedia - Error Constants
  * 
  * Error codes and messages for multimedia processing operations.

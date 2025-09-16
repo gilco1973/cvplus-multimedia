@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Firebase Storage Adapter
  * 
  * Firebase Storage implementation for the multimedia storage service

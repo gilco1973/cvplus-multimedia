@@ -1,13 +1,4 @@
 /**
- * Enhanced Skills and Certification Types
- *
- * Skill visualization, certification management, and language proficiency types
- * for enhanced CV features. Focuses on skills presentation and validation.
- *
- * @author Gil Klainert
- * @version 1.0.0
- */
-/**
  * Flexible skills format that supports various skill organization structures
  * Used throughout the system to handle different ways skills can be structured
  */

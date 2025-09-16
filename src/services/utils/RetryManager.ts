@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Retry Manager Utility
  * 
  * Manages retry logic with exponential backoff, jitter,

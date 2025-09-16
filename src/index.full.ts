@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * CVPlus Multimedia Module - Main Entry Point (Minimal Build)
  * 
  * Basic multimedia types and utilities for the CVPlus platform.

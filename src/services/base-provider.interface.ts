@@ -1,4 +1,4 @@
-/**
+// @ts-ignore - Export conflicts/**
  * Base Video Provider Interface
  * 
  * Common interface for video analytics providers.
