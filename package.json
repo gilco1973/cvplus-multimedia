@@ -121,7 +121,7 @@
     "@cvplus/auth": "file:../auth",
     "@cvplus/core": "file:../core",
     "@cvplus/i18n": "file:../i18n",
-    "@cvplus/logging": "^1.0.0",
+    "@cvplus/logging": "1.0.0",
     "@ffmpeg/ffmpeg": "^0.12.10",
     "@types/node": "^22.9.1",
     "aws-sdk": "^2.1691.0",
