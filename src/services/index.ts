@@ -21,18 +21,19 @@ export * from './image/ImageOptimizer';
 
 // Video Services
 export * from './video/VideoService';
-export * from './video/VideoProcessor';
-export * from './video/VideoTranscoder';
+export * from './video/video-generation.service';
 
 // Audio Services
 export * from './audio/AudioService';
 export * from './audio/AudioProcessor';
-export * from './audio/AudioOptimizer';
+export * from './audio/AudioAnalyzer';
+export * from './audio/AudioTranscoder';
+export * from './audio/WaveformGenerator';
+export * from './audio/podcast-generation.service';
 
 // Storage Services
 export * from './storage/StorageService';
 export * from './storage/FirebaseStorageAdapter';
-export * from './storage/CDNManager';
 
 // Job Management Services
 export * from './jobs/JobManager';
@@ -40,28 +41,29 @@ export * from './jobs/JobProcessor';
 export * from './jobs/JobQueue';
 
 // Performance & Caching
-export * from './performance/CacheManager';
-export * from './performance/PerformanceMonitor';
+export * from './performance-monitor.service';
+export * from './cache-performance-monitor.service';
 
 // Security & Validation
 export * from './security/ValidationService';
-export * from './security/AccessControlService';
 
 // Integration Services
-export * from './integration/CVPlusIntegration';
-export * from './integration/AuthIntegration';
-export * from './integration/PremiumIntegration';
+// Integration services are handled through base services and service registry
 
 // Service Registry and Configuration
 export { ServiceRegistry } from './registry/ServiceRegistry';
-export { MultimediaConfig } from './config/MultimediaConfig';
+export { ConfigManager } from './config/ConfigManager';
 
 // Type Re-exports for convenience
 export type {
-  MediaService,
-  ServiceFactory,
   MultimediaError,
   ProcessingOptions,
-  StorageOptions,
-  JobOptions
+  StorageProvider,
+  ProcessingJob as JobOptions
 } from '../types';
+
+// Main service and factory exports
+export * from './multimedia.service';
+export * from './enhanced-qr.service';
+export * from './enhanced-video-generation.service';
+export * from './video-monitoring-hooks.service';
