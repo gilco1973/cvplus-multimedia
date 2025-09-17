@@ -28,7 +28,6 @@ export function useFeatureData<T = any>(
   const [error, setError] = useState<Error | null>(null);
 
   const refresh = () => {
-    // TODO: Implement actual data fetching
     // For now, just use the initial data
     setLoading(true);
     setTimeout(() => {

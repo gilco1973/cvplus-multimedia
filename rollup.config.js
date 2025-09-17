@@ -1,16 +1,37 @@
 import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
+import json from '@rollup/plugin-json';
+
+// Autonomous build configuration - Zero @cvplus/* dependencies
+const external = [
+  '@anthropic-ai/sdk',
+  'firebase',
+  'firebase-admin',
+  'firebase-functions',
+  'firebase-functions/v2/https',
+  'react',
+  'react-dom',
+  'react-dropzone',
+  'lodash',
+  'pdf-lib',
+  'pdfkit',
+  'canvas',
+  'sharp',
+  '@types/node',
+  // Node.js built-ins
+  'fs', 'path', 'util', 'stream', 'crypto', 'http', 'https', 'os', 'url', 'querystring'
+];
 
 export default [
+  // Main package build
   {
     input: 'src/index.ts',
     output: [
       {
         file: 'dist/index.js',
         format: 'cjs',
-        sourcemap: true,
-        exports: 'auto'
+        sourcemap: true
       },
       {
         file: 'dist/index.esm.js',
@@ -18,77 +39,122 @@ export default [
         sourcemap: true
       }
     ],
-    external: [
-      '@cvplus/core',
-      '@cvplus/auth',
-      'sharp',
-      'ffmpeg.js',
-      'firebase',
-      'aws-sdk',
-      'mime-types',
-      'file-type',
-      'image-size',
-      'music-metadata'
-    ],
     plugins: [
+      json(),
       resolve({
-        preferBuiltins: true
+        preferBuiltins: true,
+        exportConditions: ['node']
       }),
       commonjs(),
       typescript({
         tsconfig: './tsconfig.build.json',
-        sourceMap: true,
-        inlineSources: true
+        declaration: false,
+        declarationMap: false,
+        sourceMap: true
       })
-    ]
+    ],
+    external
   },
-  // Separate builds for each module
+  // Frontend-specific build for autonomous operation
   {
-    input: {
-      'types/index': 'src/types/index.ts',
-      'constants/index': 'src/constants/index.ts',
-      'services/index': 'src/services/index.ts',
-      'processors/index': 'src/processors/index.ts',
-      'storage/index': 'src/storage/index.ts',
-      'utils/index': 'src/utils/index.ts'
-    },
+    input: 'src/frontend/index.ts',
     output: [
       {
-        dir: 'dist',
+        file: 'dist/frontend/index.js',
         format: 'cjs',
-        sourcemap: true,
-        exports: 'auto',
-        entryFileNames: '[name].js'
+        sourcemap: true
       },
       {
-        dir: 'dist',
+        file: 'dist/frontend/index.esm.js',
         format: 'esm',
-        sourcemap: true,
-        entryFileNames: '[name].esm.js'
+        sourcemap: true
       }
     ],
-    external: [
-      '@cvplus/core',
-      '@cvplus/auth',
-      'sharp',
-      'ffmpeg.js',
-      'firebase',
-      'aws-sdk',
-      'mime-types',
-      'file-type',
-      'image-size',
-      'music-metadata'
-    ],
     plugins: [
+      json(),
       resolve({
-        preferBuiltins: true
+        browser: true,
+        preferBuiltins: false
       }),
       commonjs(),
       typescript({
         tsconfig: './tsconfig.build.json',
-        sourceMap: true,
-        inlineSources: true
+        declaration: false,
+        declarationMap: false,
+        sourceMap: true
       })
+    ],
+    external: ['react', 'react-dom', 'react-dropzone', 'firebase']
+  },
+  // Backend-specific build
+  {
+    input: 'src/backend/index.ts',
+    output: [
+      {
+        file: 'dist/backend/index.js',
+        format: 'cjs',
+        sourcemap: true
+      },
+      {
+        file: 'dist/backend/index.esm.js',
+        format: 'esm',
+        sourcemap: true
+      }
+    ],
+    plugins: [
+      json(),
+      resolve({
+        preferBuiltins: true,
+        exportConditions: ['node']
+      }),
+      commonjs(),
+      typescript({
+        tsconfig: './tsconfig.build.json',
+        declaration: false,
+        declarationMap: false,
+        sourceMap: true
+      })
+    ],
+    external
+  },
+  // External-data specific build
+  {
+    input: 'src/external-data/index.ts',
+    output: [
+      {
+        file: 'dist/external-data/index.js',
+        format: 'cjs',
+        sourcemap: true
+      },
+      {
+        file: 'dist/external-data/index.esm.js',
+        format: 'esm',
+        sourcemap: true
+      }
+    ],
+    plugins: [
+      json(),
+      resolve({
+        preferBuiltins: true,
+        exportConditions: ['node']
+      }),
+      commonjs(),
+      typescript({
+        tsconfig: './tsconfig.build.json',
+        declaration: false,
+        declarationMap: false,
+        sourceMap: true
+      })
+    ],
+    external: [
+      ...external,
+      'axios',
+      'cheerio',
+      'jsdom',
+      'puppeteer',
+      'xml2js',
+      'csv-parser',
+      '@cvplus/core'
     ]
   }
 ];
