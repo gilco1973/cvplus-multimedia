@@ -47,8 +47,11 @@ export * from './cache-performance-monitor.service';
 // Security & Validation
 export * from './security/ValidationService';
 
-// Integration Services
-// Integration services are handled through base services and service registry
+// Integration Services (migrated from @cvplus/core)
+export * from './calendar-integration.service';
+export * from './integrations.service';
+export * from './web-search.service';
+export * from './video-providers';
 
 // Service Registry and Configuration
 export { ServiceRegistry } from './registry/ServiceRegistry';
